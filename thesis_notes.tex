@@ -1,0 +1,204 @@
+
+
+DOI: 10.1039/D1CP00674F
+    These guys have there own morphCT at https://github.com/tobiaskoch1988/charge_transport_package
+
+DOI DOI: 10.1002/aic.16760
+
+    Machine learning predictions . Evans paper
+
+    Tested five techniques for using machine learning to predict mobility and random forests were the most succesful
+
+    15 percent efficiency is all you need for one day pay back times .
+
+    fed into the maching was 1. bonded or non bonded
+                                2. distance between thiothenen rings center of mass
+                                3. angles between thiothene rings
+                                4. distance between sulfurs in thiothen rings
+                                5. x y and z coordinat distances between cetners
+                                6. energy difference between chomophores
+
+
+DOI doi.org/10.1063/5.0047421 
+
+    DOPING RELATED BROADENING OF DENSITY OF STATES GOVERNS INTEGER-CHARGE TRANSFER IN P3HT
+    
+    conjugated polymers can be engineered to have high "figure of merit" ZT=ST/(\rho*\kappa) where the demonetor 
+    is resistivity vs thermal conductivity. thermal conductivity is small in conjugated polymers and resistivity can be 
+    significantly doped away. 
+
+    they say that ICT and FCT are in competition and that by adding a p-dopant with electron affinity higher that the
+    ionization energy of the surrounding material(P3Ht) you can encourage ICT. I seems to me like FCT is ignored in JONES2017
+    via the assumption that a chromophore is one monomer. ie you cant have the excitation delocalized over large chains. it has to hop. 
+    Also should we  can we "dope" our simulations of P3HT
+
+DOI DOI:10.1038/s41578-019-0137-9
+
+CHARGE TRANSFER ELECTRONIC STATES IN ORGANIC SOLAR CELLS
+
+    electron-hole pairs are frenkel-type excitons. bulk heterojunctions are required becuase to dissasociate these we need a
+    donor acceptor interface where a CT state can be generated. This is characerized by the electron sittin in the lumo of the 
+    acceptor and the hole sitting in the homo of the donor
+
+    they say a three state model is needed to fully describe the interation between the 1.) the electronic state if the exciton 
+    2.) the electronic state of the CT state and 3.) the electronic state of the ground state. but a two state approximation can
+    be used to ignore the interation between the absorbed electron state. that is to say a a charge tranfer state and a ground state 
+    have weak vibronic enteraction with the the local electron state. almost like the rate limiting step approximation
+
+    thermally induced and light induced electron transfer processes are connected by the mulliken-hush model.
+    
+    the electronic coupling between between ground and CT states is related to the adiabatic transition dipole moment. (i
+    take this to mean the dipole moment at the adaiabatic limit. meaning that the maximuim coupling at which electron transfer 
+    happens adiabatically. the potential energy surfaces intersect. )
+
+    energy distributions of CT states generally follw a gaussiain distribution do to the relation of electron-vibration interaction. 
+
+    urbach energy is a measure of disorder and takkes contributions from static and dynamic disorder
+    
+    the Voc in OSCs is lower than traditional cells. this is attricbuted to the fact that the CT-state has a lower energy
+    than the optical gap and there for lower energy than the photo induced electron. voltage is also lose to non-radiative
+    decay to ground states. voltage loss can be describes in terms of the quantum efficiency of electroluminescence EQE.  this
+    value is proportional to the CT decay rates. all that is to say that voltage loss increase with a decrease in CT-state energy.
+
+
+
+DOI: Liu, Y. (2021). Spectroscopic study of charge-transfer states in organic semiconductors (Order No. 28320730). Available from ProQuest Dissertations & Theses Global. (2526355653). Retrieved from https://libproxy.boisestate.edu/login?url=https://www.proquest.com/dissertations-theses/spectroscopic-study-charge-transfer-states/docview/2526355653/se-2?accountid=964
+
+    based on the Shockley-Quiesser theoretical framework, an ideal solar cell has no non-radiative reconbination. only radiative which is
+    unavoidable. They say that a great solar cell is a great LED because it has small non-radiative recombination. 
+    basically, energy in is enrgy out in one form or the other.
+
+    something new that this work is doing is considering the local excitons(specifically thier lifetimes) 
+    influence on the photolumninesent yield of the CT state. Could be reading this worng but this is a consideration explicitally
+    ignores in the the two state theory
+
+    they state as does the work above that the simple bilayer organic photovaoltaics is doomed because the excitons cant diffuse far enough
+    (they diffuse up to 10nm probably impossible to make a 5nm thin flim)to reach a dissasotiating interface. 
+
+    fullerene acceptors are hard to tune. 
+
+    they say non-symmetrical acceptors could lead to highly intermixed morphology which would require novel morphological control to tune 
+    exciton splittting and charge transtport. 
+
+    over all energy loss is defined as the difference bewtween E_{s1}, the energy of the low band gap exciton and the free carriers E_{carriers}
+    or, \Delta E = E_{s1} - E_{carriers} .
+
+
+    They are studying 4TIC which has a more eleictron rich donor core , 4T, which they expect to give rise to
+    stronger intramolecular charge transfer with IC. they say that 4TIC extends the absorption into the 
+    nIR (near infared ) wavelengths compared to og ITIC.
+
+
+DOI: 	Phys. Chem. Chem. Phys., 2015,17, 28451-28462
+        
+"HOT OR COLD :HOW DO CHARGE TRANSFER STATES AT DONOR-ACCEPTOR INTERFACE OF AN ORAGNIC SOLAR CELL DISSACSOCIATE."
+        
+DOI: 10.1021/cr900271s
+
+"CHARGE PHOTOGENERATION IN ORGANIC SOLAR CELLS"
+    
+    Onsanger theory - Onsanger first described geminate recombination. the model caculates the probablity
+    of a CT state  disassociating in terms of the dielectric constant and the temerature of the system and the 
+    applied electric field.
+
+    to begin, he defines a coulumb attraction radius. this is the the distance at whcih the coulumb attraction
+    between hole and electron is equal to the thermal energy. this is the beginning of the proposed "hot" electron
+    in whcih the the exess thermal energy from the photoabsorbtion pushes the electron and hole apart at a 
+    thermalization length "a". 
+
+    if this lenght "a" is larger than the coulumb attraction radius, the charges are considered delocalized.
+
+    if this length is within the capture radius, then there is a probabilty P(E) which is a functiuon of the
+        applied electric field. this is the probablilty of escape the coulumb attraction and become free charges.
+
+    With this model, this leaves a probability of 1-P(E) of the CT state decayin to the ground state. 
+
+    the dielectric constant is in the denomenator of the capture radius. in inorganic conductors the dielectric 
+    constant is large such that very few electron-holes stick together because the capture radius is very small. 
+
+    if there is no applied electric field, the P(E) just scales proportionally with the distance "a". 
+
+    Braun modified Onsanger to consider the finite lifetimes of CT states. he took the dissoctiation 
+    to free charges to be a reversible process. that is the CT state may be dissociating and reassociating
+    many times before it fully dissociates or decays to the ground state. 
+
+    Tachiya noted that Onsanger works for moderate to low electron mobility materials. because it messes up the 
+    mean free path. (toolong) . it also doesnt account for reoganization energies. it is also hard to uncover the
+    "a" and and the capture radius. 
+
+    from wikipedia- a singlet state an excited electron has oppisite spin from the one left in the ground
+    state energy level  and in a triplet state, the excited electron has the same spin as the one left behind
+    in the gound state energy level. 
+
+    a fundemental requirement for dissasociation is that the the charge seperated state must be the
+    lowest energy excited state in the system . if the donor ionization potential is large enough that 
+    it elevates the energy of the charge seperated state above other possible states, this would cut off
+    the pathway for charge transfer.
+
+    onsangers capture radius model can inform domain sizes in BHJ . for instance if the domain size
+    is smaller than the capture radius the charges cant escape each other. this could be tricky to implement,
+    as the exciton diffusion length and the capture radius are often of similar magnitudes. what is agreed upom 
+    is that nanomorphology strongly effects charge dissociation and recombination
+
+	
+
+DOI: 10.1016/B978-0-08-102284-9.00020-6
+
+	OPV: DEVICE PHYSICS
+
+	
+    The energy potential of the light striking the earth is over thirteen time that of all known reserves of
+    coal, natural gas, petroleum, and uranium combonined. Perez and Peresz 2015
+
+    to improve on traditional solar cells clunkyness, engineers tried to use amorphous silicon, CdTe and CIGS
+	(copper indium gallium diselenide). This can be processed into thin-films. These are the 
+	competetors for organic thin films. They still use rare earth materials and require
+	a great deal of energy to fabricate. OPV fabrictate themselves if we can fairy god mother
+	them with the right thermodynmics and substrates 
+	OPVS solution processability allows them to be formed on lightwieght substrated and on
+	curved surfaces. The materials mentioned above require too much heat to by processed on
+	lightweight substrates.And with that lightwieght we have cheaper shipping and
+	installation costs.
+
+    Because P=IV power equals current *voltage , the J-V curve is a useful metric for measuring 
+	device perfomrance. Where j is I averaged over area. 
+
+    OPV materials have lower mobilities but higher absorbtiion coefficients. the absorbtion coefficient
+	is a measure of how far light can penetrate into a material. 
+
+   in 1986 Ching Tang invented the Bulk heterojunction. because of the alignment of the LUMO of the
+	donor and acceptor, the excited donor finds it more enjoyable to relax via charge transer than 
+	via the radiative decay to the  ground state. for holes the alignment urges the acceptor to
+	transfer a hole to the donor.
+
+   EQE external quantum efficiciency is a fancy name for the fraction of extracted photons
+	to total number of photons incident on a device
+		-it can be written explixitly as the photo absorbtion efficiency times
+		the exciton diffusion efficiency times the CT efficiency times the 
+		charge extraction efficiency. that is the combined efficiency of
+		the 4 steps of OPV charge collection. 
+
+   IQE Ineternal quantum efficiency is a fancy term for the fraction of extracted electrons
+	to the number of photons ABSORBED into the active layer of the device IQE and
+	EQE are equal in the limit of effeciency. that is, where every incident photon is 
+	absorbed by the active layer 
+		-this is the product mentiond above without the first efficiency accounted for. 
+
+	Determining IQE is harder becuause you need to know the absoption spectrum and this
+		hard to observe experimentally becuase its a thin film and the surroundings 
+		interfere with the observation. 
+DOI: ?
+
+	Controlling energy levels and Fermi level en route to fully tailored energetics in organic semiconductors
+
+
+	READ THIS NEXT. it has a github for its statistics as well. 
+
+   		fermi level of intrinstic semiconducter directly between the conduction band 
+		and valence band. because fermi level is the energy at which there is a 50 percent chance 
+		of having an electron with this energy. 
+
+		in extrinstic semiconductor. in n-type thre fermi level is shifted higher towards the 
+		conduction band because the probability of finding an electron in the conduction band 
+		is higher than probabiktiy of finding a hole in the valence band. vice versa for 
+		p-type. these notes from youtube "femi level of intrinsic and extrinsic semiconductor. 
