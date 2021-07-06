@@ -1,0 +1,29 @@
+
+Wed Jun 16 15:27:22 MDT 2021
+    
+       In the 10.1002/cphc.201900793 paper it says that the highest ITIC transfer integral 
+       is 16Mev. this motivates finding a morphology of itic that is well packed and 
+       seeing if out TIs match this. in the transfer-qcc-pluck notebook im goin go 
+       have it grab chromos that are near each other and give the TI for them.
+    
+        I have conscripted gwen and cody to produce rdfs from /home/erjank_project/itic-project/workspace 
+        to pick an educated guess of a nice morphology to begin with. that is, a non liquid or frozen one
+        at least.
+
+        the guts to achieve this are in the intramolecular notebook
+
+Thu Jun 17 12:31:30 MDT 202
+
+      Going to get some benzene rings from mbuild in some oreintations and get transfer integrals 
+      between them. I will call the notebook transfer-qcc-P3HT and i will build the benzenes in 
+      new_molecule_test notebook
+
+      evans paper gives TI between .3 and 1 for various conditions ie bonded non-bonded, seperation
+      distance etcetera
+
+      instead of specifying the exact angles between thiophenes to compare to evans paper,
+      I am going to use fill_box from mbuild to give me a sudo random orientations of two
+      thiothenes in a box.
+
+      getting reasonable numbers for thiophenes in terms of homo humo and TI. jenny going to get
+      some more sceintifically shifted gsds.
