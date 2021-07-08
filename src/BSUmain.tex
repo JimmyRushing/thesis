@@ -9,6 +9,7 @@
 
 % custom file for BSU style by KvW, 2006:
 \usepackage{BSUthesis}
+\usepackage{xcolor}
 % \usepackage{acro}
 % probably a good idea for the nomenclature entries:
 % \acsetup{first-style=short}
@@ -16,6 +17,7 @@
 \newcommand\inputfile[1]{%
     \InputIfFileExists{#1}{}{\typeout{No file #1.}}%
 } % this command keep latexmk from erroring when \input is missing
+\newcommand{\todo}[1]{\textcolor{red}{#1 -- TODO}}
 
 % For abbreviations
 \makeglossaries
