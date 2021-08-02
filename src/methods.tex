@@ -7,23 +7,27 @@ For the thesis format for BSU, here is an example Chapter.
  
 This is an example of a Chapter. 
 
-\section{Introduction}
+\section{Computaional Methods}
 
-We present an example of a Chapter
+At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
+the inputs into the marcus hopping equation are the offsets between neigboring  chromophores energy levels
+determine the driving force and the the TI is estimated using a dimer method that also uses the homo level. 
+With that said, quantum chemical methods give us a framework from whcih to estimate the homo/lumos. A litany of
+methods that use approximations and parametrizations to transform cumbersome ab initio quantum mechanical 
+calculations into efficient algorithms for determining the electronic stucuture of a given compound. Morpcht 
+leverages the MINDO3 as provided by pyscy module. Solving shrodingers equation accross tens of thousands of 
+chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
+justified but drastic simplifications are necessary. 
 
-\section{\nobreak Example of a section}
-
-This is an example of a Chapter, like in \citet{Krauth2021}. Let us
-include Figure~\ref{fig:figure} from a paper we wrote a while back
-\citep{Wang2004a}. As you can see in examplechapter.tex, the
-figure label is dynamic. This means that if you change the order of
-the figures, or remove one, you will not have to renumber these by
-hand.
-
-By the way, in examplebib.bib are examples of most formats for your
-bibliography. Another way of using natbib is like this: \cite[or][for
-example]{mythesis}. For a complete overview of the features of the
-natbib package for bibtex, see natbib.pdf in this directory.
+\section{\nobreak kmc analysis}
+Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
+simulation can be run on the bases of Marcus rates obtained from QCC.
+The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
+particles in the system. Repeating along relevant time scales for 
+charge transfer, knowing that MSD scales linearly with time, the slope of this relationship
+can be estimated and related to to the 3D diffusion coeffiecient. Using the Einstien relation, 
+the gorundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
+mobility can be obtained. 
 
 \begin{figure}
   \center
