@@ -15,7 +15,16 @@ determine the driving force and the the TI is estimated using a dimer method tha
 With that said, quantum chemical methods give us a framework from whcih to estimate the homo/lumos. A litany of
 methods that use approximations and parametrizations to transform cumbersome ab initio quantum mechanical 
 calculations into efficient algorithms for determining the electronic stucuture of a given compound. Morpcht 
-leverages the MINDO3 as provided by pyscy module. Solving shrodingers equation accross tens of thousands of 
+leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
+which is an approximation method that seeks recreate the ab initio Hartree-Fock results\cite{Thiel2014}. Results
+from the this work compare well to jones2017 which implemented ZINDO/s, another semi-emperical method. A particular 
+choice of method comes down to how well we can organize a workflow. 
+
+\indent The software chosen to implement this method is
+provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
+was chosen in the interest of reproducabilty and extensibilty. PySCF is implemented almost entirly in the Python 
+language, which is becoming increasingly ubiquitious in the scientific computing community.
+Solving shrodingers equation accross tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
 justified but drastic simplifications are necessary. 
 
