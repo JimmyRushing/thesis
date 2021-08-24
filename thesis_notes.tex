@@ -451,4 +451,38 @@ DOI: https://doi.org/10.1021/acs.chemrev.8b00803
     simulatates organic molecules is to start making software that works on quantum computers?
 
     -
+DOI: 10.1145/2889160.2891057
+
+    USING DOCKER CONTAINERS TO IMPROVE REPRODUCIBILITY IN SOFTWARE ENGINEERING RESEARCH
+
+    -reproducibility is a problem. not just from peer to peer but from mentor to mentee
+    Docker/ singularity containers work. the reus proved it. 
+    - Docker is an open source container. containers are virtual machines that contain all the
+    dependencies, configurataion,, code and data necessary to reproduce results. 
+    -
     
+DOI: doi.org/10.1145/2723872.2723882
+
+    AN INTRODUCTION TO DOCKER FOR REPRODUCIBLE RESEARCH
+
+    -one would think, computer codes should be more easilty reproducible than
+    wet lab experemiments. That is, unless you have ever tried to do it. 
+    -they say the back in 2015 people didnt even want to publish the code to their work?
+    I mean, my code sucks but if you want to dive in.....
+    -and they say that many journals dont even require it????
+    -they say its not in the curriculum. 
+    -two made heuristics for achieving reproducibility. 
+        1.workflow software- This on is GUI heavy but requires mass adoption
+        not adopted because no one is willing to pay for with public moneys
+        and if companies make it, it is proprietary. 
+
+        2.virtual machines- this approach hijacks the whole operating system. They propose
+        running on the cloud. critics say that these monolithic containers will keep researchers
+        from weaving together new software
+
+    - the DevOPS strategy is basically script everything. 
+    - docker images are binary files that conatain all the software is all ready there and
+    configured. this addressses the dependency issue because you are reproducing the 
+    exact code that the researchers produced.
+    - the difference between a other VMs and docker is that the docker image shares a kernal 
+    with the host machine. 
