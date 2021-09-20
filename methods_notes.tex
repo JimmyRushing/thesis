@@ -45,3 +45,15 @@ Sun Aug 22 19:54:41 MDT 2021
     homos whcih results in a negative number under a square root in the TI calc. But We get a .11 TI for an
     unrelaxed para_meta. This is very different. a zero TI will result in no hop. Maybe we should use koopmans
     approximation to avoid this?
+
+Mon Sep 20 11:30:00 MDT 2021
+    
+    Digging into the mp going on in morphct I believe we can delete p.join() from 
+    mobility_kmc. the purpose of it is two wait to execute the rest of the program
+    until all the children have finished. However, it was malfunctioning and I beleive
+    that using the connection pipe as Morphct the .recv() end of the pipe blocks the
+    program until the .send() end of the pipe sends somthing . This will achieve 
+    a what p.join() was trying to do. 
+
+    problem trying to get it going on fry. I dont know how to change the flow. 
+    I am getting permission errors. 
