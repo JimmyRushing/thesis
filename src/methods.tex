@@ -22,6 +22,23 @@ language, which is becoming increasingly ubiquitious in the scientific computing
 Solving shrodingers equation accross tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
 justified but drastic simplifications are necessary. 
+Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
+rings. Using Mbuild, a reference thiopophene is placed in the xy-plane with the y-axis running through the 
+x-axis and its center mass placed at the origin. A second thiophene is instantiated in the same manner but a
+combination space of allowable moves is created wherein the second thiophene can translate up to 5nm 
+and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3nm are disallowed. 
+This gives 4300 unique orientations show in figure blah \ref{TI}. The figure shows that, as expected,
+center-to-center distance decreasing results in more orbital overlap. Also observable in the figure is that
+a rotation of 90 degrees about the x axis corresponds to the sulfer of the second thiophene being oreinted
+straight towards the reference thiophene corresponds to a smaller sulfer-to-sulfler distance and a greater TI. 
+
+
+\begin{figure}
+  \center
+  \includegraphics[width=10cm]{figures/transfer_integral_plot.png}
+  \caption{Thiophene Transfer Integrals}
+  \label{fig:TI}
+\end{figure}
 
 \section{\nobreak kmc analysis}
 Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
