@@ -28,11 +28,12 @@ Solving shrodingers equation accross tens of thousands of
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
 justified but drastic simplifications are necessary. 
 \newline \indent
+
 Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
 rings. Using Mbuild, a reference thiopophene is placed in the xy-plane with the y-axis running through the 
-x-axis and its center mass placed at the origin. A second thiophene is instantiated in the same manner but a
-combination space of allowable moves is created wherein the second thiophene can translate up to 5nm 
-and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3nm are disallowed. 
+the sulfur atom and its center mass placed at the origin. A second thiophene is instantiated in the same manner but a
+combination of allowable moves is created wherein the second thiophene can translate up to 5 angstroms 
+and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3 angstroms are disallowed. 
 This gives 4300 unique orientations show in figure blah \ref{TI}. The figure shows that, as expected,
 center-to-center distance decreasing results in more orbital overlap. Also observable in the figure is that
 a rotation of 90 degrees about the x axis corresponds to the sulfer of the second thiophene being oreinted
@@ -45,6 +46,12 @@ straight towards the reference thiophene corresponds to a smaller sulfer-to-sulf
   \caption{Thiophene Transfer Integrals}
   \label{fig:TI}
 \end{figure}
+
+\newline \indent Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
+requires the use of an iterative algorithm. Implemnting a hopping simulation requires the delineation of
+individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
+can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
+which atoms belong to which chromophores is required. 
 
 \section{\nobreak kmc analysis}
 Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
