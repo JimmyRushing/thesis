@@ -26,7 +26,14 @@ ORCA's proprietary licensing was prohibitive in the efforts to containerize Morp
 creating reproducible results. 
 Solving shrodingers equation accross tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
-justified but drastic simplifications are necessary. 
+justified but drastic simplifications are necessary. Compution of the eigenvalues of the HOMO and HOMO-1
+molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
+the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
+overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
+integral. It is this appoximation that allows an estimationg of the transfer integral from the calculation of
+the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
+approximation, which further neglects the site energy integral, therby assuming all chromophores have the same
+energetics in isolation.  \cite{Huang2005b}
 \newline \indent
 
 Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
