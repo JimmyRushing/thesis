@@ -2,37 +2,39 @@
 \label{chap:methods}
 
 
-\section{Computaional Methods}
+\section{Computational Methods}
 
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
-the inputs into the marcus hopping equation are the offsets between neigboring  chromophores energy levels
+the inputs into the marcus hopping equation are the offsets between neighboring  chromophores energy levels
 determine the driving force and the the TI is estimated using a dimer method that also uses the homo level. 
-With that said, quantum chemical methods give us a framework from whcih to estimate the homo/lumos. A litany of
+With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
 methods that use approximations and parametrizations to transform cumbersome ab initio quantum mechanical 
-calculations into efficient algorithms for determining the electronic stucuture of a given compound. Morpcht 
+calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
 leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
 which is an approximation method that seeks recreate the ab initio Hartree-Fock results\cite{Thiel2014}. Results
-from the this work compare well to jones2017 which implemented ZINDO/s, another semi-emperical method. The
-previous version of MorphCT utilized ORCA to provide the quantum chemical approxiamtions required to implement
+from the this work compare well to jones2017 which implemented ZINDO/s, another
+semi-empirical method. The
+previous version of MorphCT utilized ORCA to provide the quantum chemical
+approximations required to implement
 a hopping model of charge transport \cite{Neese2012b}. Jones2017 showed that with this you can connect MD
-provided morphology to charge transport charactersitcs. A particular 
+provided morphology to charge transport characteristics. A particular 
 choice of method comes down to how well we can organize a workflow. 
 
 \indent The software chosen to implement this method is
 provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
-was chosen in the interest of reproducabilty and extensibilty. PySCF is implemented almost entirly in the Python 
-language, which is becoming increasingly ubiquitious in the scientific computing community. Furthermore,
+was chosen in the interest of reproducability and extensibility. PySCF is implemented almost entirly in the Python 
+language, which is becoming increasingly ubiquitous in the scientific computing community. Furthermore,
 ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
 creating reproducible results. 
-Solving shrodingers equation accross tens of thousands of 
+Solving shrodingers equation across tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
-justified but drastic simplifications are necessary. Compution of the eigenvalues of the HOMO and HOMO-1
+justified but drastic simplifications are necessary. Computation of the eigenvalues of the HOMO and HOMO-1
 molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
 the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
 overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
-integral. It is this appoximation that allows an estimationg of the transfer integral from the calculation of
+integral. It is this approximation that allows an estimating of the transfer integral from the calculation of
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
-approximation, which further neglects the site energy integral, therby assuming all chromophores have the same
+approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
 energetics in isolation.  \cite{Huang2005b}
 \newline \indent
 
