@@ -6,12 +6,17 @@
 
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
 the inputs into the marcus hopping equation are the offsets between neighboring  chromophores energy levels
-determine the driving force and the the TI is estimated using a dimer method that also uses the homo level. 
+determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
 With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
 methods that use approximations and parametrizations to transform cumbersome ab initio quantum mechanical 
 calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
 leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
-which is an approximation method that seeks recreate the ab initio Hartree-Fock results\cite{Thiel2014}. Results
+which is an approximation method that seeks recreate the ab initio Hartree-Fock
+results\cite{Thiel2014}. Calculating electronic structure with this method has
+shown good agreement with experimental data and more rigorous Quantum chemical
+methods 
+cite{Bredas2002}. Furthermore, variations in TI dont effect mobilitity calcs
+that much (one of evans papers said this).  Results
 from the this work compare well to jones2017 which implemented ZINDO/s, another
 semi-empirical method. The
 previous version of MorphCT utilized ORCA to provide the quantum chemical
