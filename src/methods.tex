@@ -12,7 +12,7 @@ methods that use approximations and parametrizations to transform cumbersome ab 
 calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
 leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
 which is an approximation method that seeks recreate the ab initio Hartree-Fock
-results\cite{Thiel2014}. Calculating electronic structure with this method has
+results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shreodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
 shown good agreement with experimental data and more rigorous Quantum chemical
 methods 
 cite{Bredas2002}. Furthermore, variations in TI dont effect mobilitity calcs
@@ -23,7 +23,11 @@ previous version of MorphCT utilized ORCA to provide the quantum chemical
 approximations required to implement
 a hopping model of charge transport \cite{Neese2012b}. Jones2017 showed that with this you can connect MD
 provided morphology to charge transport characteristics. A particular 
-choice of method comes down to how well we can organize a workflow. 
+choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
+workflow modularly. This is becuase the quantum compuational chemistry is a nascent and evolving field of its
+own, with quickly increasing effeciencys and accuracies. Therefor, an important consideration is, "how can we
+deintigrate and reintigrate a QCC software, tests its efficiency and accuracy, and do it in a way that lays
+the groundwork to upgrade or swap it as better options emerge?". 
 
 \indent The software chosen to implement this method is
 provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
