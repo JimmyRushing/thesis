@@ -90,7 +90,18 @@ charge transfer, knowing that MSD scales linearly with time, the slope of this r
 can be estimated and related to to the 3D diffusion coeffiecient. Using the Einstien relation, 
 the groundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
 mobility can be obtained. 
-
+It is critical that we not include the ballistic transport timescale in the approximation of the limit
+if the slope as time goes to infinity. This could be easily demonstrated by leaving 10^-13 as the first
+lifetime for example and show how that effects the MSD slope. Estimating an upperbound for lifetimes such that
+we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
+carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
+charge trapping, temperature, and charge density, whose dynamics play out accros a picosecond to microsecond
+timescales and vary widly form material to material as well as from microstrtucture to microstrucute for a
+given material \cite{Laquai2015} . For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
+that are achievable computationally. For example, I tried to go to the physical edge of lifetimes and
+calculate MSD out to a microsecond. A single hole hopped for 9 wall  time hours. It could be beneficial to do
+a preanalysis in morph that estimates where a given morphology's MSD will converge so as to never simulate
+past that time. To do so is superflous and expensive. 
 
 %%% Local Variables: 
 %%% mode: latex
