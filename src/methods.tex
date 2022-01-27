@@ -45,7 +45,6 @@ integral. It is this approximation that allows an estimating of the transfer int
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
 approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
 energetics in isolation.  \cite{Huang2005b}
-\newline \indent
 
 Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
 rings. Using Mbuild, a reference thiopophene is placed in the xy-plane with the y-axis running through the 
@@ -72,11 +71,15 @@ straight towards the reference thiophene corresponds to a smaller sulfer-to-sulf
 \end{figure}
 
 
-\newline \indent Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
+\indent Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
 requires the use of an iterative algorithm. Implemnting a hopping simulation requires the delineation of
 individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
 can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
-which atoms belong to which chromophores is required. 
+which atoms belong to which chromophores is required. At this stage of the workflow, consideration needs to be
+given to where a charge may delocalize within. With ITIC, the frontier molecular oribitals, that is, the HOMO
+and LUMO have neglegible electon density along the side chains. With that, significant computational recources
+can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
+backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
 
 \section{\nobreak kmc analysis}
 Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
