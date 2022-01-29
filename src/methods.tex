@@ -15,7 +15,7 @@ which is an approximation method that seeks recreate the ab initio Hartree-Fock
 results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shreodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
 shown good agreement with experimental data and more rigorous Quantum chemical
 methods 
-cite{Bredas2002}. Furthermore, variations in TI dont effect mobilitity calcs
+\cite{Bredas2002}. Furthermore, variations in TI dont effect mobilitity calcs
 that much (one of evans papers said this).  Results
 from the this work compare well to jones2017 which implemented ZINDO/s, another
 semi-empirical method. The
@@ -44,17 +44,27 @@ overlap). Neglecting the latter using an implementation of an INDO method can pr
 integral. It is this approximation that allows an estimating of the transfer integral from the calculation of
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
 approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
-energetics in isolation.  \cite{Huang2005b}
+energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
+mobility from molecular arrangement to good effect \cite{Deng2004}. The P3HT morphologies discussed in the evaluation section of the results
+consist of 1000 oligomers of 15 repeating molecular units. Assigning each molecular unit as a chromophore
+gives 15000 indivual QQC calculations and as many as 15000 choose 2 Dimer QCC calculations. The latter is
+drastically lower because not all chromophores interact. In this workflow neighbor, finding is accomplished via
+voronoi analysis. Nevertheless, with the volume of calculations necasssary to simulate materials into the
+nanometer range, DFT is prohibitivly slow. 
 
 Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
 rings. Using Mbuild, a reference thiopophene is placed in the xy-plane with the y-axis running through the 
 the sulfur atom and its center mass placed at the origin. A second thiophene is instantiated in the same manner but a
 combination of allowable moves is created wherein the second thiophene can translate up to 5 angstroms 
 and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3 angstroms are disallowed. 
-This gives 4300 unique orientations show in figure blah \ref{TI}. The figure shows that, as expected,
+This gives 4300 unique orientations show in figure \ref{ref:TI}. The figure shows that, as expected,
 center-to-center distance decreasing results in more orbital overlap. Also observable in the figure is that
 a rotation of 90 degrees about the x axis corresponds to the sulfer of the second thiophene being oreinted
 straight towards the reference thiophene corresponds to a smaller sulfer-to-sulfler distance and a greater TI. 
+
+It is known that the ionization potential and thus the homo-lumo gap has a near linear relationship with the
+size of the chromophore. In figure \ref{fig:fused}, we can see this relationship is corroberated by our
+implementation of PySCF. This phenomoena has been shown using experiment and DFT methods  \cite{Arago2010}
 
 
 \begin{figure}
@@ -67,7 +77,7 @@ straight towards the reference thiophene corresponds to a smaller sulfer-to-sulf
   \center
   \includegraphics[width=15cm]{figures/fused-ring-figure.png}
   \caption{Thiophene Transfer Integrals}
-  \label{fig:TI}
+  \label{fig:fused}
 \end{figure}
 
 
@@ -91,7 +101,7 @@ can be estimated and related to to the 3D diffusion coeffiecient. Using the Eins
 the groundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
 mobility can be obtained. 
 It is critical that we not include the ballistic transport timescale in the approximation of the limit
-if the slope as time goes to infinity. This could be easily demonstrated by leaving 10^-13 as the first
+if the slope as time goes to infinity. This could be easily demonstrated by leaving $10^{-13}$ as the first
 lifetime for example and show how that effects the MSD slope. Estimating an upperbound for lifetimes such that
 we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
 carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
