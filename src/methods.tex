@@ -101,7 +101,7 @@ can be estimated and related to to the 3D diffusion coeffiecient. Using the Eins
 the groundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
 mobility can be obtained. 
 It is critical that we not include the ballistic transport timescale in the approximation of the limit
-if the slope as time goes to infinity. This could be easily demonstrated by leaving $10^{-13}$ as the first
+if the slope as time goes to infinity \cite{Maginn2018} . This could be easily demonstrated by leaving $10^{-13}$ as the first
 lifetime for example and show how that effects the MSD slope. Estimating an upperbound for lifetimes such that
 we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
 carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
@@ -112,6 +112,9 @@ that are achievable computationally. For example, I tried to go to the physical 
 calculate MSD out to a microsecond. A single hole hopped for 9 wall  time hours. It could be beneficial to do
 a preanalysis in morph that estimates where a given morphology's MSD will converge so as to never simulate
 past that time. To do so is superflous and expensive. 
+In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
+Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
+iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
 
 %%% Local Variables: 
 %%% mode: latex
