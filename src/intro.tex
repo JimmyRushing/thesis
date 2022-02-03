@@ -1,40 +1,60 @@
 \chapter{Introduction} 
-\indent Organic semiconductors have a niche to fill across the landscape of electronic
+Organic semiconductors have a niche to fill across the landscape of electronic
 device manufacturing due to the flexibility, processability, and cost of manufacturing. They have all ready
 achieved commercial viability in the OFET, OLED space NEED REFS. They are of interest to a vast array of
 advance material engineering. These materials can
 provide stretchability, self-healing, and biodegradability for next generation medical devices
-\cite{Brutting2006}.  Morphologies were obtained via in house software (see github for planckton-flow).  The
-fuel for the simulation engines mentioned above(plankton-flow/hoomd) utilized in this work is the generalized
-Amber force field (GAFF)\cite{Wang2004a} The Amber forcefield was designed for use in modeling protein and
-nucleic acid systems.  Serendipitously, the generalized Amber forcefield has parameters for organic molecules
-comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs.  
-
-BHJ OSC work in 4 steps . photoabsorbtions, exciton diffusion, CT , Charge diffusion. \citet{Fusella2019}.
-Engineering the active layer of an OSC from organic materials presents distinct challenges and advantages at
-all four stages. Achieving effecient photoabsorbtion in the OPV active layer requires designing donor and
-acceptor molecules with high absorbtion in the most abundant region of the solar spectrum. An example
-of an advantage of excitonic photoabsorbtion is that, absortion takes place in a narrow peak of roughly 300nm.
+\cite{Brutting2006}.
+SECTION
+In solar cell design, the proximate motivation for this research is the wide range of novel way that OPVs
+can assist us in harnessing the power of the sun. 
+An example of an advantage of the excitonic photoabsorbtion that takes plave in OPVs is that, absortion takes place in a narrow peak of roughly 300nm
+wide.
 This allows for the ability to tune the active layer material to absorb radiation in just above or below the
 visible spectrum (into the NIR or UV spectrum respectiviely). This, along with solution processability, 
 could allow for the production of windows that passively draw current. Semi-transparent OSCs have all ready
 reached 11 \% efficeincy. \cite{Brabec2020}
 
-\indent Our work focuses on stage four. It has been show that the hole/electron of both donor and acceptor material are
-relavant to overall device performance. \cite{Wang2019e}.  Something about if electron mobililty it too high
-in acceptor vs the hole mobility in the donor. It gets clogged up and you get nongeminate recombination loss
+
+[LIST OF OTHER NEAT THINGS] In the area of OPVs, as recently as 1986, Ching W. Wang
+showed that the right donor and acceptor molecules, processed under the right conditions, will self-assemble
+into what is termed Bulk Heterojunction (BHJ) microstructure. And an OPV active layer with this microstucture
+can overcome the
+coloumb force(augmented by the low dielectic constant in the denomentor of coloumbs law) between the excited
+electron and the hole it left behind in the valence band. An exciton can diffuse roughly 10nm(Clarke) before relaxing
+to its ground state and photoemitting the energy. The interlocking phases of donor accepter molecules, insure
+that an exciton will intersect with the boundry between accepter and donor domains, where the slight offset in
+energy levels between the donor and accepter molecules creates a charge transfer state wherin it is more
+energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than it is to radiatively decay to its ground state.
+
+[essentially trying to tell the story of the BHJ story, and the story of the NFA to illustrate that it takes
+incredible theoretical breakthoughs and years of wet lab testing. The reason for painting this narrative ito
+motivate how nice it would be to test these theories with computers first to accelerate the
+advancement]
+Reaching 17 \% effeciency in these devices required rigerous theory and time consuming chemical synthesis
+that unfolded over the course of three decades. 
+With the immensity of parameter space involved in the design of BHJ material, it is desirable that a modular
+open-source pipeline exhist for simulating the morphology of candidate molecules as well as simulating the 
+associated charge charecteristics. We note that will motivate zero-field mobility as a relvant quantity in BHJ
+design, it could likely be informative accross all of the aforementioned applications. 
+
+
+BHJ OSC work in 4 steps . photoabsorbtions, exciton diffusion, CT , Charge diffusion. \citet{Fusella2019}.
+Engineering the active layer of an OSC from organic materials presents distinct challenges and advantages at
+all four stages. 
+\indent Our work is expressely related to stage four. It has been show that the hole/electron mobility of both donor and acceptor material are
+relavant to overall device performance. \cite{Wang2019e}. If electron mobililty it too high
+in acceptor vs the hole mobility in the donor, it gets clogged up and you get nongeminate recombination loss
 Also, imbalanced charge-carrier mobility can lead to space-charge build up in the low mobilty material that
 can screen the built in field.  \cite{Bartelt2015}. shown by space charge limited current experiments
 \cite{Small2013}.
+Morphologies were obtained via in house software (see github for planckton-flow).  The
+fuel for the simulation engines mentioned above(plankton-flow/hoomd) utilized in this work is the generalized
+Amber force field (GAFF)\cite{Wang2004a} The Amber forcefield was designed for use in modeling protein and
+nucleic acid systems.  Serendipitously, the generalized Amber forcefield has parameters for organic molecules
+comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. In the
+same way we hope morphCT will be similarly canabalized by researcher in the other fields, like the ones oulined above. 
 
-Over the past 20 years the PCE has gone from blah to blah. Reaching 17 \% effeciency in these devices requires
-rigerous and time consuming theory that must be then chemically synthesized and tested. Researchers have to
-balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility
-of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of
-variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. 
-With this immensity of parameter space involved in the design of BHJ material, it is desirable that a modular
-open-source pipeline exhist for simulating the morphology of candidate molecules as well as simulating the 
-associated charge charecteristics. 
 
 \indent Jones and Jankowski provided just such a pipeline. Version one of MorphCT was capable of
 connecting qualitativley the morphological features produced by MD simulations. However, it was determined
@@ -42,6 +62,11 @@ that in the interest of reprducabitilty, it was critical to "containerize" this 
 the past few years it was common place to not publish code with the results of computational works. Containers
 are virtual machines that contain all the dependencies, configurations, code and data necessary to reproduce
 results. \cite{Cito2016a}
+
+THIS SENTECE HAS NO HOME Researchers have to
+balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility
+of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of
+variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
