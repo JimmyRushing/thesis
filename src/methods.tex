@@ -115,7 +115,20 @@ past that time. To do so is superflous and expensive.
 In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
 Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
 iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
+\subsection{Voronoi Analysis}
 
+Again, with 15000 choose 2 pairs, we are required to perform some neighborlisting prior to QCC. For this we chose to
+implement freud voronoi analysis. Utilizingn the freud.locality.Voronoi() so catergoriaze chromophores as
+neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here,
+a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
+center than any other chromopore center. Below is a figure showing voronoi analysis on only the x and y
+components of the comophore center points, because 3D is hard to visualize. We use voronoi because BLAH.
+However as can seen from the figure, two points can share cell edges despite being rather far apart. We
+therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
+to assume they dont interact electronically enough to effect to charge mobility calc. This parameter will
+dependend on the material under investigation as was as the size of the individual chromophores. We tested the
+sensitivity of the algorithm to the value (d_cut). The figure shows the effect of cutoff distance on value of
+calculated mobility. there is a diminishing returns around d_cut10. 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
