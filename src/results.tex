@@ -10,8 +10,28 @@ computationl effort \cite{Musil2018}
 \subsection{Improvements}
 Dynamic disorder does effect charge mobility (CT in high mobility conjugated polymers) with every pico second
 may have a 10-20\% fluxuation in TI. 
+In our kmc algorithm we could incorperate the rates of other events like recombination.
+\subsection{Sensitivity}
+A parameter introduced in the kmc algorithm dcut that trims the fat off of the voronoi neighlist builing.
+As can seen from the figure, two points (chromophores), can share cell edges despite being rather far apart. We
+therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
+to assume they dont interact electronically enough to effect to charge mobility calc. This parameter will
+dependend on the material under investigation as was as the size of the individual chromophores. We tested the
+sensitivity of the algorithm to the value (dcut). The [zoomed figure] Shows a example dcut radaii. Note that
+the z-direction has been collaped, and the distinces dont necessarily correlate to the distance
+between chromophores in the system. The figure shows the effect of cutoff distance on value of
+16 calculated mobility. there is a diminishing returns around dcut10.
 
-In our kmc algorithm we could incorperate the rates of other events like recombination. 
+\begin{figure}
+  \center
+%\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
+  \includegraphics[width=\linewidth, height=\textheight,keepaspectratio]{figures/crystalline_voronoi_d_cut_circles.png} 
+ % \includegraphics[width=\linewidth]{figures/crystalline_voronoi.png}
+  \caption{dcut visual}
+  \label{fig:dcut}
+\end{figure}
+
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
