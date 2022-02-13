@@ -8,6 +8,7 @@ Estimating the TI for each pair of cromophores. A future improvement to MorphCT 
 with Machine learning techniques. Musil et al. have shown that ML could produce a 90 \% decrease in
 computationl effort \cite{Musil2018}
 \subsection{accuracy}
+
 \begin{table}[ht]
     \caption{Mobility $cm^{2}/Vs$} % title of Table
 \centering % used for centering table
@@ -22,8 +23,11 @@ PySCF & 1 & 1 & 1 \\ [1ex] % [1ex] adds vertical space
 \end{tabular}
 \label{table:nonlin} % is used to refer this table in the text
 \end{table}
+
 \subsection{Sensitivity}
+
 \subsubsection{dcut}
+
 A parameter introduced in the kmc algorithm dcut that trims the fat off of the voronoi neighlist builing.
 As can seen from the figure, two points (chromophores), can share cell edges despite being rather far apart. We
 therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
@@ -34,14 +38,30 @@ the z-direction has been collaped, and the distinces dont necessarily correlate 
 between chromophores in the system. The figure shows the effect of cutoff distance on value of
 16 calculated mobility. there is a diminishing returns around dcut10.
 
+
+\begin{table}[ht]
+    \caption{dcut sensitivity}
+\centering % used for centering table
+\begin{tabular}{c c c c c c c c} % centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+dcut & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [0.5ex] % inserts table
+%heading
+\hline % inserts single horizontal line
+ pairs & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ % inserting body of the table
+$\mu_{0}$ & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [1ex] % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:dcut-sense} % is used to refer this table in the text
+\end{table}
+
 \begin{figure}
   \center
-%\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
   \includegraphics[width=\linewidth, height=\textheight,keepaspectratio]{figures/crystalline_voronoi_d_cut_circles.png} 
- % \includegraphics[width=\linewidth]{figures/crystalline_voronoi.png}
   \caption{dcut visual}
   \label{fig:dcut}
 \end{figure}
+
+
 \subsubsection{Reorganization energy}
 The reorganization energy constitutes a 
 \begin{figure}
