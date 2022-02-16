@@ -59,7 +59,9 @@ $\mu_{0}$ & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [1ex] % [1ex] adds vertical space
 
 
 \subsubsection{Reorganization energy}
-The reorganization energy constitutes a 
+Marcus's nonadiabatic electron transfer theory allows us to model charge transfer as two
+intersecting parabolic potential energy surfaces. In this work, the parabalas represent the potential energy surface
+of the dimer created by a pair of chomophores with a charge injected on either chromophore.  oThe reorganization energy constitutes a 
 \begin{figure}
   \center
   \includegraphics[width=\linewidth, height=\textheight,keepaspectratio]{figures/reorg.png} 
@@ -78,6 +80,11 @@ The computational bottle neck of simulation charge mobility is also the most the
 Estimating the TI for each pair of cromophores. A future improvement to MorphCT will be accelerating this step
 with Machine learning techniques. Musil et al. have shown that ML could produce a 90 \% decrease in
 computationl effort \cite{Musil2018}
+
+Something to do is allow morphct as to figure out what to do with donor accpeter mixtures. It would be pretty
+easy to run asyncronously on the donor/acceptor materials and compare. this could be a measure of morphology.
+If you run pure donor and pure acceptor and you got mobities, if on of those drops in the mixed morph more
+that the other you probably dont have a nice domain for BHJ.
 
 %%% Local Variables: 
 %%% mode: latex
