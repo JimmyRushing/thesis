@@ -4,7 +4,9 @@
 \section{Summary}
 Sensitivity testing on benchmark P3HT morphology provided by the Evan and matty work can was finegrained and
 used to compare to previous mobility results as well as to test the senesitity of the algorithm to
-rorganzation energy, d_cut, MSD calculation, and siulation temperature. On the spot MD simulation of 1000
+rorganzation energy, d_cut, MSD calculation, and siulation temperature.
+
+On the spot MD simulation of 1000
 molecules was performed for testing morph another benchmark OPV material. Janks/mattys work has shown that taking
 each monomer to be a chromophore even though charges are known to delocalize on 7 monomers still reproduces
 the overall mobility well because the very fast hops along the backbone. I think the application of this
@@ -12,6 +14,12 @@ hopping model to ITIC other small molecules is even more justified. Knowing that
 negligible electron density in the side chains, chomophores are taking to be the backbone. The effect that
 the side chains have on mobility aren't a result of the an electronic contributiom to the frontier molecular
 orbitals but rather is a result of the effect the chains have on the morphology of the material. 
+
+Delineating chromophores within a morphology needs to be justified by DFT or expirement and balanced against
+the computational costs. Furthermore, in this workflow, manually indexing the atoms of the chosen chromophore
+remains a significant hurdle. Tutorials on github show how to use the open source tool VMD to speed up this
+leg of the worflow. We have also had success with Grits and smarts matching to delineate chromophores through
+out the morphology. 
 
 \subsection{accuracy}
 
