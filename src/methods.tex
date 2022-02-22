@@ -4,6 +4,29 @@
 
 \section{Computational Methods}
 
+\subsection{Kinetic Monte Carlo}
+With each chromphore taken to be a discrete object, both in python, and with respect to its frontier
+molecular orbitals, a charge hopping from an excited chromophore to a neighboring chromophore can be modeled
+as a discrete event that occurs at a rate estimable by semiclassical Marcus theory. This is given by the
+following equation:
+
+
+The inputs to the equation and how they are computed are in the following section. But taking k to be and
+accruate rate of the electron transfer reation, we implant a charge randomely into the morhpology, calculate
+the rate of all possble events(possible hops in our case)
+and put them in order of quickest to slowest. The logic is, with k ranging across orders of magnitude, the
+probibitly of the event happing is the inverse of k. It is assumed that hopping processes at the angtrom level
+will proceed stochastically. This implementation, and other sucessful ones like it [NEED REFS?] have
+implemented this via a scaling of the wait time, or inverse rate of the hop. The scaling facter is -lnx where
+x is a random number between 0 and 1. This allows rare events to happen (rarely). With potentially millions of
+hops this indroduces signifcant stochasticism. The waittime then looks as follows:
+
+\begin{align}
+    \tau = \Bigg( -\ln{x} \Bigg)  \Bigg( \frac{1}{k} \Bigg)
+\end{align}
+
+
+\subsection{Quantum Chemical Methods}
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
 the inputs into the marcus hopping equation are the offsets between neighboring  chromophores energy levels
 determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
