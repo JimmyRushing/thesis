@@ -5,6 +5,7 @@
 \section{Computational Methods}
 
 \subsection{Kinetic Monte Carlo}
+
 With each chromphore taken to be a discrete object, both in python, and with respect to its frontier
 molecular orbitals, a charge hopping from an excited chromophore to a neighboring chromophore can be modeled
 as a discrete event that occurs at a rate estimable by semiclassical Marcus theory. The rate that a hop will
@@ -12,7 +13,8 @@ occur from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
 following equation:
 
 \begin{align}
-    k_{ij}  =  
+    k_{ij}  =  T_{ij}^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
+    E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
 \end{align}
 
 The inputs to the equation and how they are computed are in the following section. But taking k to be and
