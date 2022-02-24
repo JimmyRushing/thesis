@@ -24,8 +24,7 @@ and put them in order of quickest to slowest. The logic is, with k ranging acros
 probibitly of the event happing is the inverse of k. It is assumed that hopping processes at the angtrom level
 will proceed stochastically. This implementation, and other sucessful ones like it [NEED REFS?] have
 implemented this via a scaling of the wait time, or inverse rate of the hop. The scaling facter is -lnx where
-x is a random number between 0 and 1. This allows rare events to happen (rarely). With potentially millions of
-hops this indroduces signifcant stochasticism. The waittime then looks as follows:
+x is a random number between 0 and 1. This rationally reshuffles the queue of events and indroduces signifcant stochasticism. The waittime then looks as follows:
 
 \begin{align}
     \tau =  -\ln{x}  \bigg( \frac{1}{k} \bigg)
