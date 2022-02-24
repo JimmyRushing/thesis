@@ -6,25 +6,26 @@
 
 \subsection{Kinetic Monte Carlo}
 
-With each chromphore taken to be a discrete object, both in python, and with respect to its frontier
+With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
 molecular orbitals, a charge hopping from an excited chromophore to a neighboring chromophore can be modeled
 as a discrete event that occurs at a rate estimable by semiclassical Marcus theory. The rate that a hop will
 occur from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
 following equation:
 
 \begin{align}
-    k_{ij}  =  T_{ij}^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
+    k_{ij}  =  |T_{ij}|^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
     E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
 \end{align}
 
 The inputs to the equation and how they are computed are in the following section. But taking k to be and
-accruate rate of the electron transfer reation, we implant a charge randomely into the morhpology, calculate
-the rate of all possble events(possible hops in our case)
+accurate rate of the electron transfer reaction, we implant a charge randomly into the morphology, calculate
+the rate of all possible events(possible hops in our case)
 and put them in order of quickest to slowest. The logic is, with k ranging across orders of magnitude, the
-probibitly of the event happing is the inverse of k. It is assumed that hopping processes at the angtrom level
-will proceed stochastically. This implementation, and other sucessful ones like it [NEED REFS?] have
-implemented this via a scaling of the wait time, or inverse rate of the hop. The scaling facter is -lnx where
-x is a random number between 0 and 1. This rationally reshuffles the queue of events and indroduces signifcant stochasticism. The waittime then looks as follows:
+probability of the event happening is the inverse of k. It is assumed that hopping processes at the angstrom level
+will proceed stochastically. This implementation, and other successful ones like it [NEED REFS?] have
+implemented this via a scaling of the wait time, or inverse rate of the hop. The scaling factor is -lnx where
+x is a random number between 0 and 1. This rationally reshuffles the queue of events and introduces
+significant stochasticism. The wait time then looks as follows:
 
 \begin{align}
     \tau =  -\ln{x}  \bigg( \frac{1}{k} \bigg)
@@ -33,17 +34,17 @@ x is a random number between 0 and 1. This rationally reshuffles the queue of ev
 
 \subsection{Quantum Chemical Methods}
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
-the inputs into the marcus hopping equation are the offsets between neighboring  chromophores energy levels
+the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
 determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
 With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
-methods that use approximations and parametrizations to transform cumbersome ab initio quantum mechanical 
+methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
 calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
 leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
 which is an approximation method that seeks recreate the ab initio Hartree-Fock
-results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shreodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
+results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shrodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
 shown good agreement with experimental data and more rigorous Quantum chemical
 methods 
-\cite{Bredas2002}. Furthermore, variations in TI dont effect mobilitity calcs
+\cite{Bredas2002}. Furthermore, variations in TI do not effect mobility calcs
 that much (one of evans papers said this).  Results
 from the this work compare well to jones2017 which implemented ZINDO/s, another
 semi-empirical method. The
@@ -52,8 +53,8 @@ approximations required to implement
 a hopping model of charge transport \cite{Neese2012b}. Jones2017 showed that with this you can connect MD
 provided morphology to charge transport characteristics. A particular 
 choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
-workflow modularly. This is becuase the quantum compuational chemistry is a nascent and evolving field of its
-own, with quickly increasing effeciencys and accuracies. Therefor, an important consideration is, "how can we
+workflow modularly. This is because the quantum computational chemistry is a nascent and evolving field of its
+own, with quickly increasing efficiencies and accuracies. Therefor, an important consideration is, "how can we
 deintigrate and reintigrate a QCC software, tests its efficiency and accuracy, and do it in a way that lays
 the groundwork to upgrade or swap it as better options emerge?". 
 
@@ -78,10 +79,10 @@ consist of 1000 oligomers of 15 repeating molecular units. Assigning each molecu
 gives 15000 indivual QQC calculations and as many as 15000 choose 2 Dimer QCC calculations. The latter is
 drastically lower because not all chromophores interact. In this workflow neighbor, finding is accomplished via
 voronoi analysis. Nevertheless, with the volume of calculations necasssary to simulate materials into the
-nanometer range, DFT is prohibitivly slow. 
+nanometer range, DFT is prohibitively slow. 
 
 Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
-rings. Using Mbuild, a reference thiopophene is placed in the xy-plane with the y-axis running through the 
+rings. Using Mbuild, a reference thiophene is placed in the xy-plane with the y-axis running through the 
 the sulfur atom and its center mass placed at the origin. A second thiophene is instantiated in the same manner but a
 combination of allowable moves is created wherein the second thiophene can translate up to 5 angstroms 
 and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3 angstroms are disallowed. 
@@ -91,8 +92,8 @@ a rotation of 90 degrees about the x axis corresponds to the sulfer of the secon
 straight towards the reference thiophene corresponds to a smaller sulfer-to-sulfler distance and a greater TI. 
 
 It is known that the ionization potential and thus the homo-lumo gap has a near linear relationship with the
-size of the chromophore. In figure \ref{fig:fused}, we can see this relationship is corroberated by our
-implementation of PySCF. This phenomoena has been shown using experiment and DFT methods  \cite{Arago2010}
+size of the chromophore. In figure \ref{fig:fused}, we can see this relationship is corroborated by our
+implementation of PySCF. This phenomena has been shown using experiment and DFT methods  \cite{Arago2010}
 
 
 \begin{figure}
@@ -110,7 +111,7 @@ implementation of PySCF. This phenomoena has been shown using experiment and DFT
 
 
 \indent Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
-requires the use of an iterative algorithm. Implemnting a hopping simulation requires the delineation of
+requires the use of an iterative algorithm. Implementing a hopping simulation requires the delineation of
 individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
 can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
 which atoms belong to which chromophores is required. At this stage of the workflow, consideration needs to be
