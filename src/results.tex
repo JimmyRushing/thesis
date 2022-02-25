@@ -76,8 +76,6 @@ $\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17*10^{-6}$ & $6.13*10^{-4}$ & .01 & .17 & .17 & .
   \label{fig:dcut}
 \end{figure}
 
-\subsubsection{Temperature}
-
 
 \subsubsection{Reorganization energy}
 Marcus's nonadiabatic electron transfer theory allows us to model charge transfer as two
@@ -92,6 +90,15 @@ chromphore.
     \caption{The results of running 8 KMC simulations with reorganization energy 100-800 meV}
   \label{fig:reorg}
 \end{figure}
+
+\subsubsection{Temperature}
+
+Another parameter of interest in the Marcus theory mention above is temperuture. To test the sensitivity to
+temperature, 15 KMC simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It
+is clear from the results in [FIGURE] that the mobilities trend upward with temperature. With relatively
+weak electronic coupling ($T_{ij}$) between chromophores, electron transfer proceeds nonadiabatically
+\cite{clarke2010}. With this weak coupling, the temperature in the Gibbs free energy of activation term
+dominates the effect temperature has hop rate. 
 
 \subsubsection{lifetimes}
 
