@@ -25,12 +25,30 @@ probability of the event happening is the inverse of k. It is assumed that hoppi
 will proceed stochastically. This implementation, and other successful ones like it [NEED REFS?] have
 implemented this via a scaling of the wait time, or inverse rate of the hop. The scaling factor is -lnx where
 x is a random number between 0 and 1. This rationally reshuffles the queue of events and introduces
-significant stochasticism. The wait time then looks as follows:
+significant stochasticism. The wait time for every potential hop then looks as follows:
 
 \begin{align}
-    \tau =  -\ln{x}  \bigg( \frac{1}{k} \bigg)
+    \tau =  -\ln{x}  \bigg( \frac{1}{k} \bigg).
 \end{align}
 
+The shortest waittime (quickest available hop) is chosen from the updated queue and the charge is moved to
+its new chromophore host and $\tau$ is added to the time elapsed. Once the carrier has hopped beyond its
+prespecified lifespan, its displacement is stored in the carreir object. After repeating this over a
+statistically significant number of carriers, the carrier data can be aggreggated and the mean squared
+displacent can be calculated. It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
+The slope of the MSD in the linear regime gives the diffusion coefficient which can be used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
+
+\begin{align}
+    \mu_{0} = \frac{eD}{6k_{B}T},
+\end{align}
+
+where $e$ is the elemental charge of a charge carrier, $D$ is the diffusion coefficient, $k_{B}$ is Planck's
+constant and $T$ is temperature. There is no objective best practice for determing the slope of the MSD as
+time goes to inifinity from simulaton data of this kind \cite{Maginn2018}. MorphCT requires the specification
+of "lifetimes," which effectivly serve as checkpoints at which the MSD of charge carriers is recorded. For
+each "lifetime" the specified number of carrier objects to be simulated hop until they exceed their
+"lifetime." The averages of these are recorded and a linear regression is performed to determine the slope
+of the MSD. The senstivity of the algorithm to this input is explored in the results section.  
 
 \subsection{Quantum Chemical Methods}
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
