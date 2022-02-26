@@ -38,6 +38,14 @@ PySCF & $.0018 \pm .000001$ & $.00148 \pm .000001$ & $.206 \pm 0.0001$ \\ [1ex] 
 \label{table:nonlin} % is used to refer this table in the text
 \end{table}
 
+The results in \ref{table:nonlin} for PySCF were run with a dcut 12. With dcut 10, the crystalline mobility
+moves to .15 whcih is closer to mattys. Waiting on the dcut 10 for the others (semi and disordered). Im very
+curious was that will do to their mobilities. All this exploration tells me the workflow is almost two
+different things for highly conjugated polyers than it is for amorphous materials. Could a higher dcut in the
+semi and amorphous actual make for a slower mobility? I feel like the current numbers are better also. That is
+closer to experimentally observed numbers. need more data!!!
+
+
 \subsection{Sensitivity}
 
 \subsubsection{dcut}
@@ -62,7 +70,7 @@ dcut & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [0.5ex] % inserts table
 %heading
 \hline  % inserts single horizontal line
 pairs & 318 & 22000 & 49000 & 96000 & 113026 & 113315 & 113315 \\ [1ex]% inserting body of the table
-$\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17*10^{-6}$ & $6.13*10^{-4}$ & .01 & .17 & .17 & .22 & .22 \\ [1ex] % [1ex] adds vertical space
+$\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17 \cdot 10^{-6}$ & $6.13 \cdot 10^{-4}$ & .01 & .17 & .17 & .22 & .22 \\ [1ex] % [1ex] adds vertical space
 %$\mu_{0}$ Error & $-1.75*10^{-6}$ & 6 & 8 & 10 & 12 & 14 & 16 \\
 \hline %inserts single line
 \end{tabular}

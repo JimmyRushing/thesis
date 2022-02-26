@@ -31,13 +31,25 @@ the rate of all possible events(possible hops in our case)
 and put them in order of quickest to slowest. The logic is, with k ranging across orders of magnitude, the
 probability of the event happening is the inverse of k. It is assumed that hopping processes at the angstrom level
 will proceed stochastically. This implementation, and other successful ones like it [NEED REFS?] have
-implemented this via a scaling of the wait time, or inverse rate of the hop. The scaling factor is -lnx where
-x is a random number between 0 and 1. This rationally reshuffles the queue of events and introduces
-significant stochasticism. The wait time for every potential hop then looks as follows:
+implemented this via a scaling of the wait times, or inverse hop rate, in the queue.
+This rationally reshuffles the queue of events and introduces
+significant stochasticism. The wait time for every potential hop from occupied chromophore $i$ onto a
+neighboring chromophore $j$ looks as follows:
 
 \begin{align}
-    \tau =  -\ln{x}  \bigg( \frac{1}{k} \bigg).
+    \tau = \frac{1}{k_{ij}} \cdot \ln{\frac{1}{x}} 
 \end{align}
+where x is a random number between 0 and 1 and $\log{\frac{1}{x}}$ is a scaling factor. To illucidate this
+graphically, $\ln{\frac{1}{x}}$ is plotted in figure \ref{fig:ln} from 0 to 1. 
+
+\begin{figure}
+  \center
+  \includegraphics[width=0.8\linewidth]{figures/naturallog.png}
+  \caption{Graphical insight into the reshuffling of the wait time queue. Here the x-axis represents the 
+    interval from which numbers are drawn randomly such that the wait times in the queue can be shifted
+    by ln(1/x).}
+  \label{fig:ln}
+\end{figure}
 
 The shortest waittime (quickest available hop) is chosen from the updated queue and the charge is moved to
 its new chromophore host and $\tau$ is added to the time elapsed. Once the carrier has hopped beyond its
