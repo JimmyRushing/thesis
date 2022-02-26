@@ -1,11 +1,19 @@
 \chapter{Methods}
 \label{chap:methods}
 
+MorphCT is developed to faciliate charge cahracterization of morphological data. It takes GSD files which are
+the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}. The morphologies used to
+obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. The ITIC
+morphology was simulated using Plankton-Flow (https://github.com/cmelab/planckton-flow) on Fry, the high
+performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
+singularity, docker and signac to contanerize a package developed to facilitate simulating self-assembly in
+organic photovoltaic materials; Planckton (https://github.com/cmelab/planckton).
 
 \section{Computational Methods}
 
 \subsection{Kinetic Monte Carlo}
-
+Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
+simulation can be run on the bases of Marcus rates obtained from QCC.
 With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
 molecular orbitals, a charge hopping from an excited chromophore to a neighboring chromophore can be modeled
 as a discrete event that occurs at a rate estimable by semiclassical Marcus theory. The rate that a hop will
@@ -139,8 +147,6 @@ can be conserved by leaving these atoms out of the of the QCC stage. To test thi
 backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
 
 \section{\nobreak kmc analysis}
-Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
-simulation can be run on the bases of Marcus rates obtained from QCC.
 The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
 particles in the system. Repeating along relevant time scales for 
 charge transfer, knowing that MSD scales linearly with time, the slope of this relationship
@@ -162,6 +168,7 @@ past that time. To do so is superflous and expensive.
 In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
 Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
 iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
+
 \subsection{Voronoi Analysis}
 \begin{figure}
   \center
