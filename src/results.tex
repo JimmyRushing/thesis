@@ -144,7 +144,7 @@ dominates the effect temperature has hop rate.
 \caption[short]{A beautiful, well written caption}
 \end{figure}
 
-\subsubsection{lifetimes}
+\subsubsection{MSD (lifetimes)}
 The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
 particles in the system. Repeating along relevant time scales for 
 charge transfer, the slope of this relationship
@@ -160,7 +160,7 @@ charge trapping, temperature, and charge density, whose dynamics play out accros
 timescales and vary widly form material to material as well as from microstrtucture to microstrucute for a
 given material \cite{Laquai2015} . For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
 that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
-simulation a microsecond($10^{-6} seconds$) lifetime resulted in a single hole hopping for 9 wall time hours.
+simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping for 9 wall time hours.
 It is advised that a preanalysis to determine where a given morphology's MSD will convergeb be performed so as
 to never simulate past that point. Doing so is superflous and could introduce unessacery noise into the data. 
 \subsection{ITIC}
@@ -192,6 +192,9 @@ easy to run asyncronously on the donor/acceptor materials and compare. this coul
 If you run pure donor and pure acceptor and you got mobities, if on of those drops in the mixed morph more
 that the other you probably dont have a nice domain for BHJ.
 
+I hope one day a submission to a quantum computer could solve with extreme precicission the shrodinger
+equation for an entire morphology. Quantum algorithms are most advanced in this space and we await the race
+to large qubit computers. 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"

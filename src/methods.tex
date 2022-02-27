@@ -11,6 +11,35 @@ organic photovoltaic materials; Planckton (https://github.com/cmelab/planckton).
 
 \section{Computational Methods}
 
+\subsection{Voronoi Analysis}
+\begin{figure}
+  \center
+%\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
+  \includegraphics[width=0.8\linewidth]{figures/crystalline_voronoi_smaller.png} 
+ % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
+  \caption{2D Voronoi}
+  \label{fig:2d}
+\end{figure}
+
+
+Again, with 15000 choose 2 pairs, we are required to perform some neighborlisting prior to QCC. For this we chose to
+implement freud voronoi analysis. Utilizingn the freud.locality.Voronoi() so catergoriaze chromophores as
+neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
+cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
+and its geomerically closest neighbor across the line. This analysis takes place in three dimensions. As a
+demonstration a voronoi analysis was run on a 2D analogue of the crystalline P3HT system described elsewhere.
+In figure [FIGURE], 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
+in the xy-plane.Here,
+a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
+center than any other chromopore center. We use voronoi because BLAH. Euclidean space searching algorithms of
+this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
+\cite{Bentley1980}.
+However as can seen from the figure, two points can share cell edges despite being rather far apart. We
+therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
+to assume they dont interact electronically enough to effect to charge mobility calc. This parameter will
+dependend on the material under investigation as was as the size of the individual chromophores. We tested the
+sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
+calculated mobility. there is a diminishing returns around dcut10. 
 \subsection{Kinetic Monte Carlo}
 Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
 simulation can be run on the bases of Marcus rates obtained from QCC.
@@ -158,58 +187,8 @@ and LUMO have neglegible electon density along the side chains. With that, signi
 can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
 backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
 
-\section{\nobreak kmc analysis}
-The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
-particles in the system. Repeating along relevant time scales for 
-charge transfer, knowing that MSD scales linearly with time, the slope of this relationship
-can be estimated and related to to the 3D diffusion coeffiecient. Using the Einstien relation, 
-the groundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
-mobility can be obtained. 
-It is critical that we not include the ballistic transport timescale in the approximation of the limit
-if the slope as time goes to infinity \cite{Maginn2018} . This could be easily demonstrated by leaving $10^{-13}$ as the first
-lifetime for example and show how that effects the MSD slope. Estimating an upperbound for lifetimes such that
-we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
-carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
-charge trapping, temperature, and charge density, whose dynamics play out accros a picosecond to microsecond
-timescales and vary widly form material to material as well as from microstrtucture to microstrucute for a
-given material \cite{Laquai2015} . For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
-that are achievable computationally. For example, I tried to go to the physical edge of lifetimes and
-calculate MSD out to a microsecond. A single hole hopped for 9 wall  time hours. It could be beneficial to do
-a preanalysis in morph that estimates where a given morphology's MSD will converge so as to never simulate
-past that time. To do so is superflous and expensive. 
-In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
-Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
-iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
-
-\subsection{Voronoi Analysis}
-\begin{figure}
-  \center
-%\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
-  \includegraphics[width=0.8\linewidth]{figures/crystalline_voronoi_smaller.png} 
- % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
-  \caption{2D Voronoi}
-  \label{fig:2d}
-\end{figure}
 
 
-Again, with 15000 choose 2 pairs, we are required to perform some neighborlisting prior to QCC. For this we chose to
-implement freud voronoi analysis. Utilizingn the freud.locality.Voronoi() so catergoriaze chromophores as
-neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
-cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
-and its geomerically closest neighbor across the line. This analysis takes place in three dimensions. As a
-demonstration a voronoi analysis was run on a 2D analogue of the crystalline P3HT system described elsewhere.
-In figure [FIGURE], 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
-in the xy-plane.Here,
-a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
-center than any other chromopore center. We use voronoi because BLAH. Euclidean space searching algorithms of
-this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
-\cite{Bentley1980}.
-However as can seen from the figure, two points can share cell edges despite being rather far apart. We
-therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
-to assume they dont interact electronically enough to effect to charge mobility calc. This parameter will
-dependend on the material under investigation as was as the size of the individual chromophores. We tested the
-sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
-calculated mobility. there is a diminishing returns around dcut10. 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
