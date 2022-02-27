@@ -145,7 +145,24 @@ dominates the effect temperature has hop rate.
 \end{figure}
 
 \subsubsection{lifetimes}
-
+The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
+particles in the system. Repeating along relevant time scales for 
+charge transfer, the slope of this relationship
+can be estimated and related to to the 3D diffusion coeffiecient as discussed in the methods section of this
+work. Using the Einstien relation (2.3), 
+the groundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
+mobility can be obtained. 
+It is critical that we not include the ballistic transport timescale in the approximation of the limit
+if the slope as time goes to infinity \cite{Maginn2018}. Estimating an upperbound for lifetimes such that
+we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
+carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
+charge trapping, temperature, and charge density, whose dynamics play out accros a picosecond to microsecond
+timescales and vary widly form material to material as well as from microstrtucture to microstrucute for a
+given material \cite{Laquai2015} . For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
+that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
+simulation a microsecond($10^{-6} seconds$) lifetime resulted in a single hole hopping for 9 wall time hours.
+It is advised that a preanalysis to determine where a given morphology's MSD will convergeb be performed so as
+to never simulate past that point. Doing so is superflous and could introduce unessacery noise into the data. 
 \subsection{ITIC}
 To explore the extensibility of the workflow on another benchmark OPV material, using planckton-flow, a 1000
 molecule morphology of ITIC was equillibrated over 10e-7 frames of an MD simulation. The the reported
@@ -154,6 +171,10 @@ time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and
 $10^{-2}$ \cite{Park2018} have been reported. 
 
 \subsection{Improvements}
+In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
+Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
+iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
+
 Dynamic disorder does effect charge mobility (CT in high mobility conjugated polymers) with every pico second
 may have a 10-20\% fluxuation in TI. Need to find the paper but using the dynamic dimer methor for TI calc
 could be a way to introduce dynamic disorder. Or it could be done as mentioned before in another paper where
