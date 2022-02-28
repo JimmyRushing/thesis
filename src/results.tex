@@ -204,14 +204,19 @@ mobility. This further suggests that going lifetime crazy is a waste of computat
 \section{ITIC}
 
 To explore the extensibility of the workflow on another benchmark OPV material, using planckton-flow, a 1000
-molecule morphology of ITIC was equillibrated over 10e-7 step  MD simulation at room temperature. From the results of the MD
+molecule morphology of ITIC was equillibrated over a 10e-7 step MD simulation at room temperature. From the results of the MD
 simulation, the last frame of the atomic trajectories is taken to represent an accruate equalibrium geometry
 of ITIC. The purpose of this work isnt to justify the efficacy of this type of molecular simulation but it has
-been used to affect elsewhere[REFS]. With this atomistic morphology, to carry a hopping model necesitates
-delineating segments within the morphology upon which charges can delocalize along the within a the HOMO(or in
-the case of LUMO for the acceptor). It should be said that acceptor in this context doesn't refer to
+been used to affect elsewhere[REFS]. To apply the hopping model to this atomistic morphology requires the
+delineation of segments within the morphology upon which charges can delocalize along the within a the HOMO(or in
+the case of LUMO for the acceptor). It should be noted that acceptor in this context doesn't refer to
 chomophore $j$ as such. Rather, when investigating molecules relevent to electronic devices, acceptors are the
-organic analogue of p-type inorganic semiconductors and donors the analogue of the n-type. 
+organic analague of p-type inorganic semiconductors and donors the analogue of the n-type. 
+As is well visualized by \cite{Han2019}, the LUMO of ITIC delocalizes along the backbone of the molecule, with
+neglidgible electron density in the side chains. This makes the the backbone of this kind of small molecule
+material the obvious choice. In more polymeric materials like P3HT, the hopping model has recieved further
+justification elsewhere. 
+
 
 The the reported
 experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
@@ -243,6 +248,12 @@ that the other you probably dont have a nice domain for BHJ.
 I hope one day a submission to a quantum computer could solve with extreme precicission the shrodinger
 equation for an entire morphology. Quantum algorithms are most advanced in this space and we await the race
 to large qubit computers. 
+
+I havent looked into it but I think reorganization energry should scale in out algorythm with crystallinity
+iasfaras we can measure crystallinity. the external reorganization energy of the material ,at least for p3ht
+was 200, and thats the lions share of overall reorganization energy which we have all ready shown to
+monitonically scale with the calculated mobilioty in this algorith.
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
