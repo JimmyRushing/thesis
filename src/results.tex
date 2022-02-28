@@ -21,7 +21,7 @@ remains a significant hurdle. Tutorials on github show how to use the open sourc
 leg of the worflow. We have also had success with Grits and smarts matching to delineate chromophores through
 out the morphology. 
 
-\subsection{Accuracy}
+\section{Accuracy}
 
 \begin{table}[ht]
     \caption{Mobility $cm^{2}/Vs$} % title of Table
@@ -46,12 +46,12 @@ semi and amorphous actual make for a slower mobility? I feel like the current nu
 closer to experimentally observed numbers. need more data!!!
 
 
-\subsection{Sensitivity}
+\section{Sensitivity}
 
 The sensitivity of the algorithm to various parameter was performed on the benchmark crystalline P3HT
 mophology.
 
-\subsubsection{dcut}
+\subsection{dcut}
 
 A parameter introduced in the kmc algorithm dcut that trims the fat off of the voronoi neighlist builing.
 As can seen from the figure, two points (chromophores), can share cell edges despite being rather far apart. We
@@ -88,7 +88,7 @@ $\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17 \cdot 10^{-6}$ & $6.13 \cdot 10^{-4}$ & .01 & .
 \end{figure}
 
 
-\subsubsection{Reorganization energy}
+\subsection{Reorganization energy}
 Marcus's nonadiabatic electron transfer theory allows us to model charge transfer as two
 intersecting parabolic potential energy surfaces. In this work, the parabalas represent the potential energy surface
 of the dimer created by a pair of chomophores with a charge injected on either chromophore. In this context, 
@@ -111,7 +111,7 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
   \label{fig:reorg}
 \end{figure}
 
-\subsubsection{Temperature}
+\subsection{Temperature}
 
 Another parameter of interest in the Marcus theory mention above is temperuture. To test the sensitivity to
 temperature, 15 KMC simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It
@@ -148,7 +148,7 @@ dominates the effect temperature has hop rate.
 \label{TEMP}
 \end{figure}
 
-\subsubsection{MSD (lifetimes)}
+\subsection{MSD (lifetimes)}
 
 The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
 particles in the system. Repeating along relevant time scales for 
@@ -201,14 +201,14 @@ Interestingly, the algorithm seems to be quite robust against choice of lifetime
 figure, order of magnitude differences in lifetime choices results in less than 2X difference in the resulting
 mobility. This further suggests that going lifetime crazy is a waste of computation.  
 
-\subsection{ITIC}
+\section{ITIC}
 
 To explore the extensibility of the workflow on another benchmark OPV material, using planckton-flow, a 1000
 molecule morphology of ITIC was equillibrated over 10e-7 step  MD simulation. The the reported
 experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
 
-\subsection{Improvements}
+\section{Improvements}
 
 In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
 Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
