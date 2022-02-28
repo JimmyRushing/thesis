@@ -16,7 +16,7 @@ the side chains have on mobility aren't a result of the an electronic contributi
 orbitals but rather is a result of the effect the chains have on the morphology of the material. 
 
 Delineating chromophores within a morphology needs to be justified by DFT or expirement and balanced against
-the computational costs. Furthermore, in this workflow, manually indexing the atoms of the chosen chromophore
+the computational costs. Furthermore, manually indexing the atoms of the chosen chromophore
 remains a significant hurdle. Tutorials on github show how to use the open source tool VMD to speed up this
 leg of the worflow. We have also had success with Grits and smarts matching to delineate chromophores through
 out the morphology. 
@@ -204,7 +204,16 @@ mobility. This further suggests that going lifetime crazy is a waste of computat
 \section{ITIC}
 
 To explore the extensibility of the workflow on another benchmark OPV material, using planckton-flow, a 1000
-molecule morphology of ITIC was equillibrated over 10e-7 step  MD simulation. The the reported
+molecule morphology of ITIC was equillibrated over 10e-7 step  MD simulation at room temperature. From the results of the MD
+simulation, the last frame of the atomic trajectories is taken to represent an accruate equalibrium geometry
+of ITIC. The purpose of this work isnt to justify the efficacy of this type of molecular simulation but it has
+been used to affect elsewhere[REFS]. With this atomistic morphology, to carry a hopping model necesitates
+delineating segments within the morphology upon which charges can delocalize along the within a the HOMO(or in
+the case of LUMO for the acceptor). It should be said that acceptor in this context doesn't refer to
+chomophore $j$ as such. Rather, when investigating molecules relevent to electronic devices, acceptors are the
+organic analogue of p-type inorganic semiconductors and donors the analogue of the n-type. 
+
+The the reported
 experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
 
