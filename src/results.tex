@@ -2,9 +2,10 @@
 \label{chap:results}
 
 \section{Summary}
+
 Sensitivity testing on benchmark P3HT morphology provided by the Evan and matty work can was finegrained and
-used to compare to previous mobility results as well as to test the senesitity of the algorithm to
-rorganzation energy, dcut, MSD calculation, and siulation temperature.
+used to compare to previous mobility results as well as to test the sensitivity of the algorithm to
+reorganization energy, dcut, MSD calculation, and simulation temperature.
 
 On the spot MD simulation of 1000
 molecules was performed for testing morph another benchmark OPV material. Janks/mattys work has shown that taking
@@ -12,13 +13,13 @@ each monomer to be a chromophore even though charges are known to delocalize on 
 the overall mobility well because the very fast hops along the backbone. I think the application of this
 hopping model to ITIC other small molecules is even more justified. Knowing that the this molecule has
 negligible electron density in the side chains, chomophores are taking to be the backbone. The effect that
-the side chains have on mobility aren't a result of the an electronic contributiom to the frontier molecular
+the side chains have on mobility are not a result of electronic contribution to the frontier molecular
 orbitals but rather is a result of the effect the chains have on the morphology of the material. 
 
-Delineating chromophores within a morphology needs to be justified by DFT or expirement and balanced against
+Delineating chromophores within a morphology needs to be justified by DFT or experiment and balanced against
 the computational costs. Furthermore, manually indexing the atoms of the chosen chromophore
 remains a significant hurdle. Tutorials on github show how to use the open source tool VMD to speed up this
-leg of the worflow. We have also had success with Grits and smarts matching to delineate chromophores through
+leg of the workflow. We have also had success with Grits and smarts matching to delineate chromophores through
 out the morphology. 
 
 \section{Accuracy}
@@ -39,7 +40,7 @@ PySCF & $.0018 \pm .000001$ & $.00148 \pm .000001$ & $.206 \pm 0.0001$ \\ [1ex] 
 \end{table}
 
 The results in \ref{table:nonlin} for PySCF were run with a dcut 12. With dcut 10, the crystalline mobility
-moves to .15 whcih is closer to mattys. Waiting on the dcut 10 for the others (semi and disordered). Im very
+moves to .15 which is closer to mattys. Waiting on the dcut 10 for the others (semi and disordered). Im very
 curious was that will do to their mobilities. All this exploration tells me the workflow is almost two
 different things for highly conjugated polyers than it is for amorphous materials. Could a higher dcut in the
 semi and amorphous actual make for a slower mobility? I feel like the current numbers are better also. That is
@@ -49,19 +50,19 @@ closer to experimentally observed numbers. need more data!!!
 \section{Sensitivity}
 
 The sensitivity of the algorithm to various parameter was performed on the benchmark crystalline P3HT
-mophology.
+morphology.
 
-\subsection{dcut}
+\subsection{Neighbor Cutoff}
 
 A parameter introduced in the kmc algorithm dcut that trims the fat off of the voronoi neighlist builing.
-As can seen from the figure, two points (chromophores), can share cell edges despite being rather far apart. We
+As can seen from the figure, two points (chromophores) can share cell edges despite being rather far apart. We
 therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
-to assume they dont interact electronically enough to effect to charge mobility calc. This parameter will
-dependend on the material under investigation as was as the size of the individual chromophores. We tested the
+to assume they do not interact electronically enough to effect to charge mobility calc. This parameter will
+depend on the material under investigation as was as the size of the individual chromophores. We tested the
 sensitivity of the algorithm to the value (dcut). The [zoomed figure] Shows a example dcut radaii. Note that
-the z-direction has been collaped, and the distinces dont necessarily correlate to the distance
+the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
 between chromophores in the system. The figure shows the effect of cutoff distance on value of
-16 calculated mobility. there is a diminishing returns around dcut10.
+16 calculated mobility.
 
 
 \begin{table}[ht]
@@ -235,10 +236,10 @@ they use two different methods one with a guassians fluxuation and sime ohther f
 
 In our kmc algorithm we could incorperate the rates of other events like recombination.
 
-The computational bottle neck of simulation charge mobility is also the most theoreticaly challenging.
-Estimating the TI for each pair of cromophores. A future improvement to MorphCT will be accelerating this step
+The computational bottle neck of simulation charge mobility is also the most theoretically challenging.
+Estimating the TI for each pair of chromophores. A future improvement to MorphCT will be accelerating this step
 with Machine learning techniques. Musil et al. have shown that ML could produce a 90 \% decrease in
-computationl effort \cite{Musil2018}
+computational effort \cite{Musil2018}
 
 Something to do is allow morphct as to figure out what to do with donor accpeter mixtures. It would be pretty
 easy to run asyncronously on the donor/acceptor materials and compare. this could be a measure of morphology.

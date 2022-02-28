@@ -1,7 +1,7 @@
 \chapter{Methods}
 \label{chap:methods}
 
-MorphCT is developed to faciliate charge cahracterization of morphological data. It takes GSD files which are
+MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
 the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}. The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. The ITIC
 morphology was simulated using Plankton-Flow (https://github.com/cmelab/planckton-flow) on Fry, the high
@@ -23,24 +23,26 @@ organic photovoltaic materials; Planckton (https://github.com/cmelab/planckton).
 
 
 Again, with 15000 choose 2 pairs, we are required to perform some neighborlisting prior to QCC. For this we chose to
-implement freud voronoi analysis. Utilizingn the freud.locality.Voronoi() so catergoriaze chromophores as
+implement freud voronoi analysis. Utilizing the freud.locality.Voronoi() so categorize chromophores as
 neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
 cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
-and its geomerically closest neighbor across the line. This analysis takes place in three dimensions. As a
+and its geometrically closest neighbor across the line. This analysis takes place in three dimensions. As a
 demonstration a voronoi analysis was run on a 2D analogue of the crystalline P3HT system described elsewhere.
 In figure [FIGURE], 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
 in the xy-plane.Here,
 a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
-center than any other chromopore center. We use voronoi because BLAH. Euclidean space searching algorithms of
+center than any other chromophore center. We use voronoi because BLAH. Euclidean space searching algorithms of
 this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
 \cite{Bentley1980}.
 However as can seen from the figure, two points can share cell edges despite being rather far apart. We
 therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
-to assume they dont interact electronically enough to effect to charge mobility calc. This parameter will
-dependend on the material under investigation as was as the size of the individual chromophores. We tested the
+to assume they do not interact electronically enough to effect to charge mobility calculation. This parameter will
+depend on the material under investigation as was as the size of the individual chromophores. We tested the
 sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
-calculated mobility. there is a diminishing returns around dcut10. 
+calculated mobility. There is a diminishing return on computation around dcut 10. 
+
 \subsection{Kinetic Monte Carlo}
+
 Taking a charge to be a quasi-particle inserted into a MD generated morpholgy, a KMC
 simulation can be run on the bases of Marcus rates obtained from QCC.
 With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
@@ -82,9 +84,9 @@ graphically, $\ln{\frac{1}{x}}$ is plotted in figure \ref{fig:ln} from 0 to 1.
 
 The shortest waittime (quickest available hop) is chosen from the updated queue and the charge is moved to
 its new chromophore host and $\tau$ is added to the time elapsed. Once the carrier has hopped beyond its
-prespecified lifespan, its displacement is stored in the carreir object. After repeating this over a
-statistically significant number of carriers, the carrier data can be aggreggated and the mean squared
-displacent can be calculated. It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
+prespecified lifespan, its displacement is stored in the carrier object. After repeating this over a
+statistically significant number of carriers, the carrier data can be aggregated and the mean squared
+displacement can be calculated. It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
 The slope of the MSD in the linear regime gives the diffusion coefficient which can be used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
 
 \begin{align}
@@ -93,11 +95,11 @@ The slope of the MSD in the linear regime gives the diffusion coefficient which 
 
 where $e$ is the elemental charge of a charge carrier, $D$ is the diffusion coefficient, $k_{B}$ is Planck's
 constant and $T$ is temperature. There is no objective best practice for determing the slope of the MSD as
-time goes to inifinity from simulaton data of this kind \cite{Maginn2018}. MorphCT requires the specification
-of "lifetimes," which effectivly serve as checkpoints at which the MSD of charge carriers is recorded. For
+time goes to inifinty from simulation data of this kind \cite{Maginn2018}. MorphCT requires the specification
+of "lifetimes," which effectively serve as checkpoints at which the MSD of charge carriers is recorded. For
 each "lifetime" the specified number of carrier objects to be simulated hop until they exceed their
 "lifetime." The averages of these are recorded and a linear regression is performed to determine the slope
-of the MSD. The senstivity of the algorithm to this input is explored in the results section.  
+of the MSD. The sensitivity of the algorithm to this input is explored in the results section.  
 
 \subsection{Quantum Chemical Methods}
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
@@ -145,17 +147,17 @@ mobility from molecular arrangement to good effect \cite{Deng2004}. The P3HT mor
 consist of 1000 oligomers of 15 repeating molecular units. Assigning each molecular unit as a chromophore
 gives 15000 indivual QQC calculations and as many as 15000 choose 2 Dimer QCC calculations. The latter is
 drastically lower because not all chromophores interact. In this workflow neighbor, finding is accomplished via
-voronoi analysis. Nevertheless, with the volume of calculations necasssary to simulate materials into the
+voronoi analysis. Nevertheless, with the volume of calculations necessary to simulate materials into the
 nanometer range, DFT is prohibitively slow. 
 
-Figure blaf \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
+Figure \ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
 rings. Using Mbuild, a reference thiophene is placed in the xy-plane with the y-axis running through the 
 the sulfur atom and its center mass placed at the origin. A second thiophene is instantiated in the same manner but a
 combination of allowable moves is created wherein the second thiophene can translate up to 5 angstroms 
 and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3 angstroms are disallowed. 
 This gives 4300 unique orientations show in figure \ref{ref:TI}. The figure shows that, as expected,
 center-to-center distance decreasing results in more orbital overlap. Also observable in the figure is that
-a rotation of 90 degrees about the x axis corresponds to the sulfer of the second thiophene being oreinted
+a rotation of 90 degrees about the x axis corresponds to the sulfer of the second thiophene being oriented
 straight towards the reference thiophene corresponds to a smaller sulfer-to-sulfler distance and a greater TI. 
 
 It is known that the ionization potential and thus the homo-lumo gap has a near linear relationship with the
@@ -182,8 +184,8 @@ requires the use of an iterative algorithm. Implementing a hopping simulation re
 individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
 can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
 which atoms belong to which chromophores is required. At this stage of the workflow, consideration needs to be
-given to where a charge may delocalize within. With ITIC, the frontier molecular oribitals, that is, the HOMO
-and LUMO have neglegible electon density along the side chains. With that, significant computational recources
+given to where a charge may delocalize within. With ITIC, the frontier molecular orbitals, that is, the HOMO
+and LUMO have negligible electron density along the side chains. With that, significant computational resources
 can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
 backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
 
