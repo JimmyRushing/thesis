@@ -3,6 +3,8 @@
 
 \section{Summary}
 
+The performance of morphct at the quantum chemical level is explored
+
 Sensitivity testing on benchmark P3HT morphology provided by the Evan and matty work can was finegrained and
 used to compare to previous mobility results as well as to test the sensitivity of the algorithm to
 reorganization energy, dcut, MSD calculation, and simulation temperature.
@@ -22,6 +24,47 @@ remains a significant hurdle. Tutorials on github show how to use the open sourc
 leg of the workflow. We have also had success with Grits and smarts matching to delineate chromophores through
 out the morphology. 
 
+\section{Quantum Chemical Accuracy}
+As a first foray into the performance of PySCF, which we outsource our QCC to, we performed two experiments.
+
+At the level of a single chromophore, we first recreate the well studied phenomena of the homo-lumo gap of
+molecules decreasing with molecular length. 
+It is known that the ionization potential and thus the homo-lumo gap has a near linear relationship with the
+size of the chromophore. In figure \ref{fig:fused}, we can see this relationship is corroborated by our
+implementation of PySCF. This phenomena has been shown using experiment and DFT methods  \cite{Arago2010}
+
+
+\begin{figure}
+  \center
+  \includegraphics[width = \textwidth]{figures/fused-ring-figure.png}
+  \caption{Fused Thiophene Experimental results.}
+  \label{fig:fused}
+\end{figure}
+
+
+At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
+thiophene rings on the calculated $T_{ij}$ between them.
+Using the molecule builder, Mbuild \cite{Klein2016}, a reference thiophene is placed in the xy-plane
+with the y-axis running through the the sulfur atom and its center mass placed at the origin. 
+A second thiophene is instantiated in the same manner but a
+combination of allowable moves is created wherein the second thiophene can translate up to 5 angstroms 
+and rotate up to 90 degress about its x and z axis. Center-to-center distances less than 3 angstroms are disallowed. 
+This gives 4300 unique orientations show in figure \ref{ref:TI}. The figure shows that, as expected,
+center-to-center distance decreasing results in more orbital overlap. Also observable in the figure is that
+a rotation of 90 degrees about the x axis corresponds to the sulfer of the second thiophene being oriented
+straight towards the reference thiophene corresponds to a smaller sulfer-to-sulfler distance and a greater TI. 
+\ref{fig:TI} shows MorphCT calculated values the transfer integral between two thiophene
+rings.
+
+\begin{figure}
+  \center
+  \includegraphics[width = \textwidth]{figures/transfer_integral_plot.png}
+  \caption{Thiophene Transfer Integrals}
+  \label{fig:TI}
+\end{figure}
+
+Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
+requires the use of an iterative algorithm. 
 \section{KMC Accuracy}
 
 \begin{table}[ht]
