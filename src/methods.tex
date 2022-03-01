@@ -59,15 +59,16 @@ following equation:
 \end{align}
 
 with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $|T_{ij}|^2$, $\lambda_{ij}$,
-$\Delta_{ij}$, $T$ represent th electronic overlap, the reorganization energy, the free energy difference, and
+$\Delta E_{ij}$, $T$ represent th electronic overlap, the reorganization energy, the free energy difference, and
 temperature. These are discussed in further detail in the results section, wherin we test the senseitivity of
 the KMC results to these parameters individually. 
+The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
+the following section we outline our quantum chemical treatment of both $|T_{ij}|$ and $\Delta E_{ij}$.
 
-The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. 
-But taking $k_{ij}$ to be and
+Taking $k_{ij}$ to be and
 accurate rate of the electron transfer reaction, we implant a charge randomly into the morphology, calculate
 the rate of all possible hops(events)
-and put them in order of quickest to slowest to form a queue.. The hop rate, $k_{ij}$, from the occupied chromophore to any
+and put them in order of quickest to slowest to form a queue. The hop rate, $k_{ij}$, from the occupied chromophore to any
 given neighbering chromophore is taken to be
 inversely proportional to the amount of time, $\tau$, that the system will have to wait before that hop will
 take place. However, hopping processes at the angstrom level do not proceed deterministically. 
@@ -79,8 +80,10 @@ neighboring chromophore $j$ looks as follows:
 \begin{align}
     \tau = \frac{1}{k_{ij}} \cdot \ln{\frac{1}{x}} 
 \end{align}
-where x is a random number between 0 and 1 and $\log{\frac{1}{x}}$ is a scaling factor. To illucidate this
-graphically, $\ln{\frac{1}{x}}$ is plotted in figure \ref{fig:ln} from 0 to 1. 
+where x is a random number between 0 and 1 and $\log{(1/x)}$ is a scaling factor. To illucidate this
+graphically, $\ln{(1/x)}$ is plotted in figure \ref{fig:ln} from 0 to 1. From this we can see that with
+a large enough sampling, significant reshuffling of the queue will take place, allowing for a rare hop to jump
+the queue.
 
 \begin{figure}
   \center
@@ -91,24 +94,33 @@ graphically, $\ln{\frac{1}{x}}$ is plotted in figure \ref{fig:ln} from 0 to 1.
   \label{fig:ln}
 \end{figure}
 
-The shortest waittime (quickest available hop) is chosen from the updated queue and the charge is moved to
-its new chromophore host and $\tau$ is added to the time elapsed. Once the carrier has hopped beyond its
-prespecified lifespan, its displacement is stored in the carrier object. After repeating this over a
+From the rationally shuffled queue, the shortest waittime (quickest available hop) is chosen and the charge is moved to
+its new chromophore host. The system is then considered to have moved forward in time by $\tau$. This proceeds
+until the charge carrier stalls out or hops past a prespecified lifetime. 
+
+The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
+each specified lifetime, a prescribed number individual KMC simulations is run as described above. When a
+given charge carrier hops past the specified lifetime, that is, the addition of the current iterations $\tau$ advances
+the simulation beyond the specified lifetime,  its displacement from its starting location is stored in the carrier object. After repeating this over a
 statistically significant number of carriers, the carrier data can be aggregated and the mean squared
-displacement can be calculated. It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
-The slope of the MSD in the linear regime gives the diffusion coefficient which can be used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
+displacement(MSD) for a particle in the system and that lifetime can be estimated.
+It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
+The slope of the MSD, $D$,  as time
+goes to inifinity can be estimated as a linear fit between the MSD's at the specified lifetimes.
+
+There is no objective best practice for determing the slope of the MSD as
+time goes to inifinty from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to simplifiy the MSD analysis as much as
+possible so as to accuratley report this stage of the analysis for clarity but also to facilitate apples to
+apples comparisons to future works using this workflow. 
+
+Finally, the results of the MSD analysis are then used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
 
 \begin{align}
     \mu_{0} = \frac{eD}{6k_{B}T},
 \end{align}
 
 where $e$ is the elemental charge of a charge carrier, $D$ is the diffusion coefficient, $k_{B}$ is Planck's
-constant and $T$ is temperature. There is no objective best practice for determing the slope of the MSD as
-time goes to inifinty from simulation data of this kind \cite{Maginn2018}. MorphCT requires the specification
-of "lifetimes," which effectively serve as checkpoints at which the MSD of charge carriers is recorded. For
-each "lifetime" the specified number of carrier objects to be simulated hop until they exceed their
-"lifetime." The averages of these are recorded and a linear regression is performed to determine the slope
-of the MSD. The sensitivity of the algorithm to this input is explored in the results section.  
+constant and $T$ is temperature.   
 
 \subsection{Quantum Chemical Methods}
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
