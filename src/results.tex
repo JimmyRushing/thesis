@@ -111,11 +111,20 @@ morphology.
 
 \subsection{Neighbor Cutoff (dcut)}
 
-A parameter introduced in the kmc algorithm dcut that trims the fat off of the voronoi neighlist builing.
-As can seen from the figure, two points (chromophores) can share cell edges despite being rather far apart. We
-therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
-to assume they do not interact electronically enough to effect to charge mobility calc. This parameter will
-depend on the material under investigation as was as the size of the individual chromophores. We tested the
+Voronoi analysis allows for the computationally efficient partitioning of space into
+polyhedra chromophore cells. In this context, chromophore $i$ is the neighbor of chromophore $j$ if they
+share a boundary with one another. An artifact of constructing nieghborlists in this way is that some
+neighbors are too far apart to interact electronically, but are nevertheless closer to each other than they
+are to any other chromophores. 
+This phenomena is illustrated in figure \ref{fig:dcut} 
+
+With each pair requiring a relatively costly QCC, after narrowing down the chromophore pairs with voronoi, it is 
+computationally preferable to calculate the distances between all pairs and remove neighbors more than dcut
+apart. We can see in table \ref{table:dcut-sense}, that with dcut = 10 we get comparable mobilities to the scut 12 simulation with $10^5$ less
+pairs.  
+
+The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
+material its at a discount to do some preliminary analysis to determine an apporiate value. We tested the
 sensitivity of the algorithm to the value (dcut). The [zoomed figure] Shows a example dcut radaii. Note that
 the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
 between chromophores in the system. The figure shows the effect of cutoff distance on value of
@@ -140,8 +149,9 @@ $\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17 \cdot 10^{-6}$ & $6.13 \cdot 10^{-4}$ & .01 & .
 
 \begin{figure}
   \center
-  \includegraphics[width=0.8\linewidth]{figures/crystalline_voronoi_d_cut_circles.png} 
-  \caption{dcut visual}
+  \includegraphics[width=\linewidth]{figures/crystalline_voronoi_d_cut_circles.png} 
+  \caption{Zoomed section of FIGURE IN METHODS wherein we see a cartoonized version of a dcut radius cutoff
+    used to suppliment Voronoi analysis}
   \label{fig:dcut}
 \end{figure}
 
