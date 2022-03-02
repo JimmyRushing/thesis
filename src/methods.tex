@@ -31,7 +31,7 @@ following equation:
     E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
 \end{align}
 
-with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $|T_{ij}|^2$, $\lambda_{ij}$,
+with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $|T_{ij}|$, $\lambda_{ij}$,
 $\Delta E_{ij}$, $T$ represent th electronic overlap, the reorganization energy, the free energy difference, and
 temperature. These are discussed in further detail in the results section, wherin we test the senseitivity of
 the KMC results to these parameters individually. 
@@ -93,7 +93,12 @@ Finally, the results of the MSD analysis are then used to determine the zero-fie
 \end{align}
 
 where $e$ is the elemental charge of a charge carrier, $D$ is the diffusion coefficient, $k_{B}$ is Planck's
-constant and $T$ is temperature.   
+constant and $T$ is temperature.  
+
+A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
+to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
+MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
+simulated accross all available cores.  
 
 \section{Voronoi Analysis}
 
