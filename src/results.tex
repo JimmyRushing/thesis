@@ -30,7 +30,7 @@ As a first foray into the performance of PySCF, which we outsource our QCC to, w
 
 At the level of a single chromophore, we first recreate the well studied phenomena of the homo-lumo gap of
 molecules decreasing with molecular length. 
-This phenomenon has been studied for fused ring molecules using experiment and DFT methods \cite{Arago2010}.
+This phenomenon has been studied for fused ring molecules using experimental and DFT methods \cite{Arago2010}.
 These investigation have shown that the ionization potential and thus the homo-lumo gap has a near
 linear relationship with the chromophore length. 
 To recreate these experiments, using Mbuild \cite{Klein2016}, molecules composed of 4-8 fused thiophene rings
@@ -39,15 +39,15 @@ molecular orbitals are quantified with the methods outlined above and the differ
 homo and the lumo of each molecule are plotted in \ref{fig:fused}.
 We can see that trend is reproduced in our implementation of PySCF.
 
-At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
-thiophene rings on the calculated $T_{ij}$ between them.
 \begin{figure}
   \center
-  \includegraphics[width = \textwidth]{figures/fused-ring-figure.png}
-  \caption{Fused Thiophene Experimental results.}
+  \includegraphics[width = .8\textwidth]{figures/fused-ring-figure.png}
+  \caption{The difference in energy between the homo and the lumo of fused ring molecules by molecule length}
   \label{fig:fused}
 \end{figure}
 
+At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
+thiophene rings on the calculated $T_{ij}$ between them.
 Using Mbuild, a reference thiophene is placed in the xy-plane
 with the y-axis running through the the sulfur atom and thiophened center mass placed at the origin. 
 A second thiophene is instantiated as in figure \ref{ref:thiophene}
