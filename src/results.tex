@@ -47,12 +47,7 @@ thiophene rings on the calculated $T_{ij}$ between them.
   \caption{Fused Thiophene Experimental results.}
   \label{fig:fused}
 \end{figure}
-\begin{figure}
-  \center
-  \includegraphics[width = 0.5\textwidth]{figures/thiophene.png}
-  \caption{Two thiophenes}
-  \label{fig:thiophene}
-\end{figure}
+
 Using Mbuild, a reference thiophene is placed in the xy-plane
 with the y-axis running through the the sulfur atom and thiophened center mass placed at the origin. 
 A second thiophene is instantiated as in figure \ref{ref:thiophene}
@@ -61,13 +56,24 @@ and rotate up to 90 degress about its x-axis. Center-to-center distances less th
 The $|T_{ij}|$ resulting from 4300 unique orientations are shown in figure \ref{fig:TI}. The figure shows that, as expected, a
 decrease in 
 center-to-center distance results in more orbital overlap and thus an increase in $|T_{ij}|$. Also observable in the figure is that
-a rotation about the x-axis oreints the sulfer downward, resulting in a smaller sulfer-to-sulfler distance and a greater $|T_{ij}|$. 
+a rotation about the x-axis oreints the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
+and a greater $|T_{ij}|$. 
 
-\begin{figure}
-  \center
-  \includegraphics[width = \textwidth]{figures/transfer_integral_plot.png}
-  \caption{Thiophene Transfer Integrals}
-  \label{fig:TI}
+\begin{figure}[]
+\centering
+\begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/thiophene.png}
+    \caption{Two nonbonded thiophenes}
+\end{subfigure}%
+\\[2.0ex]
+\begin{subfigure}{.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
+    \caption{$|T_{ij}|$ between thiophene rings}
+\end{subfigure}
+\caption{}
+\label{TIplots}
 \end{figure}
 
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
