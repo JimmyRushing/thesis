@@ -29,8 +29,11 @@ out the morphology.
 As a first foray into the performance of PySCF, which we outsource our QCC to, we performed two experiments.
 
 At the level of a single chromophore, we first recreate the well studied phenomena of the homo-lumo gap of
-molecules decreasing with molecular length. 
+molecules decreasing with molecular length. Fused-ring geometries are of particlular interest for accepter
+molecules, FREAs have push effeciencies beyond BLAH. 
 This phenomenon has been studied for fused ring molecules using experimental and DFT methods \cite{Arago2010}.
+Consistant with other investigations, our INDO implemention estimates the homo-lumo gap to be above the 
+DFT estimated value by around roughly a factor of 2 \cite{Gorelsky2001} \cite{Gorelsky2016}.
 These investigation have shown that the ionization potential and thus the homo-lumo gap has a near
 linear relationship with the chromophore length. 
 To recreate these experiments, using Mbuild \cite{Klein2016}, molecules composed of 4-8 fused thiophene rings
