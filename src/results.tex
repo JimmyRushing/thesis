@@ -27,20 +27,26 @@ out the morphology.
 \section{Quantum Chemical Accuracy}
 
 As a first foray into the performance of PySCF, which we outsource our QCC to, we performed two experiments.
+As discussed above, QCC are used in two distinct way in our workflow. First it is used to estimate free energy
+difference between individual chromophores as the difference in their HOMO(or LUMO) energy level. Secondly, it is
+used to estimate the electronic overlap($T_{ij}$) between with the dimer splitting method which involves
+calculating the HOMO(or LUMO) of the dimer formed by the two chromophpres. We explored the performance of our
+workflow for this calculations in isolation. 
 
-At the level of a single chromophore, we first recreate the well studied phenomena of the homo-lumo gap of
-molecules decreasing with molecular length. Fused-ring geometries are of particlular interest for accepter
+In the first case, at the level of a single chromophore, we calculate the homo-lumo gap for fused ring
+oligomers of increasing length. Fused-ring geometries are of particlular interest for accepter
 molecules, FREAs have push effeciencies beyond BLAH. 
-This phenomenon has been studied for fused ring molecules using experimental and DFT methods \cite{Arago2010}.
-Consistant with other investigations, our INDO implemention estimates the homo-lumo gap to be above the 
-DFT estimated value by around roughly a factor of 2 \cite{Gorelsky2001} \cite{Gorelsky2016}.
-These investigation have shown that the ionization potential and thus the homo-lumo gap has a near
-linear relationship with the chromophore length. 
-To recreate these experiments, using Mbuild \cite{Klein2016}, molecules composed of 4-8 fused thiophene rings
-were intialized using the representative smiles strings and the molecules to GSD file format. The frontier
-molecular orbitals are quantified with the methods outlined above and the difference between the energy of the
+This phenomenon has been studied for fused ring molecules using DFT methods \cite{Arago2010}.
+They found that, from length 4 to length 8, the homo-lumo decreased from 5.26eV to 4.92eV. Our INDO implemention overestimates these values but by less than the
+factor of 2-3 found in other investigations \cite{Gorelsky2001} \cite{Gorelsky2016}. 
+Our results are in \ref{fig:fused}.
+
+To recreate these experiments, using Mbuild \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
+were intialized using the representative smiles strings and the molecules saved to GSD file format. The frontier
+molecular orbitals are quantified with the methods outlined in methods and the difference between the energy of the
 homo and the lumo of each molecule are plotted in \ref{fig:fused}.
-We can see that trend is reproduced in our implementation of PySCF.
+Reproduced in our experiment is the near linear relationship between oligomer length and the magnitude of the
+homo-lumo gap.
 
 \begin{figure}
   \center
@@ -75,7 +81,8 @@ and a greater $|T_{ij}|$.
     \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
     \caption{$|T_{ij}|$ between thiophene rings}
 \end{subfigure}
-\caption{}
+    \caption{The orientation in figure (a) shows thiophenes 5 angstroms apart with 0 pitch. The $T_{ij}$ for
+    this would appear at the origin of figure (b)}
 \label{TIplots}
 \end{figure}
 
