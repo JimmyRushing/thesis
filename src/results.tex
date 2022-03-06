@@ -341,6 +341,26 @@ The the reported
 experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
 
+A single molecule ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
+approaches to the delineation of chomophores within the ITIC morphology. In addition the the simulation of hopping
+from backbone to backbone we ran simulations with the whole molecule prescibed as chromophores. This
+necessarily requires more heavy lifting from PySCF but is trivially easy from an indexing perspective. Similar to the results of the DCUT
+investigation, this implemenation of PySCF combined with clever pickling of system objects at various stages
+of the workflow suggest that the laborious delineation of chromophores either via manual perscription or
+by clever use of smarts matching is a fools errand. We found that, while the 70 atom chomophores took 1.2s
+per dimer while the whole molecule dimer calculations with 186 atoms per chomophore to on average 3.3s.
+Comprable mobilities of $(1.019 \pm .001)\cdot 10^{-3}$ or the backbone chromophores and 
+$(1.285 \pm .001)\cdot 10^{-3}$ [rerunning this because it got over written] for the whole molecule. 
+
+For small molecule materials this suggests forgoing labor intinsive indexing of chromophores.
+
+As discussed in the sensitivit analysis, our mobility calcualtions are relatively sensitive to the choice of
+reorganization energy. For ITIC, $\lambda_{internal}$ has been well investigated and is widely reported as
+$~0.15eV$. The external reorganization is harder to estimate. We take $\lambda_{total}=0.3eV$ as we did for
+P3HT. With the fused
+backbone resulting in a higher internal contribution and the lack of long range order resulting in a lower
+external contribution. 
+
 \section{Improvements}
 
 In this work, we ignore dynamic disorder by doing calculations on snapshots from equillibrium MD simulations.
