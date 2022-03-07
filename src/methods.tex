@@ -21,7 +21,7 @@ simulation can be run on the bases of Marcus theory and quantum chemical analysi
 
 With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
 molecular orbitals, a charge hopping (transfering) from an excited chromophore to a neighboring chromophore can be modeled
-as a discrete event that occurs at a rate estimable by semiclassical Marcus elctron transfer theory. With that,
+as a discrete event that occurs at a rate. In our case the rate is estimable by semiclassical Marcus elctron transfer theory. With that,
 the rate that a charge
 will hop from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
 following equation:
@@ -71,6 +71,8 @@ From the rationally shuffled queue, the shortest waittime (quickest available ho
 its new chromophore host. The system is then considered to have moved forward in time by $\tau$. This proceeds
 until the charge carrier stalls out or hops past a prespecified lifetime. 
 
+\subsection{MSD Analysis}
+
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
 each specified lifetime, a prescribed number individual KMC simulations is run as described above. When a
 given charge carrier hops past the specified lifetime, that is, the addition of the current iterations $\tau$ advances
@@ -100,7 +102,7 @@ to be "embarrasingly parrel," in that the subprocesses(charge carriers) require 
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
 simulated accross all available cores.  
 
-\section{Voronoi Analysis}
+\subsection{Voronoi Analysis}
 
 \begin{figure}
   \center
