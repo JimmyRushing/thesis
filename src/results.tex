@@ -183,6 +183,7 @@ between chromophores in the system. The figure shows the effect of cutoff distan
 
 
 \subsection{Reorganization energy}
+
 Marcus's nonadiabatic electron transfer theory allows us to model charge transfer as two
 intersecting parabolic potential energy surfaces. In this work, the parabalas represent the potential energy surface
 of the dimer created by a pair of chomophores with a charge injected on either chromophore. In this context, 
@@ -204,6 +205,12 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
     \caption{The results of running 8 KMC simulations with reorganization energy 100-800 meV}
   \label{fig:reorg}
 \end{figure}
+
+Reorganization energy has a strong effect on charge mobility in organic
+molecules[REFS]. In our workflow, reorganization energy is set as an attribute
+to the chomophore object. It is defaulted to $~300meV$ as for all chromophore
+objects. To test the sensitivity of the algorithm to this value we ran 8
+simulations with chromophores assigned reorganization energies of 100-800meV.
 
 \subsection{Temperature}
 
