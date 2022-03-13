@@ -58,15 +58,22 @@ homo-lumo gap.
 At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
 thiophene rings on the calculated $T_{ij}$ between them.
 Using Mbuild, a reference thiophene is placed at the origin in the xy-plane
-with the y-axis running through the the sulfur atom. 
-A second thiophene is instantiated as in figure \ref{TIplots}
-The second thiophene is allowed a combination of moves wherein it is translated up to 5 angstroms 
-and rotated up to 90 degress about its x-axis. Center-to-center distances less than 3 angstroms are disallowed. 
-The $|T_{ij}|$ resulting from these 4300 unique orientations are shown in figure \ref{TIplots}. The figure shows that, as expected, a
+with the y-axis running through the sulfur atom. 
+A second thiophene is instantiated as in figure \ref{TIplots}(a)
+and allowed a combination of moves wherein it is translated
+in the positive z and x direction by up to 5 angstroms 
+and rotated up to 90 degrees about its y-axis. Center-to-center distances less
+than 3 angstroms are disallowed as distances shorter than this are considered
+unphysical. The $T_{ij}$ resulting from these 4300 unique orientations are shown in figure \ref{TIplots}(b). The figure shows that, as expected, a
 decrease in 
-center-to-center distance results in more orbital overlap and thus an increase in $|T_{ij}|$. Also observable in the figure is that
-a rotation about the x-axis oreints the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
-and a greater $|T_{ij}|$. 
+center-to-center distance results in more orbital overlap and thus an increase in $T_{ij}$. Also observable in the figure is that
+a rotation about the x-axis orients the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
+and a greater $T_{ij}$. 
+
+In a similar work using a random forest machine learning to predict $T_{ij}$
+between thiophenes based on 9 input features, the authors found that the
+features of most importance for predicting $T_{ij}$ was bonded vs non bonded,
+center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
 
 \begin{figure}[]
 \centering
@@ -79,7 +86,7 @@ and a greater $|T_{ij}|$.
 \begin{subfigure}{.8\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
-    \caption{$|T_{ij}|$ between thiophene rings}
+    \caption{$T_{ij}$ between thiophene rings}
 \end{subfigure}
     \caption{The orientation in figure (a) shows thiophenes 5 angstroms apart with 0 pitch. The $T_{ij}$ for
     this would appear at the origin of figure (b)}
@@ -176,6 +183,7 @@ between chromophores in the system. The figure shows the effect of cutoff distan
 
 
 \subsection{Reorganization energy}
+
 Marcus's nonadiabatic electron transfer theory allows us to model charge transfer as two
 intersecting parabolic potential energy surfaces. In this work, the parabalas represent the potential energy surface
 of the dimer created by a pair of chomophores with a charge injected on either chromophore. In this context, 
@@ -197,6 +205,12 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
     \caption{The results of running 8 KMC simulations with reorganization energy 100-800 meV}
   \label{fig:reorg}
 \end{figure}
+
+Reorganization energy has a strong effect on charge mobility in organic
+molecules[REFS]. In our workflow, reorganization energy is set as an attribute
+to the chomophore object. It is defaulted to $~300meV$ as for all chromophore
+objects. To test the sensitivity of the algorithm to this value we ran 8
+simulations with chromophores assigned reorganization energies of 100-800meV.
 
 \subsection{Temperature}
 
