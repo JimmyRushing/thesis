@@ -82,7 +82,7 @@ center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
     \includegraphics[width=\textwidth]{figures/thiophene-axes.png}
     \caption{Two nonbonded thiophenes}
 \end{subfigure}%
-\\[2.0ex]
+\\
 \begin{subfigure}{.8\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
@@ -199,11 +199,30 @@ $\lambda = 0.3eV$ is chosen to be the default reorganization energy ($\lambda_{i
 and $\lambda_{external} = .02eV$) as others have done with P3HT \cite{jones2017} and
 a flourene-triphenylamine copolymer, TFB \cite{Gali2017}. 
 
-\begin{figure}
-  \center
-  \includegraphics[width=0.8\linewidth]{figures/reorg.png} 
-    \caption{The results of running 8 KMC simulations with reorganization energy 100-800 meV}
-  \label{fig:reorg}
+\begin{figure}[]
+\centering
+\begin{subfigure}{\textwidth}
+    \textbf{(A)} \\
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/reorg.png}
+    \newline
+\end{subfigure}%
+\\
+\begin{subfigure}{.5\textwidth}
+    \textbf{(B)} $\lambda = 100$
+    \centering
+    \includegraphics[width=\textwidth]{figures/donor_hopping_rate_clusters_reorg100.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+    \textbf{(C)} $\lambda = 800$
+    \centering
+    \includegraphics[width=\textwidth]{figures/donor_hopping_rate_clusters_reorg800.png}
+\end{subfigure}
+    \caption[short]{Figure (A) shows how KMC simulated mobility values scale with the perscribed
+    reorganization energy values, $\lambda$. Figures (B) and (C) show the distrubtion of hopping rates with
+    $\lambda = 100eV$ and $\lambda = 800eV$ respectively. These show how $\lambda$ effects the in the Marcus
+    rate accros the morphology and thus the charge mobiility.}
+\label{reorg}
 \end{figure}
 
 Reorganization energy has a strong effect on charge mobility in organic
