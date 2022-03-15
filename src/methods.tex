@@ -1,18 +1,50 @@
 \chapter{Methods}
 \label{chap:methods}
-
+\section{Overview}
+Here is a breakdown of the workflow from MD to charge transport in the order of the workflow as we used it in
+this work. 
 MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
 the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}. The morphologies used to
-obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. The ITIC
-morphology was simulated using Plankton-Flow (https://github.com/cmelab/planckton-flow) on Fry, the high
-performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
+obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
+All the tools used to implement, analyze, and
+visualize this work are freely available. 
+
+\section{Molecular Dynamics}
+
+    \subsection{MD Computational Methods}
+Here we introduce the software stack for plankton and also introduce singularity and docker whcih we can call
+back to when we say morphCT has a FLOW but it needs work in improvements.
+The ITIC morphology was simulated using Plankton-Flow (https://github.com/cmelab/planckton-flow) on Fry, the high performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
 singularity, docker and signac to contanerize a package developed to facilitate simulating self-assembly in
 organic photovoltaic materials; Planckton (https://github.com/cmelab/planckton).
 
-An overview of the KMC algorithm is given followed by a discription of the salient computational tools and
-methods used to implement and optimize this implemention. All the tools used to implement, analyze, and
-visualize this work are freely available. 
+\section{Chromophores}
 
+A place to break down what a chromophore is and how it is chosen
+
+    \subsection{Chromopore software}
+
+A place to mention grits and VMD for chromophore delineation. Having made a choice about where chromoohores
+are locatied in the morph we then need to build a neighborlist. 
+\section{voronoi}
+
+    \subsection{Voronoi software}
+
+With a neighbor list built, a single charges movement through the morphology can be simulatied with the
+application of a KMC algorthym.
+
+\section{Marcus and QCC}
+
+    \subsection{QCC software}
+
+\section{Kinetic Monte Carlo}
+
+    \subsection{KMC software aka MorphCT}
+
+\section{KMC analysis}
+
+n overview of the KMC algorithm is given followed by a discription of the salient computational tools and
+methods used to implement and optimize this implemention. 
 
 \section{Kinetic Monte Carlo}
 
