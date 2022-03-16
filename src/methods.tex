@@ -84,7 +84,57 @@ application of a KMC algorthym.
 
 \section{Marcus and QCC}
 
+At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
+the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
+determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
+With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
+methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
+calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
+leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
+which is an approximation method that seeks recreate the ab initio Hartree-Fock
+results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shrodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
+shown good agreement with experimental data and more rigorous Quantum chemical
+methods 
+\cite{Bredas2002}. Furthermore, variations in TI do not effect mobility calcs
+that much (one of evans papers said this).  Results
+from the this work compare well to jones2017 which implemented ZINDO/s, another
+semi-empirical method. The
+previous version of MorphCT utilized ORCA to provide the quantum chemical
+approximations required to implement
+a hopping model of charge transport \cite{Neese2012b}. Jones2017 showed that with this you can connect MD
+provided morphology to charge transport characteristics. A particular 
+choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
+workflow modularly. This is because the quantum computational chemistry is a nascent and evolving field of its
+own, with quickly increasing efficiencies and accuracies. Therefor, an important consideration is, "how can we
+deintigrate and reintigrate a QCC software, tests its efficiency and accuracy, and do it in a way that lays
+the groundwork to upgrade or swap it as better options emerge?". 
+
+
     \subsection{QCC software}
+
+The software chosen to implement this method is
+provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
+was chosen in the interest of reproducability and extensibility. PySCF is implemented almost entirly in the Python 
+language, which is becoming increasingly ubiquitous in the scientific computing community. Furthermore,
+ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
+creating reproducible results. 
+Solving shrodingers equation across tens of thousands of 
+chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
+justified but drastic simplifications are necessary. Computation of the eigenvalues of the HOMO and HOMO-1
+molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
+the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
+overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
+integral. It is this approximation that allows an estimating of the transfer integral from the calculation of
+the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
+approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
+energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
+mobility from molecular arrangement to good effect \cite{Deng2004}. The P3HT morphologies discussed in the evaluation section of the results
+consist of 1000 oligomers of 15 repeating molecular units. Assigning each molecular unit as a chromophore
+gives 15000 indivual QQC calculations and as many as 15000 choose 2 Dimer QCC calculations. The latter is
+drastically lower because not all chromophores interact. In this workflow neighbor, finding is accomplished via
+voronoi analysis. Nevertheless, with the volume of calculations necessary to simulate materials into the
+nanometer range, DFT is prohibitively slow. 
+
 
 \section{Kinetic Monte Carlo}
 
@@ -182,55 +232,6 @@ A benifit to Monte Carlo analysis of this type is that charge carriers can be si
 to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
 simulated accross all available cores.  
-
-\section{Quantum Chemical Methods}
-At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
-the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
-determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
-With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
-methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
-calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
-leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
-which is an approximation method that seeks recreate the ab initio Hartree-Fock
-results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shrodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
-shown good agreement with experimental data and more rigorous Quantum chemical
-methods 
-\cite{Bredas2002}. Furthermore, variations in TI do not effect mobility calcs
-that much (one of evans papers said this).  Results
-from the this work compare well to jones2017 which implemented ZINDO/s, another
-semi-empirical method. The
-previous version of MorphCT utilized ORCA to provide the quantum chemical
-approximations required to implement
-a hopping model of charge transport \cite{Neese2012b}. Jones2017 showed that with this you can connect MD
-provided morphology to charge transport characteristics. A particular 
-choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
-workflow modularly. This is because the quantum computational chemistry is a nascent and evolving field of its
-own, with quickly increasing efficiencies and accuracies. Therefor, an important consideration is, "how can we
-deintigrate and reintigrate a QCC software, tests its efficiency and accuracy, and do it in a way that lays
-the groundwork to upgrade or swap it as better options emerge?". 
-
-The software chosen to implement this method is
-provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
-was chosen in the interest of reproducability and extensibility. PySCF is implemented almost entirly in the Python 
-language, which is becoming increasingly ubiquitous in the scientific computing community. Furthermore,
-ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
-creating reproducible results. 
-Solving shrodingers equation across tens of thousands of 
-chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
-justified but drastic simplifications are necessary. Computation of the eigenvalues of the HOMO and HOMO-1
-molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
-the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
-overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
-integral. It is this approximation that allows an estimating of the transfer integral from the calculation of
-the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
-approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
-energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
-mobility from molecular arrangement to good effect \cite{Deng2004}. The P3HT morphologies discussed in the evaluation section of the results
-consist of 1000 oligomers of 15 repeating molecular units. Assigning each molecular unit as a chromophore
-gives 15000 indivual QQC calculations and as many as 15000 choose 2 Dimer QCC calculations. The latter is
-drastically lower because not all chromophores interact. In this workflow neighbor, finding is accomplished via
-voronoi analysis. Nevertheless, with the volume of calculations necessary to simulate materials into the
-nanometer range, DFT is prohibitively slow. 
 
  Implementing a hopping simulation requires the delineation of
 individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
