@@ -2,7 +2,7 @@
 Organic semiconductors have a niche to fill across the landscape of electronic
 device manufacturing due to the flexibility, processability, and cost of manufacturing. They have all ready
 achieved commercial viability in the organic field-effect transistors (OFETs) and organic light emitting
-diodes (OLEDs).
+diodes (OLEDs).\ej{Citation needed}
 Exciting research is being done to provide stretchability, self-healing, and biodegradability for 
 next generation medical devices \cite{Brutting2006}.
 More generally, the solution processability of these materials allows for
@@ -11,22 +11,23 @@ other emerging organic electronic technologies, can be found the survey text
 Organic Electronic: Emerging Concepts and Technologies
 \cite{FabioCicoiraEditor2013}. 
 
-The proximate motivation for this research is the wide range of novels ways that these materials can be
-engineered for use in organic photovoltaics (OPVs). These advanced materials
+The proximate \ej{proximate? not sure that's true if the immediate work we do is not using novel ways to engineer these things for OPVS. It's *A* motivation but not the leading one?} motivation for this research is the wide range of novels ways that these materials can be
+engineered for use in organic photovoltaics (OPVs). 
+These advanced materials
 can assist us in harnessing the power of the sun in ways not available to traditional cells. 
 For example, researchers have exploited a unique feature of the physics the excitonic photoabsorbtion in 
 organic materials.  Namely, that absorbtion spectrum
 in these materials is relatively narrow (~300nm)
 With this, they are able to tune the active layer material to absorb radiation right above or right below the
 visible spectrum (into the NIR or UV spectrum respectively). This 
-could allow for the production of windows that passively draw current. Semi-transparent OSCs have all ready
+could allow for the production of windows that passively draw current. Semi-transparent OSCs have already
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
 In our present work, we present results from an investigation of two materials
 used in the design of the active layer of organic solar cells (OSCs). P3HT, a
 donor molecule, and ITIC, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
 organic analogue of p-type inorganic semiconductors and `donors' the analogue
-of the n-type. We make this note because in the methods we describe a model of
+of the n-type.\ej{Good place for P3HT and ITIC figures. Also maybe a good place to talk about where they've been used before and how they're different.} We make this note because in the methods we describe a model of
 a charge `hopping' from one molecule to another. And as we describe, our
 investigation involves hops within a pure donor domain or within a pure
 acceptor domain. A common point of confusion is distinguishing between which
@@ -35,20 +36,20 @@ Any molecule can accept or donate a charge carrier.
 They merely receive their donor/acceptor designation as a result of how they
 are primarily utilized in electronic devices. 
 
-Two major breakthroughs have ushered us into the modern era of OSCs, wherein effeciencies are approaching 20\%,
-a value considered to be a critical mass beyond which the technology will be considered commercially viable.
-These are the design of bulk heterojunction active layers and non-fullerene acceptor molecules. 
+Two major breakthroughs have ushered us into the modern era of OSCs, wherein effeciencies are approaching 20\%,\ej{cite needed}
+a value considered to be a critical mass beyond which the technology will be considered commercially viable.\ej{Cite needed}
+These are the design of bulk heterojunction active layers and non-fullerene acceptor molecules. \ej{expecting examples of how BHJ's were one breakthrough and how NFAs were another}
 
-In organic materials, the coloumb force(augmented by the low dielectric constant in the denominator of coloumbs law) between the excited
+In organic materials, the coloumb force (augmented by the low dielectric constant in the denominator of coloumbs law) \ej{put in equation, talk about specific term} between the excited
 electron and the hole it left behind in the valence band create a quasiparticle referred to here as an exciton. 
 This introduces a unique design challenge. 
 To extract a charge from the device, this force must be overcome and the oppisitely charged electron and hole 
 must be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
 where the slight offset in energy levels creates a charge transfer state wherein it is more
 energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
-it is to radiatively decay to its ground state and photoemitting.
+it is to radiatively decay to its ground state and photoemitting.\ej{nice}
 However, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
-extracted. An exciton can diffuse roughly 10nm(Clarke) before relaxing
+extracted. An exciton can diffuse roughly 10nm(Clarke) before relaxing\ej{Citation needed. There's some evidence from Bernie Yurke and others that excitons can travel further than 10nm in ordered morphologies, and so this 10nm number is an informed guess based on only opv materials (Maybe some articles by Darling or McGehee can unpack this?), and that perhaps our simulations can help us dispel if untrue.}
 to its ground state and photoemitting. Producing a layer this small is untenable and further a thicker layer
 is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
 as possbible. 
@@ -56,42 +57,45 @@ as possbible.
 In 1986, Ching W. Tang
 showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
 into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
-The interlocking phases of donor accepter molecules, insure
+The interlocking phases of donor accepter molecules, ensure
 that an exciton will intersect with the boundary between accepter and donor domains, while also ensuring that
 there
-is a continuous escape route, albeit labyrinthine, for the charges to travel on their way to their respective electrodes. 
+is a continuous escape route, albeit labyrinthine, for the charges to travel on their way to their respective electrodes. \ej{picture?}
 
-Reaching 17 \% effeciency in these devices required rigerous theory and time consuming chemical synthesis
-that unfolded over the course of three decades. 
+Reaching 17 \% effeciency in these devices required rigorous theory and time consuming chemical synthesis
+that unfolded over the course of three decades. \ej{How'd theory play a role?} 
 With the immensity of parameter space involved in the design of BHJ material, it is desirable that a modular
 open-source pipeline exhist for simulating the morphology of candidate molecules as well as simulating the 
-associated charge charecteristics. We note that will motivate zero-field mobility as a relvant quantity in BHJ
+associated charge charecteristics.\ej{Love it, but this is whiplash from the previous sentence. If we're pivoting to pipelines and screening now, then BHJ and NFA discussion is missing. I think maybe this sentence belongs elsewhere.} 
+We note that will motivate zero-field mobility as a relvant quantity in BHJ
 design, it could likely be informative accross all of the aforementioned applications. 
 
 
-BHJ OSC work in 4 steps . photoabsorbtions, exciton diffusion, CT , Charge diffusion. \citet{Fusella2019}.
+BHJ OSC work in 4 steps . photoabsorbtions, exciton diffusion, CT , Charge diffusion. \citet{Fusella2019}. \ej{Nice- still on BHJ and explaining physics is good.}
 Engineering the active layer of an OSC from organic materials presents distinct challenges and advantages at
 all four stages. 
 Our work is expressely related to stage four. That is, after the photon has been absorbed, creating and
 exciton that has diffused to the interface between donor and acceptor molecule, and the exciton has decoupled
-coulumbically. Now, with the free electron bouncing around in the acceptor domain (the hole in the donor) how
-quickly will it diffuse in that environement? This diffusivity, charge mobility, is what can be characterized
-using MorphCT.
+coulumbically.\ej{Like above, a bit of whiplash. Maybe get through all this intro first, and THEN explain where our work fits in.} Now, with the free electron bouncing around in the acceptor domain (the hole in the donor) how
+quickly will it diffuse in that environement? This diffusivity, charge mobility, is what can be characterized in experiments and simulations and is one key metric for overall device efficiency.
+%using MorphCT.
 
 It has been show that the hole/electron mobility of both donor and acceptor material are
-relavant to overall device performance. \cite{Wang2019e}. If electron mobililty it too high
-in acceptor in comparison to the hole mobility in the donor, it gets clogged up and you get 
-nongeminate recombination loss
+relavant to overall device performance. \cite{Wang2019e}. If electron mobililty is too high
+in acceptor \ej{confusing} in comparison to the hole mobility in the donor, it gets clogged up and you get 
+nongeminate recombination loss\ej{define?}.
 Also, imbalanced charge-carrier mobility can lead to space-charge build up in the low mobilty material that
-can screen the built in field.  \cite{Bartelt2015}. 
+can screen the built in field.  \cite{Bartelt2015}. \ej{picture?}
 
-This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
+This phenomena has been shown by space charge limited current eperiments \cite{Small2013}.
 Taking for granted that electronic devices utilizing organic materials are an exciting
-space, we find it highly desirable to have a pipeline through which we can simulate the equilibrium
+space, \ej{Maybe this is the right place to pivot to motivation for the current work. If so, great!} we find it highly desirable to have a pipeline through which we can simulate the equilibrium
 chemistries of these materials and characterize their emergent material properties. Jones2017 has laid out this
 pipeline in detail from the use of molecular dynamics simulations to predict the chemical structure to the use
 if Kinetic Monte Carlo simulations to characterize charge mobility (conductivity) in these chemistries.
+\ej{Perhaps this is the place for a picture of the pipeline in terms of techniques/theory used, and we can get into our specifics later?}
 
+\ej{This paragraph maybe belongs after the generic workflow description?}
 Two open source python packages, Planckton and MorphCT, are maintained at https://github.com/cmelab for
 facilitating these two legs of the pipeline. The use of Planckton in the methods and results sections below
 constitute the experience of an end user as I had not personally developed this package before conscripting it
@@ -100,6 +104,7 @@ of Planckton we took a container of planckton off the shelf and ran MD simulatio
 molecules on a high performance computing cluster without having to build the software stack or write the
 simulation scripts from scratch. 
 
+\ej{Need explanation of TRUE}
 My experience evinces what TRUE simulation engines can achieve and
 informs the direction with which we seek to take MorphCT. We hope that the combination of these two packages
 can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
@@ -118,6 +123,7 @@ THIS SENTECE HAS NO HOME Researchers have to
 balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility
 of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of
 variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. 
+\ej{After we show the generic pipeline of calculations that are needed, I think this is where we explain what specifically we do here: ``In this work we develop X for Y. In Section 2 we describe the theory and specific implementations of the methods used throughout the pipeline. In section 3 we report on experiments for validating and verifying our methods. In Section 4 we discuss the ramifications of this work and detail areas of future work.''}
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
