@@ -47,12 +47,13 @@ These are the design of bulk heterojunction active layers and non-fullerene acce
 
 In organic materials, the coloumb force(augmented by the low dielectric constant in the denominator of coloumbs law) between the excited
 electron and the hole it left behind in the valence band create a quasiparticle referred to here as an exciton. 
+This introduces a unique design challenge. 
 To extract a charge from the device, this force must be overcome and the oppisitely charged electron and hole 
-must be coerced apart. This coercion takes place at the interface between donor and acceptor molecules
+must be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
 where the slight offset in energy levels creates a charge transfer state wherein it is more
 energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
 it is to radiatively decay to its ground state and photoemitting.
-Therefore, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
+However, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
 extracted. An exciton can diffuse roughly 10nm(Clarke) before relaxing
 to its ground state and photoemitting. Producing a layer this small is untenable and further a thicker layer
 is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
@@ -63,6 +64,7 @@ showed that, processed under the right conditions, a blend of donor and acceptor
 into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
 The interlocking phases of donor accepter molecules, insure
 that an exciton will intersect with the boundary between accepter and donor domains, while also ensuring that
+there
 is a continuous escape route, albeit labyrinthine, for the charges to travel on their way to their respective electrodes. 
 
 Reaching 17 \% effeciency in these devices required rigerous theory and time consuming chemical synthesis
@@ -76,12 +78,18 @@ design, it could likely be informative accross all of the aforementioned applica
 BHJ OSC work in 4 steps . photoabsorbtions, exciton diffusion, CT , Charge diffusion. \citet{Fusella2019}.
 Engineering the active layer of an OSC from organic materials presents distinct challenges and advantages at
 all four stages. 
-\indent Our work is expressely related to stage four. It has been show that the hole/electron mobility of both donor and acceptor material are
+Our work is expressely related to stage four. That is, after the photon has been absorbed, creating and
+exciton that has diffused to the interface between donor and acceptor molecule, and the exciton has decoupled
+coulumbically. Now, with the free electron bouncing around in the acceptor domain (the hole in the donor) how
+quickly will it diffuse in that environement. This diffusivity, charge mobility, is what can be characterized
+using MorphCT.
+
+It has been show that the hole/electron mobility of both donor and acceptor material are
 relavant to overall device performance. \cite{Wang2019e}. If electron mobililty it too high
-in acceptor vs the hole mobility in the donor, it gets clogged up and you get nongeminate recombination loss
+in acceptor in comparison to the hole mobility in the donor, it gets clogged up and you get 
+nongeminate recombination loss
 Also, imbalanced charge-carrier mobility can lead to space-charge build up in the low mobilty material that
-can screen the built in field.  \cite{Bartelt2015}. shown by space charge limited current experiments
-\cite{Small2013}.
+can screen the built in field.  \cite{Bartelt2015}. This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
 
 Version one of MorphCT was capable of
 connecting qualitativley the morphological features produced by MD simulations. However, it was determined
