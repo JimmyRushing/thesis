@@ -22,25 +22,12 @@ visible spectrum (into the NIR or UV spectrum respectively). This
 could allow for the production of windows that passively draw current. Semi-transparent OSCs have all ready
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
-Taking for granted that electronic devices utilizing organic materials are an exciting
-space, we find it highly desirable to have a pipeline through which we can simulate the equilibrium
-chemistries of these materials and characterize their emergent material properties. Jones2017 has laid out this
-pipeline in detail from the use of molecular dynamics simulations to predict the chemical structure to the use
-if Kinetic Monte Carlo simulations to characterize charge mobility (conductivity) in these chemistries.
-
-Two open source python packages, Planckton and MorphCT, are maintained at https://github.com/cmelab for
-facilitating these two legs of the pipeline. The use of Planckton in the methods and results sections below
-constitute the experience of an end user as I had not personally developed this package before conscripting it
-to do my MD simulating. Using Planckton-flow (also maintained on github), a sister package
-of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
-molecules on a high performance computing cluster without having to build the software stack or write the
-simulation scripts from scratch. This experience exemplifies what TRUE simulation engines can achieve and
-informs the direction with which we seek to take MorphCT. We hope that the combination of these two packages
-can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
-Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
-this thesis will serve as anecdotal proof that, despite the nascency of these two packages, that this is all
-ready attainable. 
-
+In our present work, we present results from an investigation of two materials
+used in the design of the active layer of organic solar cells (OSCs). P3HT, a
+donor molecule, and ITIC, an acceptor molecule. 
+It should be noted that  in this context doesn't refer to
+chomophore. With respect to organic electronic devices, `acceptors' are the
+organic analogue of p-type inorganic semiconductors and `donors' the analogue of the n-type. 
 Two major breakthroughs have ushered us into the modern era of OSCs, wherein effeciencies are approaching 20\%,
 a value considered to be a critical mass beyond which the technology will be considered commercially viable.
 These are the design of bulk heterojunction active layers and non-fullerene acceptor molecules. 
@@ -89,7 +76,29 @@ relavant to overall device performance. \cite{Wang2019e}. If electron mobililty 
 in acceptor in comparison to the hole mobility in the donor, it gets clogged up and you get 
 nongeminate recombination loss
 Also, imbalanced charge-carrier mobility can lead to space-charge build up in the low mobilty material that
-can screen the built in field.  \cite{Bartelt2015}. This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
+can screen the built in field.  \cite{Bartelt2015}. 
+
+This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
+Taking for granted that electronic devices utilizing organic materials are an exciting
+space, we find it highly desirable to have a pipeline through which we can simulate the equilibrium
+chemistries of these materials and characterize their emergent material properties. Jones2017 has laid out this
+pipeline in detail from the use of molecular dynamics simulations to predict the chemical structure to the use
+if Kinetic Monte Carlo simulations to characterize charge mobility (conductivity) in these chemistries.
+
+Two open source python packages, Planckton and MorphCT, are maintained at https://github.com/cmelab for
+facilitating these two legs of the pipeline. The use of Planckton in the methods and results sections below
+constitute the experience of an end user as I had not personally developed this package before conscripting it
+to do my MD simulating. Using Planckton-flow (also maintained on github), a sister package
+of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
+molecules on a high performance computing cluster without having to build the software stack or write the
+simulation scripts from scratch. 
+
+My experience evinces what TRUE simulation engines can achieve and
+informs the direction with which we seek to take MorphCT. We hope that the combination of these two packages
+can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
+Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
+I was able to take an investigation of ITIC from molecular
+structure to a charge mobility; a macroscopic property. 
 
 Version one of MorphCT was capable of
 connecting qualitativley the morphological features produced by MD simulations. However, it was determined
