@@ -69,16 +69,19 @@ is given by Coulombs law as follows:
 \end{align}
 
 where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron. The relative permitivitty,
-$\epsilon_{r}$, of a material describes how readily a material
-will polarize in response to an electric field, relative to readily free space will polarize. In OPVs, a
-relative permitivitty of $~3$ means that this material is 3 times more polarizable than free space, which
-is not all that polariazable. And with that, the material occupying the space between electron and hole
-is not readily oreinting itself in the direction of the electric field created between them, which would
-oppose the Coulombic attraction. Silicon has a relative
-permitivitty of ~12. This bound electron-hole quasiparticle is refered to herein as an exciton.
+$\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative
+to that of free space. That is, relative
+permativity describes the readiness of a material
+to polarize in response to an electric field. A
+relative permitivitty of $~3$ in OPVs means that these materials are only 3 times more polarizable than free space, which
+is not all that polariazable. And, because the material occupying the space between electron and hole
+is not willing(or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
+This bound electron-hole quasiparticle is refered to herein as an exciton.
+
+[Silicon has a relative permitivitty of ~12. not sure in need this i think its kinda understood]
 
 This introduces a unique design challenge.
-To extract a charge from the device, the electron and hole
+To extract a charge from the device, the exciton
 must be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
 where the slight offset in energy levels creates a charge transfer state wherein it is more
 energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
@@ -95,9 +98,11 @@ into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}.
 The interlocking phases of donor accepter molecules, ensure
 that an exciton will intersect with the boundary between accepter and donor domains, while also ensuring that
 there
-is a continuous escape route, albeit labyrinthine, for the charges to travel on their way to their respective
-electrodes. \ej{picture?} \ej{I didnt know if this meant real picture of bhj schematic but i made the latter
+is a continuous escape route, albeit labyrinthine, for the free charges to travel on their way to their respective
+electrodes. The schematic shown in \ref{bhj} shows a cartoonized BHJ device. \ej{I didnt know if this meant real picture of bhj schematic but i made the latter
 to refer to here as well as when i discuss the four stages of bhj}
+
+
 
 \begin{figure}
     \center
@@ -108,10 +113,27 @@ to refer to here as well as when i discuss the four stages of bhj}
     about until it intersectects the interface between donor and acceptor material domains. (3) The exciton is
     coerced apart by the energy offset between donor and acceptor molecules. 
     (4) The, now unbound,  hole and the electron are free to diffuse about until ther reach their respective
-    electrodes where they can be extracted}
+    electrodes where they can be extracted \cite{Fusella2019}}
     \label{bhj}
 \end{figure}
 
+As shown in \ref{bhj}, a BHJ active layer proceeds through the following four stages: photoabsorbtions, 
+exciton diffusion, charge transfer, and free charge diffusion \citet{Fusella2019}. When a photon is incedent on
+an organic photovoltaic material, if it intersects with a molecular segment whose 
+highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, the energy can be absorbed via the promotion of
+an electron to the next energy level, the lowest unoccupied molecular orbital (LUMO). This forms an exciton as
+described above which then diffuse until it intersects the boundary. The excited electron would like to relax
+back into is lower energy level, but at the interface with the acceptor, it finds a better option. The
+acceptor's LUMO is engineered to sit between the energy of the donor's excited electrons energy level and the
+lower energy level. Because of this, the electron cascades down to the acceptors LUMO through a charge
+tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
+extracted. This is, of course, an ideal description. The are loss mechanisms at all four stages. 
+
+Engineering the active layer of an OSC materials presents distinct challenges and advantages at
+all four stages. 
+Our work is expressely related to stage four. That is, after the photon has been absorbed, creating and
+exciton that has diffused to the interface between donor and acceptor molecule, and the exciton has decoupled
+coulumbically.
 
 Reaching 17 \% effeciency in these devices required rigorous theory and time consuming chemical synthesis
 that unfolded over the course of three decades. \ej{How'd theory play a role?} 
@@ -122,12 +144,7 @@ We note that will motivate zero-field mobility as a relvant quantity in BHJ
 design, it could likely be informative accross all of the aforementioned applications. 
 
 
-BHJ OSC work in 4 steps . photoabsorbtions, exciton diffusion, CT , Charge diffusion. \citet{Fusella2019}. \ej{Nice- still on BHJ and explaining physics is good.}
-Engineering the active layer of an OSC from organic materials presents distinct challenges and advantages at
-all four stages. 
-Our work is expressely related to stage four. That is, after the photon has been absorbed, creating and
-exciton that has diffused to the interface between donor and acceptor molecule, and the exciton has decoupled
-coulumbically.\ej{Like above, a bit of whiplash. Maybe get through all this intro first, and THEN explain where our work fits in.} Now, with the free electron bouncing around in the acceptor domain (the hole in the donor) how
+\ej{Like above, a bit of whiplash. Maybe get through all this intro first, and THEN explain where our work fits in.} Now, with the free electron bouncing around in the acceptor domain (the hole in the donor) how
 quickly will it diffuse in that environement? This diffusivity, charge mobility, is what can be characterized in experiments and simulations and is one key metric for overall device efficiency.
 %using MorphCT.
 
