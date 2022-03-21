@@ -13,7 +13,12 @@ visualize this work are freely available. \ej{What are their names, where are th
 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
 systems. The MD simulation used in this work begins by packing a specified number of molecules into a
-simulation box and define
+simulation box. It proceeds iteratively allowing small random motions and solving Newtons laws of motion
+based on predefined interatomic interaction potentials. Using the canonical ensemble (NVT),
+holding the number of
+particles, the volume, and the temperature constant allows for the calculation of 
+potential energy of the system. 
+The system is considered equilibrated when the potential energy no longer decreases with time. 
 
 \subsection{MD Computational Methods}
 
