@@ -43,34 +43,11 @@ same way we hope morphCT will be similarly canabalized by researcher in the othe
 
 \ej{So far a description of MD is missing. What happens in an MD simulation? How is it set up? What happens in a step? How long do these things take? What comes out? }
 
-\section{Chromophores}
-\ej{Belongs in intro? Doesn't seem germane to MD.}
-The term ``chromophore'' arose in a biochemical context and is generally defined
-as a light-absorbing group or molecule \cite{biochemistry}.
-In this context, a chromophore is often associated with the color of a material.
-This is because, mechanistically, a photon collides with a chromophore, the absorbed energy
-excites an electron from the highest occupied molecular orbital (HOMO) to the
-lowest unoccupied molecular orbital (LUMO). As the chromophore relaxes to its
-ground state, it releases a photon with wave length $\lambda = \frac{\hbar c}{E}$,
-where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
-energy difference of the HOMO and LUMO. 
-
-For the materials of interest to our research, it would be undesirable for a chomophore to relax to its ground
-state and release a photon as this would consistute a loss mechanism. In the case of
-OPVs we want our molecules bear that photo-electric
-excitation long enough to jump to a nearby chromophore, and proceed, through a
-series of quantum tunneling events, towards an electrode. 
-In our work, a chromophore is defined as a region over which the
-LUMO(HOMO for acceptor) of an excited molecular segment is thought to fully delocalized, creating a free
-charge carrier. It is under this assumption that we execute a hopping model of charge transfer between
-chromophores.  
-
-    \subsection{Chromopore software}
+\section{Chromophore Model [delineation and neighborings]}
 
 A place to mention grits and VMD for chromophore delineation. Having made a choice about where chromoohores
 are locatied in the morph we then need to build a neighborlist. 
 
-\section{Chromophore Neighbors}
 
 \begin{figure}
   \center
