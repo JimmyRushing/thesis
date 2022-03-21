@@ -14,12 +14,16 @@ visualize this work are freely available. \ej{What are their names, where are th
 The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
-systems. The MD simulations proceed iteratively. First
-allowing small random motions, and then solving Newtons laws of motion
-based on predefined interatomic interaction potentials. Using the canonical ensemble (NVT),
+systems. The MD simulations proceed iteratively by solving Newtons laws of motion
+according to predefined, Leonard-Jonesian, interatomic interaction potentials. The velocities of molecules are
+updated at each iteration based on these solutions.  Using the canonical ensemble (NVT),
 holding the number of
 particles, the volume, and the temperature constant allows for the calculation of 
-potential energy of the system. 
+potential energy of the system. The NVT simulations of ITIC in our work employ a
+Nos\'{e}-Hoover thermostat to maintain the temperature of the simulation. The thermostat in this case keeps
+account of the average kinetic temperature, and if it strays too far from the set temperature of the
+simulation, it nudges all the velocities in the system up or down, bringing the temperature back into an
+acceptable neighborhood of the perscribed simulation temperature.
 The system is considered equilibrated when the potential energy no longer decreases with time. 
 
 \subsection{MD Computational Methods}
@@ -29,7 +33,7 @@ back to when we say morphCT has a FLOW but it needs work in improvements.
 The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry, a high performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
 singularity \ej{cite}, docker and signac to contanerize a package developed to facilitate simulating self-assembly in
 organic photovoltaic materials; Planckton (https://github.com/cmelab/planckton \ej{add a web reference and cite that instead of pasting the url}).
-The
+The forcefield description file that acts as
 fuel for the simulation engines mentioned above(plankton-flow/hoomd) utilized in this work is the generalized
 Amber force field (GAFF)\cite{Wang2004a}.
 The Amber forcefield was designed for use in modeling protein and
