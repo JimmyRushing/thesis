@@ -15,7 +15,7 @@ The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
 systems. The MD simulations proceed iteratively by solving Newtons laws of motion
-according to predefined, Leonard-Jonesian, interatomic interaction potentials. The velocities of molecules are
+according to a predefined interatomic interaction potentials. The velocities of molecules are
 updated at each iteration based on these solutions.  Using the canonical ensemble (NVT),
 holding the number of
 particles, the volume, and the temperature constant allows for the calculation of 
@@ -31,8 +31,8 @@ The system is considered equilibrated when the potential energy no longer decrea
 Here we introduce the software stack for plankton and also introduce singularity and docker which we can call
 back to when we say morphCT has a FLOW but it needs work in improvements.
 The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry, a high performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
-singularity \ej{cite}, docker and signac to contanerize a package developed to facilitate simulating self-assembly in
-organic photovoltaic materials; Planckton (https://github.com/cmelab/planckton \ej{add a web reference and cite that instead of pasting the url}).
+singularity \cite{singularity2017}, docker and signac to contanerize a package developed to facilitate simulating self-assembly in
+organic photovoltaic materials; Planckton \cite{cmelab}
 The forcefield description file that acts as
 fuel for the simulation engines mentioned above(plankton-flow/hoomd) utilized in this work is the generalized
 Amber force field (GAFF)\cite{Wang2004a}.
@@ -43,48 +43,26 @@ same way we hope morphCT will be similarly canabalized by researcher in the othe
 
 \ej{So far a description of MD is missing. What happens in an MD simulation? How is it set up? What happens in a step? How long do these things take? What comes out? }
 
-\section{Chromophore Model [delineation and neighborings]}
+With MD simulations we can predict the self-assembly of OPV materials. To connect the chemistry to the
+conductivity of the material we use Marcus theory coupled with KMC.
 
-A place to mention grits and VMD for chromophore delineation. Having made a choice about where chromoohores
-are locatied in the morph we then need to build a neighborlist. 
+\section{Marcus Model/  [delineation and neighborings]}
 
+The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
+is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation.
 
-\begin{figure}
-  \center
-%\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
-  \includegraphics[width=0.99\linewidth]{figures/crystalline_voronoi_smaller.png} 
- % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
-  \caption{2D Voronoi}
-  \label{fig:2d}
-\end{figure}
+\begin{align}
+    k_{ij}  =  |T_{ij}|^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
+    E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
+    \label{marcus}
+\end{align}
 
-
-Again, with 15000 choose 2 pairs\ej{remind reader of $_nC_k$ notation with equation and use that here to be specific }, we are required to perform some neighborlisting prior to QCC. so categorize chromophores as
-neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
-cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
-and its geometrically closest neighbor across the line. This analysis takes place in three dimensions. As a
-demonstration a voronoi analysis was run on a 2D analogue of the crystalline P3HT system described elsewhere.
-In \autoref{fig:ln}\ej{Check out how sweet that autoref works.}, 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
-in the xy-plane.Here,
-a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
-center than any other chromophore center. We use voronoi because BLAH. Euclidean space searching algorithms of
-this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
-\cite{Bentley1980}.
-However as can seen from the figure, two points can share cell edges despite being rather far apart. We
-therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
-to assume they do not interact electronically enough to effect to charge mobility calculation. This parameter will
-depend on the material under investigation as was as the size of the individual chromophores. We tested the
-sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
-calculated mobility. There is a diminishing return on computation around dcut 10. 
-
-
-    \subsection{Voronoi software}
-
-Utilizing the freud.locality.Voronoi() 
-With a neighbor list built, a single charges movement through the morphology can be simulatied with the
-application of a KMC algorthym.
-
-\section{Marcus and QCC}
+with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
+$\Delta E_{ij}$, $T$ represent th electronic overlap, the reorganization energy, the free energy difference, and
+temperature. These are discussed in further detail in the results section, wherin we test the senseitivity of
+the KMC results to these parameters individually. 
+The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
+the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$.
 
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
 the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
@@ -138,6 +116,45 @@ voronoi analysis. Nevertheless, with the volume of calculations necessary to sim
 nanometer range, DFT is prohibitively slow. 
 
 
+A place to mention grits and VMD for chromophore delineation. Having made a choice about where chromoohores
+are locatied in the morph we then need to build a neighborlist. 
+
+
+\begin{figure}
+  \center
+%\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
+  \includegraphics[width=0.99\linewidth]{figures/crystalline_voronoi_smaller.png} 
+ % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
+  \caption{2D Voronoi}
+  \label{fig:2d}
+\end{figure}
+
+After chopping up the morphology into chromophores ...
+Again, with 15000 choose 2 pairs\ej{remind reader of $_nC_k$ notation with equation and use that here to be specific }, we are required to perform some neighborlisting prior to QCC. so categorize chromophores as
+neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
+cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
+and its geometrically closest neighbor across the line. This analysis takes place in three dimensions. As a
+demonstration a voronoi analysis was run on a 2D analogue of the crystalline P3HT system described elsewhere.
+In \autoref{fig:ln}, 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
+in the xy-plane.Here,
+a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
+center than any other chromophore center. We use voronoi because BLAH. Euclidean space searching algorithms of
+this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
+\cite{Bentley1980}.
+However as can seen from the figure, two points can share cell edges despite being rather far apart. We
+therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
+to assume they do not interact electronically enough to effect to charge mobility calculation. This parameter will
+depend on the material under investigation as was as the size of the individual chromophores. We tested the
+sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
+calculated mobility. There is a diminishing return on computation around dcut 10. 
+
+
+    \subsection{Voronoi software}
+
+Utilizing the freud.locality.Voronoi() 
+With a neighbor list built, a single charges movement through the morphology can be simulatied with the
+application of a KMC algorthym.
+
 \section{Kinetic Monte Carlo}
 
 Taking a charge carrier to be a quasi-particle inserted into a MD generated morpholgy, a KMC
@@ -145,24 +162,9 @@ simulation can be run on the bases of Marcus theory and quantum chemical analysi
 
 With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
 molecular orbitals, a charge hopping (transfering) from an excited chromophore to a neighboring chromophore can be modeled
-as a discrete event that occurs at a rate. In our case the rate is estimable by semiclassical Marcus elctron transfer theory. With that,
-the rate that a charge
-will hop from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
-following equation:
+as a discrete event that occurs at a rate.
 
-\begin{align}
-    k_{ij}  =  |T_{ij}|^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
-    E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
-\end{align}
-
-with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
-$\Delta E_{ij}$, $T$ represent th electronic overlap, the reorganization energy, the free energy difference, and
-temperature. These are discussed in further detail in the results section, wherin we test the senseitivity of
-the KMC results to these parameters individually. 
-The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
-the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$.
-
-Taking $k_{ij}$ to be and
+Taking \autoref{marcus} to be and
 accurate rate of the electron transfer reaction, we implant a charge randomly into the morphology, calculate
 the rate of all possible hops(events)
 and put them in order of quickest to slowest to form a queue. The hop rate, $k_{ij}$, from the occupied chromophore to any
