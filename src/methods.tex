@@ -10,18 +10,34 @@ All the tools used to implement, analyze, and
 visualize this work are freely available. \ej{What are their names, where are their repositories, and if they have citations what are those? Put 'em here.}
 
 The packages and tools are enumerated in \autoref{packages}.
-
 \begin{table}[ht]
     \caption{Packages} % title of Table
 \centering % used for centering table
-\begin{tabular}{c c} % centered columns (4 columns)
+\begin{tabular}{|l|p{0.8\linewidth}|} % centered columns (4 columns)
 \hline\hline %inserts double horizontal lines
 Package/tool & Description \\ [0.5ex] % inserts table
 %heading
 \hline % inserts single horizontal line
-    foyer & python package for applying atom-typing rules  \cite{Klein2018a}\\ % inserting body of the table
-freud & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ %
+    foyer & python package for applying atom-typing rules  \cite{Klein2018a}\\ [1ex] % inserting body of the table
+freud & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
+HOOMD-blue & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
     mBuild & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
+MorphCT & python package for simulating and analyzing charge transport from 
+    snapshots of MD simulations \cite{Jones2017}\cite{cmelab}\\[1ex] 
+OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
+packmol & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
+Planckton & python based convenience package for running HOOMD-blue
+    simulations of OPVs \cite{cmelab}\\[1ex]
+Planckton-flow & python based package that supports the use of Planckton on
+    high performance clusters\cite{cmelab}\\[1ex]
+    signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
+VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
+    systems \cite{Humphrey1996}\\
+
+
+
+
+
 \hline %inserts single line
 \end{tabular}
 \label{packages} % is used to refer this table in the text
@@ -108,9 +124,6 @@ own, with quickly increasing efficiencies and accuracies. Therefor, an important
 deintigrate and reintigrate a QCC software, tests its efficiency and accuracy, and do it in a way that lays
 the groundwork to upgrade or swap it as better options emerge?". 
 
-
-    \subsection{QCC software}
-
 The software chosen to implement this method is
 provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
 was chosen in the interest of reproducability and extensibility. PySCF is implemented almost entirly in the Python 
@@ -127,7 +140,7 @@ integral. It is this approximation that allows an estimating of the transfer int
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
 approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
 energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
-mobility from molecular arrangement to good effect \cite{Deng2004}. The P3HT morphologies discussed in the evaluation section of the results
+mobility from molecular arrangement to good effect \cite{Deng2004}. However, the P3HT morphologies discussed in the evaluation section of the results
 consist of 1000 oligomers of 15 repeating molecular units. 
 
 The upperbound of possible pairwise interactions between chromophose is given by the number of combinations of
@@ -136,6 +149,7 @@ $k$ chromophores in a system with $n$ total chromophores is given using `n choos
     {n \choose k} =  \frac{n!}{k!(n-k)!}.
 \end{align}
 
+\section{Voronoi Analysis}
 
 Now, assigning each molecular unit as a chromophore
 gives 15000 indivual QQC calculations and as many as ${15000 \choose 2} = 112,492,500$
@@ -158,10 +172,9 @@ are locatied in the morph we then need to build a neighborlist.
   \label{fig:2d}
 \end{figure}
 
- In this workflow neighbor, finding is accomplished via
+ In this workflow neighbor finding is accomplished via
 voronoi analysis.
-After chopping up the morphology into chromophores ...
-Again, with 15000 choose 2 pairs\ej{remind reader of $_nC_k$ notation with equation and use that here to be specific }, we are required to perform some neighborlisting prior to QCC. so categorize chromophores as
+After chopping up the morphology into chromophores, we are required to perform some neighborlisting prior to QCC. so categorize chromophores as
 neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
 cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
 and its geometrically closest neighbor across the line. This analysis takes place in three dimensions. As a
