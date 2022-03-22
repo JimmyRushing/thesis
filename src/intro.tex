@@ -18,6 +18,7 @@ the application of our workflow to materials
 used in the design of organic photovoltaics (OPVs) for use in organic solar cells (OSCs). However, the methods are
 not exclusively applicable to these materials and could be applied similarly to  supplement the engineering of any organic
 electronic devices, like those mentioned above. 
+
 OSCs can assist us in harnessing the power of the sun in ways not available to traditional cells. 
 For example, researchers have exploited a unique feature of the physics the excitonic photoabsorbtion in 
 organic materials.  Namely, that absorbtion spectrum
@@ -27,7 +28,7 @@ visible spectrum (into the NIR or UV spectrum respectively). This
 could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent OSCs have already
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
-In our present work, we present results from an investigation of two materials
+In our present work, we present results from an investigation of two OPV materials
 used in the design of the active layer of organic solar cells (OSCs). P3HT, a
 donor molecule, and ITIC, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
 organic analogue of p-type inorganic semiconductors and `donors' the analogue
@@ -36,7 +37,7 @@ a charge `hopping' from one molecule to another. And as we describe, our
 investigation involves hops within a pure donor domain or within a pure
 acceptor domain. A common point of confusion is distinguishing between which
 molecules are donors or acceptors.
-Any molecule can accept or donate a charge carrier.
+Any molecule can accept or donate a charge carrier OPV.
 They merely receive their donor/acceptor designation as a result of how they
 are primarily utilized in electronic devices. 
 
@@ -56,7 +57,8 @@ are primarily utilized in electronic devices.
 
 Two major breakthroughs have ushered us into the modern era of OSCs,
 wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
-These are the design of bulk heterojunction active layers and non-fullerene acceptor molecules. 
+These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
+acceptor (FREAs) molecules. 
 \ej{expecting examples of how BHJ's were one breakthrough and how NFAs were another}
 
 A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic semiconduction materials necessitated the
@@ -68,26 +70,26 @@ is given by Coulombs law as follows:
     V  =  k_{e} \cdot \frac{e^{2}}{\epsilon_{r}}
 \end{align}
 
-where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron. The relative permitivitty,
+where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron. Relative permitivitty,
 $\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative
 to that of free space. That is, relative
 permativity describes the readiness of a material
 to polarize in response to an electric field. A
 relative permitivitty of $~3$ in OPVs means that these materials are only $3$ times more polarizable than free space, which
 is not all that polariazable. And, because the material occupying the space between electron and hole
-is not willing(or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
+is not willing (or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
 This bound electron-hole quasiparticle is refered to herein as an exciton.
 
 [Silicon has a relative permitivitty of ~12. not sure in need this i think its kinda understood]
 
-This introduces a unique design challenge.
-To extract a charge from the device, the exciton
-must be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
+This excitonic absorbtion introduces a unique design challenge.
+That is, to extract a charge from the device, the exciton
+must first be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
 where the slight offset in energy levels creates a charge transfer state wherein it is more
 energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
 it is to radiatively decay to its ground state and photoemit.
 However, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
-extracted. An exciton can diffuse roughly 10nm(Clarke) before relaxing \cite{Clarke2010} \ej{Citation needed. There's some evidence from Bernie Yurke and others that excitons can travel further than 10nm in ordered morphologies, and so this 10nm number is an informed guess based on only opv materials (Maybe some articles by Darling or McGehee can unpack this?), and that perhaps our simulations can help us dispel if untrue.}
+extracted. An exciton can diffuse roughly 10nm before relaxing \cite{Clarke2010} \ej{Citation needed. There's some evidence from Bernie Yurke and others that excitons can travel further than 10nm in ordered morphologies, and so this 10nm number is an informed guess based on only opv materials (Maybe some articles by Darling or McGehee can unpack this?), and that perhaps our simulations can help us dispel if untrue.}
 Producing a layer this small is untenable and further a thicker layer
 is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
 as possbible. 
@@ -139,8 +141,8 @@ through pure domains of donor or acceptor material.
 
 The BHJ design pushed the effenciency beyond the 1\% effeiciency milestone. Early BHJ devices utilized
 fullerene derivitives as acceptors. In 2015, a group of researchers conceptulized the use of
-fused-ring electron acceptors (FREAs), a class of non-fullerene acceptors. This class of molecules consists of
-a fused-ring core and end groups that can be engineered to acheive specific electronic characterstic and side
+fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
+a fused-ring core and end groups that can be engineered to acheive specific electronic characterstics and side
 chains that can be engineered to achieve desried morphological features. The modularity of FREAs
 layed the stage for headspinning progress in the following years from 4\% PCE to 18\%.
 \cite{Wang2021a}
@@ -148,7 +150,7 @@ layed the stage for headspinning progress in the following years from 4\% PCE to
 However reaching 18 \% effeciency in these devices required rigorous theory and 
 time consuming chemical synthesis
 that unfolded over the course of three decades. \ej{How'd theory play a role?} 
-With the immensity of parameter space involved in the design of BHJ material, it is desirable that a modular
+, it is desirable that a modular
 open-source pipeline exhist for simulating the morphology of candidate molecules as well as simulating the 
 associated charge charecteristics.\ej{Love it, but this is whiplash from the previous sentence. If we're pivoting to pipelines and screening now, then BHJ and NFA discussion is missing. I think maybe this sentence belongs elsewhere.} 
 We note that will motivate zero-field mobility as a relvant quantity in BHJ
@@ -167,19 +169,21 @@ Also, imbalanced charge-carrier mobility can lead to space-charge build up in th
 can screen the built in field.  \cite{Bartelt2015}. \ej{picture?}
 This phenomena has been shown by space charge limited current eperiments \cite{Small2013}.
 
-Taking for granted that electronic devices utilizing organic materials are an exciting
-space, we find it highly desirable to have a pipeline through which we can simulate the equilibrium
+Taking for granted that electronic devices utilizing OPVs is an exciting
+space, and with the immensity of the parameter space involved in molecular design, we find it highly desirable to have a pipeline through which we can simulate the equilibrium
 chemistries of these materials and characterize their emergent material properties. Jones2017 has laid out this
-pipeline in detail from the use of molecular dynamics simulations to predict the chemical structure to the use
-if Kinetic Monte Carlo simulations to characterize charge mobility (conductivity) in these chemistries. The
-main focus of this thesis is the KMC and the software involved in emplementing it. Our KMC simulations are a
-implementation of a hopping model of electron transport.
+pipeline in detail. To begin, equillibrium molecular dynamics (MD) simulations can predict the chemical
+structure of OPVs. The data obtained from these simulations can then be fed as an input into kinetic monte
+carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries. We introduce MD
+and our software stack used to implement it in autoref{results}. The focus of this thesis, however, involves
+the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
 
+Our KMC simulations are an implementation of the hopping model of electron transport.
 The generic hopping model goes as follows: the wave functions of
-free charges are localized on molecular segments and the movements of these charges can be described as series
-of hops bewteen molecular segments. Where, and to what extent, charges delocalize can been investigated
+free charges are localized on particular molecular segments, and the movements of these charges can be described as series
+of hops bewtween these molecular segments. Where, and to what extent, charges delocalize can been investigated
 [REFS]. In the \autoref{results} we explore the delineation of these segments, which we refer to as
-``chromophore'' , in our models of ITIC and P3HT. 
+``chromophore.'' 
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
 In this context, a chromophore is often associated with the color of a material.
