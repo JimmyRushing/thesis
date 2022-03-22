@@ -175,7 +175,7 @@ chemistries of these materials and characterize their emergent material properti
 pipeline in detail. To begin, equillibrium molecular dynamics (MD) simulations can predict the chemical
 structure of OPVs. The data obtained from these simulations can then be fed as an input into kinetic monte
 carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries. We introduce MD
-and our software stack used to implement it in autoref{results}. The focus of this thesis, however, involves
+and our software stack used to implement it in \autoref{results}. The focus of this thesis, however, involves
 the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
 
 Our KMC simulations are an implementation of the hopping model of electron transport.
@@ -184,6 +184,7 @@ free charges are localized on particular molecular segments, and the movements o
 of hops bewtween these molecular segments. Where, and to what extent, charges delocalize can been investigated
 [REFS]. In the \autoref{results} we explore the delineation of these segments, which we refer to as
 ``chromophore.'' 
+
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
 In this context, a chromophore is often associated with the color of a material.
@@ -200,8 +201,9 @@ OPVs we want our molecules bear that photo-electric
 excitation long enough to jump to a nearby chromophore, and proceed, through a
 series of quantum tunneling events, towards an electrode. 
 In our work, a chromophore is defined as a region over which the
-LUMO(HOMO for acceptor) of an excited molecular segment is thought to be fully delocalized. It is under this assumption that we execute a hopping model of charge transfer between
-chromophores based in Marcus rates of electrochemical reactions.  
+LUMO(HOMO for acceptor) of an excited molecular segment is thought to be fully delocalized. 
+It is under this assumption that we execute a hopping model of charge transfer between
+chromophores based on the Marcus rates of electrochemical reactions.  
 
 \ej{Perhaps this is the place for a picture of the pipeline in terms of techniques/theory used, and we can get into our specifics later?}
 \ej{This paragraph maybe belongs after the generic workflow description?}

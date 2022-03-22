@@ -4,6 +4,9 @@
 
 Here is a breakdown of the workflow from MD to charge transport in the order of the workflow as we used it in
 this work. \ej{Picture building of the general case to show our specific packages or areas of development}
+The theoretical methods and the computation tools used to implement the molecular models are introduced
+below. First, we introduce MD genrally and describe two disticnt means by which the P3HT and ITIC chemistries
+were obtained. 
 MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
 the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}. 
 All the tools used to implement, analyze, and
@@ -61,6 +64,9 @@ account of the average kinetic temperature, and if it strays too far from the se
 simulation, it nudges all the velocities in the system up or down, bringing the temperature back into an
 acceptable neighborhood of the perscribed simulation temperature \cite{Martyna1994d}\cite{Cao1996}.
 The system is considered equilibrated when the potential energy no longer decreases with time. 
+
+The P3HT MD data was taken off-the-shelf \cite{P3HTData} from researchers who provided it for validation and
+research purposes \cite{Miller2018a}. The ITIC data was generated expressly for \autoref{itic}
 
 \subsection{MD Computational Methods}
 
