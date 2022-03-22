@@ -128,10 +128,20 @@ the dimer splitting energy and the site energy. A further approximation, which i
 approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
 energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
 mobility from molecular arrangement to good effect \cite{Deng2004}. The P3HT morphologies discussed in the evaluation section of the results
-consist of 1000 oligomers of 15 repeating molecular units. Assigning each molecular unit as a chromophore
-gives 15000 indivual QQC calculations and as many as 15000 choose 2 Dimer QCC calculations. The latter is
-drastically lower because not all chromophores interact. In this workflow neighbor, finding is accomplished via
-voronoi analysis. Nevertheless, with the volume of calculations necessary to simulate materials into the
+consist of 1000 oligomers of 15 repeating molecular units. 
+
+The upperbound of possible pairwise interactions between chromophose is given by the number of combinations of
+$k$ chromophores in a system with $n$ total chromophores is given using `n choose k' notation as follows:
+\begin{align}
+    {n \choose k} =  \frac{n!}{k!(n-k)!}.
+\end{align}
+
+
+Now, assigning each molecular unit as a chromophore
+gives 15000 indivual QQC calculations and as many as ${15000 \choose 2} = 112,492,500$
+dimer QCC calculations. As not all chromophores can be expected to interact electronically,
+the latter can be drastically lowered through informed neighborlisting based on spaial proximity as we describe
+in the following section. Nevertheless, with the volume of calculations necessary to simulate materials into the
 nanometer range, DFT is prohibitively slow. 
 
 
@@ -148,6 +158,8 @@ are locatied in the morph we then need to build a neighborlist.
   \label{fig:2d}
 \end{figure}
 
+ In this workflow neighbor, finding is accomplished via
+voronoi analysis.
 After chopping up the morphology into chromophores ...
 Again, with 15000 choose 2 pairs\ej{remind reader of $_nC_k$ notation with equation and use that here to be specific }, we are required to perform some neighborlisting prior to QCC. so categorize chromophores as
 neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
