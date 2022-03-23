@@ -39,10 +39,6 @@ signac & python based framework for managing large heterogenous data spaces \cit
 VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
     systems \cite{Humphrey1996}\\
 
-
-
-
-
 \hline %inserts single line
 \end{tabular}
 \label{packages} % is used to refer this table in the text
@@ -88,10 +84,19 @@ With MD simulations we can predict the self-assembly of OPV materials. To connec
 conductivity of the material we use Marcus theory coupled with KMC.
 
 \section{Marcus Model}
+
+ Implementing a hopping simulation requires the delineation of
+individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
+can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
+which atoms belong to which chromophores is required. At this stage of the workflow, consideration needs to be
+given to where a charge may delocalize within. With ITIC, the frontier molecular orbitals, that is, the HOMO
+and LUMO have negligible electron density along the side chains. With that, significant computational resources
+can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
+backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
+
 \label{marcus}
 The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$,
-is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation.
-
+is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation:
 \begin{align}
     k_{ij}  =  |T_{ij}|^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
     E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
@@ -209,7 +214,7 @@ application of a KMC algorthym.
 \section{Kinetic Monte Carlo}
 
 Taking a charge carrier to be a quasi-particle inserted into a MD generated morpholgy, a KMC
-simulation can be run on the bases of Marcus theory and quantum chemical analysis.
+simulation can be run on the bases of the Marcus theory and quantum chemical analysis outlined above. 
 
 With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
 molecular orbitals, a charge hopping (transfering) from an excited chromophore to a neighboring chromophore can be modeled
@@ -280,15 +285,6 @@ A benifit to Monte Carlo analysis of this type is that charge carriers can be si
 to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
 simulated accross all available cores.  
-
- Implementing a hopping simulation requires the delineation of
-individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
-can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
-which atoms belong to which chromophores is required. At this stage of the workflow, consideration needs to be
-given to where a charge may delocalize within. With ITIC, the frontier molecular orbitals, that is, the HOMO
-and LUMO have negligible electron density along the side chains. With that, significant computational resources
-can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
-backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
 
 \subsection{KMC software aka MorphCT}
 
