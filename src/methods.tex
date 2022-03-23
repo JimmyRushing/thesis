@@ -34,8 +34,8 @@ Planckton & python based convenience package for running HOOMD-blue
     simulations of OPVs \cite{cmelab}\\[1ex]
 Planckton-flow & python based package that supports the use of Planckton on
     high performance clusters\cite{cmelab}\\[1ex]
-    signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
 pySCF & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
+signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
 VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
     systems \cite{Humphrey1996}\\
 
@@ -67,24 +67,22 @@ acceptable neighborhood of the perscribed simulation temperature \cite{Martyna19
 The system is considered equilibrated when the potential energy no longer decreases with time. 
 
 The P3HT MD data was taken off-the-shelf \cite{P3HTData} from researchers who provided it for validation and
-research purposes \cite{Miller2018a}. The ITIC data was generated expressly for \autoref{itic}
+research purposes \cite{Miller2018a}. The ITIC data was generated expressly for use in \autoref{itic}. 
 
 \subsection{MD Computational Methods}
 
 Here we introduce the software stack for plankton and also introduce singularity and docker which we can call
 back to when we say morphCT has a FLOW but it needs work in improvements.
 The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry, a high performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
-singularity \cite{singularity2017}, docker and signac to contanerize a package developed to facilitate simulating self-assembly in
-organic photovoltaic materials; Planckton \cite{cmelab}
+singularity \cite{singularity2017}, docker \cite{Merkel:2014:DLL:2600239.2600241} and signac \cite{Ramasubramani2018}
+to contanerize a package developed to facilitate simulating self-assembly in
+organic photovoltaic materials; Planckton \cite{cmelab}.
 The forcefield description file that acts as
-fuel for the simulation engines mentioned above(plankton-flow/hoomd) utilized in this work is the generalized
+fuel for the simulation engines mentioned above utilized in this work is the generalized
 Amber force field (GAFF)\cite{Wang2004a}.
 The Amber forcefield was designed for use in modeling protein and
 nucleic acid systems.  Serendipitously, the generalized Amber forcefield has parameters for organic molecules
-comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. In the
-same way we hope morphCT will be similarly canabalized by researcher in the other fields, like the ones oulined above. \ej{Polish later}
-
-\ej{So far a description of MD is missing. What happens in an MD simulation? How is it set up? What happens in a step? How long do these things take? What comes out? }
+comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. \ej{So far a description of MD is missing. What happens in an MD simulation? How is it set up? What happens in a step? How long do these things take? What comes out? }
 
 With MD simulations we can predict the self-assembly of OPV materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with KMC.
@@ -303,7 +301,6 @@ given to where a charge may delocalize within. With ITIC, the frontier molecular
 and LUMO have negligible electron density along the side chains. With that, significant computational resources
 can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
 backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
-
 
 
 %%% Local Variables: 
