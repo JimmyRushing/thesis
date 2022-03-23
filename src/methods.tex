@@ -5,10 +5,11 @@
 Here is a breakdown of the workflow from MD to charge transport in the order of the workflow as we used it in
 this work. \ej{Picture building of the general case to show our specific packages or areas of development}
 The theoretical methods and the computation tools used to implement the molecular models are introduced
-below. First, we introduce MD genrally and describe two disticnt means by which the P3HT and ITIC chemistries
-were obtained. 
-MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
-the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}. 
+below. First, in \autoref{md}, we introduce MD genrally and describe the two distinct means by 
+which the P3HT and ITIC chemistries were obtained. In \autoref{marcus}, the methods used to chop the
+results of the MD simulations into chromophores and calculate the rate of hops between chromophores with 
+semiclassical Marcus theory. 
+ 
 All the tools used to implement, analyze, and
 visualize this work are freely available. \ej{What are their names, where are their repositories, and if they have citations what are those? Put 'em here.}
 
@@ -49,7 +50,7 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 
 
 \section{Molecular Dynamics}
-
+\label{md}
 The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
@@ -89,7 +90,7 @@ With MD simulations we can predict the self-assembly of OPV materials. To connec
 conductivity of the material we use Marcus theory coupled with KMC.
 
 \section{Marcus Model/  [delineation and neighborings]}
-
+\label{marcus}
 The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
 is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation.
 
@@ -137,6 +138,7 @@ was chosen in the interest of reproducability and extensibility. PySCF is implem
 language, which is becoming increasingly ubiquitous in the scientific computing community. Furthermore,
 ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
 creating reproducible results. 
+
 Solving shrodingers equation across tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
 justified but drastic simplifications are necessary. Computation of the eigenvalues of the HOMO and HOMO-1
@@ -181,7 +183,8 @@ are locatied in the morph we then need to build a neighborlist.
 
  In this workflow neighbor finding is accomplished via
 voronoi analysis.
-After chopping up the morphology into chromophores, we are required to perform some neighborlisting prior to QCC. so categorize chromophores as
+After chopping up the morphology into chromophores, we are required to perform some neighborlisting prior to
+QCC. We categorize chromophores as
 neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
 cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
 and its geometrically closest neighbor across the line. This analysis takes place in three dimensions. As a
@@ -251,6 +254,8 @@ until the charge carrier stalls out or hops past a prespecified lifetime.
 
     \subsection{KMC software aka MorphCT}
 
+MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
+the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}.
 \section{KMC analysis}
 
 n overview of the KMC algorithm is given followed by a discription of the salient computational tools and
