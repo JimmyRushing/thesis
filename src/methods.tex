@@ -27,7 +27,7 @@ freud & python package for analyzing particle simulations  \cite{Ramasubramani20
 HOOMD-blue & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
     mBuild & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
 MorphCT & python package for simulating and analyzing charge transport from 
-    snapshots of MD simulations \cite{Jones2017}\cite{cmelab}\\[1ex] 
+    snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
 OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
 packmol & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
 Planckton & python based convenience package for running HOOMD-blue
@@ -87,9 +87,9 @@ comprised of H,C,N,O, and P and produces accurate simulations of organic molecul
 With MD simulations we can predict the self-assembly of OPV materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with KMC.
 
-\section{Marcus Model/  [delineation and neighborings]}
+\section{Marcus Model}
 \label{marcus}
-The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$, is given by the
+The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$,
 is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation.
 
 \begin{align}
@@ -104,7 +104,7 @@ temperature. These are discussed in further detail in the results section, wheri
 the KMC results to these parameters individually. 
 The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$.
-
+\subsection{Quantum Chemical Methods}
 At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
 the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
 determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
@@ -156,7 +156,7 @@ $k$ chromophores in a system with $n$ total chromophores is given using `n choos
     {n \choose k} =  \frac{n!}{k!(n-k)!}.
 \end{align}
 
-\section{Voronoi Analysis}
+\subsection{Voronoi Analysis}
 
 Now, assigning each molecular unit as a chromophore
 gives 15000 indivual QQC calculations and as many as ${15000 \choose 2} = 112,492,500$
@@ -201,9 +201,6 @@ to assume they do not interact electronically enough to effect to charge mobilit
 depend on the material under investigation as was as the size of the individual chromophores. We tested the
 sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
 calculated mobility. There is a diminishing return on computation around dcut 10. 
-
-
-    \subsection{Voronoi software}
 
 Utilizing the freud.locality.Voronoi() 
 With a neighbor list built, a single charges movement through the morphology can be simulatied with the
@@ -252,17 +249,8 @@ its new chromophore host. The system is then considered to have moved forward in
 until the charge carrier stalls out or hops past a prespecified lifetime. 
 
 
-    \subsection{KMC software aka MorphCT}
 
-MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
-the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}.
-\section{KMC analysis}
-
-n overview of the KMC algorithm is given followed by a discription of the salient computational tools and
-methods used to implement and optimize this implemention. 
-
-
-\subsection{MSD Analysis}
+\subsection{KMC analysis}
 
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
 each specified lifetime, a prescribed number individual KMC simulations is run as described above. When a
@@ -302,6 +290,10 @@ and LUMO have negligible electron density along the side chains. With that, sign
 can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
 backbone and the whole molecule and compare carrier mobility NEED THIS DATA. 
 
+\subsection{KMC software aka MorphCT}
+
+MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
+the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}.
 
 %%% Local Variables: 
 %%% mode: latex
