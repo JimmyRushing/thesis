@@ -132,7 +132,7 @@ Voronoi analysis allows for the computationally efficient partitioning of space 
 polyhedra chromophore cells. In this context, chromophore $i$ is the neighbor of chromophore $j$ if they
 share a boundary with one another. An artifact of constructing nieghborlists in this way is that some
 neighbors are too far apart to interact electronically, but are nevertheless closer to each other than they
-are to any other chromophores. 
+are to any other chromophores and are therefore counted as neighbors. 
 This phenomena is illustrated in figure \ref{fig:dcut} 
 
 \begin{table}[ht]
@@ -228,8 +228,14 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
 Reorganization energy has a strong effect on charge mobility in organic
 molecules[REFS]. In our workflow, reorganization energy is set as an attribute
 to the chomophore object. It is defaulted to $~300meV$ as for all chromophore
-objects. To test the sensitivity of the algorithm to this value we ran 8
-simulations with chromophores assigned reorganization energies of 100-800meV.
+objects.
+
+To test the sensitivity of the algorithm to this value we ran 8
+simulations with chromophores assigned reorganization energies of 100-800meV. The results, shown in
+\autoref{reorg}, are expected from the inspection of \autoref{marcus}. Because these simulation were run on
+the same morphology, the variation in distributions of $k_{ij}$ values, shown in \autoref{reorg}(B)(C), is
+solely due to the choice of $\lambda$. The cumulative outcome of this is the exponetial decay in mobility as
+$\lambda$ is increased.
 
 \subsection{Temperature}
 
