@@ -221,19 +221,30 @@ I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
 can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
  
+In this thesis, we explore the TRUEness of the pipeline from the start to finish. 
 
-Version one of MorphCT was capable of
+In \autorefs{methods}, we
+give an exposition of the theories and software packages used to model self-assembly and charge mobility in
+OPVs. Version one of MorphCT was capable of
 connecting qualitativley the morphological features produced by MD simulations. However, it was determined
 that in the interest of reprducabitilty, it was critical to ``containerize'' this pipeline. Until as recently as
 the past few years it was common place to not publish code with the results of computational works. Containers
 are virtual machines that contain all the dependencies, configurations, code and data necessary to reproduce
 results. \cite{Cito2016a}
 
+
+In \autoref{results}, we validate our current workflow against a predecessor of the workflow on
+three benchmark MD simulated morpholgies. 
+Following that, again using a benchmark morphology, we test the sensitivity of our KMC algorithm, implemented
+using MorphCT, to a variety of inputs. We conclude \autoref{results} we apply our pipeline to ITIC. 
+
+In \autoref{conclusion}, we outline the ramification of \autoref{results} and detail the areas of future
+development of the workflow. 
+
 THIS SENTECE HAS NO HOME Researchers have to
 balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility
 of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of
 variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. 
-\ej{After we show the generic pipeline of calculations that are needed, I think this is where we explain what specifically we do here: ``In this work we develop X for Y. In Section 2 we describe the theory and specific implementations of the methods used throughout the pipeline. In section 3 we report on experiments for validating and verifying our methods. In Section 4 we discuss the ramifications of this work and detail areas of future work.''}
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
