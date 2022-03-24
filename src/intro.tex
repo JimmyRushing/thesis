@@ -45,8 +45,8 @@ P3HT is a polymeric material that is highly polymorphic in that it can self-asse
 crystallinities depending on how it is processed. 
 P3HT was first synthesized by Rick Mcullough in 1992, but polythiophenes have been well investigated in
 general, with the first characterizations dating as far back as 1883 \cite{Poelking2014}.
-ITIC is not polymeric. Rather, it a material consisting of small molecules. It was first synthesized in 2015
-\cite{Wang2021a}
+ITIC is not polymeric. Rather, it a material consisting of small molecules and thus has no long range bonding.
+It
 
 \begin{figure}[]
 \centering
@@ -95,7 +95,7 @@ must first be coerced apart. This coercion can take place at the interface betwe
 where the slight offset in energy levels creates a charge transfer state wherein it is more
 energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
 it is to radiatively decay to its ground state and photoemit.
-However, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
+This means that, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
 extracted. An exciton can diffuse roughly 10nm before relaxing \cite{clarke2010} \ej{Citation needed. There's some evidence from Bernie Yurke and others that excitons can travel further than 10nm in ordered morphologies, and so this 10nm number is an informed guess based on only opv materials (Maybe some articles by Darling or McGehee can unpack this?), and that perhaps our simulations can help us dispel if untrue.}
 Producing a layer this small is untenable and further a thicker layer
 is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
@@ -145,6 +145,13 @@ extracted. This is, of course, an ideal description. The are loss mechanisms at 
 Engineering the active layer of an OSC materials presents distinct challenges and advantages at
 all four stages. Our work, however,  is most expressely related to stage four in that we seek to simulate free charges moving
 through pure domains of donor or acceptor material. 
+It has been show that the hole/electron mobility of both donor and acceptor material are
+relavant to overall device performance. \cite{Wang2019e}. If electron mobililty is too high
+in acceptor \ej{confusing} in comparison to the hole mobility in the donor, it gets clogged up and you get 
+nongeminate recombination loss\ej{define?}.
+Also, imbalanced charge-carrier mobility can lead to space-charge build up in the low mobilty material that
+can screen the built in field.  \cite{Bartelt2015}. \ej{picture?}
+This phenomena has been shown by space charge limited current eperiments \cite{Small2013}.
 
 The BHJ design pushed the effenciency beyond the 1\% effeiciency milestone. Early BHJ devices utilized
 fullerene derivitives as acceptors. In 2015, a group of researchers conceptulized the use of
@@ -167,14 +174,6 @@ design, it could likely be informative accross all of the aforementioned applica
 \ej{Like above, a bit of whiplash. Maybe get through all this intro first, and THEN explain where our work fits in.} Now, with the free electron bouncing around in the acceptor domain (the hole in the donor) how
 quickly will it diffuse in that environement? This diffusivity, charge mobility, is what can be characterized in experiments and simulations and is one key metric for overall device efficiency.
 %using MorphCT.
-
-It has been show that the hole/electron mobility of both donor and acceptor material are
-relavant to overall device performance. \cite{Wang2019e}. If electron mobililty is too high
-in acceptor \ej{confusing} in comparison to the hole mobility in the donor, it gets clogged up and you get 
-nongeminate recombination loss\ej{define?}.
-Also, imbalanced charge-carrier mobility can lead to space-charge build up in the low mobilty material that
-can screen the built in field.  \cite{Bartelt2015}. \ej{picture?}
-This phenomena has been shown by space charge limited current eperiments \cite{Small2013}.
 
 Taking for granted that electronic devices utilizing OPVs is an exciting
 space, and with the immensity of the parameter space involved in molecular design, we find it highly desirable to have a pipeline through which we can simulate the equilibrium
