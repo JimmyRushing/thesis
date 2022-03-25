@@ -6,9 +6,9 @@ Here is a breakdown of the workflow from MD to charge transport in the order of 
 this work. \ej{Picture building of the general case to show our specific packages or areas of development}
 The theoretical methods and the computation tools used to implement the molecular models are introduced
 below. First, in \autoref{md}, we introduce MD genrally and describe the two distinct means by 
-which the P3HT and ITIC chemistries were obtained. In \autoref{marcus}, the methods used to chop the
+which the P3HT and ITIC chemistries were obtained. In \autoref{marcusmodel}, the methods used to chop the
 results of the MD simulations into chromophores and calculate the rate of hops between chromophores with 
-semiclassical Marcus theory. 
+the combination of Marcus theory and QCC. 
  
 All the tools used to implement, analyze, and
 visualize this work are freely available. \ej{What are their names, where are their repositories, and if they have citations what are those? Put 'em here.}
@@ -84,7 +84,7 @@ With MD simulations we can predict the self-assembly of OPV materials. To connec
 conductivity of the material we use Marcus theory coupled with KMC.
 
 \section{Marcus Model}
-
+\label{marcusmodel}
  Implementing a hopping simulation requires the delineation of
 individual segments of delocalization or chromophores. For polymeric materials like P3HT, MorphCT
 can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
@@ -110,7 +110,7 @@ the KMC results to these parameters individually.
 The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$.
 \subsection{Quantum Chemical Methods}
-At the core of Morphct is the estimation of HOMO (for donor) and LUMO (acceptor). This is because 
+At the core of Morphct is the estimation of the energy level of the HOMO (for donor) or LUMO (acceptor). This is because 
 the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
 determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
 With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
