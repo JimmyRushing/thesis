@@ -73,6 +73,7 @@ electron and the hole it leaves behind in the its molecular orbital
 is given by Coulombs law as follows:
 
 \begin{align}
+    \label{coulomb}
     V  =  k_{e} \cdot \frac{e^{2}}{\epsilon_{r}}
 \end{align}
 
@@ -109,7 +110,6 @@ there
 is a continuous escape route, albeit labyrinthine, for the free charges to travel on their way to their respective
 electrodes. 
 
-
 \begin{figure}
     \center
     \includegraphics[width = .9\textwidth]{figures/BHJ-figure.png}
@@ -124,7 +124,7 @@ electrodes.
 \end{figure}
 
 As shown in \ref{bhj}, a BHJ active layer proceeds through the following four stages: photoabsorbtions, 
-exciton diffusion, charge transfer, and free charge diffusion \citet{Fusella2019}. When a photon is incedent on
+exciton diffusion, charge transfer, and free charge diffusion \cite{Fusella2019}. When a photon is incedent on
 an organic photovoltaic material, if it intersects with a molecular segment whose 
 highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, the energy can be absorbed via the promotion of
 an electron to the next available energy level, the lowest unoccupied molecular orbital (LUMO).
@@ -153,13 +153,21 @@ fullerene derivitives as acceptors. In 2015, a group of researchers conceptulize
 fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
 a fused-ring core and end groups that can be engineered to acheive specific electronic characterstics and side
 chains that can be engineered to achieve desried morphological features. The modularity of FREAs
-layed the stage for headspinning progress in the following years from 4\% PCE to 18\%.
-\cite{Wang2021a}
+layed the stage for headspinning progress in the following years from 4\% PCE to 18\% \cite{Wang2021a}. 
+This designed modularity is a benifit to reseachers, as they can alter one component of the molecule and test
+the effect on resulting charge charactoristics. For example, in a paper published in 2019 \cite{Benatto2019},
+researchers, knowing that flourine is an electronegative atom, swapped 4 hydrogen atoms for flourine atoms on
+the end groups of the ITIC molecule. They found, using DFT, that this substitution could lower the exciton
+binding energy (discussed above using \autoref{coulomb}), thus facilitating exciton dissasociation (stage 3 of
+BHJ). They also found
+that this flourination tends to reduce the reorganization energy, which we see in \autoref{results}, has a
+drastic effect on charge mobility.
 
 However reaching 18 \% effeciency in these devices required rigorous theory and 
 time consuming chemical synthesis
-that unfolded over the course of three decades. \ej{How'd theory play a role?} 
-,
+that unfolded over the course of three decades. The modularity of the FREA design lends itself to the
+kind of computational experimentation explored below. We contend that if not as a substitute for wetlab
+experiments, as a suplimentary tool.  
 
 Taking for granted that electronic devices utilizing OPVs is an exciting
 space, and with the immensity of the parameter space involved in molecular design, it is desirable that a modular
