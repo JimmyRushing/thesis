@@ -168,8 +168,9 @@ This type of molecular tinkering is a critical first step that can lay the groun
 experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
 mirrored in the software used to study them. DFT is prohibitivly slow on the nanometer
 scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend the
-work, and often utilize proprietary software. The software used in this work is maintained in public and in the
-case of MorphCT, which is undergoing active develpment for the express purposes of this thesis, workflows are
+work, and often utilize proprietary software. On the contrary, the software used in this 
+work is maintained in public. In the
+case of MorphCT, actively developed for this thesis, workflows are
 also maintained in public. These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
 
@@ -214,7 +215,7 @@ Two open source python packages for
 facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
 the CMElab github repository \cite{cmelab}.
 The use of Planckton in the methods and results sections below
-constitute the experience of an end user as I had not personally developed this package before conscripting it
+constitute the experience of an end user, as I had not personally developed this package before conscripting it
 to do my MD simulating. Using Planckton-flow (also maintained on github), a sister package
 of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
 molecules on a high performance computing cluster without having to build the software stack or write the
@@ -241,9 +242,10 @@ results. \cite{Cito2016a}
 
 
 In \autoref{results}, we validate our current workflow against a predecessor of the workflow on
-three benchmark MD simulated morpholgies. 
-Following that, again using a benchmark morphology, we test the sensitivity of our KMC algorithm, implemented
-using MorphCT, to a variety of inputs. We conclude \autoref{results} we apply our pipeline to ITIC. 
+three benchmark MD simulated morpholgies of P3HT. 
+Following that, again using P3HT, we test the sensitivity of our KMC algorithm, implemented
+implemented with MorphCT, to a variety of inputs. We conclude \autoref{results} by applying our pipeline,
+start to finish, to ITIC. 
 
 In \autoref{conclusion}, we outline the ramification of \autoref{results} and detail the areas of future
 development of the workflow. 
