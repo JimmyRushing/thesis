@@ -61,20 +61,30 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
-systems. Our MD simulations proceed iteratively by solving Newtons laws of motion
-according to a predefined interatomic interaction potentials. The velocities of molecules are
-updated at each iteration based on these solutions.  Using the canonical ensemble (NVT),
-holding the number of
+systems. MD simulations proceed iteratively by solving Newtons laws of motion
+in accordance with a predefined interatomic interaction potentials.
+At each iteration, the velocities of molecules are
+updated based on this solution and they are pushes and pulled in accordance with
+the interation between neighbors.
+
+Using the canonical ensemble (NVT), holding the number of
 particles, the volume, and the temperature constant allows for the calculation of 
-potential energy of the system. The NVT simulations of ITIC in our work employ a
+potential energy of the system.  Simulations employ a
 Nos\'{e}-Hoover thermostat to maintain the temperature of the simulation. The thermostat in this case keeps
 account of the average kinetic temperature, and if it strays too far from the set temperature of the
 simulation, it nudges all the velocities in the system up or down, bringing the temperature back into an
 acceptable neighborhood of the perscribed simulation temperature \cite{Martyna1994d}\cite{Cao1996}.
 The system is considered equilibrated when the potential energy no longer decreases with time. 
 
-The P3HT MD data was taken off-the-shelf \cite{P3HTData} from researchers who provided it for validation and
-research purposes \cite{Miller2018a}. The ITIC data was generated expressly for use in \autoref{itic}. 
+We procured the P3HT MD data used in this work off-the-shelf \cite{P3HTData}. This data was provided by
+researchers for validation and research purposes \cite{Miller2018}. Using coarse-graining techniques, wherein
+molecular segments are unified and treated as individual beads can lower the computational cost and allow for
+larger and longer simulations. In this particular case, the researchers ran united-atom simlations, which do
+not explicitly keep track of the hydrogens in the simulation but nevertheless accurately predict equilibrium
+geometies. This is achieve with the predifined interatomic potenials (atomistic forcfield file) were adapted
+from the Optimized Potentials for Liquid Simulations United Atom(OPLS-UA).
+
+The ITIC data was generated expressly for use in \autoref{itic}. 
 
 \subsection{MD Software}
 \label{planckton}
