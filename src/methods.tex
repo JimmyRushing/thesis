@@ -84,22 +84,29 @@ not explicitly keep track of the hydrogens in the simulation, but nevertheless a
 geometies. In this case, the fuel for the iterative Newtonian update of positions and velocities 
 was the Optimized Potentials for Liquid Simulations United Atom(OPLS-UA) force field.
 
-The ITIC data was generated expressly for use in \autoref{itic}. 
+The ITIC data was generated expressly for use in \autoref{itic}. In the following section we present the
+procedure by which it was generated. 
 
 \subsection{MD Software}
 \label{planckton}
-Here we introduce the software stack for plankton and also introduce singularity and docker which we can call
-back to when we say morphCT has a FLOW but it needs work in improvements.
-The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry, a high performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
-singularity \cite{singularity2017}, docker \cite{Merkel:2014:DLL:2600239.2600241} and signac \cite{Ramasubramani2018}
+
+The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry, 
+a high performance computing cluster at Boise State University. 
+Planckton-Flow is a dataspace manager that uses
+singularity \cite{singularity2017} and docker \cite{Merkel:2014:DLL:2600239.2600241} 
 to contanerize a package developed to facilitate simulating self-assembly in
-organic photovoltaic materials; Planckton \cite{cmelab}.
-The forcefield description file that acts as
-fuel for the simulation engines mentioned above utilized in this work is the generalized
-Amber force field (GAFF)\cite{Wang2004a}.
+organic photovoltaic materials; Planckton \cite{cmelab}. Docker images are binary files that contain the
+entire software stack necessary to execute some code. This allows researchers to minimize dependency issues
+and increase reproducibility. However, docker has no native support for the use of GPUs and is not
+compatible with the more draconian permissions often present on HPCs. With that, Planckton-flow uses 
+Singularity, software designed to overcome these shortcomings,
+to pull a docker image of Planckton to a container on the server. 
+
+The forcefield used to generate the ITIC data was the Generalized
+Amber Force Field (GAFF)\cite{Wang2004a}.
 The Amber forcefield was designed for use in modeling protein and
-nucleic acid systems.  Serendipitously, the generalized Amber forcefield has parameters for organic molecules
-comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. \ej{So far a description of MD is missing. What happens in an MD simulation? How is it set up? What happens in a step? How long do these things take? What comes out? }
+nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
+comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. 
 
 With MD simulations we can predict the self-assembly of OPV materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with KMC.
