@@ -114,21 +114,20 @@ conductivity of the material we use Marcus theory coupled with KMC.
 \section{Marcus Model}
 \label{marcusmodel}
 
-Implementing a hopping simulation requires the delineation of
+Simulation a charge hopping around a morphology requires delineation of
 individual chromophores and the estimation of the rate at which a charge will hop to neighboring
 chromophores. Each chemistry requires its own justification for which segments in the morphology
-should be considered to harbor a fully delocalized charge. Researchers have previously found that, 
+can be considered to harbor a fully delocalized charge. Researchers have previously found that, 
 despite experimental
 results suggesting that delocalizaion occurs along roughly 7 monomers in P3HT, treating every monomer as a
-chromophore gives accurate results. With ITIC, the frontier molecular orbitals, that is, the HOMO
+chromophore gives accurate results \cite{jones2017}.
+With ITIC, the frontier molecular orbitals, that is, the HOMO
 and LUMO have negligible electron density along the side chains. With that, significant computational resources
-can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
+can be conserved by leaving these atoms out of the of the QCCs. To test this on ITIC, we delineate the
 backbone and the whole molecule and compare carrier mobility in \autoref{itic}. 
 
-\label{marcus}
 The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$,
 is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation:
-
 \begin{align}
     k_{ij}  =  |T_{ij}|^2\ \frac{2\pi}{\hbar \sqrt{4 \pi \lambda_{ij} k_{B} T}}\ \exp{\Bigg[ \frac{(\Delta
     E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
@@ -141,7 +140,9 @@ temperature. These are discussed in further detail in the results section, wheri
 the KMC results to these parameters individually. 
 The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$.
+
 \subsection{Quantum Chemical Methods}
+
 At the core of Morphct is the estimation of the energy level of the HOMO (for donor) or LUMO (acceptor). This is because 
 the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
 determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
