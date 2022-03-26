@@ -2,14 +2,24 @@
 \label{methods}
 \section{Overview}
 
-The theoretical methods and the computation tools used to implement the molecular models are introduced
-below. First, in \autoref{md}, we introduce MD generally and describe the two distinct means by 
-which the P3HT and ITIC chemistries were obtained. In \autoref{marcusmodel}, the methods used to chop the
-results of the MD simulations into chromophores and calculate the rate of hops between chromophores with 
-the combination of Marcus theory and QCC. In \autoref{KMC}, we survey our implementation of the kinetic monte
-carlo algorithm for simulating a charge hopping through the morphology. From that show how we analyze the
-mean squared displacement across thousands of individual hopping trajectories to obtain charge mobility in
-these chemistries. Finally, the package developed to carry out these simulations is introduced.
+In this section we prestent our theoretical methods
+and the computation tools used to implement them.
+
+First, in \autoref{md}, we introduce MD generally and describe the two distinct means by 
+which the P3HT and ITIC chemistries used in this work were obtained. 
+The latter providing a backdrop for an introduction to Planckton in \autoref{planckton}, which
+is a conveniece package for performoing MD simulations of OPVs.
+
+In \autoref{marcusmodel}, we present the methods used to chop the
+results of the MD simulations into chromophores and calculate the rate of hops between chromophores using the combination of Marcus theory and QCC. 
+
+In \autoref{KMC}, we survey our implementation of the kinetic monte
+carlo algorithm for simulating a charge hopping through the chopped up morphology in accordance with its
+Marcus rate. 
+From there, we show that the 
+mean squared displacement across thousands of individual hopping trajectories can provide an accurate charge
+mobility prediction in these chemistries.
+Finally, in \autoref{morph} the package developed to carry out these simulations is introduced.
  
 All the tools used to implement, analyze, and
 visualize this work are freely available. 
@@ -67,7 +77,7 @@ The P3HT MD data was taken off-the-shelf \cite{P3HTData} from researchers who pr
 research purposes \cite{Miller2018a}. The ITIC data was generated expressly for use in \autoref{itic}. 
 
 \subsection{MD Software}
-
+\label{planckton}
 Here we introduce the software stack for plankton and also introduce singularity and docker which we can call
 back to when we say morphCT has a FLOW but it needs work in improvements.
 The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry, a high performance computing cluster at Boise State University. Planckton-Flow is a dataspace manager that uses
@@ -288,7 +298,7 @@ MorphCT utilizes the python multiprocessing module to divide the prescribed numb
 simulated accross all available cores.  
 
 \subsection{KMC software aka MorphCT}
-
+\label{morph}
 MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
 the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}.
 
