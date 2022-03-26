@@ -115,16 +115,17 @@ conductivity of the material we use Marcus theory coupled with KMC.
 \label{marcusmodel}
 
 Implementing a hopping simulation requires the delineation of
-individual chromophores. Each chemistry requires its own justification for which segments in the morphology
-should be considered to harbor a fully delocalized charge. Researchers found that, despite experimental
+individual chromophores and the estimation of the rate at which a charge will hop to neighboring
+chromophores. Each chemistry requires its own justification for which segments in the morphology
+should be considered to harbor a fully delocalized charge. Researchers have previously found that, 
+despite experimental
 results suggesting that delocalizaion occurs along roughly 7 monomers in P3HT, treating every monomer as a
-chromophore gave accurate results. With ITIC, the frontier molecular orbitals, that is, the HOMO
+chromophore gives accurate results. With ITIC, the frontier molecular orbitals, that is, the HOMO
 and LUMO have negligible electron density along the side chains. With that, significant computational resources
 can be conserved by leaving these atoms out of the of the QCC stage. To test this on ITIC we delineate the
-backbone and the whole molecule and compare carrier mobility. 
+backbone and the whole molecule and compare carrier mobility in \autoref{itic}. 
 
- At this stage of the workflow, consideration needs to be
-given to where a charge may delocalize within. \label{marcus}
+\label{marcus}
 The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$,
 is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation:
 
