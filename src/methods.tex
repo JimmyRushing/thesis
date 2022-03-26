@@ -2,16 +2,17 @@
 \label{methods}
 \section{Overview}
 
-Here is a breakdown of the workflow from MD to charge transport in the order of the workflow as we used it in
-this work. \ej{Picture building of the general case to show our specific packages or areas of development}
 The theoretical methods and the computation tools used to implement the molecular models are introduced
-below. First, in \autoref{md}, we introduce MD genrally and describe the two distinct means by 
+below. First, in \autoref{md}, we introduce MD generally and describe the two distinct means by 
 which the P3HT and ITIC chemistries were obtained. In \autoref{marcusmodel}, the methods used to chop the
 results of the MD simulations into chromophores and calculate the rate of hops between chromophores with 
-the combination of Marcus theory and QCC. 
+the combination of Marcus theory and QCC. In \autoref{KMC}, we survey our implementation of the kinetic monte
+carlo algorithm for simulating a charge hopping through the morphology. From that show how we analyze the
+mean squared displacement across thousands of individual hopping trajectories to obtain charge mobility in
+these chemistries. Finally, the package developed to carry out these simulations is introduced.
  
 All the tools used to implement, analyze, and
-visualize this work are freely available. \ej{What are their names, where are their repositories, and if they have citations what are those? Put 'em here.}
+visualize this work are freely available. 
 
 The packages and tools are enumerated in \autoref{packages}.
 \begin{table}[ht]
@@ -50,7 +51,7 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
-systems. The MD simulations proceed iteratively by solving Newtons laws of motion
+systems. Our MD simulations proceed iteratively by solving Newtons laws of motion
 according to a predefined interatomic interaction potentials. The velocities of molecules are
 updated at each iteration based on these solutions.  Using the canonical ensemble (NVT),
 holding the number of
@@ -65,7 +66,7 @@ The system is considered equilibrated when the potential energy no longer decrea
 The P3HT MD data was taken off-the-shelf \cite{P3HTData} from researchers who provided it for validation and
 research purposes \cite{Miller2018a}. The ITIC data was generated expressly for use in \autoref{itic}. 
 
-\subsection{MD Computational Methods}
+\subsection{MD Software}
 
 Here we introduce the software stack for plankton and also introduce singularity and docker which we can call
 back to when we say morphCT has a FLOW but it needs work in improvements.
@@ -212,7 +213,7 @@ With a neighbor list built, a single charges movement through the morphology can
 application of a KMC algorthym.
 
 \section{Kinetic Monte Carlo}
-
+\label{KMC}
 Taking a charge carrier to be a quasi-particle inserted into a MD generated morpholgy, a KMC
 simulation can be run on the bases of the Marcus theory and quantum chemical analysis outlined above. 
 
