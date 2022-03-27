@@ -135,17 +135,30 @@ is estimable by semiclassical Marcus elctron transfer theory and is given by the
 \end{align}
 
 with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
-$\Delta E_{ij}$, $T$ represent th electronic overlap, the reorganization energy, the free energy difference, and
-temperature. These are discussed in further detail in the results section, wherin we test the senseitivity of
-the KMC results to these parameters individually. 
-The accuracy of the marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
-the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$.
+$\Delta E_{ij}$, $T$ represent the electronic overlap, the reorganization energy, the free energy difference
+between chromophores, and
+temperature. These are discussed individually in the results section, wherein we test the sensitivity of
+the KMC results to these parameters individually.
+The accuracy of the Marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
+our work, $\lambda_{ij}$ and $T$ are set as constants. In
+the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$ for all
+potential hops throughout the morphology.
 
 \subsection{Quantum Chemical Methods}
 
-At the core of Morphct is the estimation of the energy level of the HOMO (for donor) or LUMO (acceptor). This is because 
-the inputs into the Marcus hopping equation are the offsets between neighboring  chromophores energy levels
-determine the driving force and the TI is estimated using a dimer method that also uses the homo level. 
+At the core of Marcus hop rate calculation is the estimation of the energy level of the HOMO (for electron
+holes) or LUMO (for electrons). 
+The driving force for the reaction, $\Delta E_{ij}$, is the energy offset between chromophore neighbors, which
+we approximate as the difference between the HOMO (LUMO) energy level as follows:
+\begin{align}
+    \Delta E_{ij} = E_{HOMO, i} - E_{HOMO, j}.
+    \label{gibbs}
+\end{align}
+The estimation of the electronic orbital overlap between chromophores, $T_{ij}$, is acheived by quantifying
+$\Delta E_{ij}$ and comparing that to the difference between the HOMO (LUMO) and HOMO-1 energy levels of a
+dimer consisting of the two chromophores. This approach is referred to as the energy splitting dimer method
+[refs].  
+
 With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
 methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
 calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
