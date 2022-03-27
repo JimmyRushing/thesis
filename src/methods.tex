@@ -151,13 +151,17 @@ holes) or LUMO (for electrons).
 The driving force for the reaction, $\Delta E_{ij}$, is the energy offset between chromophore neighbors, which
 we approximate as the difference between the HOMO (LUMO) energy level as follows:
 \begin{align}
-    \Delta E_{ij} = E_{HOMO, i} - E_{HOMO, j}.
+    \Delta E_{ij} = E_{homo, i} - E_{homo, j}.
     \label{gibbs}
 \end{align}
 The estimation of the electronic orbital overlap between chromophores, $T_{ij}$, is acheived by quantifying
 $\Delta E_{ij}$ and comparing that to the difference between the HOMO (LUMO) and HOMO-1 energy levels of a
-dimer consisting of the two chromophores. This approach is referred to as the energy splitting dimer method
-[refs].  
+dimer consisting of the two chromophores. We write this value as follows: $E_{homo,dimer} - E_{homo-1,dimer}$.
+This approach is referred to as the energy splitting dimer method
+[refs]. An intuiton for why this method works is elusive. However, if we imagine two none interacting
+chromophores, quantifying the HOMO of the indivual chromophores is intutive. But what will be the value of the
+highest occupied molecular orbital of the dimer, $E_{homo,dimer}$, and the the energy level just below that
+energy level, $E_{homo-1,dimer}$?  
 
 With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
 methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
