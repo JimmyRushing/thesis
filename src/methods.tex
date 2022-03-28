@@ -153,16 +153,18 @@ hopping that is going on between chromophores. That is, if an electron hops from
 into the lowest unoccupied molecular orbital (LUMO) of $j$, and out if the
 highest occupied molecular orbital (HOMO) of $i$.  
 
-Assuming a one electron charge transfer reaction, the driving force for 
+With this one electron charge transfer reaction, the driving force for 
 the reaction, $\Delta E_{ij}$, is the difference between the energy that it currently posseses 
-on $i$, and the energy that is will posses over on chromophore $j$. 
-is the energy offset between chromophore neighbors, which
-we approximate as the difference between the HOMO (LUMO) energy level as follows:
+on $i$, and the energy that it could enjoy over on chromophore $j$. 
+This is writtin as follows:
 \begin{align}
-    \Delta E_{ij} = E_{homo, i} - E_{homo, j}.
+    \Delta E_{ij} = E_{homo, i} - E_{homo, j}
     \label{gibbs}
 \end{align}
-The estimation of the electronic orbital overlap between chromophores, $T_{ij}$, is acheived by quantifying
+$T_{ij}$, the electronic orbital overlap between chromophores, can be obtained using 
+the dimer splitting methed [REFS]. This method comares 
+$\Delta E_{ij}$ to the energy the electron occupying the frontier molecular orbitals of a dimer consisting if
+the two chromophores. 
 $\Delta E_{ij}$ and comparing that to the difference between the HOMO (LUMO) and HOMO-1 energy levels of a
 dimer consisting of the two chromophores. We write this value as follows: $E_{homo,dimer} - E_{homo-1,dimer}$.
 This approach is referred to as the energy splitting dimer method
@@ -170,6 +172,20 @@ This approach is referred to as the energy splitting dimer method
 chromophores, quantifying the HOMO of the indivual chromophores is intutive. But what will be the value of the
 highest occupied molecular orbital of the dimer, $E_{homo,dimer}$, and the the energy level just below that
 energy level, $E_{homo-1,dimer}$?  
+
+Solving shrodingers equation across tens of thousands of 
+chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
+justified but drastic simplifications are necessary. Computation of the eigenvalues of the HOMO and HOMO-1
+molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
+the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
+overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
+integral. It is this approximation that allows an estimating of the transfer integral from the calculation of
+the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
+approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
+energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
+mobility from molecular arrangement to good effect \cite{Deng2004}. However, the P3HT morphologies discussed in the evaluation section of the results
+consist of 1000 oligomers of 15 repeating molecular units. 
+
 
 With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
 methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
@@ -199,19 +215,6 @@ was chosen in the interest of reproducability and extensibility. PySCF is implem
 language, which is becoming increasingly ubiquitous in the scientific computing community. Furthermore,
 ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
 creating reproducible results. 
-
-Solving shrodingers equation across tens of thousands of 
-chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
-justified but drastic simplifications are necessary. Computation of the eigenvalues of the HOMO and HOMO-1
-molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
-the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
-overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
-integral. It is this approximation that allows an estimating of the transfer integral from the calculation of
-the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
-approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
-energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
-mobility from molecular arrangement to good effect \cite{Deng2004}. However, the P3HT morphologies discussed in the evaluation section of the results
-consist of 1000 oligomers of 15 repeating molecular units. 
 
 The upperbound of possible pairwise interactions between chromophose is given by the number of combinations of
 $k$ chromophores in a system with $n$ total chromophores is given using `n choose k' notation as follows:
