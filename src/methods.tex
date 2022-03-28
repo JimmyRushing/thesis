@@ -145,11 +145,18 @@ the following section we outline our quantum chemical treatment of both $T_{ij}$
 potential hops throughout the morphology.
 
 \subsection{Quantum Chemical Methods}
-Quantum chemistry allows for the estimation of the descrete energy levels of an electron (hole) whose
-molecular orbital is implied by the chromophores current atomic configuration.
-At the core of Marcus hop rate calculation is the estimation of the energy level of the HOMO (for electron
-holes) or LUMO (for electrons). 
-The driving force for the reaction, $\Delta E_{ij}$, is the energy offset between chromophore neighbors, which
+Electrons (holes) exist at discrete energy levels.
+Quantum chemistry allows for the estimation of the energy levels of electrons (holes) whose
+molecular orbitals are implied by the chromophore's current atomic configuration.
+We assume that the electrons occupying the frontier molecular orbitals are the sole participants in the
+hopping that is going on between chromophores. That is, if an electron hops from $i$ to $j$, it will hop
+into the lowest unoccupied molecular orbital (LUMO) of $j$, and out if the
+highest occupied molecular orbital (HOMO) of $i$.  
+
+Assuming a one electron charge transfer reaction, the driving force for 
+the reaction, $\Delta E_{ij}$, is the difference between the energy that it currently posseses 
+on $i$, and the energy that is will posses over on chromophore $j$. 
+is the energy offset between chromophore neighbors, which
 we approximate as the difference between the HOMO (LUMO) energy level as follows:
 \begin{align}
     \Delta E_{ij} = E_{homo, i} - E_{homo, j}.
