@@ -150,11 +150,11 @@ Quantum chemistry allows for the estimation of the energy levels of electrons (h
 molecular orbitals are implied by the chromophore's current atomic configuration.
 We assume that the electrons occupying the frontier molecular orbitals are the sole participants in the
 hopping that is going on between chromophores. That is, if an electron hops from $i$ to $j$, it will hop
-into the lowest unoccupied molecular orbital (LUMO) of $j$, and out if the
+into the lowest unoccupied molecular orbital (LUMO) of $j$, and out of the
 highest occupied molecular orbital (HOMO) of $i$.  
 
-The driving force for a one electron charge transfer reaction, 
-with rate is described by \autoref{marcus}, is the difference between the energy that our electron 
+The driving force, $\Delta E_{ij}$, for a one electron charge transfer reaction, 
+with a rate described by \autoref{marcus}, is the difference between the energy that our electron 
 currently posseses 
 on $i$, and the energy that it could enjoy over on chromophore $j$. 
 This is writtin as follows:
@@ -162,24 +162,24 @@ This is writtin as follows:
     \Delta E_{ij} = E_{homo, i} - E_{homo, j}.
     \label{gibbs}
 \end{align}
-The value $T_{ij}$ in \autoref{marcus} is a measure of the electronic orbital overlap between chromophores.
+The values $E_{homo, i}$ and $E_{homo, j}$ represent the eigenvalues of the the
+time-independent Shrodinger equation corresponding to the HOMOs of chromophore $i$ and $j$ respectively. 
+In our work, these values are approximated with the MINDO/3 method, a variation of the intermediate neglect of 
+differential overlap (INDO) method. This method seeks recreate the ab initio Hartree-Fock
+results, where Hatree-Fock theory allows for an iteratively convergent numerical solution to the
+Shrodinger equation \cite{Thiel2014}. 
 
-Estimating these values requires a quantum chemical treatment. 
-Computation of the eigenvalues of
-molecular orbitals of the dimer Hamiltonian requires the computation of three integrals: 
-the site energy integral, the transfer integral (electronic overlap), and the overlap integral (physical
-overlap). Neglecting the latter using an implementation of an INDO method can provide an effective transfer
-integral.
-can be obtained using 
-the dimer splitting methed [REFS]. This method comares the difference in energies between an electron
-occupying either chromophore in isolation,
-$\Delta E_{ij}$, to the energy of the electron occupying the frontier molecular orbitals of a dimer
+
+
+The value $T_{ij}$ in \autoref{marcus} is a measure of the electronic orbital overlap between chromophores.
+These values can be obtained using the
+the dimer splitting methed \cite{Huang2005b}. This method comares the HOMO energies for the  chromophores in isolation,
+$\Delta E_{ij}$, to the energies of the frontier molecular orbitals of a dimer
 consisting of the two chromophores. 
-This difference is written as $E_{homo,dimer} - E_{homo-1,dimer}$ where $E_{homo,dimer}$ 
+This difference is written as ($E_{homo,dimer} - E_{homo-1,dimer}$) where $E_{homo,dimer}$ 
 and $E_{homo-1,dimer}$ are the two highest energy occupied molecular orbitals of the dimer.
 
-I found the
-intuition for this method to be elusive. However, if we imagine
+I found the intuition for this method to be elusive. However, if we imagine
 taking the dimer and pulling it apart, the two highest occupied energy levels of the dimer 
 will become the HOMO of their respective chromophore. If the chromophores are not interacting, 
 then the two highest energy molecular orbitals of the dimer will be the HOMO of chromophore $i$ and the 
@@ -187,15 +187,15 @@ HOMO of chromophore $j$. If there is electronic overlap, a comparison bewteen th
 molecular orbitals of the dimer and the HOMOs of the chromophores calculated in isolation can quantify the degree of
 electronic overlap. Indeed, $T_{ij}$ is written as follows:
 \begin{align}
-    T_{ij} = \frac{1}{2}\sqrt{(\Delta E_{ij})^{2} - (E_{homo,dimer} - E_{homo-1,dimer})^{2}}
+    T_{ij} = \frac{1}{2}\sqrt{ (E_{homo,dimer} - E_{homo-1,dimer})^{2} - (\Delta E_{ij})^{2} }
 \end{align}
-
+ 
 Solving shrodingers equation across an entire molecular arrangment. tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
 justified but drastic simplifications are necessary.  It is this approximation that allows an estimating of the transfer integral from the calculation of
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
 approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
-energetics in isolation.  \cite{Huang2005b}. Other studies have implemented DFT at this stage of predicting
+energetics in isolation.  . Other studies have implemented DFT at this stage of predicting
 mobility from molecular arrangement to good effect \cite{Deng2004}. However, the P3HT morphologies discussed in the evaluation section of the results
 consist of 1000 oligomers of 15 repeating molecular units. 
 
@@ -204,8 +204,7 @@ With that said, quantum chemical methods give us a framework from which to estim
 methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
 calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
 leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
-which is an approximation method that seeks recreate the ab initio Hartree-Fock
-results, where the Hatree-Fock theory allows for an iteratively convergent numerical solution to the Shrodinger equation.\cite{Thiel2014}. Calculating electronic structure with this method has
+which is an approximation method Calculating electronic structure with this method has
 shown good agreement with experimental data and more rigorous Quantum chemical
 methods 
 \cite{Bredas2002}. Furthermore, variations in TI do not effect mobility calcs
