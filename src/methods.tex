@@ -191,31 +191,38 @@ electronic overlap. Indeed, $T_{ij}$ is written as follows:
 \end{align}
  
 
-Solving shrodingers equation across an entire molecular arrangment is a prodigious computational lift
-. tens of thousands of 
-chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
-justified but drastic simplifications are necessary.  It is this approximation that allows an estimating of the transfer integral from the calculation of
+Solving shrodingers equation, with any level of accuracy,
+across an entire molecular arrangment is a prodigious computational lift.
+Other studies have implemented DFT at this stage of predicting
+mobility from molecular arrangement to good effect \cite{Deng2004}. These cumbersome ab inito methods are
+untenable on the scale of the morphologies discussed above and, while INDO methods are less precise, the results
+of using this method have shown good agreement with experimental and DFT methods \cite{Bredas2002}. 
+
+The software chosen to implement the MINDO/3 method is
+provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
+was chosen in the interest of reproducability and extensibility. PySCF is implemented almost entirly in the Python 
+language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
+pySCF allowed for the entire QQC code to be implememted in five lines of code. Are natively maintaned package
+MorphCT, discussed in
+\autoref{morph}, creates a chromophore object in memory and asked asks pySCF to approximate the frontier
+energy levels given the chromophore's molecular arrangement.  
+
+Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
+semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
+Their work utilized an earlier version of MorphCT which used the QCC software 
+ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
+ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
+creating reproducible results. This motivated the restructuring of MorphCT for use with pySCF. The
+performance of pySCF and of the current MorphCT workflow is the subject \autoref{results}.
+
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
 approximation, which further neglects the site energy integral, thereby assuming all chromophores have the same
-energetics in isolation.  . Other studies have implemented DFT at this stage of predicting
-mobility from molecular arrangement to good effect \cite{Deng2004}. However, the P3HT morphologies discussed in the evaluation section of the results
+energetics in isolation.  . However, the P3HT morphologies discussed in the evaluation section of the results
 consist of 1000 oligomers of 15 repeating molecular units. 
 
 
-With that said, quantum chemical methods give us a framework from which to estimate the homo/lumos. A litany of
-methods that use approximations and parameterizations to transform cumbersome ab initio quantum mechanical 
-calculations into efficient algorithms for determining the electronic structure of a given compound. Morpcht 
-leverages MINDO/3, a variation of the INDO(Intermediate Neglect of Differential Overlap) method,
-which is an approximation method Calculating electronic structure with this method has
-shown good agreement with experimental data and more rigorous Quantum chemical
-methods 
-\cite{Bredas2002}. Furthermore, variations in TI do not effect mobility calcs
-that much (one of evans papers said this).  Results
-from the this work compare well to jones2017 which implemented ZINDO/s, another
-semi-empirical method. The
-previous version of MorphCT utilized ORCA \cite{Neese2012b}to provide the quantum chemical
-approximations required to implement
-a hopping model of charge transport. Jones2017 showed that with this you can connect MD
+. Furthermore, variations in TI do not effect mobility calcs
+that much (one of evans papers said this).   Jones2017 showed that with this you can connect MD
 provided morphology to charge transport characteristics. A particular 
 choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
 workflow modularly. This is because the quantum computational chemistry is a nascent and evolving field of its
@@ -223,12 +230,7 @@ own, with quickly increasing efficiencies and accuracies. Therefor, an important
 deintigrate and reintigrate a QCC software, tests its efficiency and accuracy, and do it in a way that lays
 the groundwork to upgrade or swap it as better options emerge?". 
 
-The software chosen to implement this method is
-provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
-was chosen in the interest of reproducability and extensibility. PySCF is implemented almost entirly in the Python 
-language, which is becoming increasingly ubiquitous in the scientific computing community. Furthermore,
-ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
-creating reproducible results. 
+ 
 
 The upperbound of possible pairwise interactions between chromophose is given by the number of combinations of
 $k$ chromophores in a system with $n$ total chromophores is given using `n choose k' notation as follows:
