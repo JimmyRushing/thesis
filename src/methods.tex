@@ -153,44 +153,46 @@ hopping that is going on between chromophores. That is, if an electron hops from
 into the lowest unoccupied molecular orbital (LUMO) of $j$, and out of the
 highest occupied molecular orbital (HOMO) of $i$.  
 
-The driving force, $\Delta E_{ij}$, for a one electron charge transfer reaction, 
+The driving force for a one electron charge transfer reaction, 
 with a rate described by \autoref{marcus}, is the difference between the energy that our electron 
 currently posseses 
-on $i$, and the energy that it could enjoy over on chromophore $j$. 
+on chromophore $i$, and the energy that it could enjoy over on chromophore $j$. 
 This is writtin as follows:
 \begin{align}
     \Delta E_{ij} = E_{homo, i} - E_{homo, j}.
     \label{gibbs}
 \end{align}
-The values $E_{homo, i}$ and $E_{homo, j}$ represent the eigenvalues of the the
+Quantum chemically, the values $E_{homo, i}$ and $E_{homo, j}$ represent the eigenvalues of the the
 time-independent Shrodinger equation corresponding to the HOMOs of chromophore $i$ and $j$ respectively. 
 In our work, these values are approximated with the MINDO/3 method, a variation of the intermediate neglect of 
 differential overlap (INDO) method. This method seeks recreate the ab initio Hartree-Fock
 results, where Hatree-Fock theory allows for an iteratively convergent numerical solution to the
 Shrodinger equation \cite{Thiel2014}. 
 
-
-
 The value $T_{ij}$ in \autoref{marcus} is a measure of the electronic orbital overlap between chromophores.
-These values can be obtained using the
-the dimer splitting methed \cite{Huang2005b}. This method comares the HOMO energies for the  chromophores in isolation,
-$\Delta E_{ij}$, to the energies of the frontier molecular orbitals of a dimer
+This values can be obtained using the
+the dimer splitting methed \cite{Huang2005b}. This method comares the HOMO energies of chromophores $i$ and
+$j$ in isolation to the energies of the frontier molecular orbitals of a dimer
 consisting of the two chromophores. 
 This difference is written as ($E_{homo,dimer} - E_{homo-1,dimer}$) where $E_{homo,dimer}$ 
-and $E_{homo-1,dimer}$ are the two highest energy occupied molecular orbitals of the dimer.
+and $E_{homo-1,dimer}$ are the two highest energy occupied molecular orbitals of the dimer. MINDO/3 is used
+again to approximate the eigenvalues of the frontier molecular orbitals, but this time of the dimer
+Hamiltonian. 
 
 I found the intuition for this method to be elusive. However, if we imagine
-taking the dimer and pulling it apart, the two highest occupied energy levels of the dimer 
-will become the HOMO of their respective chromophore. If the chromophores are not interacting, 
+taking the dimer and pulling it apart, these two highest occupied energy levels of the dimer 
+will become the HOMOs of their respective chromophore. If the chromophores are not interacting, 
 then the two highest energy molecular orbitals of the dimer will be the HOMO of chromophore $i$ and the 
 HOMO of chromophore $j$. If there is electronic overlap, a comparison bewteen the two highest occupied
 molecular orbitals of the dimer and the HOMOs of the chromophores calculated in isolation can quantify the degree of
 electronic overlap. Indeed, $T_{ij}$ is written as follows:
 \begin{align}
-    T_{ij} = \frac{1}{2}\sqrt{ (E_{homo,dimer} - E_{homo-1,dimer})^{2} - (\Delta E_{ij})^{2} }
+    T_{ij} = \frac{1}{2}\sqrt{ (E_{homo,dimer} - E_{homo-1,dimer})^{2} - (\Delta E_{ij})^{2} }.
 \end{align}
  
-Solving shrodingers equation across an entire molecular arrangment. tens of thousands of 
+
+Solving shrodingers equation across an entire molecular arrangment is a prodigious computational lift
+. tens of thousands of 
 chromophores, which will be required to model an OPV material on the order of 10 nm, is untenable. Therefore
 justified but drastic simplifications are necessary.  It is this approximation that allows an estimating of the transfer integral from the calculation of
 the dimer splitting energy and the site energy. A further approximation, which is more relevant for highly regular chromopheres is Koopman's
