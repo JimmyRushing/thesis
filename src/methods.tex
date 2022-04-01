@@ -300,12 +300,16 @@ to $113,315$.
   \label{fig:dcut}
 \end{figure}
 
-However as can seen from the figure, two points can share cell edges despite being rather far apart. We
-therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
-to assume they do not interact electronically enough to effect to charge mobility calculation. This parameter will
-depend on the material under investigation as was as the size of the individual chromophores. We tested the
-sensitivity of the algorithm to the value (dcut). The figure shows the effect of cutoff distance on value of
-calculated mobility. There is a diminishing return on computation around dcut 10. 
+An artifact of constructing nieghborlists in this way is that some
+neighbors are too far apart to interact electronically, but are nevertheless closer to each other than they
+are to any other chromophores and are therefore counted as neighbors. This means that we will be doing
+superflous QQC compuation on
+these pairs despite the fact that no hopping will take place between them.
+In light of this, we introduce a parameter by which we further pare down the neighbor list. This parameter is
+a naive cutoff distance, referred to as `dcut' in this thesis. 
+A proper choice of `dcut' will
+depend on the material under investigation, as the size of the individual chromophores will vary. In 
+\autoref{dcutresults}, we test the sensitiviy of our results to the choice of `dcut.' 
 
 \autoref{fig:dcut} shows a example dcut radaii. Note that
 the z-direction has been collapsed, and the distances do not necessarily correlate to the distance

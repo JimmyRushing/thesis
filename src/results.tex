@@ -127,12 +127,10 @@ The sensitivity of the algorithm to various parameter was performed on the bench
 morphology.
 
 \subsection{Neighbor Cutoff (dcut)}
-
+\label{dcutresults}
 Voronoi analysis allows for the computationally efficient partitioning of space into
 polyhedra chromophore cells. In this context, chromophore $i$ is the neighbor of chromophore $j$ if they
-share a boundary with one another. An artifact of constructing nieghborlists in this way is that some
-neighbors are too far apart to interact electronically, but are nevertheless closer to each other than they
-are to any other chromophores and are therefore counted as neighbors. 
+share a boundary with one another.  
 This phenomena is illustrated in figure \ref{fig:dcut} 
 
 \begin{table}[ht]
@@ -151,6 +149,8 @@ $\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17 \cdot 10^{-6}$ & $6.13 \cdot 10^{-4}$ & .01 & .
 \label{table:dcut-sense} % is used to refer this table in the text
 \end{table}
 
+The figure shows the effect of cutoff distance on value of
+calculated mobility. There is a diminishing return on computation around dcut 10. 
 
 With each chromophore pair requiring a relatively costly QCC, after narrowing down the chromophore pairs with voronoi, it
 could be
