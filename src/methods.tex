@@ -278,26 +278,18 @@ this sort are known to scale with $O(n\log{n})$ in the worst case and as low as 
 In the 3D case, this analysis reduced the pairwise calculation from ${15000 \choose 2} = 112,492,500$
 to $113,315$. 
 
-to do the dimer calculation described above requires the use of an effecient algorithim for neighbor finding.
-Now, assigning each molecular unit as a chromophore
-gives 15000 indivual QQC calculations and as many as dimer QCC calculations. As not all chromophores can be expected to interact electronically,
-the latter can be drastically lowered through informed neighborlisting based on spaial proximity as we describe
-in the following section. Nevertheless, with the volume of calculations necessary to simulate materials into the
-nanometer range, DFT is prohibitively slow. 
-
-
 
 \begin{figure}
   \center
 %\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
   \includegraphics[width=0.99\linewidth]{figures/crystalline_voronoi_smaller.png} 
  % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
-  \caption{2D Voronoi}
+  \caption{A 2D Voronoi diagram that was drawn from the xy components of a crystalline P3HT morphology. Dots
+    represent chromopore centers. Lines represent points that are equidistant to the chromophore centers.
+    Polygons represent all points that are closer to the chromophore center contained within than any other
+    chromophore center. The red square is zoomed in and discussed in \autoref{dcut}}
   \label{fig:2d}
 \end{figure}
-
-A place to mention grits and VMD for chromophore delineation. Having made a choice about where chromoohores
-are locatied in the morph we then need to build a neighborlist. 
 
 However as can seen from the figure, two points can share cell edges despite being rather far apart. We
 therefore, further remove pairs from the neighborlist if they are far enough apart such that it is justifyable
