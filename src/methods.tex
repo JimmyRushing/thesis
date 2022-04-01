@@ -127,10 +127,19 @@ can be considered to harbor a fully delocalized charge. Researchers have previou
 despite experimental
 results suggesting that delocalizaion occurs along roughly 7 monomers in P3HT, treating every monomer as a
 chromophore gives accurate results \cite{jones2017}.
+
 With ITIC, the frontier molecular orbitals, that is, the HOMO
 and LUMO have negligible electron density along the side chains. With that, significant computational resources
 can be conserved by leaving these atoms out of the of the QCCs. To test this on ITIC, we delineate the
 backbone and the whole molecule and compare carrier mobility in \autoref{itic}. 
+
+Deciding where a chromophore should be expected is one step in the workflow that requires nuance and
+scientific justifications. However, after that decision has been made, a significant hurdle to the aspiring
+researcher remains. Every atom in the MD morphology has a unique index. All of the methods that follow hinge
+on assigning the prescribed atom indices to their respective chromophore. This task is perfunctory
+but nontrivial. In this work, we manually index these chromophores. The visualization software VMD has proven
+adjuvant to this process. For this thesis, a tutorial for using VMDs graphical user interface to visually select the desired
+atoms indices and save them as a numpy array is maintained on the MorphCT github [gotta reference all this]. 
 
 The rate at which a charge will hop from chromophore $i$ to chromophore $j$, $k_{ij}$,
 is estimable by semiclassical Marcus elctron transfer theory and is given by the following equation:
@@ -248,32 +257,30 @@ which chromophore pairs to consider using Voronoi analysis.
 
 To minimize the number of dimer calculations, we use Vornoi analysis to locate the spatially
 nearest neighboring chromophores. This analysis is performed on the cartesian coordinates of
-the geometric center of the chromphore.
+the geometric center of the chromophore. With that, a polyhedron cell is constructed around this geometric
+center. The polyhedron cell consists of every point in space that is closer to that chromophore center than
+any other chromophore center.  
 
-As a demonstration, we describe and visualize the voronoi analysis of the xy components of the these
-coordinates for the crystalline P3HT system described in \autoref{md}. 
+For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
+of the crystalline P3HT system described in \autoref{md}. To carry out this analysis MorphCT incorperates the
+Voronoi class provided by Freud; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
+This class is compatible with 2D or 3D simulation data. 
 
-This 2D analogue works the same way but it is more easily visualized.
-of voronoi analysis of an MD simulation data, we visualize a 2D voronoi analysis
-of the 
-In \autoref{fig:ln}, 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
-in the xy-plane.Here,
-a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
-center than any other chromophore center. Euclidean space searching algorithms of
+Shown in \autoref{fig:ln}, 15,000 thousand dots represent the chromophore's geometric centers projected
+in the xy-plane. In this 2D analogue,
+cell edges are drawn in a Euclidean way, with lines between polygons representing the set of points 
+equidistant from a point and its geometrically closest neighbor across the line. 
+
+Euclidean space searching algorithms of
 this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
 \cite{Bentley1980}.
-Here, the
-cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
-and its geometrically closest neighbor across the line. 
 
-MorphCT incorperates a module from the Freud
-
-Voronoi analysis is performed on the morphology prior to the to find
+In the 3D case, this analysis reduced the pairwise calculation from ${15000 \choose 2} = 112,492,500$
+to $113,315$. 
 
 to do the dimer calculation described above requires the use of an effecient algorithim for neighbor finding.
 Now, assigning each molecular unit as a chromophore
-gives 15000 indivual QQC calculations and as many as ${15000 \choose 2} = 112,492,500$
-dimer QCC calculations. As not all chromophores can be expected to interact electronically,
+gives 15000 indivual QQC calculations and as many as dimer QCC calculations. As not all chromophores can be expected to interact electronically,
 the latter can be drastically lowered through informed neighborlisting based on spaial proximity as we describe
 in the following section. Nevertheless, with the volume of calculations necessary to simulate materials into the
 nanometer range, DFT is prohibitively slow. 
@@ -288,9 +295,6 @@ nanometer range, DFT is prohibitively slow.
   \caption{2D Voronoi}
   \label{fig:2d}
 \end{figure}
-
-After chopping up the morphology into chromophores, we are required to perform some neighborlisting prior to
-QCC.  
 
 A place to mention grits and VMD for chromophore delineation. Having made a choice about where chromoohores
 are locatied in the morph we then need to build a neighborlist. 
