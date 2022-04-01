@@ -167,20 +167,7 @@ the length of the simulation box, rendering it effectively moot.
 If, in the future, more computationally expensive methods are incorperated into the QCC step, or chromophores in other
 organic materials are a heavier lift PySCF, it could be benificial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
 material its at a discount to do some preliminary analysis to determine an apporiate value. We tested the
-sensitivity of the algorithm to the value (dcut). The [zoomed figure] Shows a example dcut radaii. Note that
-the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
-between chromophores in the system. The figure shows the effect of cutoff distance on value of
-16 calculated mobility.
-
-
-\begin{figure}
-  \center
-  \includegraphics[width=\linewidth]{figures/crystalline_voronoi_d_cut_circles.png} 
-  \caption{Zoomed section of FIGURE IN METHODS wherein we see a cartoonized version of a dcut radius cutoff
-    used to suppliment Voronoi analysis}
-  \label{fig:dcut}
-\end{figure}
-
+sensitivity of the algorithm to the value (dcut). 
 
 \subsection{Reorganization energy}
 
