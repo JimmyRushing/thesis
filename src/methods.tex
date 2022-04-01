@@ -247,21 +247,26 @@ which chromophore pairs to consider using Voronoi analysis.
 \subsection{Voronoi Analysis}
 
 To minimize the number of dimer calculations, we use Vornoi analysis to locate the spatially
-nearest neighboring chromophores. 
-We categorize chromophores as
-neihgbors if they share an edge in the voronoi cells around the geometric center of the chromphore. Here, the
-cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
-and its geometrically closest neighbor across the line. This analysis takes place in three dimensions.
+nearest neighboring chromophores. This analysis is performed on the cartesian coordinates of
+the geometric center of the chromphore.
 
-As a demonstration of voronoi analysis of an MD simulation data, we visualize a 2D voronoi analysis of the 
-crystalline 
-P3HT system described in \autoref{md}.
+As a demonstration, we describe and visualize the voronoi analysis of the xy components of the these
+coordinates for the crystalline P3HT system described in \autoref{md}. 
+
+This 2D analogue works the same way but it is more easily visualized.
+of voronoi analysis of an MD simulation data, we visualize a 2D voronoi analysis
+of the 
 In \autoref{fig:ln}, 15,000 thousand dots represent the single-monomer chromophore's geometric centers projected
 in the xy-plane.Here,
 a voronoi cell for any given chromophore center is the set of points that are closer to that chromophore
 center than any other chromophore center. Euclidean space searching algorithms of
 this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
 \cite{Bentley1980}.
+Here, the
+cell edges are drawn in a Euclidean way, with lines representing the set of points equidistant from a point
+and its geometrically closest neighbor across the line. 
+
+MorphCT incorperates a module from the Freud
 
 Voronoi analysis is performed on the morphology prior to the to find
 
