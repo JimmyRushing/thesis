@@ -323,26 +323,32 @@ data. From this testing, we consider if the juice is worth dcut's radial squeeze
 \section{Kinetic Monte Carlo}
 \label{KMC}
 
-With the MD data generated, chopped into individual chromophores, chromophores and chromophore pair energetics
-quantified, a single charges movement through the morphology can be simulatied with the
+With the MD data generated, the data chopped into individual chromophores, 
+the chromophores and chromophore pair energetics
+quantified with QCC, and the Marcus hop rate calculated, 
+a single charges movement through the morphology can be simulatied with the
 application of a KMC algorthim.
-Taking a charge carrier to be a quasi-particle inserted into a MD generated morpholgy, a KMC
-simulation can be run on the bases of the Marcus theory and quantum chemical analysis outlined above. 
 
-With each chromophore taken to be a discrete object, both in python, and with respect to its frontier
-molecular orbitals, a charge hopping (transfering) from an excited chromophore to a neighboring chromophore can be modeled
-as a discrete event.
+Monte Carlo algorithms use pseudorandom numbers to solve computational problems. Our implementation can be
+described as a first choice method KMC algorithm, where the kinetics involved is the rate of one electron
+charge transfer reactions and the first choice is that of the fastest available hop for a given charge.
 
-Taking \autoref{marcus} to be an
-accurate rate of the electron transfer reaction, we implant a charge randomly into the morphology, calculate
-the rate of all possible hops(events)
-and put them in order of quickest to slowest to form a queue. The hop rate, $k_{ij}$, from the occupied chromophore to any
-given neighbering chromophore is taken to be
+Using MorphCT, a charge is implanted as quasi-particle into a random chromophore within 
+the morphology. In this model, we assume that the only events that can take place in the system are hops
+between chromophores. With this, the rate of all possible events in the system are known and are given by
+\autoref{marcus}. 
+
+With the charge implanted, the hop rate, $k_{ij}$, from the occupied chromophore to any
+given neighboring chromophore is taken to be
 inversely proportional to the amount of time, $\tau$, that the system will have to wait before that hop will
-take place. However, hopping processes at the angstrom level do not proceed deterministically. 
+take place. The $\tau$ of all available hops froms a queue of hops from shortest wait time, fastest hop, to
+longest wait time, slowest hop. From this queue, the shortest wait time (first choice) can be selected
+and the system can be moved forward in time by $\tau$.
+
+However, hopping processes at the angstrom level do not proceed deterministically. 
 Our implementation, and others like it [NEED REFS?], have
-successfully captured the stochasticiity of these systems via a shuffling hopping queue.
-The wait time for every potential hop from occupied chromophore $i$ onto a
+successfully captured the stochasticiity of these systems via a shuffling our hopping queue.
+The shuffled wait time for every potential hop from occupied chromophore $i$ onto a
 neighboring chromophore $j$ looks as follows:
 
 \begin{align}
