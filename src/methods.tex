@@ -377,14 +377,20 @@ single KMC simulations to obtatin macroscopic charge mobility is the subject of 
 
 \subsection{KMC analysis}
 
+MorphCT allows for the creation of a system object that holds all the information necesarry to carry out the
+KMC simulations outlined above. Running the simulation requires the choice of three system parameters: the
+KMC temperature, the carrier liftimes, and the number of indivual KMC simulations to perform.
+
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
-each specified lifetime, a prescribed number individual KMC simulations is run as described above. When a
+each specified lifetime, the prescribed number of individual KMC simulations is run as described above. When a
 given charge carrier hops past the specified lifetime, that is, the addition of the current iterations $\tau$ advances
-the simulation beyond the specified lifetime,  its displacement from its starting location is stored in the carrier object. After repeating this over a
+the simulation beyond the specified lifetime, 
+its displacement from its starting location is stored in the carrier object. After repeating this over a
 statistically significant number of carriers, the carrier data can be aggregated and the mean squared
-displacement(MSD) for a particle in the system and that lifetime can be estimated.
+displacement(MSD) for particles over that amount of time can be estimated.
+
 It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
-The slope of the MSD, $D$,  as time
+The slope of the MSD, $D$, as time
 goes to inifinity can be estimated as a linear fit between the MSD's at the specified lifetimes.
 
 There is no objective best practice for determing the slope of the MSD as
