@@ -259,24 +259,23 @@ To minimize the number of dimer calculations, we use Vornoi analysis to locate t
 nearest neighboring chromophores. This analysis is performed on the cartesian coordinates of
 the geometric center of the chromophore. With that, a polyhedron cell is constructed around this geometric
 center. The polyhedron cell consists of every point in space that is closer to that chromophore center than
-any other chromophore center.  
+any other chromophore center. Chromophores are considered neighbors if their voronoi cells abut one another.
 
 For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
-of the crystalline P3HT system described in \autoref{md}. To carry out this analysis MorphCT incorperates the
+of the crystalline P3HT system described in \autoref{md}. To carry out this analysis, MorphCT incorperates the
 Voronoi class provided by Freud; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
 This class is compatible with 2D or 3D simulation data. 
 
 Shown in \autoref{fig:ln}, 15,000 thousand dots represent the chromophore's geometric centers projected
 in the xy-plane. In this 2D analogue,
 cell edges are drawn in a Euclidean way, with lines between polygons representing the set of points 
-equidistant from a point and its geometrically closest neighbor across the line. 
-
-Euclidean space searching algorithms of
-this sort are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
-\cite{Bentley1980}.
-
+equidistant from that point and its geometrically closest neighbor across the line. 
 In the 3D case, this analysis reduced the pairwise calculation from ${15000 \choose 2} = 112,492,500$
 to $113,315$. 
+
+Euclidean space searching algorithms of this sort are an effecient way to parse space. 
+They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
+\cite{Bentley1980}.
 
 
 \begin{figure}
@@ -296,32 +295,37 @@ to $113,315$.
   \includegraphics[width=\linewidth]{figures/crystalline_voronoi_d_cut_circles.png} 
     \caption{Zoomed section of \autoref{fig:2d} wherein we see a cartoonized version of a dcut radius cutoff
     used to suppliment Voronoi analysis. Circles represent the neighbor cutoff
-    radius(dcut) beyond which we truncate chromophores from the neighborlist.}
+    radius(dcut) beyond which we truncate chromophores from the neighborlist.
+    Cells are colored by number of neighbors.}
   \label{fig:dcut}
 \end{figure}
 
-An artifact of constructing nieghborlists in this way is that some
+However, artifact of constructing nieghborlists in this way is that some
 neighbors are too far apart to interact electronically, but are nevertheless closer to each other than they
-are to any other chromophores and are therefore counted as neighbors. This means that we will be doing
-superflous QQC compuation on
-these pairs despite the fact that no hopping will take place between them.
+are to any other chromophores and are therefore counted as neighbors. 
+Inspection of \autoref{fig:dcut} reveals how this phenomena can arise from this type of construction.
+Because charges will not hop between these pairs, including them in the pair list will result in 
+superfluous QCCs. 
+
 In light of this, we introduce a parameter by which we further pare down the neighbor list. This parameter is
-a naive cutoff distance, referred to as `dcut' in this thesis. 
-A proper choice of `dcut' will
-depend on the material under investigation, as the size of the individual chromophores will vary. In 
-\autoref{dcutresults}, we test the sensitiviy of our results to the choice of `dcut.' 
+a naive cutoff distance, referred to as `dcut' in this thesis. We visualize various dcut values as black
+circles in \autoref{fig:dcut}.
+It is clear from this image that the choice of dcut is could drastically effect the
+neighborlist.  
+Note that the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
+between chromophores in the system.
 
-\autoref{fig:dcut} shows a example dcut radaii. Note that
-the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
-between chromophores in the system. The figure shows the effect of cutoff distance on value of
-16 calculated mobility.
-
-Utilizing the freud.locality.Voronoi() 
-With a neighbor list built, a single charges movement through the morphology can be simulatied with the
-application of a KMC algorthym.
+A proper choice of dcut will depend on the material under investigation, 
+as the size of the individual chromophores will vary. In 
+\autoref{dcutresults}, we test the sensitiviy of our results to the value of dcut for the crystalline P3HT
+data. From this testing, we consider if the juice is worth dcut's radial squeeze from a computational standpoint. 
 
 \section{Kinetic Monte Carlo}
 \label{KMC}
+
+With the MD data generated, chopped into individual chromophores, chromophores and chromophore pair energetics
+quantified, a single charges movement through the morphology can be simulatied with the
+application of a KMC algorthim.
 Taking a charge carrier to be a quasi-particle inserted into a MD generated morpholgy, a KMC
 simulation can be run on the bases of the Marcus theory and quantum chemical analysis outlined above. 
 
