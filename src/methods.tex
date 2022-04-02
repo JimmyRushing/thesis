@@ -370,7 +370,8 @@ the queue.
 
 From the rationally shuffled queue, the shortest waittime is chosen and the charge is moved to
 its new chromophore host. The system is then considered to have moved forward in time by $\tau$. This proceeds
-until the charge carrier stalls out or hops past a prespecified lifetime. 
+until the charge carrier stalls out or hops past a prespecified lifetime. How we aggregate data from 1000's of
+single KMC simulations to obtatin macroscopic charge mobility is the subject of the following section.
 
 
 
@@ -403,8 +404,11 @@ constant and $T$ is temperature.
 A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
 to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
-simulated accross all available cores. MorphCT takes GSD files which are
-the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}.
+simulated accross all available cores.
+
+MorphCT takes GSD files which are
+the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a} which is the scaffolding of
+Planckton.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
