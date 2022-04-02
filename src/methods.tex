@@ -341,7 +341,7 @@ between chromophores. With this, the rate of all possible events in the system a
 With the charge implanted, the hop rate, $k_{ij}$, from the occupied chromophore to any
 given neighboring chromophore is taken to be
 inversely proportional to the amount of time, $\tau$, that the system will have to wait before that hop will
-take place. The $\tau$ of all available hops froms a queue of hops from shortest wait time, fastest hop, to
+take place. The $\tau$ of all available hops forms a queue of hops from shortest wait time, fastest hop, to
 longest wait time, slowest hop. From this queue, the shortest wait time (first choice) can be selected
 and the system can be moved forward in time by $\tau$.
 
@@ -403,15 +403,8 @@ constant and $T$ is temperature.
 A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
 to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
-simulated accross all available cores.  
-
-\subsection{KMC software aka MorphCT}
-\label{morph}
-MorphCT is developed to facilitate charge characterization of morphological data. It takes GSD files which are
+simulated accross all available cores. MorphCT takes GSD files which are
 the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a}.
-For polymeric materials like P3HT, MorphCT
-can identify chromophores with a provided SMILES string. For less regular molecules, explicitly delineating
-which atoms belong to which chromophores is required.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
