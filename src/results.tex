@@ -96,7 +96,7 @@ center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
 requires the use of an iterative algorithm. For this we employ KMC simulations.
 
-\section{ZINDO(ORCA) vs MINDO(PySCF)}
+\section{Mobility(PySCF vs ORCA)}
 
 \begin{table}[ht]
     \caption{Mobility $cm^{2}/Vs$} % title of Table
@@ -106,14 +106,28 @@ requires the use of an iterative algorithm. For this we employ KMC simulations.
 Software & Amorphous & Semi-crystalline & Crystalline \\ [0.5ex] % inserts table
 %heading
 \hline % inserts single horizontal line
-    ORCA & $0.1085 \pm 0.0006$ & $0.0156 \pm 0.0003$ & $0.123 \pm 0.001$ \\ % inserting body of the table
-PySCF & $.0018 \pm .000001$ & $.00148 \pm .000001$ & $.206 \pm 0.0001$ \\ [1ex] % [1ex] adds vertical space
+    ORCA & $(1.085 \pm 0.006)\cdot 10^{-1}$ & $(0.156 \pm 0.003)\cdot 10^{-1}$ & $(1.23 \pm 0.01)\cdot 10^{-1}$ \\ % inserting body of the table
+PySCF & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ & $(2.061 \pm 0.001)\cdot 10^{-1}$  \\ [1ex] % [1ex] adds vertical space
 \hline %inserts single line
 \end{tabular}
 \label{table:nonlin} % is used to refer this table in the text
 \end{table}
 
-The results in \ref{table:nonlin} for PySCF were run with a dcut 12. With dcut 10, the crystalline mobility
+Having explored the performance of PySCF on the level of the molecule, we graduate these computations to the
+macroscopic scale with MorphCT to obtain charge mobility. As outlined in \autoref{methods}, a predecssor to
+this work has provided benchmark morphologies and the associated mobilites for these purposes. 
+
+The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
+the QCC calculation, and the charge mobility obtained using using the current workflow, which uses PySCF. 
+The previous work found that charge mobility is highest for the crystalline morphology, followed by the
+amorphous, and finally the semicrystalline. This seemingly anomolous behavoir can be explained. While the
+semicrystalline morphology has more ordered high speed highways of transport, the anisotropic movement
+inhibits average displacement. This anisotropy is
+
+Our work replicates this trend. However, the absolute value of charge mobility is only an order of magnitude
+match for the crystalline morphology. 
+
+for PySCF were run with a dcut 12. With dcut 10, the crystalline mobility
 moves to .15 which is closer to mattys. Waiting on the dcut 10 for the others (semi and disordered). Im very
 curious was that will do to their mobilities. All this exploration tells me the workflow is almost two
 different things for highly conjugated polyers than it is for amorphous materials. Could a higher dcut in the
