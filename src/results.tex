@@ -3,6 +3,17 @@
 
 \section{Summary}
 
+The results of this work are presented in four parts. 
+
+In \autoref{qccresults}, we use MorphCT to test the performance of PySCF at the level of the chromophore.
+Two experiments are reported. In the first, we calculate the frontier molecular orbital
+energies for fused ring oligomers of increasing length. We compare the results of our experiment to the
+results of the same experiment done with more rigerous DFT methods. In the second, we test the 
+performance of the PySCF dimer calcualtions outlined in \autoref{methods}. 
+We take two simple chromophores, two thiophene rings, in 4300 different oreintations and calculate the
+electronic coupling between them. We do so to test if our dimer calculation correlates sensibly to the angle
+and distance between chromophores.  
+
 The performance of morphct at the quantum chemical level is explored \ej{Finish this thought.}
 
 Sensitivity testing on benchmark P3HT morphology provided by the Evan and matty work \ej{Cite}can was finegrained and
@@ -25,6 +36,8 @@ leg of the workflow. We have also had success with Grits and smarts matching to 
 out the morphology. 
 
 \section{Quantum Chemical Accuracy}
+
+\label{qccresults}
 
 As a first foray into the performance of PySCF, which we outsource our QCC to, we performed two experiments.
 \ej{A better sentence structure might be something like ``To evaluate pySCF's suitability for X we perform two sets of experiments: (1) Comparing the HOMO-LUMO gap against Y, and (2) comparing the electronic overlap ($T_{ij}$) from the dimer splitting method against Z (ORCA calcs?).''}
