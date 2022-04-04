@@ -21,8 +21,8 @@ validate the current implementation of MorphCT against a previous implementation
 
 In \autoref{transport}, we test the sensitivity of our MorphCT calculated mobilites to dcut, chromophore
 reorganization energy, KMC temperature, and choice of charge carrier lifetimes for MSD analysis. Using a
-benchmark P3HT morphology, and holding all other parameters constant and doing sweeps of these 
-values individually provides context for how treat these parameters in future investigations. 
+benchmark P3HT morphology, holding all other parameters constant and sweeping accross relevant values of these
+values these provides context for how to treat these parameters in future investigations. 
 
 In \autoref{itic}, we present the results of an investigation of ITIC from molecular structure to MD predicted
 morphology to KMC predicted charge mobility. We use this oppurtunity to explore the TRUEness of MorphCT as
@@ -32,13 +32,13 @@ well as the comprehensive workflow.
 
 \label{qccresults}
 
-As a first foray into the performance of PySCF, which we outsource our QCC to, we performed two experiments.
 \ej{A better sentence structure might be something like ``To evaluate pySCF's suitability for X we perform two sets of experiments: (1) Comparing the HOMO-LUMO gap against Y, and (2) comparing the electronic overlap ($T_{ij}$) from the dimer splitting method against Z (ORCA calcs?).''}
 As discussed above, QCC are used in two distinct way in our workflow. First it is used to estimate free energy
-difference between individual chromophores as the difference in their HOMO(or LUMO) energy level. Secondly, it is
-used to estimate the electronic overlap($T_{ij}$) between with the dimer splitting method which involves
-calculating the HOMO(or LUMO) of the dimer formed by the two chromophpres. We explored the performance of our
-workflow for this calculations in isolation. 
+difference between individual chromophores as the difference in their HOMO (or LUMO) energy levels.
+Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dimer splitting method which involves
+calculating the HOMO(or LUMO) of the dimer formed by the two chromophpres. To evaluate pySCF's suitability for
+these tasks we perform two experiments: (1) Comparing frontier molecular energies given by pySCF to those
+given by more rigerous DFT and (2) Comparing pySCF's dimer calculations to a study that used ORCA.  
 
 In the first case, at the level of a single chromophore, we calculate the homo-lumo gap for fused ring
 oligomers of increasing length. Fused-ring geometries are of particlular interest for accepter
