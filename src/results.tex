@@ -3,22 +3,22 @@
 
 \section{Summary}
 
-The performance of morphct at the quantum chemical level is explored
+The performance of morphct at the quantum chemical level is explored \ej{Finish this thought.}
 
-Sensitivity testing on benchmark P3HT morphology provided by the Evan and matty work can was finegrained and
+Sensitivity testing on benchmark P3HT morphology provided by the Evan and matty work \ej{Cite}can was finegrained and
 used to compare to previous mobility results as well as to test the sensitivity of the algorithm to
-reorganization energy, dcut, MSD calculation, and simulation temperature.
+reorganization energy, dcut, MSD calculation, and simulation temperature. \ej{The bones are here, but a few clearer sentences in the intro about how this chapter is about (a) comparing your new ways against the old ways, and (b) doing a sensitivity analysis.}
 
-On the spot MD simulation of 1000
-molecules was performed for testing morph another benchmark OPV material. Janks/mattys work has shown that taking
+On the spot \ej{What's on-the-spot mean here?} MD simulation of 1000
+molecules was performed for testing morph another benchmark OPV material. Janks/mattys \ej{cite} work has shown that taking
 each monomer to be a chromophore even though charges are known to delocalize on 7 monomers still reproduces
 the overall mobility well because the very fast hops along the backbone. I think the application of this
-hopping model to ITIC other small molecules is even more justified. Knowing that the this molecule has
+hopping model to ITIC other small molecules is even more justified \ej{why?}. Knowing that the this molecule has
 negligible electron density in the side chains, chomophores are taking to be the backbone. The effect that
 the side chains have on mobility are not a result of electronic contribution to the frontier molecular
 orbitals but rather is a result of the effect the chains have on the morphology of the material. 
 
-Delineating chromophores within a morphology needs to be justified by DFT or experiment and balanced against
+Delineating chromophores within a morphology needs to \ej{needs to, or can be?} be justified by DFT or experiment and balanced against
 the computational costs. Furthermore, manually indexing the atoms of the chosen chromophore
 remains a significant hurdle. Tutorials on github show how to use the open source tool VMD to speed up this
 leg of the workflow. We have also had success with Grits and smarts matching to delineate chromophores through
@@ -27,6 +27,7 @@ out the morphology.
 \section{Quantum Chemical Accuracy}
 
 As a first foray into the performance of PySCF, which we outsource our QCC to, we performed two experiments.
+\ej{A better sentence structure might be something like ``To evaluate pySCF's suitability for X we perform two sets of experiments: (1) Comparing the HOMO-LUMO gap against Y, and (2) comparing the electronic overlap ($T_{ij}$) from the dimer splitting method against Z (ORCA calcs?).''}
 As discussed above, QCC are used in two distinct way in our workflow. First it is used to estimate free energy
 difference between individual chromophores as the difference in their HOMO(or LUMO) energy level. Secondly, it is
 used to estimate the electronic overlap($T_{ij}$) between with the dimer splitting method which involves
@@ -37,10 +38,12 @@ In the first case, at the level of a single chromophore, we calculate the homo-l
 oligomers of increasing length. Fused-ring geometries are of particlular interest for accepter
 molecules, as discussed for FREAs in the introduction. 
 This phenomenon has been studied for fused ring molecules using DFT methods \cite{Arago2010}.
+\ej{one question that pops up right away is why look at these fused ring gaps for validation versus other things? Is it just that these papers exist?}
 They found that, from length 4 to length 8, the homo-lumo decreased from 5.26eV to 4.92eV. Our INDO implemention overestimates these values but by less than the
-factor of 2-3 found in other investigations \cite{Gorelsky2001} \cite{Gorelsky2016}. 
+factor of 2-3 found in other investigations \cite{Gorelsky2001} \cite{Gorelsky2016}. \ej{Is this good? Bad?}
 Our results are in \ref{fig:fused}.
 
+\ej{The following paragraph is the beginnings of a mini methods section for these results. So, make subsections inside the results for each of these two experiments, and explain in more detail any models and methods you're using (in subsubsections!) that are relevant. }
 To recreate these experiments, using Mbuild \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
 were intialized using the representative smiles strings and the molecules saved to GSD file format. The frontier
 molecular orbitals are quantified with the methods outlined in methods and the difference between the energy of the
@@ -135,7 +138,8 @@ semi and amorphous actual make for a slower mobility? I feel like the current nu
 closer to experimentally observed numbers. need more data!!!
 
 
-\section{MorphCT Sensitivity}
+\section{Charge Transport Sensitivity Analysis}
+\ej{Changing section heading: This is a section about how sensitive charge transport is to various inputs. Not everyone has the same mapping from MorphCT->Charge Transport that you have in your head.}
 
 The sensitivity of the algorithm to various parameter was performed on the benchmark crystalline P3HT
 morphology.
