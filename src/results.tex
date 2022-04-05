@@ -32,17 +32,19 @@ well as the comprehensive workflow.
 
 \label{qccresults}
 
-\ej{A better sentence structure might be something like ``To evaluate pySCF's suitability for X we perform two sets of experiments: (1) Comparing the HOMO-LUMO gap against Y, and (2) comparing the electronic overlap ($T_{ij}$) from the dimer splitting method against Z (ORCA calcs?).''}
-As discussed above, QCC are used in two distinct way in our workflow. First it is used to estimate free energy
+As outlined in \autoref{qccmethods}, QCC is used in two distinct way in our workflow. 
+First it is used to estimate free energy
 difference between individual chromophores as the difference in their HOMO (or LUMO) energy levels.
 Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dimer splitting method which involves
-calculating the HOMO(or LUMO) of the dimer formed by the two chromophpres. To evaluate pySCF's suitability for
-these tasks we perform two experiments: (1) Comparing frontier molecular energies given by pySCF to those
-given by more rigerous DFT and (2) Comparing pySCF's dimer calculations to a study that used ORCA.  
+calculating the HOMO(or LUMO) of the dimer formed by the two chromophpres. We present the results from two
+exploratory experiments meant to evaluate pySCF's suitablitity for performing these duties:
+ (1) we compare frontier molecular energies of given by pySCF to those
+given by more rigerous DFT and (2) we compare pySCF's dimer calculations to a study that used ORCA.  
 
-In the first case, at the level of a single chromophore, we calculate the homo-lumo gap for fused ring
+In the first case, at the level of a single chromophore, we calculate the HOMO-LUMO gap for fused ring
 oligomers of increasing length. Fused-ring geometries are of particlular interest for accepter
-molecules, as discussed for FREAs in the introduction. 
+molecules, as discussed for FREAs in the introduction. We chose this particular geomety for ease of comparison
+to existing experiments.
 This phenomenon has been studied for fused ring molecules using DFT methods \cite{Arago2010}.
 \ej{one question that pops up right away is why look at these fused ring gaps for validation versus other things? Is it just that these papers exist?}
 They found that, from length 4 to length 8, the homo-lumo decreased from 5.26eV to 4.92eV. Our INDO implemention overestimates these values but by less than the
@@ -50,6 +52,9 @@ factor of 2-3 found in other investigations \cite{Gorelsky2001} \cite{Gorelsky20
 Our results are in \ref{fig:fused}.
 
 \ej{The following paragraph is the beginnings of a mini methods section for these results. So, make subsections inside the results for each of these two experiments, and explain in more detail any models and methods you're using (in subsubsections!) that are relevant. }
+
+\subsection{experiment 1}
+
 To recreate these experiments, using Mbuild \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
 were intialized using the representative smiles strings and the molecules saved to GSD file format. The frontier
 molecular orbitals are quantified with the methods outlined in methods and the difference between the energy of the
@@ -63,6 +68,8 @@ homo-lumo gap.
   \caption{The difference in energy between the homo and the lumo of fused ring molecules by molecule length}
   \label{fig:fused}
 \end{figure}
+
+\subsection{experiment 2}
 
 At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
 thiophene rings on the calculated $T_{ij}$ between them.
@@ -105,7 +112,7 @@ center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
 requires the use of an iterative algorithm. For this we employ KMC simulations.
 
-\section{Mobility(PySCF vs ORCA)}
+\section{Charge Transport Validation}
 \label{mobility}
 \begin{table}[ht]
     \caption{Mobility $cm^{2}/Vs$} % title of Table

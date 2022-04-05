@@ -108,6 +108,9 @@ compatible with the more draconian permissions often present on HPCs. With that,
 Singularity, software designed to overcome these shortcomings,
 to pull a docker image of Planckton to a container on the server. 
 
+Planckton is built using HOOMD-Blue. The native file format of HOOMD-Blue is the GSD file. MorpchCT takes GSD
+files as its input. [This needs to be rewritten]
+
 The forcefield used to generate the ITIC data was the Generalized
 Amber Force Field (GAFF)\cite{Wang2004a}.
 The Amber forcefield was designed for use in modeling protein and
@@ -160,6 +163,7 @@ the following section we outline our quantum chemical treatment of both $T_{ij}$
 potential hops throughout the morphology.
 
 \subsection{Quantum Chemical Methods}
+\label{qccmethods}
 Electrons (holes) exist at discrete energy levels.
 Quantum chemistry allows for the estimation of the energy levels of electrons (holes) whose
 molecular orbitals are implied by the chromophore's current atomic configuration.
