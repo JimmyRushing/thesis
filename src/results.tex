@@ -43,8 +43,12 @@ given by more rigerous DFT and (2) we compare pySCF's dimer calculations to a st
 
 In the first case, at the level of a single chromophore, we calculate the HOMO-LUMO gap for fused ring
 oligomers of increasing length. Fused-ring geometries are of particlular interest for accepter
-molecules, as discussed for FREAs in the introduction. We chose this particular geomety for ease of comparison
-to existing experiments.
+molecules, as discussed for FREAs in the introduction. 
+The fused thiohpenes represent a generic FREA core, wherein the the charge transfer between chromophores
+will take place. 
+
+The HOMO-LUMO gap which approximates the energy required to bump the electron
+up an energy level and is therefore a measure of how the cost of electron transfer. 
 This phenomenon has been studied for fused ring molecules using DFT methods \cite{Arago2010}.
 \ej{one question that pops up right away is why look at these fused ring gaps for validation versus other things? Is it just that these papers exist?}
 They found that, from length 4 to length 8, the homo-lumo decreased from 5.26eV to 4.92eV. Our INDO implemention overestimates these values but by less than the
