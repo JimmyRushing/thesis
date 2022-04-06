@@ -64,8 +64,9 @@ frontier orbital energy levels \autoref{qccmethods}.
 
 Our values for the HOMO-LUMO gap are plotted by oligomer length in \autoref{fig:fused}. We compare these
 results to those carried out with more rigerous DFT methods \cite{Arago2010}. Our HOMO-LUMO gap ranges between
-$7.27eV$ and $6.34eV$. The values found using DFT were between $5.26eV$ and $4.92eV$. As
-INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
+$7.27eV$ and $6.34eV$. The values found using DFT were between $5.26eV$ and $4.92eV$. 
+
+As INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
 implementation adequately recreated these results.
 
 Furthermore, it is known that there is a near linear
@@ -79,7 +80,9 @@ this trend and this is clear from \autoref{fig:fused}.
   \label{fig:fused}
 \end{figure}
 
-\subsection{experiment 2}
+\subsection{Experiment 2}
+
+\subsubsection{Experiment 2 Methods}
 
 At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
 thiophene rings on the calculated $T_{ij}$ between them.
@@ -90,11 +93,20 @@ and allowed a combination of moves wherein it is translated
 in the positive z and x direction by up to 5 angstroms 
 and rotated up to 90 degrees about its y-axis. Center-to-center distances less
 than 3 angstroms are disallowed as distances shorter than this are considered
-unphysical. The $T_{ij}$ resulting from these 4300 unique orientations are shown in \autoref{TIplots}(b). The figure shows that, as expected, a
-decrease in 
-center-to-center distance results in more orbital overlap and thus an increase in $T_{ij}$. Also observable in the figure is that
+unphysical.
+
+The resulting chemestries were saved to a GSD and the $T_{ij}$s quantified with MorphCT. 
+
+\subsubsection{Experiment 2 Results}
+
+The $T_{ij}$ resulting from these 4300 unique orientations are shown in \autoref{TIplots}(b). 
+The figure shows that, as expected, a decrease in 
+center-to-center distance results in more orbital overlap and thus an increase in $T_{ij}$. 
+Also observable in the figure is that
 a rotation about the x-axis orients the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
-and a greater $T_{ij}$. 
+and a greater $T_{ij}$. Beyond these trends, the absolute value of these calculations match closely those
+calculated using DFT \cite{Lan2008}, where realistic distances between thiophene rings in lamaeler P3HT
+crystals between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1$. 
 
 In a similar work using a random forest machine learning to predict $T_{ij}$
 between thiophenes based on 9 input features, the authors found that the
