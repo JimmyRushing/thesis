@@ -153,7 +153,7 @@ PySCF & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ 
 
 Having explored the performance of PySCF on the level of the molecule, we graduate these computations to the
 macroscopic scale with MorphCT to obtain charge mobility. As outlined in \autoref{methods}, a predecssor to
-this work has provided benchmark morphologies and the associated mobilites for these purposes. 
+this work has provided benchmark morphologies and the associated mobilites for validation purposes. 
 
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
 the QCC calculation, and the charge mobility obtained using using the current workflow, which uses PySCF. 
@@ -324,11 +324,10 @@ any single charge carrier.
 
 The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
 particles in the system. Repeating along relevant time scales for 
-charge transfer, the slope of this relationship
+charge transport, the slope of this relationship
 can be estimated and related to to the 3D diffusion coeffiecient as discussed in the methods section of this
-work. Using the Einstien relation (2.3), 
-the groundwork for which Einstein derived in his doctoral dissertaion, finally the zero-field
-mobility can be obtained. 
+work. Mobility is obtained useing \autoref{einstein}, 
+the groundwork for which Einstein derived in his doctoral dissertaion.
 
 It is critical that we not include the ballistic transport timescale in the approximation of the limit
 if the slope as time goes to infinity \cite{Maginn2018}. Estimating an upperbound for lifetimes such that
