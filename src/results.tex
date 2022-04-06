@@ -41,35 +41,41 @@ exploratory experiments meant to evaluate pySCF's suitablitity for performing th
  (1) we compare frontier molecular energies of given by pySCF to those
 given by more rigerous DFT and (2) we compare pySCF's dimer calculations to a study that used ORCA.  
 
-In the first case, at the level of a single chromophore, we calculate the HOMO-LUMO gap for fused ring
-oligomers of increasing length. Fused-ring geometries are of particlular interest for accepter
-molecules, as discussed for FREAs in the introduction. 
-The fused thiohpenes represent a generic FREA core, wherein the the charge transfer between chromophores
-will take place. 
-
-The HOMO-LUMO gap which approximates the energy required to bump the electron
-up an energy level and is therefore a measure of how the cost of electron transfer. 
-This phenomenon has been studied for fused ring molecules using DFT methods \cite{Arago2010}.
-\ej{one question that pops up right away is why look at these fused ring gaps for validation versus other things? Is it just that these papers exist?}
-They found that, from length 4 to length 8, the homo-lumo decreased from 5.26eV to 4.92eV. Our INDO implemention overestimates these values but by less than the
-factor of 2-3 found in other investigations \cite{Gorelsky2001} \cite{Gorelsky2016}. \ej{Is this good? Bad?}
-Our results are in \ref{fig:fused}.
-
 \ej{The following paragraph is the beginnings of a mini methods section for these results. So, make subsections inside the results for each of these two experiments, and explain in more detail any models and methods you're using (in subsubsections!) that are relevant. }
 
-\subsection{experiment 1}
+\subsection{Experiment 1}
+
+\subsubsection{Experiment 1 Methods}
+
+At the level of a single chromophore, we calculate the HOMO-LUMO gap for fused-ring
+oligomers of increasing length. 
+The difference between the HOMO and LUMO energy levels, the HOMO-LUMO gap, is an approximation of the amount
+of energy necessary to promote an electron to a higher energy level.  
+Fused-ring geometries are of particlular interest for accepter
+molecules, as discussed for FREAs in the introduction. 
+The fused thiohpenes in this experinemt represent a generic FREA core, whose frontier molecular oribitals are
+the landing cites for a charge propigating through an acceptor material. 
 
 To recreate these experiments, using Mbuild \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
-were intialized and saved to a GSD file. The frontier
-molecular orbitals are quantified with pySCF as outlined in \autoref{qccmethods}.
-Our values for the HOMO-LUMO gap are plotted by oligomer length in \autoref{fig:fused}.
-Reproduced in our experiment is the near linear relationship between oligomer length and the magnitude of the
-homo-lumo gap.
+were intialized and saved to a GSD file. The GSD files were fed into MorphCT which uses pySCF to quantify the
+frontier orbital energy levels \autoref{qccmethods}.
+
+\subsubsection{Experiment 1 Results}
+
+Our values for the HOMO-LUMO gap are plotted by oligomer length in \autoref{fig:fused}. We compare these
+results to those carried out with more rigerous DFT methods \cite{Arago2010}. Our HOMO-LUMO gap ranges between
+$7.27eV$ and $6.34eV$. The values found using DFT were between $5.26eV$ and $4.92eV$. As
+INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
+implementation adequately recreated these results.
+
+Furthermore, it is known that there is a near linear
+relationship between HOMO-LUMO gap and oligomer length. We find that our use of pySCF (MINDO/3) replicates
+this trend and this is clear from \autoref{fig:fused}.
 
 \begin{figure}
   \center
   \includegraphics[width = .8\textwidth]{figures/fused-ring-figure.png}
-  \caption{The difference in energy between the homo and the lumo of fused ring molecules by molecule length}
+  \caption{HOMO-LUMO gap obtained using MorphCT for fused-ring molecules of oligmer length $4-8$.}
   \label{fig:fused}
 \end{figure}
 
