@@ -106,7 +106,12 @@ Also observable in the figure is that
 a rotation about the x-axis orients the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
 and a greater $T_{ij}$. Beyond these trends, the absolute value of these calculations match closely those
 calculated using DFT \cite{Lan2008}, where realistic distances between thiophene rings in lamaeler P3HT
-crystals between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1$. 
+crystals between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. The average of our
+$4300$ $T_{ij}$ values, which includes oreintations not likely to be found in a crystalline packing,
+is $0.15eV$ with a standard deviation of $0.13eV$. For the two oreintations in which there is no angling of
+the thiophenes (as pictured in \autoref{TIplots}(a)), a center to center distance of $3.8\AA$ and $4 \AA$
+gives a $T{ij}$ of $.08eV$ and $.05eV$ respectively. This provides further evidence that
+our implemention of pySCF using MorphCT is accurately capturing the electronic coulping between chromophores.
 
 In a similar work using a random forest machine learning to predict $T_{ij}$
 between thiophenes based on 9 input features, the authors found that the
@@ -132,7 +137,7 @@ center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
 \end{figure}
 
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
-requires the use of an iterative algorithm. For this we employ KMC simulations.
+requires the use of an iterative algorithm. For this we employ KMC simulations using MorphCT.
 
 \section{Charge Transport Validation}
 \label{mobility}
@@ -166,10 +171,18 @@ Our work replicates this trend. However, the absolute value of charge mobility i
 match for the crystalline morphology. 
 
 \section{Charge Transport Sensitivity Analysis}
+
 \label{transport}
 
-The sensitivity of the algorithm to various parameter was performed on the benchmark crystalline P3HT
-morphology.
+The sensitivity of our charge mobility calculations to various parameters was performed on the benchmark 
+crystalline P3HT morphology. As the overarching goal is to connect the morphological features to charge
+mobility, it is critical to be explicit about how each parameter can proscribe the resulting value of charge
+mobility. Sensitivty analysis of this type can help us understand where to invest recources into dialing
+the accuracy of any given parameter. It also gives motivation to be meticulous about keeping these parameters
+consant accross analysis of the same material under different processing conditions. For example, if a higher
+charge mobility is discovered for a given morphology after some simulated annhealing,
+it should be confirmed that it is not because the researcher used a lower reorganization energy for example. 
+[section needs work]
 
 \subsection{Neighbor Cutoff (dcut)}
 \label{dcutresults}
