@@ -108,8 +108,10 @@ compatible with the more draconian permissions often present on HPCs. With that,
 Singularity, software designed to overcome these shortcomings,
 to pull a docker image of Planckton to a container on the server. 
 
-Planckton is built using HOOMD-Blue. The native file format of HOOMD-Blue is the GSD file. MorpchCT takes GSD
-files as its input. [This needs to be rewritten]
+Planckton is built using HOOMD-Blue simulation toolkit \cite{Anderson2020a}.
+The native file format of HOOMD-Blue is the GSD file. GSD files store simulation data in a binary file. As MD
+simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
+MorphCT is developed to operate on particular microstates stored in GSD files.
 
 The forcefield used to generate the ITIC data was the Generalized
 Amber Force Field (GAFF)\cite{Wang2004a}.
@@ -435,9 +437,7 @@ to be "embarrasingly parrel," in that the subprocesses(charge carriers) require 
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
 simulated accross all available cores.
 
-MorphCT takes GSD files which are
-the native file format of the simulation engine HOOMD-blue \cite{Anderson2020a} which is the scaffolding of
-Planckton.
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
