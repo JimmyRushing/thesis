@@ -1,9 +1,12 @@
 \chapter{Introduction} 
+% CURRENTLY Says: Organic semiconductors are important.
+% SHOULD Say: Organic semiconductors are important.
 Organic semiconductors have a niche to fill across the landscape of electronic
 device manufacturing due to the flexibility, processability, and cost of manufacturing. They have all ready
 achieved commercial viability in organic light emitting
 diodes (OLEDs) \cite{Song2020} and breakthroughs in organic field-effect transistors (OFETs)
-indicate that that they are soon to folow \cite{Chen2020}. Exciting research is being done to provide stretchability, self-healing, and biodegradability for 
+indicate that that they \ej{Grammar nitpick, two "theys" in this sentence referring to differen things and ``soon to follow'' underspecified.} are soon to folow \cite{Chen2020}. 
+Exciting \ej{Not urgent, but subjective adjectives like ``exciting'' can usually be replaced with a factual description or an explanation of who is actually excited by the facts to make it clearer and correcter.} research is being done to provide stretchability, self-healing, and biodegradability for 
 next generation medical devices \cite{Brutting2006}.
 More generally, the solution processability of these materials allows for
 cheaper manufacturing, the consumption of less rare elements, 
@@ -13,12 +16,8 @@ other emerging organic electronic technologies, can be found the survey text
 Organic Electronic: Emerging Concepts and Technologies
 \cite{FabioCicoiraEditor2013}. 
 
-The methods used in this thesis are centrally motivated by, and justified for, 
-the application of our workflow to materials
-used in the design of organic photovoltaics (OPVs) for use in organic solar cells (OSCs). However, the methods are
-not exclusively applicable to these materials and could be applied similarly to  supplement the engineering of any organic
-electronic devices, like those mentioned above. 
-
+% CURRENTLY Says: OSC are unique. 
+% SHOULD Say: This definitely belongs above the methods paragraph, I'm moving this up
 OSCs can assist us in harnessing the power of the sun in ways not available to traditional cells. 
 For example, researchers have exploited a unique feature of the physics the excitonic photoabsorbtion in 
 organic materials.  Namely, that absorbtion spectrum
@@ -28,6 +27,17 @@ visible spectrum (into the NIR or UV spectrum respectively). This
 could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent OSCs have already
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
+\ej{Whiplash from the first paragraph (before I moved this one down). I'm going to go through the intro real quick and put a comment above each paragraph with what I think it says, and then with what we might want it to say...}
+% CURRENTLY Says: We use methods that are good.
+% SHOULD Say: Something more about OPVs. Maybe something about structure or charge transport, because that's where the thesis is headed.
+The methods used in this thesis are centrally motivated by, and justified for, 
+the application of our workflow to materials
+used in the design of organic photovoltaics (OPVs) for use in organic solar cells (OSCs). However, the methods are
+not exclusively applicable to these materials and could be applied similarly to  supplement the engineering of any organic
+electronic devices, like those mentioned above. 
+
+% CURRENTLY Says: Summary of what we focus on, but also definitions of terms.
+% SHOULD Say: Something about acceptors and donors, which means it should go after a description of acceptor and donor moieties, and maybe after a description of structure
 In our present work, we present results from a computational investigation of two OPV materials
 used in the design of the active layer of organic solar cells (OSCs). These are P3HT, a
 donor molecule, and ITIC, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
@@ -41,6 +51,8 @@ Any molecule can accept or donate a charge carrier OPV.
 They merely receive their donor/acceptor designation as a result of how they
 are primarily utilized in electronic devices. 
 
+% CURRENTLY Says: Definitions of P3HT and ITIC
+% SHOULD Say: Maybe a bit more about these molecules, but this needs to go after a generic description of OSC's (why OSC and not OPV that we use everywhere else?). So we're clearly missing an OPV paragraph above.
 P3HT is a polymeric material that is highly polymorphic in that it can self-assemble into a wide spectrum of
 crystallinities depending on how it is processed. 
 P3HT was first synthesized by Rick Mcullough in 1992. Polythiophenes as a whole have been well investigated 
@@ -57,16 +69,22 @@ It was first synthesized in 2015 \cite{Bai201U}
     \includegraphics[width=\textwidth]{figures/P3HT.png}
 \end{subfigure}
     \caption[short]{Left: 1000 molecule atomistic morhology of ITIC. Right: 1000 oligomer atomistic simulation
-    of P3HT}
+    of P3HT
+    \ej{Cool pictures, wrong place. We want chemical formulas in the intro. Trajectory visualizations should come after we talk about MD}
+    }
 \label{ITIC/P3HT}
 \end{figure}
 
 
+% CURRENTLY Says: Background on modern OSCs
+% SHOULD Say: Same stuff at the end of an OPV description that'll be added above.
 Two major breakthroughs have ushered us into the modern era of OSCs,
 wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
 These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
 acceptor (FREAs) molecules. 
 
+% CURRENTLY Says: OPVs different from Si. Defines excitons.
+% SHOULD Say: Same. This could go way higher up when explaining the basics of OPVs.
 A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
 invention of the BHJ. The coloumbic attraction, $V$, between the an excited
@@ -90,6 +108,8 @@ This bound electron-hole quasiparticle is refered to herein as an exciton.
 
 [Silicon has a relative permitivitty of ~12. not sure in need this i think its kinda understood]
 
+% CURRENTLY Says: Structure important because of excitons. 
+% SHOULD Say: Same thing, keep attachced to prior paragraph
 This excitonic absorbtion introduces a unique design challenge.
 That is, to extract a charge from the device, the exciton
 must first be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
@@ -102,6 +122,8 @@ Producing a layer this small is untenable and further a thicker layer
 is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
 as possbible. 
 
+% CURRENTLY Says: BHJ background
+% SHOULD Say: Same stuff. Might be great paragraph to move way up to introduce OPVs.
 In 1986, Ching W. Tang
 showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
 into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
@@ -124,8 +146,11 @@ electrodes.
     \label{bhj}
 \end{figure}
 
+% CURRENTLY Says: Current generation in BHJs
+% SHOULD Say: Same stuff. Keep attached to prior paragraph.
 As shown in \ref{bhj}, a BHJ active layer proceeds through the following four stages: photoabsorbtions, 
-exciton diffusion, charge transfer, and free charge diffusion \cite{Fusella2019}. When a photon is incedent on
+exciton diffusion, charge transfer, and free charge diffusion \cite{Fusella2019}. \ej{BHJ active layers don't ``proceed'', but ``The steps to generating current from light in BHJ OPVs include:''}
+When a photon is incedent on
 an organic photovoltaic material, if it intersects with a molecular segment whose 
 highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, the energy can be absorbed via the promotion of
 an electron to the next available energy level, the lowest unoccupied molecular orbital (LUMO).
@@ -138,6 +163,8 @@ available lower energy level. Because of this, the electron cascades down to the
 tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
 
+% CURRENTLY Says: Too many things: Active layer structure good and bad, our work focuses on pure domains, space-charge buildup is a thing. 
+% SHOULD Say: Something more about solution processability and how it dictates structure, focus in on the structure of the pure domains, and pull out space-charge buildup for its own paragraph (or move in CT mechanisms above)
 Engineering the active layer of OSC materials presents distinct challenges and advantages at
 all four stages. Our work, however, 
 is most expressely related to stage four in that we seek to simulate free charges moving
@@ -150,6 +177,8 @@ Further, imbalanced charge-carrier mobility of this kind can lead to space-charg
 low mobilty material that can screen the built in field \cite{Bartelt2015}.
 This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
 
+% CURRENTLY Says: A bit about the history of PCE, but also here's our first mention of DFT for some reason.
+% SHOULD Say: History of PCE. But where does it fit? After paragraphs talking about optimizing structure and optimizing chemistry? 
 The BHJ design pushed the effenciency beyond the 1\% effeiciency milestone. Early BHJ devices utilized
 fullerene derivitives as acceptors. In 2015, a group of researchers conceptulized the use of
 fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
@@ -166,6 +195,8 @@ BHJ). They also found
 that this flourination tends to reduce the reorganization energy, which we see in \autoref{results}, has a
 drastic effect on charge mobility.
 
+% CURRENTLY Says: Trial and error is hard, DFT is hard, and software is closed. Too much! 
+% SHOULD Say: We're at least missing a paragraph that says something about how simulations can help us choose which things to make in real life, and perhaps a summary of some of the techniques, what they are, and how they differ. That'll set us up for talking about MD in one paragraph and DFT in another paragraph, their strengths, and hint or preview at how we might use them in this work.
 This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlab
 experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
 mirrored in the software used to study them. DFT is prohibitivly slow on the nanometer
@@ -176,6 +207,8 @@ case of MorphCT, actively developed for this thesis, workflows are
 also maintained in public. These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
 
+% CURRENTLY Says: We need a modular pipeline to do this sequence of things.
+% SHOULD Say: The sequence of steps for going from chemistry to charge transport. Wait till another paragraph for modularity. This will be a good place for a figure of ``the pipeline''
 Taking for granted that electronic devices utilizing OPVs is an exciting
 space, and with the immensity of the parameter space involved in molecular design, it is desirable that a modular
 open-source pipeline exhist for simulating the morphology of candidate molecules as well as simulating the 
@@ -186,6 +219,8 @@ carlo (KMC) simulations that characterize charge mobility (conductivity) in thes
 and our software stack used to implement it in \autoref{results}. The focus of this thesis, however, involves
 the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
 
+% CURRENTLY Says: What our KMC model is, define chromophore.
+% SHOULD Say: What a chromophore is without talking about KMC. KMC belongs in methods, but talking about chromophores, charge delocalization, and hopping in the context of structure and OPVs here is good.
 Our KMC simulations are an implementation of the hopping model of electron transport.
 The generic hopping model goes as follows: the wave functions of
 free charges are localized on particular molecular segments, and the movements of these charges can be described as series
@@ -193,6 +228,8 @@ of hops bewtween these molecular segments. Where, and to what extent, charges de
 [REFS]. In the \autoref{results} we explore the delineation of these segments, which we refer to as
 ``chromophore.'' 
 
+% CURRENTLY Says: Chromophore definition.
+% SHOULD Say: Same stuff, but smush with above paragraph after pulling out KMC, and tie into structure above.
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
 In this context, a chromophore is often associated with the color of a material.
@@ -203,6 +240,8 @@ ground state, it releases a photon with wave length $\lambda = \frac{\hbar c}{E}
 where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
 energy difference of the HOMO and LUMO. 
 
+% CURRENTLY Says: More chromophore details, but also something about photon release
+% SHOULD Say: About the same stuff, but this should tie into the structure, sequence of charge generation discussion above.
 For the materials of interest to our research, it would be undesirable for a chomophore to relax to its ground
 state and release a photon, as this would consistute a loss mechanism. In the case of
 OPVs we want our molecules bear that photo-electric
@@ -213,17 +252,22 @@ LUMO(HOMO for acceptor) of an excited molecular segment is thought to be fully d
 It is under this assumption that we execute a hopping model of charge transfer between
 chromophores based on the Marcus rates of electrochemical reactions.  
 
+% CURRENTLY Says: Packages we use.
+% SHOULD Say: None of this in the intro. We are still missing a discussion of why modular software is good and why open software is good in the intro.
 Two open source python packages for
 facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
 the CMElab github repository \cite{cmelab}.
 The use of Planckton in the methods and results sections below
 constitute the experience of an end user, as I had not personally developed this package before conscripting it
-to do my MD simulating. Using Planckton-flow (also maintained on github), a sister package
+to do my MD simulating. \ej{Let's try not to sound like we're making excuses for ourselves :)}
+Using Planckton-flow (also maintained on github), a sister package
 of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
 molecules on a high performance computing cluster without having to build the software stack or write the
 simulation scripts from scratch. These packages are devloped with an emphasis on creating tools that are
 transferable, reproducable, usable, and extensible (TRUE \cite{Cummings2017}).
 
+% CURRENTLY Says: Something about TRUE and personal experience doing the work
+% SHOULD Say: More about what TRUE is, why we think it's good, and then pivot to talking about how modularity is can help with TRUE. 
 My experience evinces what TRUE simulation engines can achieve and
 informs the direction in which we want to continue to take MorphCT. 
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
@@ -231,6 +275,8 @@ I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
 can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
  
+% CURRENTLY Says: Thesis summary.
+% SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
 In this thesis, we explore the TRUEness of the pipeline from the start to finish. 
 
 In \autoref{methods}, we
@@ -243,6 +289,8 @@ are virtual machines that contain all the dependencies, configurations, code and
 results. \cite{Cito2016a}
 
 
+% CURRENTLY Says: Results summary.
+% SHOULD Say: Same, but smoosh into above paragraph.
 In \autoref{results}, we use MorphCT to validate our current workflow against a predecessor of the 
 workflow on three benchmark MD simulated morpholgies of P3HT. 
 Following that, again using P3HT, we test the sensitivity of our KMC algorithm, implemented
