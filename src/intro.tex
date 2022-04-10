@@ -233,8 +233,7 @@ and our software stack used to implement it in \autoref{results}. The focus of t
 the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
 
 
-% SHOULD Say: Same stuff, but smush with above paragraph after pulling out KMC, and tie into structure above.
-% SHOULD Say: What a chromophore is without talking about KMC. KMC belongs in methods, but talking about chromophores, charge delocalization, and hopping in the context of structure and OPVs here is good.
+% SHOULD Say: What a chromophore is. talk about chromophores, charge delocalization, and hopping in the context of structure and OPVs here is good.
 Stage 4 of the BHJ, the movement of charges through pure domains can be modeled as a particle hopping 
 to and from nearby frontier molecular orbitals.
 The generic hopping model goes as follows: the wave functions of
@@ -251,19 +250,24 @@ excites an electron from the highest occupied molecular orbital (HOMO) to the
 lowest unoccupied molecular orbital (LUMO). As the chromophore relaxes to its
 ground state, it releases a photon with wave length (or color) $\lambda = \frac{\hbar c}{E}$,
 where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
-energy difference of the HOMO and LUMO. 
+energy difference of the HOMO and LUMO. In plants, this amounts to a rejection of the overabundant amount of
+light in the green region which can damage DNA. 
 
 % CURRENTLY Says: More chromophore details, but also something about photon release
 % SHOULD Say: About the same stuff, but this should tie into the structure, sequence of charge generation discussion above.
+Our BHJ active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
+protect and no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
+for brevitys sake. It is taken to be defined as a molecular segment over which the wave function of an
+electron (hole) is thought to be fully delocolized in a pure accpetor (donor) domain. 
+It is under this assumption that we execute a hopping model of charge transfer between
+chromophores based on the Marcus rates of electrochemical reactions.  
+
+
 For the materials of interest to our research, it would be undesirable for a chomophore to relax to its ground
 state and release a photon, as this would consistute a loss mechanism. In the case of
 OPVs we want our molecules bear that photo-electric
 excitation long enough to jump to a nearby chromophore, and proceed, through a
 series of quantum tunneling events, towards an electrode. 
-In our work, a chromophore is defined as a region over which the
-LUMO(HOMO for acceptor) of an excited molecular segment is thought to be fully delocalized. 
-It is under this assumption that we execute a hopping model of charge transfer between
-chromophores based on the Marcus rates of electrochemical reactions.  
 
 % CURRENTLY Says: Packages we use.
 % SHOULD Say: None of this in the intro. We are still missing a discussion of why modular software is good and why open software is good in the intro.
