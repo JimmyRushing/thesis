@@ -21,9 +21,19 @@ mean squared displacement across thousands of individual hopping trajectories ca
 mobility prediction in these chemistries.
 Finally, in \autoref{morph} the package developed to carry out these simulations is introduced.
  
+Two open source python packages for
+facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
+the CMElab github repository \cite{cmelab}.
+The use of Planckton in the methods and results sections below
+constitute the experience of an end user, as I had not personally developed this package before conscripting it
+to do my MD simulating. \ej{Let's try not to sound like we're making excuses for ourselves :)}
+Using Planckton-flow (also maintained on github), a sister package
+of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
+molecules on a high performance computing cluster without having to build the software stack or write the
+simulation scripts from scratch. 
+
 All the tools used to implement, analyze, and
 visualize this work are freely available. 
-
 The packages and tools are enumerated in \autoref{packages}.
 \begin{table}[ht]
     \caption{Packages} % title of Table
