@@ -232,24 +232,24 @@ carlo (KMC) simulations that characterize charge mobility (conductivity) in thes
 and our software stack used to implement it in \autoref{results}. The focus of this thesis, however, involves
 the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
 
-% CURRENTLY Says: What our KMC model is, define chromophore.
+
+% SHOULD Say: Same stuff, but smush with above paragraph after pulling out KMC, and tie into structure above.
 % SHOULD Say: What a chromophore is without talking about KMC. KMC belongs in methods, but talking about chromophores, charge delocalization, and hopping in the context of structure and OPVs here is good.
-Our KMC simulations are an implementation of the hopping model of electron transport.
+Stage 4 of the BHJ, the movement of charges through pure domains can be modeled as a particle hopping 
+to and from nearby frontier molecular orbitals.
 The generic hopping model goes as follows: the wave functions of
-free charges are localized on particular molecular segments, and the movements of these charges can be described as series
+free charges are localized on particular molecular segments due to the lack of long range electronic strcuture
+, and the movements of these charges can be described as series
 of hops bewtween these molecular segments. Where, and to what extent, charges delocalize can been investigated
 [REFS]. In the \autoref{results} we explore the delineation of these segments, which we refer to as
 ``chromophore.'' 
-
-% CURRENTLY Says: Chromophore definition.
-% SHOULD Say: Same stuff, but smush with above paragraph after pulling out KMC, and tie into structure above.
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
 In this context, a chromophore is often associated with the color of a material.
 This is because, mechanistically, a photon collides with a chromophore, the absorbed energy
 excites an electron from the highest occupied molecular orbital (HOMO) to the
 lowest unoccupied molecular orbital (LUMO). As the chromophore relaxes to its
-ground state, it releases a photon with wave length $\lambda = \frac{\hbar c}{E}$,
+ground state, it releases a photon with wave length (or color) $\lambda = \frac{\hbar c}{E}$,
 where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
 energy difference of the HOMO and LUMO. 
 
@@ -276,13 +276,14 @@ to do my MD simulating. \ej{Let's try not to sound like we're making excuses for
 Using Planckton-flow (also maintained on github), a sister package
 of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
 molecules on a high performance computing cluster without having to build the software stack or write the
-simulation scripts from scratch. These packages are devloped with an emphasis on creating tools that are
-transferable, reproducable, usable, and extensible (TRUE \cite{Cummings2017}).
+simulation scripts from scratch. 
 
 % CURRENTLY Says: Something about TRUE and personal experience doing the work
 % SHOULD Say: More about what TRUE is, why we think it's good, and then pivot to talking about how modularity is can help with TRUE. 
 My experience evinces what TRUE simulation engines can achieve and
 informs the direction in which we want to continue to take MorphCT. 
+TRUE simulations tools are devloped with an emphasis on creating tools that are
+transferable, reproducable, usable, and extensible (TRUE \cite{Cummings2017}).
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
 I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
