@@ -34,15 +34,11 @@ visible spectrum (into the NIR or UV spectrum respectively). This
 could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent OSCs have already
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
-% CURRENTLY Says: Background on modern OSCs
-% SHOULD Say: Same stuff at the end of an OPV description that'll be added above.
 Two major breakthroughs have ushered us into the modern era of OSCs,
 wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
 These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
 acceptor (FREAs) molecules. 
 
-% CURRENTLY Says: OPVs different from Si. Defines excitons.
-% SHOULD Say: Same. This could go way higher up when explaining the basics of OPVs.
 A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
 invention of the BHJ. The coloumbic attraction, $V$, between the an excited
@@ -64,8 +60,7 @@ This bound electron-hole quasiparticle is refered to herein as an exciton.
 
 [Silicon has a relative permitivitty of ~12. not sure in need this i think its kinda understood]
 
-% CURRENTLY Says: Structure important because of excitons. 
-% SHOULD Say: Same thing, keep attachced to prior paragraph
+% keep attachced to prior paragraph
 This excitonic absorbtion introduces a unique design challenge.
 That is, to extract a charge from the device, the exciton
 must first be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
@@ -78,8 +73,6 @@ Producing a layer this small is untenable and further a thicker layer
 is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
 as possbible. 
 
-% CURRENTLY Says: BHJ background
-% SHOULD Say: Same stuff. Might be great paragraph to move way up to introduce OPVs.
 In 1986, Ching W. Tang
 showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
 into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
@@ -118,14 +111,9 @@ available lower energy level. Because of this, the electron cascades down to the
 tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
 
-
 % CURRENTLY Says: We use methods that are good.
 % SHOULD Say: Something more about OPVs. Maybe something about structure or charge transport, because that's where the thesis is headed.
-The methods used in this thesis are centrally motivated by, and justified for, 
-the application of our workflow to materials
-used in the design of organic photovoltaics (OPVs) for use in organic solar cells (OSCs). However, the methods are
-not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
-electronic devices, like those mentioned above. 
+
 
 
 
@@ -296,7 +284,13 @@ theoritcal gaps in knowlegde necessary to navigate this kind of research.
 
 In \autoref{methods}, we
 give an exposition of the theories and software packages used to model and simulate self-assembly and charge mobility in
-OPVs. Version one of MorphCT was capable of
+OPVs.
+The methods used in this thesis are centrally motivated by, and justified for, 
+the application of our workflow to materials
+used in OSC desing. However, the methods are
+not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
+electronic devices, like those mentioned above. 
+Version one of MorphCT was capable of
 connecting qualitativley the morphological features produced by MD simulations. However, it was determined
 that in the interest of reprducabitilty, it was critical to ``containerize'' this pipeline. Until as recently as
 the past few years it was common place to not publish code with the results of computational works. Containers
