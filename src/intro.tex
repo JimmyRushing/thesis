@@ -17,8 +17,15 @@ other emerging organic electronic technologies, can be found the survey text
 Organic Electronic: Emerging Concepts and Technologies
 \cite{FabioCicoiraEditor2013}. 
 
-They materials under investigation below are 
-OSCs can assist us in harnessing the power of the sun in ways not available to traditional cells. 
+The materials below are under investigation for their part in the design of organic solar cell (OSC) devices. 
+Organic materials used for OSC design are referred to as organic photovoltaics (OPVs) for their capacity
+to turn photons into voltage (or voltage into photons in OLEDs). We note that this phenomena is not
+local to these molecules, as any molecule is willing to promote an electron to a higher energy level if a
+photon of commenserate energy levels is incedent on the molecule. These materials are instead distinguished by
+the ability to engineer and process for a specific desgin purpose. 
+
+OSC devices could afford all the above functional improvements in flexibilty and processability as well as other
+potentially revolutionary design capabilites.  
 For example, researchers have exploited a unique feature of the physics the excitonic photoabsorbtion in 
 organic materials.  Namely, that absorbtion spectrum
 in these materials is relatively narrow ($\approx$300nm).
@@ -27,14 +34,100 @@ visible spectrum (into the NIR or UV spectrum respectively). This
 could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent OSCs have already
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
-\ej{Whiplash from the first paragraph (before I moved this one down). I'm going to go through the intro real quick and put a comment above each paragraph with what I think it says, and then with what we might want it to say...}
+% CURRENTLY Says: Background on modern OSCs
+% SHOULD Say: Same stuff at the end of an OPV description that'll be added above.
+Two major breakthroughs have ushered us into the modern era of OSCs,
+wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
+These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
+acceptor (FREAs) molecules. 
+
+% CURRENTLY Says: OPVs different from Si. Defines excitons.
+% SHOULD Say: Same. This could go way higher up when explaining the basics of OPVs.
+A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic 
+semiconducting materials necessitated the
+invention of the BHJ. The coloumbic attraction, $V$, between the an excited
+electron and the hole it leaves behind in the its molecular orbital
+is given by Coulombs law as follows:
+\begin{align}
+    \label{coulomb}
+    V  =  k_{e} \cdot \frac{e^{2}}{\epsilon_{r}}
+\end{align}
+where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron. Relative permitivitty,
+$\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative
+to that of free space. That is, relative
+permativity describes the readiness of a material
+to polarize in response to an electric field. A
+relative permitivitty of $~3$ in OPVs means that these materials are only $3$ times more polarizable than free space, which
+is not all that polariazable. And, because the material occupying the space between electron and hole
+is not willing (or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
+This bound electron-hole quasiparticle is refered to herein as an exciton.
+
+[Silicon has a relative permitivitty of ~12. not sure in need this i think its kinda understood]
+
+% CURRENTLY Says: Structure important because of excitons. 
+% SHOULD Say: Same thing, keep attachced to prior paragraph
+This excitonic absorbtion introduces a unique design challenge.
+That is, to extract a charge from the device, the exciton
+must first be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
+where the slight offset in energy levels creates a charge transfer state wherein it is more
+energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
+it is to radiatively decay to its ground state and photoemit.
+This means that, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
+extracted. An exciton can diffuse roughly 10nm before relaxing \cite{clarke2010} \ej{Citation needed. There's some evidence from Bernie Yurke and others that excitons can travel further than 10nm in ordered morphologies, and so this 10nm number is an informed guess based on only opv materials (Maybe some articles by Darling or McGehee can unpack this?), and that perhaps our simulations can help us dispel if untrue.}
+Producing a layer this small is untenable and further a thicker layer
+is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
+as possbible. 
+
+% CURRENTLY Says: BHJ background
+% SHOULD Say: Same stuff. Might be great paragraph to move way up to introduce OPVs.
+In 1986, Ching W. Tang
+showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
+into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
+The interlocking phases of donor accepter molecules, ensure
+that an exciton will intersect with the boundary between accepter and donor domains, while also ensuring that
+there
+is a continuous escape route, albeit labyrinthine, for the free charges to travel on their way to their respective
+electrodes. 
+
+\begin{figure}
+    \center
+    \includegraphics[width = .9\textwidth]{figures/BHJ-figure.png}
+    \caption{A cartoon representation of a bulk heterojunction device. All four stages involved in harvesting
+    photonic energy in a BHJ device are represtented. (1) The photon (green arrow) interacts with the material,
+    exciting an electron and creating an quasiparticle referred to as an exciton. (2) The exciton diffuses
+    about until it intersectects the interface between donor and acceptor material domains. (3) The exciton is
+    coerced apart by the energy offset between donor and acceptor molecules. 
+    (4) The, now unbound,  hole and the electron are free to diffuse about until ther reach their respective
+    electrodes where they can be extracted \cite{Fusella2019}}
+    \label{bhj}
+\end{figure}
+
+% Keep attached to prior paragraph.
+As shown in \ref{bhj}, a BHJ active layer proceeds through the following four stages: photoabsorbtions, 
+exciton diffusion, charge transfer, and free charge diffusion \cite{Fusella2019}. \ej{BHJ active layers don't ``proceed'', but ``The steps to generating current from light in BHJ OPVs include:''}
+When a photon is incedent on
+an organic photovoltaic material, if it intersects with a molecular segment whose 
+highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, the energy can be absorbed via the promotion of
+an electron to the next available energy level, the lowest unoccupied molecular orbital (LUMO).
+This forms an exciton as
+described above, which can then diffuse until it intersects the boundary. 
+The excited electron would like to relax
+back into is lower energy level, but at the interface with the acceptor, it finds a better option. The
+acceptor's LUMO is engineered to sit between the energy of the donor's excited electron's energy level and the
+available lower energy level. Because of this, the electron cascades down to the acceptors LUMO through a charge
+tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
+extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
+
+
 % CURRENTLY Says: We use methods that are good.
 % SHOULD Say: Something more about OPVs. Maybe something about structure or charge transport, because that's where the thesis is headed.
 The methods used in this thesis are centrally motivated by, and justified for, 
 the application of our workflow to materials
 used in the design of organic photovoltaics (OPVs) for use in organic solar cells (OSCs). However, the methods are
-not exclusively applicable to these materials and could be applied similarly to  supplement the engineering of any organic
+not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
 electronic devices, like those mentioned above. 
+
+
 
 % CURRENTLY Says: Summary of what we focus on, but also definitions of terms.
 % SHOULD Say: Something about acceptors and donors, which means it should go after a description of acceptor and donor moieties, and maybe after a description of structure
@@ -87,100 +180,12 @@ It was first synthesized in 2015 \cite{Bai201U}
 \label{molecules}
 \end{figure}
 
-% CURRENTLY Says: Background on modern OSCs
-% SHOULD Say: Same stuff at the end of an OPV description that'll be added above.
-Two major breakthroughs have ushered us into the modern era of OSCs,
-wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
-These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
-acceptor (FREAs) molecules. 
-
-% CURRENTLY Says: OPVs different from Si. Defines excitons.
-% SHOULD Say: Same. This could go way higher up when explaining the basics of OPVs.
-A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic 
-semiconducting materials necessitated the
-invention of the BHJ. The coloumbic attraction, $V$, between the an excited
-electron and the hole it leaves behind in the its molecular orbital
-is given by Coulombs law as follows:
-
-\begin{align}
-    \label{coulomb}
-    V  =  k_{e} \cdot \frac{e^{2}}{\epsilon_{r}}
-\end{align}
-
-where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron. Relative permitivitty,
-$\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative
-to that of free space. That is, relative
-permativity describes the readiness of a material
-to polarize in response to an electric field. A
-relative permitivitty of $~3$ in OPVs means that these materials are only $3$ times more polarizable than free space, which
-is not all that polariazable. And, because the material occupying the space between electron and hole
-is not willing (or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
-This bound electron-hole quasiparticle is refered to herein as an exciton.
-
-[Silicon has a relative permitivitty of ~12. not sure in need this i think its kinda understood]
-
-% CURRENTLY Says: Structure important because of excitons. 
-% SHOULD Say: Same thing, keep attachced to prior paragraph
-This excitonic absorbtion introduces a unique design challenge.
-That is, to extract a charge from the device, the exciton
-must first be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
-where the slight offset in energy levels creates a charge transfer state wherein it is more
-energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
-it is to radiatively decay to its ground state and photoemit.
-This means that, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
-extracted. An exciton can diffuse roughly 10nm before relaxing \cite{clarke2010} \ej{Citation needed. There's some evidence from Bernie Yurke and others that excitons can travel further than 10nm in ordered morphologies, and so this 10nm number is an informed guess based on only opv materials (Maybe some articles by Darling or McGehee can unpack this?), and that perhaps our simulations can help us dispel if untrue.}
-Producing a layer this small is untenable and further a thicker layer
-is diserable to interact with as much of the ambeint radiation as possible so as to ``catch'' as many photons
-as possbible. 
-
-% CURRENTLY Says: BHJ background
-% SHOULD Say: Same stuff. Might be great paragraph to move way up to introduce OPVs.
-In 1986, Ching W. Tang
-showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
-into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
-The interlocking phases of donor accepter molecules, ensure
-that an exciton will intersect with the boundary between accepter and donor domains, while also ensuring that
-there
-is a continuous escape route, albeit labyrinthine, for the free charges to travel on their way to their respective
-electrodes. 
-
-\begin{figure}
-    \center
-    \includegraphics[width = .9\textwidth]{figures/BHJ-figure.png}
-    \caption{A cartoon representation of a bulk heterojunction device. All four stages involved in harvesting
-    photonic energy in a BHJ device are represtented. (1) The photon (green arrow) interacts with the material,
-    exciting an electron and creating an quasiparticle referred to as an exciton. (2) The exciton diffuses
-    about until it intersectects the interface between donor and acceptor material domains. (3) The exciton is
-    coerced apart by the energy offset between donor and acceptor molecules. 
-    (4) The, now unbound,  hole and the electron are free to diffuse about until ther reach their respective
-    electrodes where they can be extracted \cite{Fusella2019}}
-    \label{bhj}
-\end{figure}
-
-% SHOULD Say: Same stuff. Keep attached to prior paragraph.
-As shown in \ref{bhj}, a BHJ active layer proceeds through the following four stages: photoabsorbtions, 
-exciton diffusion, charge transfer, and free charge diffusion \cite{Fusella2019}. \ej{BHJ active layers don't ``proceed'', but ``The steps to generating current from light in BHJ OPVs include:''}
-When a photon is incedent on
-an organic photovoltaic material, if it intersects with a molecular segment whose 
-highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, the energy can be absorbed via the promotion of
-an electron to the next available energy level, the lowest unoccupied molecular orbital (LUMO).
-This forms an exciton as
-described above, which can then diffuse until it intersects the boundary. 
-The excited electron would like to relax
-back into is lower energy level, but at the interface with the acceptor, it finds a better option. The
-acceptor's LUMO is engineered to sit between the energy of the donor's excited electron's energy level and the
-available lower energy level. Because of this, the electron cascades down to the acceptors LUMO through a charge
-tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
-extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
-
 % CURRENTLY Says: Too many things: Active layer structure good and bad, our work focuses on pure domains, space-charge buildup is a thing. 
 % SHOULD Say: Something more about solution processability and how it dictates structure, focus in on the structure of the pure domains, and pull out space-charge buildup for its own paragraph (or move in CT mechanisms above)
 Engineering the active layer of OSC materials presents distinct challenges and advantages at
 all four stages. Our work, however, 
 is most expressely related to stage four in that we seek to simulate free charges moving
 through pure domains of donor or acceptor material. 
-
-
 The charge mobility of both donor and accpetor
 are known to be relevant to overall device performace \cite{Wang2019e}.
 An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
@@ -251,29 +256,27 @@ lowest unoccupied molecular orbital (LUMO). As the chromophore relaxes to its
 ground state, it releases a photon with wave length (or color) $\lambda = \frac{\hbar c}{E}$,
 where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
 energy difference of the HOMO and LUMO. In plants, this amounts to a rejection of the overabundant amount of
-light in the green region which can damage DNA. 
+light in the green region which can damage the plant's DNA. 
 
 % CURRENTLY Says: More chromophore details, but also something about photon release
 % SHOULD Say: About the same stuff, but this should tie into the structure, sequence of charge generation discussion above.
 Our BHJ active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
 protect and no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
-for brevitys sake. In what is to follow, it is taken to be defined as a molecular segment over which the 
+for the sake of brevity. In what is to follow, it is taken to be defined as a molecular segment over which the 
 wave function of an electron (hole) is thought to be fully delocolized in a pure accpetor (donor) domain. 
 It is under this assumption that we execute a hopping model of charge transfer between
 chromophores based on the Marcus rates of electrochemical reactions.  
 
-% CURRENTLY Says: Something about TRUE and personal experience doing the work
 % SHOULD Say: More about what TRUE is, why we think it's good, and then pivot to talking about how modularity is can help with TRUE. 
-My experience evinces what TRUE simulation engines can achieve and
-informs the direction in which we want to continue to take MorphCT. 
 TRUE simulations tools are devloped with an emphasis on creating tools that are
 transferable, reproducable, usable, and extensible (TRUE \cite{Cummings2017}).
+My experience evinces what TRUE simulation engines can achieve and
+informs the direction in which we want to continue to take MorphCT. 
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
 I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
 can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
  
-% CURRENTLY Says: Thesis summary.
 % SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
 In this thesis, we explore the TRUEness of the pipeline from the start to finish, with particular attention
 to the charge characterization.
