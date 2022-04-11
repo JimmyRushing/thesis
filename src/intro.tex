@@ -37,7 +37,7 @@ reached 11 \% efficeincy \cite{Brabec2020}.
 Two major breakthroughs have ushered us into the modern era of OSCs,
 wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
 These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
-acceptor (FREAs) molecules. 
+acceptor (FREA) molecules. 
 
 A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
@@ -102,7 +102,7 @@ steps: (1) photoabsorbtions,
 (2) exciton diffusion, (3) charge transfer, and (4) free charge diffusion \cite{Fusella2019}. 
 When a photon is incedent on
 an OSC active layer, if it intersects with a molecular segment in the donor whose 
-highest occupied molecular orbitcal (HOMO) has comprable energy levels to the photon, 
+highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, 
 the energy can be absorbed via the promotion of
 an electron to the next available energy level; the lowest unoccupied molecular orbital (LUMO).
 This forms an exciton as
@@ -113,6 +113,55 @@ acceptor's LUMO is engineered to sit between the energy of the donor's excited e
 available lower energy level. Because of this, the electron cascades down to the acceptors LUMO through a charge
 tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
+
+% CURRENTLY Says: Too many things: Active layer structure good and bad, our work focuses on pure domains, space-charge buildup is a thing. 
+% SHOULD Say: Something more about solution processability and how it dictates structure, focus in on the structure of the pure domains, and pull out space-charge buildup for its own paragraph (or move in CT mechanisms above)
+Our work in this work
+is most expressely related to stage four in that we seek to simulate free charges moving
+through pure domains of donor or acceptor material. These materials can be deposited as a solution or printed
+on a surface. How these materials will self-assemble in the environment in which they are deposited determines
+the morphology. We seek to use MD simulations to simulate the self-assembly of these materials. Successfully
+doing so could inform the ideal conditions for optimizing the morphology.
+
+
+The charge mobility of both donor and accpetor
+are known to be relevant to overall device performace \cite{Wang2019e}.
+An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
+If the electrons in stage 4 reach the andode much faster than the holes reach the cathode, a traffic jam can
+occur at the anode which causes losses. 
+Further, imbalanced charge-carrier mobility of this kind can lead to space-charge build up in the 
+low mobilty material that can screen the built in field \cite{Bartelt2015}.
+This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
+
+% CURRENTLY Says: A bit about the history of PCE, but also here's our first mention of DFT for some reason.
+% SHOULD Say: History of PCE. But where does it fit? After paragraphs talking about optimizing structure and optimizing chemistry? 
+The BHJ design pushed the effenciency beyond the 1\% effeiciency milestone. Early BHJ devices utilized
+fullerene derivitives as acceptors. In 2015, a group of researchers conceptulized the use of
+fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
+a fused-ring core and end groups that can be engineered to acheive specific electronic characterstics and side
+chains that can be engineered to achieve desried morphological features. The modularity of FREAs
+layed the stage for headspinning progress in the following years from 4\% PCE to 18\% \cite{Wang2021a}. 
+This designed modularity is a benifit to reseachers, as they can alter one component of the molecule and test
+the effect on resulting charge charactoristics. For example, in a paper published in 2019 \cite{Benatto2019},
+researchers, knowing that flourine is an electronegative atom, swapped 4 hydrogen atoms for flourine atoms on
+the end groups of the ITIC molecule. Using density functional theory(DFT), they found 
+that this substitution could lower the exciton
+binding energy (discussed above using \autoref{coulomb}), thus facilitating exciton dissasociation (stage 3 of
+BHJ). They also found
+that this flourination tends to reduce the reorganization energy, which we see in \autoref{results}, has a
+drastic effect on charge mobility.
+
+% CURRENTLY Says: Trial and error is hard, DFT is hard, and software is closed. Too much! 
+% SHOULD Say: We're at least missing a paragraph that says something about how simulations can help us choose which things to make in real life, and perhaps a summary of some of the techniques, what they are, and how they differ. That'll set us up for talking about MD in one paragraph and DFT in another paragraph, their strengths, and hint or preview at how we might use them in this work.
+This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlab
+experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
+mirrored in the software used to study them. DFT is prohibitivly slow on the nanometer
+scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend the
+work, and often utilize proprietary software. On the contrary, the software used in this 
+work is maintained in public. In the
+case of MorphCT, actively developed for this thesis, workflows are
+also maintained in public. These workflows, maintained as jupyter notebook tutorials, 
+are meant to lower the cognitive load of taking on a research project in this vein. 
 
 
 % CURRENTLY Says: Summary of what we focus on, but also definitions of terms.
@@ -166,51 +215,6 @@ It was first synthesized in 2015 \cite{Bai201U}
     side chains respectively.}
 \label{molecules}
 \end{figure}
-
-% CURRENTLY Says: Too many things: Active layer structure good and bad, our work focuses on pure domains, space-charge buildup is a thing. 
-% SHOULD Say: Something more about solution processability and how it dictates structure, focus in on the structure of the pure domains, and pull out space-charge buildup for its own paragraph (or move in CT mechanisms above)
-Engineering the active layer of OSC materials presents distinct challenges and advantages at
-all four stages. Our work, however, 
-is most expressely related to stage four in that we seek to simulate free charges moving
-through pure domains of donor or acceptor material. 
-The charge mobility of both donor and accpetor
-are known to be relevant to overall device performace \cite{Wang2019e}.
-An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
-If the electrons in stage 4 reach the andode much faster than the holes reach the cathode, a traffic jam can
-occur at the anode which causes losses. 
-Further, imbalanced charge-carrier mobility of this kind can lead to space-charge build up in the 
-low mobilty material that can screen the built in field \cite{Bartelt2015}.
-This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
-
-% CURRENTLY Says: A bit about the history of PCE, but also here's our first mention of DFT for some reason.
-% SHOULD Say: History of PCE. But where does it fit? After paragraphs talking about optimizing structure and optimizing chemistry? 
-The BHJ design pushed the effenciency beyond the 1\% effeiciency milestone. Early BHJ devices utilized
-fullerene derivitives as acceptors. In 2015, a group of researchers conceptulized the use of
-fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
-a fused-ring core and end groups that can be engineered to acheive specific electronic characterstics and side
-chains that can be engineered to achieve desried morphological features. The modularity of FREAs
-layed the stage for headspinning progress in the following years from 4\% PCE to 18\% \cite{Wang2021a}. 
-This designed modularity is a benifit to reseachers, as they can alter one component of the molecule and test
-the effect on resulting charge charactoristics. For example, in a paper published in 2019 \cite{Benatto2019},
-researchers, knowing that flourine is an electronegative atom, swapped 4 hydrogen atoms for flourine atoms on
-the end groups of the ITIC molecule. Using density functional theory(DFT), they found 
-that this substitution could lower the exciton
-binding energy (discussed above using \autoref{coulomb}), thus facilitating exciton dissasociation (stage 3 of
-BHJ). They also found
-that this flourination tends to reduce the reorganization energy, which we see in \autoref{results}, has a
-drastic effect on charge mobility.
-
-% CURRENTLY Says: Trial and error is hard, DFT is hard, and software is closed. Too much! 
-% SHOULD Say: We're at least missing a paragraph that says something about how simulations can help us choose which things to make in real life, and perhaps a summary of some of the techniques, what they are, and how they differ. That'll set us up for talking about MD in one paragraph and DFT in another paragraph, their strengths, and hint or preview at how we might use them in this work.
-This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlab
-experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
-mirrored in the software used to study them. DFT is prohibitivly slow on the nanometer
-scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend the
-work, and often utilize proprietary software. On the contrary, the software used in this 
-work is maintained in public. In the
-case of MorphCT, actively developed for this thesis, workflows are
-also maintained in public. These workflows, maintained as jupyter notebook tutorials, 
-are meant to lower the cognitive load of taking on a research project in this vein. 
 
 % CURRENTLY Says: We need a modular pipeline to do this sequence of things.
 % SHOULD Say: The sequence of steps for going from chemistry to charge transport. Wait till another paragraph for modularity. This will be a good place for a figure of ``the pipeline''
