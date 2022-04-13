@@ -95,29 +95,29 @@ in accordance with a predefined interatomic interaction potentials.
 At each iteration, the velocities of molecules are
 updated based on this solution and they are pushes and pulled in accordance with
 the interation between neighbors.
+\ej{Cite some of the OG papers here, like LJ simulation of Argon.}
+\ej{Picture or cartoon of atoms, forces, and one update?}
 
 Using the canonical ensemble (NVT), holding the number of
 particles, the volume, and the temperature constant allows for the calculation of 
-potential energy of the system.  Simulations employ a
-Nos\'{e}-Hoover thermostat to maintain the temperature of the simulation. The thermostat in this case keeps
-account of the average kinetic temperature, and if it strays too far from the set temperature of the
+potential energy of the system.  
+Simulations employ the Nos\'{e}-Hoover thermostat to maintain the temperature of the simulation. 
+\ej{Check that the MTK integrator in HOOMD implements Nose-Hoover, then cite}
+The thermostat in this case keeps account of the average kinetic temperature, and if it strays too far from the set temperature of the
 simulation, it nudges all the velocities in the system up or down, bringing the temperature back into an
 acceptable neighborhood of the perscribed simulation temperature \cite{Martyna1994d}\cite{Cao1996}.
 The system is considered equilibrated when the potential energy no longer decreases with time. 
+\ej{Expand explanation and cite Jankowski and/or Chodera papers that describe correlation times and independent samples. }
 
-We procured the P3HT MD data used in this work off-the-shelf \cite{P3HTData}. This data was provided by
-researchers for validation and research purposes \cite{Miller2018}. Using coarse-graining techniques, wherein
-molecular segments are unified and treated as individual beads can lower the computational cost and allow for
-larger and longer simulations. In this particular case, the researchers ran united-atom simlations, which do
-not explicitly keep track of the hydrogens in the simulation, but nevertheless accurately predict equilibrium
-geometies. In this case, the fuel for the iterative Newtonian update of positions and velocities 
-was the Optimized Potentials for Liquid Simulations United Atom(OPLS-UA) force field.
+We procured the P3HT MD data used in this work off-the-shelf \cite{P3HTData}. \ej{Feels a little out of place to start this paragraph with where we got some data. What data? Forcefield files? log files? Trajectories? WHere is this paragraph going?}
+This data was provided by researchers for validation and research purposes \cite{Miller2018}. 
+Using coarse-graining techniques, wherein molecular segments are unified and treated as individual beads can lower the computational cost and allow for larger and longer simulations. \ej{Not the right place to unpack what CG is and why good}
+In this particular case, the researchers ran united-atom simlations, which do
+not explicitly keep track of the hydrogens in the simulation, but nevertheless accurately predict equilibrium geometies. 
+In this case, the fuel for the iterative Newtonian update of positions and velocities was the Optimized Potentials for Liquid Simulations United Atom (OPLS-UA) force field.\ej{polish. is OPLS-UA really the ``fuel''?}
 
-It is known about P3HT that it can have vastly
-different structures based on how it has been processed. 
-Three P3HT morphologies are studied in \autoref{results}. These morphologies have been coerced into various
-levels of crystallinity through a simulated anhealing process. We apply our workflow to a
-disordered, semi-crystalline, and crystalline sample.
+It is known about P3HT that it can have vastly different structures based on how it has been processed. \ej{Out of place in MD discussion? Structure-wise, you've introduced why MD is important, a bit about what MD is, but we don't yet have a description of the models of P3HT and ITIC explicitly stated here. OHHH, OK, so there are bits of the previous paragraph that are trying to get at what should be here, which is: Pictures of P3HT and ITIC, a description of the atom types, bonds, angles, and dihedrals that are used to model these molecules in MD, and then a generic description of initializing and equilibrating morphologies. THEN we can talk about how we didn't perform new P3HT simulations and DID perform new ITIC simulations, but that description belongs more in results than Methods.}
+Three P3HT morphologies are studied in \autoref{results}. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. We apply our workflow to a disordered, semi-crystalline, and crystalline sample.\ej{Why we talkin' results in Methods? Seems like we're telling ourselves to move this to Results, which we should!}
 
 The ITIC data was generated expressly for use in \autoref{itic}. In the following section we present the
 procedure by which it was generated. 
@@ -178,7 +178,7 @@ is given by the following equation:
     E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
     \label{marcus}
 \end{align}
-with Botzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
+with Boltzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
 $\Delta E_{ij}$, $T$ represent the electronic overlap, the reorganization energy, the free energy difference
 between chromophores, and
 temperature. These are discussed individually in the results section, wherein we test the sensitivity of
@@ -188,34 +188,34 @@ our work, $\lambda_{ij}$ and $T$ are set as constants. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$ for all
 potential hops throughout the morphology.
 
-Simulation a charge hopping around a morphology requires delineation of
-individual chromophores and the estimation of the rate at which a charge will hop to neighboring
-chromophores. Each chemistry requires its own justification for which segments in the morphology
-can be considered to harbor a fully delocalized charge. Researchers have previously found that, 
-despite experimental
-results suggesting that delocalizaion occurs along roughly 7 monomers in P3HT, treating every monomer as a
-chromophore gives accurate results \cite{jones2017}.
+Simulating a charge hopping around a morphology requires identification of
+individual chromophores and calculating the rate at which a charge will hop to neighboring
+chromophores. 
+Each chemistry requires its own justification for which segments in the morphology \ej{I like where you're going here, but why?}
+can be considered to harbor a fully delocalized charge. 
+Researchers have previously found that, despite experimental results suggesting that delocalizaion occurs along roughly 7 monomers in P3HT, treating every monomer as a chromophore gives accurate results \cite{jones2017}.\ej{kindof a lot packed in this sentence. Let's unpack this and take our time: In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
 
 With ITIC, the frontier molecular orbitals, that is, the HOMO
-and LUMO have negligible electron density along the side chains. With that, significant computational resources
-can be conserved by leaving these atoms out of the of the QCCs. To test this on ITIC, we delineate the
-backbone and the whole molecule and compare carrier mobility in \autoref{itic}. 
+and LUMO have negligible electron density along the side chains. With that, significant computational resources \ej{OK! This is some of the stuff I wanted up above, so, cool, it just means that you've got some bigger jumps in logic as-organized and moving things around will bring clarity here..  }
+can be conserved by leaving these atoms out of the of the QCCs. 
+To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}. 
 
-Deciding where a chromophore should be expected is one step in the workflow that requires nuance and
-scientific justifications. However, after that decision has been made, a significant hurdle to the aspiring
-researcher remains. Every atom in the MD morphology has a unique index. All of the methods that follow hinge
-on assigning the prescribed atom indices to their respective chromophore. This task is perfunctory
-but nontrivial. In this work, we manually index these chromophores. The visualization software VMD has proven
+Deciding where a chromophore should be expected is one step in the workflow that requires nuance and scientific justifications.  \ej{This belongs before explaining how ITIC is chopped up.}
+However, after that decision has been made, a significant hurdle to the aspiring researcher remains. \ej{WHAT A TEASER! Just tell us what's important instead. }
+Every atom in the MD morphology has a unique index. All of the methods that follow hinge on assigning the prescribed atom indices to their respective chromophore. 
+This task is perfunctory but nontrivial. 
+In this work, we manually index these chromophores. The visualization software VMD has proven
 adjuvant to this process. For this thesis, a tutorial for using VMDs graphical user interface to visually select the desired
-atoms indices and save them as a numpy array is maintained on the MorphCT github [gotta reference all this]. 
-
+atoms indices and save them as a numpy array is maintained on the MorphCT github [gotta reference all this]. \ej{This paragraph starts out suggesting that we're going to discuss the nuance and justification associated with assigning chromophores, but somehow ends up at using numpy arrays to save manual IDs with a mention of VMD and indexes in the middle. I think either (a) you need a picture showing a minimal example of a morphology that's being chopped into chromophores to explain it, or (b) have just a sentence like ``Once we as modelers make the decision about what constitutes a chromophore in a simulation volume, we automate the identification of chromophore positions so we can use these coordinates, leading us into Quantum chemical methods. Oh hey! Perfect timing!}
 
 
 \subsection{Quantum Chemical Methods}
 \label{qccmethods}
-Electrons (holes) exist at discrete energy levels.
-Quantum chemistry allows for the estimation of the energy levels of electrons (holes) whose
-molecular orbitals are implied by the chromophore's current atomic configuration.
+%Electrons (holes) exist at discrete energy levels. \ej{Cool, yes, but maybe a bit early.}
+\ej{Maybe: ``Calculating the rate at which a charge hops from one chromophore to the next using Marcus theory requires an understanding of the energy changes associated with the hop, which requires a calculation of chromophore's electronic orbital structure. 
+    Calculating electronic orbital structure requires quantum chemical calculations to account for the quantum behavior of these subatomic particles.
+    Quantum chemical calculations comprise a set of methods, including \textit{ab initio} calculations implemented in Density Functional Theory packages that work from first principles, and semi-empirical mehtods that use experimental data to make modeling approximations.(cite)''?}
+Quantum chemistry allows for the estimation of the energy levels of electrons (holes) whose molecular orbitals are implied by the chromophore's current atomic configuration. 
 We assume that the electrons occupying the frontier molecular orbitals are the sole participants in the
 hopping that is going on between chromophores. That is, if an electron hops from $i$ to $j$, it will hop
 into the lowest unoccupied molecular orbital (LUMO) of $j$, and out of the
@@ -247,9 +247,9 @@ and $E_{homo-1,dimer}$ are the two highest energy occupied molecular orbitals of
 again to approximate the eigenvalues of the frontier molecular orbitals, but this time of the dimer
 Hamiltonian. 
 
-I found the intuition for this method to be elusive. However, if we imagine
-taking the dimer and pulling it apart, these two highest occupied energy levels of the dimer 
-will become the HOMOs of their respective chromophore. If the chromophores are not interacting, 
+I found the intuition for this method to be elusive.\ej{Doesn't matter? We gonna tell the story about how Taylor series were hard the first time in here, too?}
+Imagine taking the dimer and pulling it apart, these two highest occupied energy levels of the dimer will become the HOMOs of their respective chromophores. \ej{I like it.}
+If the chromophores are not interacting, 
 then the two highest energy molecular orbitals of the dimer will be the HOMO of chromophore $i$ and the 
 HOMO of chromophore $j$. If there is electronic overlap, a comparison bewteen the two highest occupied
 molecular orbitals of the dimer and the HOMOs of the chromophores calculated in isolation can quantify the degree of
