@@ -1,26 +1,25 @@
 \chapter{Methods}
 \label{methods}
-\section{Overview}
 
-In this section we prestent our theoretical methods
-and the computation tools used to implement them.
+\ej{Example intro: Predicting the morphology and charge transport properties of organic photovoltaic materials is accomplished through the combination of a variety of techniques, each modeling specific physical phenomena.
+In this section we outline the models and theoretical approaches we use to describe organic molecules, how they arrange, and how charges move through them. 
+For each of these approaches we then describe the tools we create, modify, and use to implement these methods in software. 
+}
+%\section{Overview}
 
-First, in \autoref{md}, we introduce MD generally and describe the two distinct means by 
-which the P3HT and ITIC chemistries used in this work were obtained. 
-The latter providing a backdrop for an introduction to Planckton in \autoref{planckton}, which
-is a conveniece package for performoing MD simulations of OPVs.
+%In this section we prestent our theoretical methods
+%and the computation tools used to implement them.
 
-In \autoref{marcusmodel}, we present the methods used to chop the
-results of the MD simulations into chromophores and calculate the rate of hops between chromophores using the combination of Marcus theory and QCC. 
-
-In \autoref{KMC}, we survey our implementation of the kinetic monte
-carlo algorithm for simulating a charge hopping through the chopped up morphology in accordance with its
-Marcus rate. 
-From there, we show that the 
-mean squared displacement across thousands of individual hopping trajectories can provide an accurate charge
-mobility prediction in these chemistries.
-Finally, in \autoref{morph} the package developed to carry out these simulations is introduced.
+In \autoref{md}, we introduce molecular simulation techniques used to predict morphologies of P3HT and ITIC, and the Planckton (\autoref{planckton}) software package used to manage the MD simulations of these molecules. 
+%The latter providing a backdrop for an introduction to Planckton in \autoref{planckton}, which is a conveniece package for performoing MD simulations of OPVs. \ej{}
+\ej{Empty lines in the .tex file force new paragraphs, I'm putting these sentences together because they belong together.}
+In \autoref{marcusmodel}, we describe the Marcus model of charge hopping used throughout this work, the techniques we use to identify individual chromophores in simulated volumes, and how we calculate hopping rates between chromophores.
+In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and our specific kinetic Monte Carlo approach to modeling charge transport.
+\ej{Are we missing a section about HOW we develop software? Using version control, pull requests, jupyter notebooks, continuous integration, tests, and validation? After all, how we do things is a method.}
+Finally, we introduce the MorphCT package for managing charge transport calculations in \autoref{morph}.
  
+%CURRENTLY SAYS: Two packages are open source and important.
+%SUGGESTION: It feels out of place to squish a description of our packages right here- it feels too early. After the above intro paragraph it feels natural to get right into MD, and then maybe we move a summary of all of our tools  to the end of the Methods section, where we can talk about HOW we develop them.
 Two open source python packages for
 facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
 the CMElab github repository \cite{cmelab}.
@@ -83,6 +82,11 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 \label{ITIC/P3HT}
 \end{figure}
 
+\ej{
+    Like I allude to above, let's first say what we need big-picture, to lead us to what we need to describe first specifically, even if it's just a one-sentence reminder: ``In order to understand charge transport in OPV materials we require an atomistically-resolved picture of molecules across many-nanometer length scales because both local molecular arrangements and large-scale morphological features (e.g., grain boundaries between ordered regions) contribute to charge transport. (cite)'' 
+    OK great, so we've set ourselves up for why MD is important: ``Molecular dynamics (MD) simulations are well-suited to this problem because they enable combinations of coarse-grained models and atomistically-detailed representations to predict experimentally-relevant volumes (cite Mikes and evan's papers) with atomistic resolution. ''
+    NOW let's say what MD is, and how we implement it...
+}
 The morphologies used to
 obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
