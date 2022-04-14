@@ -14,8 +14,9 @@ In \autoref{md}, we introduce molecular simulation techniques used to predict mo
 %The latter providing a backdrop for an introduction to Planckton in \autoref{planckton}, which is a conveniece package for performoing MD simulations of OPVs. \ej{}
 In \autoref{marcusmodel}, we describe the Marcus model of charge hopping used throughout this work, the techniques we use to identify individual chromophores in simulated volumes, and how we calculate hopping rates between chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and our specific kinetic Monte Carlo approach to modeling charge transport.
-\ej{Are we missing a section about HOW we develop software? Using version control, pull requests, jupyter notebooks, continuous integration, tests, and validation? After all, how we do things is a method.}
-Finally, we introduce the MorphCT package for managing charge transport calculations in \autoref{morph}.
+
+Finally, in \autoref{software-methods}, we enumerate the software used in this thesis and outline the means by
+which it is developed. 
  
 
 \section{Molecular Dynamics}
@@ -435,10 +436,13 @@ MorphCT utilizes the python multiprocessing module to divide the prescribed numb
 simulated accross all available cores.
 
 \section{Software Development}
-
+\label{software-methods}
 %CURRENTLY SAYS: Two packages are open source and important.
 %SUGGESTION: It feels out of place to squish a description of our packages right here- it feels too early. After the above intro paragraph it feels natural to get right into MD, and then maybe we move a summary of all of our tools  to the end of the Methods section, where we can talk about HOW we develop them.
 %ACTION TAKEN: moved all this to a new section called software development.
+% this section should be about about HOW we develop software? Using version control, pull requests, 
+%jupyter notebooks, continuous integration, tests, and validation? After all, how we do things is a method.
+
 Two open source python packages for
 facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
 the CMElab github repository \cite{cmelab}.
