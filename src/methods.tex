@@ -12,58 +12,11 @@ For each of these approaches we then describe the tools we create, modify, and u
 
 In \autoref{md}, we introduce molecular simulation techniques used to predict morphologies of P3HT and ITIC, and the Planckton (\autoref{planckton}) software package used to manage the MD simulations of these molecules. 
 %The latter providing a backdrop for an introduction to Planckton in \autoref{planckton}, which is a conveniece package for performoing MD simulations of OPVs. \ej{}
-\ej{Empty lines in the .tex file force new paragraphs, I'm putting these sentences together because they belong together.}
 In \autoref{marcusmodel}, we describe the Marcus model of charge hopping used throughout this work, the techniques we use to identify individual chromophores in simulated volumes, and how we calculate hopping rates between chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and our specific kinetic Monte Carlo approach to modeling charge transport.
 \ej{Are we missing a section about HOW we develop software? Using version control, pull requests, jupyter notebooks, continuous integration, tests, and validation? After all, how we do things is a method.}
 Finally, we introduce the MorphCT package for managing charge transport calculations in \autoref{morph}.
  
-%CURRENTLY SAYS: Two packages are open source and important.
-%SUGGESTION: It feels out of place to squish a description of our packages right here- it feels too early. After the above intro paragraph it feels natural to get right into MD, and then maybe we move a summary of all of our tools  to the end of the Methods section, where we can talk about HOW we develop them.
-Two open source python packages for
-facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
-the CMElab github repository \cite{cmelab}.
-The use of Planckton in the methods and results sections below
-constitute the experience of an end user, as I had not personally developed this package before conscripting it
-to do my MD simulating. \ej{Let's try not to sound like we're making excuses for ourselves :)}
-Using Planckton-flow (also maintained on github), a sister package
-of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
-molecules on a high performance computing cluster without having to build the software stack or write the
-simulation scripts from scratch. 
-
-All the tools used to implement, analyze, and
-visualize this work are freely available. 
-The packages and tools are enumerated in \autoref{packages}.
-\begin{table}[ht]
-    \caption{Packages} % title of Table
-\centering % used for centering table
-\begin{tabular}{|l|p{0.8\linewidth}|} % centered columns (4 columns)
-\hline\hline %inserts double horizontal lines
-Package/tool & Description \\ [0.5ex] % inserts table
-%heading
-\hline % inserts single horizontal line
-    foyer & python package for applying atom-typing rules  \cite{Klein2018a}\\ [1ex] % inserting body of the table
-freud & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
-HOOMD-blue & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
-    mBuild & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
-MorphCT & python package for simulating and analyzing charge transport from 
-    snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
-OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
-packmol & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
-Planckton & python based convenience package for running HOOMD-blue
-    simulations of OPVs \cite{cmelab}\\[1ex]
-Planckton-flow & python based package that supports the use of Planckton on
-    high performance clusters\cite{cmelab}\\[1ex]
-pySCF & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
-signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
-VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
-    systems \cite{Humphrey1996}\\
-
-\hline %inserts single line
-\end{tabular}
-\label{packages} % is used to refer this table in the text
-\end{table}
-
 
 \section{Molecular Dynamics}
 \label{md}
@@ -480,6 +433,55 @@ A benifit to Monte Carlo analysis of this type is that charge carriers can be si
 to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
 MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
 simulated accross all available cores.
+
+\section{Software Development}
+
+%CURRENTLY SAYS: Two packages are open source and important.
+%SUGGESTION: It feels out of place to squish a description of our packages right here- it feels too early. After the above intro paragraph it feels natural to get right into MD, and then maybe we move a summary of all of our tools  to the end of the Methods section, where we can talk about HOW we develop them.
+%ACTION TAKEN: moved all this to a new section called software development.
+Two open source python packages for
+facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
+the CMElab github repository \cite{cmelab}.
+The use of Planckton in the methods and results sections below
+constitute the experience of an end user, as I had not personally developed this package before conscripting it
+to do my MD simulating. \ej{Let's try not to sound like we're making excuses for ourselves :)}
+Using Planckton-flow (also maintained on github), a sister package
+of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
+molecules on a high performance computing cluster without having to build the software stack or write the
+simulation scripts from scratch. 
+
+All the tools used to implement, analyze, and
+visualize this work are freely available. 
+The packages and tools are enumerated in \autoref{packages}.
+\begin{table}[ht]
+    \caption{Packages} % title of Table
+\centering % used for centering table
+\begin{tabular}{|l|p{0.8\linewidth}|} % centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+Package/tool & Description \\ [0.5ex] % inserts table
+%heading
+\hline % inserts single horizontal line
+    foyer & python package for applying atom-typing rules  \cite{Klein2018a}\\ [1ex] % inserting body of the table
+freud & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
+HOOMD-blue & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
+    mBuild & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
+MorphCT & python package for simulating and analyzing charge transport from 
+    snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
+OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
+packmol & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
+Planckton & python based convenience package for running HOOMD-blue
+    simulations of OPVs \cite{cmelab}\\[1ex]
+Planckton-flow & python based package that supports the use of Planckton on
+    high performance clusters\cite{cmelab}\\[1ex]
+pySCF & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
+signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
+VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
+    systems \cite{Humphrey1996}\\
+
+\hline %inserts single line
+\end{tabular}
+\label{packages} % is used to refer this table in the text
+\end{table}
 
 
 %%% Local Variables: 
