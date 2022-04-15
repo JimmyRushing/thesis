@@ -253,9 +253,11 @@ To understand the scale of this lift, the reader is reminded that
 \begin{align}
     {n \choose k} =  \frac{n!}{k!(n-k)!}.
 \end{align}
-Therefore, the upperbound of possible pairwise ($k=2$) interactions between chromophores is given by the 
-$n \choose 2$ where $n$ is the total number of chromophores in the simulation. With this, the difficulty of
-naively calculating all chromophore pairs would would scale with $\frac{n^{2} - n}{2}$. 
+Therefore, the upper bound of possible chomophore pairs (pairs setting $k=2$) is given by the 
+$n \choose 2$ where $n$ is the total number of chromophores in the simulated volume. 
+With this, the effort of exhaustively calculating all chromophore pairs scales as $\frac{n^{2} - n}{2}$, or using big Oh notation, $O(n^2)$.
+This quadratic scaling of computational effort before performing kMC simulations can represent a bottlneck, so we investigate and apply approaches for identifying and calculating only the chromophore pairs that are likely for charges to hop between.
+
 In the following section we introduce our methods for determining
 which chromophore pairs to consider using Voronoi analysis. 
 
