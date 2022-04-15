@@ -60,7 +60,11 @@ The thermostat in this case keeps account of the average kinetic temperature, an
 simulation, it nudges all the velocities in the system up or down, bringing the temperature back into an
 acceptable neighborhood of the perscribed simulation temperature \cite{Martyna1994d}\cite{Cao1996}.
 The system is considered equilibrated when the potential energy no longer decreases with time. 
-\ej{Expand explanation and cite Jankowski and/or Chodera papers that describe correlation times and independent samples. }
+\ej{I really dont know how deep to go into this . but this is a start}
+From the the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
+simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
+into distinct regions, working backwards in time, the bin is added to the equillibrated region if its standard
+deviation is less than twice that of the previous bin. \cite{Henry2017a}
 
 We procured the P3HT MD data used in this work off-the-shelf \cite{P3HTData}. \ej{Feels a little out of place to start this paragraph with where we got some data. What data? Forcefield files? log files? Trajectories? WHere is this paragraph going?}
 This data was provided by researchers for validation and research purposes \cite{Miller2018}. 
