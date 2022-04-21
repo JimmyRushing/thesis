@@ -79,32 +79,6 @@ Three P3HT morphologies are studied in \autoref{results}. These morphologies hav
 The ITIC data was generated expressly for use in \autoref{itic}. In the following section we present the
 procedure by which it was generated. 
 
-\subsection{MD Software}
-\label{planckton}
-
-The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry, 
-a high performance computing cluster at Boise State University. 
-Planckton-Flow is a dataspace manager that uses
-singularity \cite{singularity2017} and docker \cite{Merkel:2014:DLL:2600239.2600241} 
-to contanerize a package developed to facilitate simulating self-assembly in
-organic photovoltaic materials; Planckton \cite{cmelab}. Docker images are binary files that contain the
-entire software stack necessary to execute some code. This allows researchers to minimize dependency issues
-and increase reproducibility. However, docker has no native support for the use of GPUs and is not
-compatible with the more draconian permissions often present on HPCs. With that, Planckton-flow uses 
-Singularity, software designed to overcome these shortcomings,
-to pull a docker image of Planckton to a container on the server. 
-
-Planckton is built using HOOMD-Blue simulation toolkit \cite{Anderson2020a}.
-The native file format of HOOMD-Blue is the GSD file. GSD files store simulation data in a binary file. As MD
-simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
-MorphCT is developed to operate on particular microstates stored in GSD files.
-
-The forcefield used to generate the ITIC data was the Generalized
-Amber Force Field (GAFF)\cite{Wang2004a}.
-The Amber forcefield was designed for use in modeling protein and
-nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
-comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. 
-
 With MD simulations we can predict the self-assembly of OPV materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with KMC.
 
@@ -501,6 +475,33 @@ Having had no prior experience with these materials and/or materials simulation 
 I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
 can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
+
+\subsection{MD Software}
+\label{planckton}
+
+The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry, 
+a high performance computing cluster at Boise State University. 
+Planckton-Flow is a dataspace manager that uses
+singularity \cite{singularity2017} and docker \cite{Merkel:2014:DLL:2600239.2600241} 
+to contanerize a package developed to facilitate simulating self-assembly in
+organic photovoltaic materials; Planckton \cite{cmelab}. Docker images are binary files that contain the
+entire software stack necessary to execute some code. This allows researchers to minimize dependency issues
+and increase reproducibility. However, docker has no native support for the use of GPUs and is not
+compatible with the more draconian permissions often present on HPCs. With that, Planckton-flow uses 
+Singularity, software designed to overcome these shortcomings,
+to pull a docker image of Planckton to a container on the server. 
+
+Planckton is built using HOOMD-Blue simulation toolkit \cite{Anderson2020a}.
+The native file format of HOOMD-Blue is the GSD file. GSD files store simulation data in a binary file. As MD
+simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
+MorphCT is developed to operate on particular microstates stored in GSD files.
+
+The forcefield used to generate the ITIC data was the Generalized
+Amber Force Field (GAFF)\cite{Wang2004a}.
+The Amber forcefield was designed for use in modeling protein and
+nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
+comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. 
+
 
 %%% Local Variables: 
 %%% mode: latex
