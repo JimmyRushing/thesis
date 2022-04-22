@@ -11,7 +11,7 @@ to implement these methods.
 In \autoref{md}, we introduce molecular simulation techniques used to predict self-assembly of OPVs.
 In \autoref{marcusmodel}, we describe Marcus model of charge hopping between chromophores,
 the techniques we use to identify individual chromophores in simulated volumes, 
-and how we use quantum chemical calculations to estimate the values of the Marcus hopping rate between
+and how we use quantum chemical calculations to estimate the Marcus hopping rate between
 neighboring chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and 
 our specific kinetic Monte Carlo approach to modeling charge transport.
@@ -47,27 +47,25 @@ Planckton and MorphCT.
 Modelling charge transport in OPVs demands a methodology that is accurate across orders of magnitude of
 resolution. Electronic wave functions operate at the atomic scale while the morphological features (grain
 boundaries, crystallinity etcetera) that govern charge transport occur across many nanometers. MD simulations
-are suited to connect the 
+are suited to this task because they enable the combination of coarse-grained models with atomistic
+representations to predict experimentally relevant length scales. 
 
-The morphologies used to
-obtain the data for this work were obtained from equilibrium Molecular Dynamics simulations. 
-Molecular dynamics is a method of computer simulation for predicting the equillibrium geometries of molecular
+The morphologies used in this work  were obtained from equilibrium Molecular Dynamics simulations. 
+Molecular dynamics is a method of computer simulation for predicting the equilibrium geometries of molecular
 systems. MD simulations proceed iteratively by solving Newtons laws of motion
 in accordance with a predefined interatomic interaction potentials.
-At each iteration, the velocities of molecules are
+At each iteration, the velocities and positions of molecules are
 updated based on this solution and they are pushes and pulled in accordance with
-the interation between neighbors.
-\ej{Cite some of the OG papers here, like LJ simulation of Argon.}
+the interaction between neighbors. The pair potentials are defined by a Leonard-Jonsian (LJ) potential \cite{Jones1924a}
+\ej{JANK: Cite some of the OG papers here, like LJ simulation of Argon. JIMMY: not really sure what or how much to
+say here but added the reference.}
 \ej{Picture or cartoon of atoms, forces, and one update?}
 
 Using the canonical ensemble (NVT), holding the number of
 particles, the volume, and the temperature constant allows for the calculation of 
 potential energy of the system.  
-Simulations employ the Nos\'{e}-Hoover thermostat to maintain the temperature of the simulation. 
-\ej{Check that the MTK integrator in HOOMD implements Nose-Hoover, then cite}
-The thermostat in this case keeps account of the average kinetic temperature, and if it strays too far from the set temperature of the
-simulation, it nudges all the velocities in the system up or down, bringing the temperature back into an
-acceptable neighborhood of the perscribed simulation temperature \cite{Martyna1994d}\cite{Cao1996}.
+Simulation ensembles are regulated via the Nos\'{e}-Hoover thermostat \cite{Hoover1985} to maintain 
+temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}
 The system is considered equilibrated when the potential energy no longer decreases with time. 
 \ej{I really dont know how deep to go into this . but this is a start}
 From the the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
