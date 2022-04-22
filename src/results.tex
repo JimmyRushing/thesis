@@ -160,6 +160,19 @@ Having explored the performance of PySCF on the level of the molecule, we gradua
 macroscopic scale with MorphCT to obtain charge mobility. As outlined in \autoref{methods}, a predecssor to
 this work has provided benchmark morphologies and the associated mobilites for validation purposes. 
 
+\ej{THE PART IN QUOTE BLOCK WAS RIPPED FROM METHOD SO IT ISNT STRUCTURED}
+""""""""""""""""""""""""""""""""""""""""""
+We procured the P3HT MD data used in this work off-the-shelf \cite{P3HTData}. \ej{Feels a little out of place to start this paragraph with where we got some data. What data? Forcefield files? log files? Trajectories? WHere is this paragraph going?}
+This data was provided by researchers for validation and research purposes \cite{Miller2018}.
+Using coarse-graining techniques, wherein molecular segments are unified and treated as individual beads can lower the computational cost and allow for larger and longer simulations. \ej{Not the right place to unpack what CG is and why good}
+In this particular case, the researchers ran united-atom simlations, which do
+not explicitly keep track of the hydrogens in the simulation, but nevertheless accurately predict equilibrium geometies.
+In this case, the fuel for the iterative Newtonian update of positions and velocities was the Optimized Potentials for Liquid Simulations United Atom (OPLS-UA) force field.\ej{polish. is OPLS-UA really the ``fuel''?}
+
+It is known about P3HT that it can have vastly different structures based on how it has been processed. \ej{Out of place in MD discussion? Structure-wise, you've introduced why MD is important, a bit about what MD is, but we don't yet have a description of the models of P3HT and ITIC explicitly stated here. OHHH, OK, so there are bits of the previous paragraph that are trying to get at what should be here, which is: Pictures of P3HT and ITIC, a description of the atom types, bonds, angles, and dihedrals that are used to model these molecules in MD, and then a generic description of initializing and equilibrating morphologies. THEN we can talk about how we didn't perform new P3HT simulations and DID perform new ITIC simulations, but that description belongs more in results than Methods.}
+Three P3HT morphologies are studied in \autoref{results}. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. We apply our workflow to a disordered, semi-crystalline, and crystalline sample.\ej{Why we talkin' results in Methods? Seems like we're telling ourselves to move this to Results, which we should!}
+""""""""""""""""""""""""""""""""""""""""""
+
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
 the QCC calculation, and the charge mobility obtained using using the current workflow, which uses PySCF. 
 The previous work found that charge mobility is highest for the crystalline morphology, followed by the
@@ -183,6 +196,7 @@ consant accross analysis of the same material under different processing conditi
 charge mobility is discovered for a given morphology after some simulated annhealing,
 it should be confirmed that it is not because the researcher used a lower reorganization energy for example. 
 [section needs work]
+
 
 \subsection{Neighbor Cutoff (dcut)}
 \label{dcutresults}
