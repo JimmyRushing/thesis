@@ -65,18 +65,14 @@ Using the canonical ensemble (NVT), holding the number of
 particles, the volume, and the temperature constant allows for the calculation of 
 potential energy of the system.  
 Simulation ensembles are regulated via the Nos\'{e}-Hoover thermostat \cite{Hoover1985} to maintain 
-temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}
-The system is considered equilibrated when the potential energy no longer decreases with time. 
-\ej{I really dont know how deep to go into this . but this is a start}
+temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
+The system can be considered equilibrated when the potential energy no longer decreases with time. 
 From the the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
 simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
 into distinct regions, working backwards in time, the bin is added to the equillibrated region if its standard
 deviation is less than twice that of the previous bin. \cite{Henry2017a}
 
-The ITIC data was generated expressly for use in \autoref{itic}. In the following section we present the
-procedure by which it was generated. 
-
-With MD simulations we can predict the self-assembly of OPV materials. To connect the chemistry to the
+MD simulations can predict the self-assembly of OPV materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with KMC.
 
 \section{Marcus Model}
