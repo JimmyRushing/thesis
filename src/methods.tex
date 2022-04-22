@@ -1,17 +1,14 @@
 \chapter{Methods}
 \label{methods}
 
-\ej{Example intro: Predicting the morphology and charge transport properties of organic photovoltaic materials is accomplished through the combination of a variety of techniques, each modeling specific physical phenomena.
-In this section we outline the models and theoretical approaches we use to describe organic molecules, how they arrange, and how charges move through them. 
-For each of these approaches we then describe the tools we create, modify, and use to implement these methods in software. 
-}
-%\section{Overview}
+Predicting morphology and charge transport properties in OPVs is accomplished through the combination 
+of techniques, each modeling specific physical phenomena.
+In this section we outline the models and theory employed throughout the pipeline to describe 
+the atomic structure of organic molecules, how they arrange, and how charges move through them. 
+For each of these approaches we then describe the open-source software tools that we create, modify, and use 
+to implement these methods. 
 
-%In this section we prestent our theoretical methods
-%and the computation tools used to implement them.
-
-In \autoref{md}, we introduce molecular simulation techniques used to predict morphologies of P3HT and ITIC, and the Planckton (\autoref{planckton}) software package used to manage the MD simulations of these molecules. 
-%The latter providing a backdrop for an introduction to Planckton in \autoref{planckton}, which is a conveniece package for performoing MD simulations of OPVs. \ej{}
+In \autoref{md}, we introduce molecular simulation techniques used to predict morphologies of P3HT and ITIC.
 In \autoref{marcusmodel}, we describe the Marcus model of charge hopping used throughout this work, the techniques we use to identify individual chromophores in simulated volumes, and how we calculate hopping rates between chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and our specific kinetic Monte Carlo approach to modeling charge transport.
 Finally, in \autoref{software-methods}, we enumerate the software used in this thesis and outline the means by
