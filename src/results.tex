@@ -3,9 +3,9 @@
 
 \section{Summary}
 
-We present our results in four parts. 
+We present our results in three parts. 
 
-In \autoref{qccresults}, we use MorphCT to test the performance of PySCF at the level of the chromophore.
+In \autoref{validation}, we first use MorphCT to test the performance of PySCF at the level of the chromophore.
 Two experiments are reported. In the first, we calculate the frontier molecular orbital
 energies for fused ring oligomers of increasing length. We compare the results of our experiment to the
 results of the same experiment done with more rigerous DFT methods. In the second, we test the 
@@ -13,24 +13,26 @@ performance of the PySCF dimer calcualtions outlined in \autoref{methods}.
 We take two simple chromophores, two thiophene rings, in 4300 different oreintations and calculate the
 electronic coupling between them. We do so to test if our dimer calculation correlates sensibly to the angle
 and distance between chromophores. These experiments are broadly meant to confirm that we have integrated
-PySCF into MorphCT properly, and that the quantites produced comport with the physics of these systems.  
-
-In \autoref{mobility}, we deploy MorphCT on three benchmark P3HT morphologies to obtain charge mobility
+PySCF into MorphCT properly, and that the quantites produced comport with the physics of these systems.
+We then deploy MorphCT on three benchmark P3HT morphologies to obtain charge mobility
 and compare the results to previously reported values for these morphologies. This section is meant to
 validate the current implementation of MorphCT against a previous implementation. 
 
-In \autoref{transport}, we test the sensitivity of our MorphCT calculated mobilites to dcut, chromophore
+In \autoref{sensitivity}, we test the sensitivity of our MorphCT calculated mobilites to dcut, chromophore
 reorganization energy, KMC temperature, and choice of charge carrier lifetimes for MSD analysis. Using a
-benchmark P3HT morphology, holding all other parameters constant and sweeping accross relevant values of these
-values these provides context for how to treat these parameters in future investigations. 
+benchmark P3HT morphology, holding all other parameters constant and sweeping accross relevant scales
+provides context for how to treat these parameters in future investigations. 
 
 In \autoref{itic}, we present the results of an investigation of ITIC from molecular structure to MD predicted
 morphology to KMC predicted charge mobility. We use this oppurtunity to explore the TRUEness of MorphCT as
 well as the comprehensive workflow.  
 
-\section{Quantum Chemical Accuracy}
 
-\label{qccresults}
+\section{Validation}
+
+\label{validation}
+
+\subsection{Quantum Calculation Validation}
 
 As outlined in \autoref{qccmethods}, QCC is used in two distinct way in our workflow. 
 First it is used to estimate free energy
@@ -42,8 +44,6 @@ exploratory experiments meant to evaluate pySCF's suitablitity for performing th
 given by more rigerous DFT and (2) we compare pySCF's dimer calculations to a study that used ORCA.  
 
 \ej{The following paragraph is the beginnings of a mini methods section for these results. So, make subsections inside the results for each of these two experiments, and explain in more detail any models and methods you're using (in subsubsections!) that are relevant. }
-
-\subsection{Experiment 1}
 
 \subsubsection{Experiment 1 Methods}
 
@@ -79,8 +79,6 @@ this trend and this is clear from \autoref{fig:fused}.
   \caption{HOMO-LUMO gap obtained using MorphCT for fused-ring molecules of oligmer length $4-8$.}
   \label{fig:fused}
 \end{figure}
-
-\subsection{Experiment 2}
 
 \subsubsection{Experiment 2 Methods}
 
@@ -139,7 +137,7 @@ center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
 requires the use of an iterative algorithm. For this we employ KMC simulations using MorphCT.
 
-\section{Charge Transport Validation}
+\subsection{Charge Transport Validation}
 \label{mobility}
 \begin{table}[ht]
     \caption{Mobility $cm^{2}/Vs$} % title of Table
@@ -185,7 +183,7 @@ match for the crystalline morphology.
 
 \section{Charge Transport Sensitivity Analysis}
 
-\label{transport}
+\label{Sensitivity}
 
 The sensitivity of our charge mobility calculations to various parameters was performed on the benchmark 
 crystalline P3HT morphology. As the overarching goal is to connect the morphological features to charge
