@@ -158,13 +158,22 @@ Having explored the performance of PySCF on the level of the molecule, we gradua
 macroscopic scale with MorphCT to obtain charge mobility.
 Version one of MorphCT was capable of
 quantititativally connecting the morphological features produced by MD simulations to the charge
-charactoristics.  
-We procured the P3HT MD data used in this work off-the-shelf \cite{P3HTData}. \ej{Feels a little out of place to start this paragraph with where we got some data. What data? Forcefield files? log files? Trajectories? WHere is this paragraph going?}
-This data was provided by researchers for validation and research purposes \cite{Miller2018}.
-Using coarse-graining techniques, wherein molecular segments are unified and treated as individual beads can lower the computational cost and allow for larger and longer simulations. 
+charactoristics. With a pySCF integrated into MorphCT for reasons oultined in \autoref{morphct},
+we validate our charge mobility prediction against exhisting works. 
+
+The MD data \cite{P3HTData} was provided by researchers for validation and research purposes \cite{Miller2018}.
+Using coarse-graining techniques, 
+wherein molecular segments are unified and treated as individual beads 
+can lower the computational cost and allow for larger and longer simulations. 
 In this particular case, the researchers ran united-atom simlations, which do
-not explicitly keep track of the hydrogens in the simulation, but nevertheless accurately predict equilibrium geometies.
-In this case, the fuel for the iterative Newtonian update of positions and velocities was the Optimized Potentials for Liquid Simulations United Atom (OPLS-UA) force field.\ej{polish. is OPLS-UA really the ``fuel''?}
+not explicitly keep track of the hydrogens in the simulation, 
+but nevertheless accurately predict equilibrium geometies. This allowed the researchers access length scales
+at which indiviual grains can for within the morphology. The oreintation and boundaries of these grains effect
+charge transport and therefore provide a critical benchmark to compare against. 
+
+The potential energy for each Newtonian update of positions and velocities 
+was the Optimized Potentials for Liquid Simulations United Atom (OPLS-UA) force field.\ej{polish}
+
 
 It is known about P3HT that it can have vastly different structures based on how it has been processed. 
 Three P3HT morphologies are studied in \autoref{results}. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. We apply our workflow to a disordered, semi-crystalline, and crystalline sample.
