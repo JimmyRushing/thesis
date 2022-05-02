@@ -144,11 +144,11 @@ requires the use of an iterative algorithm. For this we employ KMC simulations u
 \centering % used for centering table
 \begin{tabular}{c c c c} % centered columns (4 columns)
 \hline\hline %inserts double horizontal lines
-Software & Amorphous & Semi-crystalline & Crystalline \\ [0.5ex] % inserts table
+  & Amorphous & Semi-crystalline & Crystalline \\ [0.5ex] % inserts table
 %heading
 \hline % inserts single horizontal line
-    ORCA & $(1.085 \pm 0.006)\cdot 10^{-1}$ & $(0.156 \pm 0.003)\cdot 10^{-1}$ & $(1.23 \pm 0.01)\cdot 10^{-1}$ \\ % inserting body of the table
-PySCF & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ & $(2.061 \pm 0.001)\cdot 10^{-1}$  \\ [1ex] % [1ex] adds vertical space
+    Miller 2018  \cite{Miller2018} & $(1.085 \pm 0.006)\cdot 10^{-1}$ & $(0.156 \pm 0.003)\cdot 10^{-1}$ & $(1.23 \pm 0.01)\cdot 10^{-1}$ \\ % inserting body of the table
+This work & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ & $(2.061 \pm 0.001)\cdot 10^{-1}$  \\ [1ex] % [1ex] adds vertical space
 \hline %inserts single line
 \end{tabular}
 \label{table:nonlin} % is used to refer this table in the text
@@ -156,17 +156,19 @@ PySCF & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ 
 
 Having explored the performance of PySCF on the level of the molecule, we graduate these computations to the
 macroscopic scale with MorphCT to obtain charge mobility.
-With a pySCF integrated into MorphCT for reasons oultined in \autoref{morphct},
-we validate our charge mobility prediction against an exhisting work. 
-The MD data \cite{P3HTData} was provided by researchers for validation and research purposes \cite{Miller2018}.
+In a previous work \cite{Miller2018}, researchers used MorphCT to predict charge mobility P3HT. 
+With pySCF newly integrated into MorphCT for reasons outlined in \autoref{morphct},
+we validate our charge mobility against this work.
+The benchmark morphologies, which are the final frame of benchmark MD simulations, used to carry out this validation are public \cite{P3HTData}. 
 
-The data is provided is the final frame of coarse-grained MD simulations
+
+These benchmark simulations were carried out using coarse-graining techniques
 wherein molecular segments have been unified and treated as individual beads to lower
 computational cost and allow for larger and longer simulations. 
-In this particular case, the researchers ran united-atom simlations, which do
+In this particular case, the researchers ran united-atom simulations, which do
 not explicitly keep track of the hydrogens in the simulation, 
-but nevertheless accurately predict equilibrium geometies. This allowed the researchers access length scales
-at which indiviual grains can form within the morphology. The oreintation and boundaries of these grains effect
+but nevertheless accurately predict equilibrium geometries. This allowed the researchers to access length scales
+at which individual grains can form within the morphology. The orientation and boundaries of these grains effect
 charge transport and therefore provide a critical benchmark to compare against. 
 
 The potential energy for each Newtonian update of positions and velocities 
