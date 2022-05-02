@@ -156,19 +156,17 @@ PySCF & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ 
 
 Having explored the performance of PySCF on the level of the molecule, we graduate these computations to the
 macroscopic scale with MorphCT to obtain charge mobility.
-Version one of MorphCT was capable of
-quantititativally connecting the morphological features produced by MD simulations to the charge
-charactoristics. With a pySCF integrated into MorphCT for reasons oultined in \autoref{morphct},
-we validate our charge mobility prediction against exhisting works. 
-
+With a pySCF integrated into MorphCT for reasons oultined in \autoref{morphct},
+we validate our charge mobility prediction against an exhisting work. 
 The MD data \cite{P3HTData} was provided by researchers for validation and research purposes \cite{Miller2018}.
-Using coarse-graining techniques, 
-wherein molecular segments are unified and treated as individual beads 
-can lower the computational cost and allow for larger and longer simulations. 
+
+The data is provided is the final frame of coarse-grained MD simulations
+wherein molecular segments have been unified and treated as individual beads to lower
+computational cost and allow for larger and longer simulations. 
 In this particular case, the researchers ran united-atom simlations, which do
 not explicitly keep track of the hydrogens in the simulation, 
 but nevertheless accurately predict equilibrium geometies. This allowed the researchers access length scales
-at which indiviual grains can for within the morphology. The oreintation and boundaries of these grains effect
+at which indiviual grains can form within the morphology. The oreintation and boundaries of these grains effect
 charge transport and therefore provide a critical benchmark to compare against. 
 
 The potential energy for each Newtonian update of positions and velocities 
