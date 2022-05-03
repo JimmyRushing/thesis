@@ -174,10 +174,16 @@ charge transport and therefore provide a critical benchmark to compare against.
 
 We first fined-grained MD data (hydrogens appended back into
 the morphology) and converted from .xml to .gsd format. At current, morphCT is compatable with all atom data
-and .gsd format. 
+and .gsd format. As visualized in \autoref{molecules}, chromophores are taken to be individual monomers. 
+Using morphCT, for each chromophore, a unique object is instantiated and the energetics are obtained using
+pySCF. A KMC simulation is performed on the basis of these energetics with KMC temperature set to 300K. For
+each morphology, 10,000 individual charge carriers are injected (one at a time) into the morphology, with
+5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond. 
 
-It is known about P3HT that it can have vastly different structures based on how it has been processed. 
-Three P3HT morphologies are studied in \autoref{results}. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. We apply our workflow to a disordered, semi-crystalline, and crystalline sample.
+
+It is known about P3HT that it can have vastly different crystallinities based on how it has been processed. 
+We validate on three morpholgies with crystallinities that vary from amorphous so highly crystalline. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. 
+We apply our workflow to a disordered, semi-crystalline, and crystalline sample.
 
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
 the QCC calculation, and the charge mobility obtained using using the current workflow, which uses PySCF. 
