@@ -97,8 +97,9 @@ The resulting chemestries were saved to a GSD and the $T_{ij}$s quantified with 
 
 \subsubsection{Experiment 2 Results}
 
-The data resulting from this experiment, $5680$ oreintations of interacting non-nonded thiophenes and the
-correspinding $T_{ij}$ between them, provide evidence that MorphCT is ratioanlly capturing the orbital
+The data resulting from this experiment, $5680$ oreintations of electronically 
+interacting non-nonded thiophenes and the
+correspinding $T_{ij}$ between them, provide evidence that MorphCT is rationally capturing the orbital
 overlap between chromophores. 
 The $T_{ij}$ resulting from these $5680$ orientations are shown in \autoref{TIplots}. 
 The figure shows that, as expected, a decrease in 
@@ -107,21 +108,18 @@ Also observable in the figure is that
 a negative rotation about the x-axis orients the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
 and a greater $T_{ij}$. 
 
-Beyond these trends, the absolute value of these calculations match closely those
-calculated using more rigerous ab initio DFT \cite{Lan2008}, where realistic distances between thiophene rings in lamaeler P3HT
-crystals between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. 
-
 For the oreintations found to be most and least optimal we calculate (shown in \autoref{TIplots})
 a $T{ij}$ of $.00005eV$ and $.15eV$ respectively. In the context of \autoref{marcus} and \autoref{waittime},
-the corresponing wait time for a charge to hop between to thiophenes in these oreintations is $\tau = 2
-\cdot 10^{-14}s$ and $\tau = 2 \cdot 10^{-7}s$. With latter being two orders of magnitude slower than the
-lifetimes allowed in our KMC simulations, a hop would be highly unfavored in this oreintations. 
-The average of our
-$4300$ $T_{ij}$ values, which includes oreintations not likely to be found in a crystalline packing,
-is $0.15eV$ with a standard deviation of $0.13eV$. For the two oreintations in which there is no angling of
-the thiophenes (as pictured in \autoref{TIplots}(a)), a center to center distance of $3.8\AA$ and $4 \AA$
-gives a $T{ij}$ of $.08eV$ and $.05eV$ respectively. This provides further evidence that
-our implemention of pySCF using MorphCT is accurately capturing the electronic coulping between chromophores.
+the corresponding wait time for a charge to hop between to thiophenes in these oreintations is $\tau = 2
+\cdot 10^{-14}s$ and $\tau = 2 \cdot 10^{-7}s$. With latter case being two orders of magnitude slower than the
+lifetimes allowed in our KMC simulations, a hop would be highly unfavored for this oreintation. 
+
+As evidenced by \autoref{TIplots}(b)), for oreintations resulting in a center to center distance of less than
+$5\AA$ we calculate an average $T_{ij}$ of $~.28eV$.  
+These calculations match closely those
+calculated using more rigerous ab initio DFT methods\cite{Lan2008},
+where realistic distances between thiophene rings in lamaeler P3HT crystals 
+between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. 
 
 In a similar work using a random forest machine learning to predict $T_{ij}$
 between thiophenes based on 9 input features, the authors found that the
@@ -133,19 +131,21 @@ center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
 \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figures/thiophene-oreintations.png}
+    \caption{The orientation with the hightest $T_{ij}$ on the left and
+    the lowest on the right.}
 \end{subfigure}%
 \\
 \begin{subfigure}{.9\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
+    \caption{Individual dots correspond to $5680$ 
+    distinct combinations of rotations and translations of the upper
+    thiophene.
+    Dots are colored based on the $T_{ij}$ between thiophenes for the given x-axis rotation,
+    z-axis rotation, and center to
+    center distance from the reference thiophene.}
 \end{subfigure}
-    \caption{ABOVE: The orientations with the hightest $T_{ij}$ on the left and
-    the lowest on the right. BELOW: Individual dots correspond to $5680$ 
-    distinct rotatianal and translational
-    combination of the upper
-    thiophene to the reference thiophene.
-    Dots are colored based on the $T_{ij}$ between thiophenes for the given x-axis, z-axis, and center to
-    center distance to the reference thiophene. }
+    \caption{ }
 \label{TIplots}
 \end{figure}
 
