@@ -84,20 +84,23 @@ this trend and this is clear from \autoref{fig:fused}.
 
 At the level of the chromophore pair, we explore the effect of angle and distance between two non-bonded
 thiophene rings on the calculated $T_{ij}$ between them.
-Using Mbuild, a reference thiophene is placed at the origin in the xy-plane
+Using Mbuild, a reference thiophene was placed at the origin in the xy-plane
 with the y-axis running through the sulfur atom. 
-A second thiophene is instantiated as in \autoref{TIplots}(a)
-and allowed a combination of moves wherein it is translated
+A second thiophene was instantiated as in \autoref{TIplots}(a)
+and allowed a combination of moves wherein it was translated
 in the positive z and x direction by up to 5 angstroms 
-and rotated up to 90 degrees about its y-axis. Center-to-center distances less
-than 3 angstroms are disallowed as distances shorter than this are considered
+and rotated up to 180 degrees about its y-axis and z-axis. Distances between atoms less
+than 3 angstroms were disallowed as distances shorter than this are considered
 unphysical.
 
 The resulting chemestries were saved to a GSD and the $T_{ij}$s quantified with MorphCT. 
 
 \subsubsection{Experiment 2 Results}
 
-The $T_{ij}$ resulting from these 4300 unique orientations are shown in \autoref{TIplots}(b). 
+The data resulting from this experiment, $5680$ oreintations of interacting non-nonded thiophenes and the
+correspinding $T_{ij}$ between them, provide evidence that MorphCT is ratioanlly capturing the orbital
+overlap between chromophores. 
+The $T_{ij}$ resulting from these $5680$ orientations are shown in \autoref{TIplots}(b). 
 The figure shows that, as expected, a decrease in 
 center-to-center distance results in more orbital overlap and thus an increase in $T_{ij}$. 
 Also observable in the figure is that
@@ -178,19 +181,20 @@ and .gsd format. As visualized in \autoref{molecules}, chromophores are taken to
 Using morphCT, for each chromophore, a unique object is instantiated and the energetics are obtained using
 pySCF. A KMC simulation is performed on the basis of these energetics with KMC temperature set to 300K. For
 each morphology, 10,000 individual charge carriers are injected (one at a time) into the morphology, with
-5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond. 
-
+5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond.
+As outlined in \autoref{kmcanalysis}, from the difference in MSD bewteeen these sets of charge carriers the
+zero-field charge mobility for the morphology is obtained. 
 
 It is known about P3HT that it can have vastly different crystallinities based on how it has been processed. 
-We validate on three morpholgies with crystallinities that vary from amorphous so highly crystalline. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. 
-We apply our workflow to a disordered, semi-crystalline, and crystalline sample.
+We validate on three morpholgies with crystallinities that vary from amorphous to highly crystalline. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. 
+We refer to these morphologies as disordered, semi-crystalline, and crystalline.
 
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
 the QCC calculation, and the charge mobility obtained using using the current workflow, which uses PySCF. 
 The previous work found that charge mobility is highest for the crystalline morphology, followed by the
 amorphous, and finally the semicrystalline. This seemingly anomolous behavoir can be explained. While the
 semicrystalline morphology has more ordered high speed highways of transport, the anisotropic movement
-inhibits average displacement. This anisotropy is
+inhibits average displacement. 
 
 Our work replicates this trend. However, the absolute value of charge mobility is only an order of magnitude
 match for the crystalline morphology. 
