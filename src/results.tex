@@ -60,16 +60,18 @@ frontier orbital energy levels \autoref{qccmethods}.
 
 \subsubsection{Experiment 1 Results}
 
-Our values for the HOMO-LUMO gap are plotted by oligomer length in \autoref{fig:fused}. We compare these
-results to those carried out with more rigorous DFT methods \cite{Arago2010}. Our HOMO-LUMO gap ranges between
-$7.27eV$ and $6.34eV$. The values found using DFT were between $5.26eV$ and $4.92eV$. 
-
-As INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
-implementation adequately recreated these results.
+Our values for the HOMO-LUMO gap are plotted by oligomer length in \autoref{fig:fused}. 
+Our HOMO-LUMO gap ranges between $7.27eV$ and $6.34eV$. Consistent with our findings in \autoref{itic}, the
+wall time for these individual calculations were on the order of seconds. 
 
 Furthermore, it is known that there is a near linear
 relationship between HOMO-LUMO gap and oligomer length. We find that our use of pySCF (MINDO/3) replicates
 this trend and this is clear from \autoref{fig:fused}.
+
+As INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
+implementation adequately recreated these results.
+These results compare well to the values found using ab initio DFT were between $5.26eV$ and $4.92eV$. 
+ those carried out with more rigorous DFT methods \cite{Arago2010}.
 
 \begin{figure}
   \center
@@ -117,7 +119,7 @@ lifetimes allowed in our KMC simulations, a hop would be highly unfavored for th
 Creating the directory of GSDs and quantifying the $T_{ij}$ between them took a wall time of $3.2h$ which
 avereges to $~2s$ per oreintation. 
 
-As evidenced by \autoref{TIplots}(b)), for oreintations resulting in a center to center distance of less than
+As evidenced by \autoref{TIplots}(b)), for oreintations resulting in a center-to-center distance of less than
 $5\AA$ we calculate an average $T_{ij}$ of $~.28eV$.  
 These calculations match closely those
 calculated using more rigerous ab initio DFT methods\cite{Lan2008},
@@ -127,7 +129,7 @@ between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$.
 In a similar work using a random forest machine learning to predict $T_{ij}$
 between thiophenes based on 9 input features, the authors found that the
 features of most importance for predicting $T_{ij}$ was bonded vs non bonded,
-center to center distance and rotation about the y-axis. \cite{Jankowski2019c}
+center-to-center distance and rotation about the y-axis. \cite{Jankowski2019c}
 
 \begin{figure}[]
 \centering
@@ -216,7 +218,7 @@ match for the crystalline morphology.
 
 \section{Charge Transport Sensitivity Analysis}
 
-\label{Sensitivity}
+\label{sensitivity}
 
 The sensitivity of our charge mobility calculations to various parameters was performed on the benchmark 
 crystalline P3HT morphology. As the overarching goal is to connect the morphological features to charge
