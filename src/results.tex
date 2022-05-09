@@ -131,7 +131,7 @@ between thiophenes based on 9 input features, the authors found that the
 features of most importance for predicting $T_{ij}$ was bonded vs non bonded,
 center-to-center distance and rotation about the y-axis. \cite{Jankowski2019c}
 
-\begin{figure}[]
+\begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
     \centering
@@ -158,21 +158,16 @@ Graduating these pairwise energetics to charge characteristics on the scale of M
 requires the use of an iterative algorithm. For this we employ KMC simulations using MorphCT.
 
 \subsection{Charge Transport Calculation Validation}
-\label{mobility}
-\begin{table}[ht]
-    \caption{Mobility $cm^{2}/Vs$} % title of Table
-\centering % used for centering table
-\begin{tabular}{c c c c} % centered columns (4 columns)
-\hline\hline %inserts double horizontal lines
-  & Amorphous & Semi-crystalline & Crystalline \\ [0.5ex] % inserts table
-%heading
-\hline % inserts single horizontal line
-    Miller 2018  \cite{Miller2018} & $(1.085 \pm 0.006)\cdot 10^{-1}$ & $(0.156 \pm 0.003)\cdot 10^{-1}$ & $(1.23 \pm 0.01)\cdot 10^{-1}$ \\ % inserting body of the table
-This work & $(1.8074 \pm 0.0001)\cdot 10^{-3}$ & $(1.4751 \pm 0.0001)\cdot 10^{-3}$ & $(2.061 \pm 0.001)\cdot 10^{-1}$  \\ [1ex] % [1ex] adds vertical space
-\hline %inserts single line
-\end{tabular}
-\label{table:nonlin} % is used to refer this table in the text
-\end{table}
+
+
+\begin{figure}
+  \center
+  \includegraphics[width = .6\textwidth]{figures/validation.png}
+  \caption{}
+  \label{mobility-validation}
+\end{figure}
+
+
 
 Having explored the performance of PySCF on the level of the molecule, we graduate these computations to the
 macroscopic scale with MorphCT to obtain charge mobility.
