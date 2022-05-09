@@ -89,7 +89,7 @@ Two thiophene rings are positioned in electronic proximity using mbuild and save
 A reference thiophene was placed at the origin in the xy-plane
 with the y-axis running through the sulfur atom as shown in \autoref{TIplots}(a). For the second thiophene,
 two sets of 12 rotations about the x-axis and z-axis (with $- \frac{\pi}{2} < \theta< \frac{\pi}{2}$)
-and two sets of 12 translations along the x-axis and z-axis (with $0 \AA < r < 5 \AA$) were defined. The cartesian
+and two sets of 12 translations along the x-axis and z-axis (with $0nm < r < 0.5nm$) were defined. The cartesian
 product of these sets define a space of $12^{4}= 20736$ oreintations for second thiophene. 
 
 Oreintations resulting in atoms that were less
@@ -120,11 +120,11 @@ Creating the directory of GSDs and quantifying the $T_{ij}$ between them took a 
 avereges to $\approx 2s$ per oreintation. 
 
 As evidenced by \autoref{TIplots}(b)), for oreintations resulting in a center-to-center distance of less than
-$5\AA$ we calculate an average $T_{ij}$ of $\approx 0.28eV$.  
+$0.5nm$ we calculate an average $T_{ij}$ of $\approx 0.28eV$.  
 These calculations match closely those
 calculated using more rigerous ab initio DFT methods\cite{Lan2008},
 where realistic distances between thiophene rings in lamaeler P3HT crystals 
-between $3.8\AA$ and $4 \AA$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. 
+between $0.38nm$ and $0.4 nm$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. 
 
 In a similar work using a random forest machine learning to predict $T_{ij}$
 between thiophenes based on 9 input features, the authors found that the
@@ -243,12 +243,12 @@ could be
 computationally preferable to calculate the distances between all pairs and remove neighbors more than dcut
 apart.
 
-\begin{table}[ht]
+\begin{table}
 \caption{Dcut Sensitivity}
 \centering % used for centering table
 \begin{tabular}{c c c c c c c c} % centered columns (4 columns)
 \hline\hline %inserts double horizontal lines
-dcut $\AA$ & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [0.5ex] % inserts table
+    dcut $\text{\AA}$ & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [0.5ex] % inserts table
 %heading
 \hline  % inserts single horizontal line
 pairs & 318 & 22000 & 49000 & 96000 & 113026 & 113315 & 113315 \\ [1ex]% inserting body of the table
@@ -293,7 +293,7 @@ $\lambda = 0.3eV$ is chosen to be the default reorganization energy ($\lambda_{i
 and $\lambda_{external} = .02eV$) as others have done with P3HT \cite{jones2017} and
 a flourene-triphenylamine copolymer, TFB \cite{Gali2017}. 
 
-\begin{figure}[]
+\begin{figure}
 \centering
 \begin{subfigure}{\textwidth}
     \textbf{(A)} \\
@@ -354,7 +354,7 @@ any single charge carrier.
 
 
 
-\begin{figure}[]
+\begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
     \textbf{(A)}
@@ -457,7 +457,7 @@ available visualization tool OVITO \cite{Stukowski2010a}. This makes the the bac
 material the obvious choice. In more polymeric materials like P3HT, the hopping model has received further
 justification elsewhere. 
 
-\begin{figure}[]
+\begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ITIC-blackedout-unwrapped-allatom.png}
