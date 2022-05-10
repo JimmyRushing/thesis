@@ -2,39 +2,22 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-Carbon-based (organic) semiconductors have distinct physical properties that diverge from more traditionally
-utilized metalloid semiconductors like silicon and germanium.
-The material properties of organic semiconductors can provide novel capabilities
-for electronic device engineering. Furthermore, 
-self-assembly in these materials is of commercial interest because it makes scalable ink-printing and
-roll-to-roll manufacturing techniques possible.
-Molecular engineering for a particular device design
-requires optimizing across an array of parameters that include but are
-not limited to the following: processability, ionization potential, electron affinity, permitivitty. 
-Wetlab screening of materials across
-this vast parameter space is prohibitive of time, cost, and creativity. 
-In this work, we outline a computational, open-source, simulation pipeline that can serve as a 
-virtual laboratory for the screening of organic semiconducting materials. 
-Through the development of Planckton and MorphCT, convenience packages for facilitating molecular dynamics
-simulations and kinetic Monte Carlo simulations respectively, we attempt to grate the learning curve
-associated with organic materials simualtion. 
-
-Organic photovoltaics (OPVs), as the name suggests, are organic semiconductors that are used in the design of
-devices that turn light into electricity or vice versa.  
-We test the pipeline on
-two of the most well researched OPV's for organic solar cell design and develop methods for deploying
-the pipeline with open-source software engineering priniciples in mind.
-
-
-Putting the chemist names for P3HT and ITIC so i can refernce later. Maybe this is an SI thing
-
-ITIC
-2,2'-[[6,6,12,12-tetrakis(4-hexylphenyl)-6,12-dihydro-dithieno[2,3-d:2',3'-d']-s-indaceno[1,2-b:5,6-b']dithiophene-2,8-diyl]bis[methylidyne(3-oxo-1H-indene-2,1(3H)-diylidene)]]bis[propanedinitrile]
-
-P3HT poly(3-hexylthiophene)
-
-
-
+Semiconducting materials made from carbon-based molecules are potential replacements for inorganic semiconductors, but with lower costs of processing.
+Devices made from organic semiconductors can be produced at scale by inkjet printing and roll-to-roll manufacturing of these molecules in solution or melt phases.  
+The molecular arrangements of organic semiconductors is more challenging to control than their inorganic counterparts, however, so controlling their self-assembly during manufacturing is a key challenge to realizing their utility.
+Molecular self-assembly depends on the chemical structure of the molecules, how key moieties interact with each other and with any solvent present, and the thermodynamic paths that are sampled during processing.
+Computer simulations of molecular self-assembly can predict the structure and properties of candidate systems, increasing the amount of information gained from more expensive trials performed in a fume hood or wet lab.
+Here we focus on the prediction of charge mobility in organic semiconduting materials, which requires a sequence of molecular simulation steps spanning orders of magnitude of physical detail across both time and space.
+We describe this open-source ``pipeline'' of calculations that serves as a virtual laboratory for the screening of organic semiconductors for their charge transport properties.
+We describe work on \texttt{Planckton}, a software package for managing molecular simulations of organic semiconductors, and \texttt{MorphCT}, a package for managing kinetic Monte Carlo simulations, the modularization and testing of which improves their transparency, usability, reproducibility, and extensibility.
+We measure improvements to \texttt{Planckton} and \texttt{MorphCT} by using them to study two organic molecules of interest in the photovoltaics field.
+In the first case study, of semiconducting polymer poly(3-hexylthiophene) (P3HT), we validate qualitative trends of charge mobility against prior work from both simulation and experiment.
+In the second case we predict the morphology and charge transport of the semiconducting macromolecule 
+2,2'-[[6,6,12,12-tetrakis(4-hexylphenyl)-6,12-dihydro-dithieno[2,3-d:2',3'-d']-s-indaceno[1,2-b:5,6-b']dithiophene-2,8-diyl]bis[methylidyne(3-oxo-1H-indene-2,1(3H)-diylidene)]]bis[propanedinitrile] (ITIC).
+We find that our work modularizing \texttt{Planckton} improves the pace at which simulations can be iteratively tested.
+We validate the electronic structure predictions made by \texttt{pySCF} are comparable to those previously made by the more restrictively-licensed \texttt{orca} package.
+We measure specific features of local structure that contribute to large-scale mobility trends in P3HT, and describe predictions of charge transport in ITIC.
+In sum we improve the software ecosystem for reproducibly predicting charge mobility in organic photovoltaics.
 
 %%% Local Variables: 
 %%% mode: latex
