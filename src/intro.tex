@@ -177,29 +177,12 @@ where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents
 energy difference of the HOMO and LUMO. In plants, this amounts to a rejection of the overabundant amount of
 light in the green region which can damage the plant's DNA. 
 
-% CURRENTLY Says: More chromophore details, but also something about photon release
-% SHOULD Say: About the same stuff, but this should tie into the structure, sequence of charge generation discussion above.
 Our BHJ active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
 protect and no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
 for the sake of brevity. In what is to follow, chromophore is taken to be defined as a molecular segment over which the 
 wave function of an electron (hole) is thought to be fully delocalized in a pure acceptor (donor) domain. 
 It is under this assumption that we execute a hopping model of charge transfer between
 chromophores based on the Marcus rates of electrochemical reactions.
-% CURRENTLY Says: Trial and error is hard, DFT is hard, and software is closed. Too much! 
-% SHOULD Say: We're at least missing a paragraph that says something about how simulations can help us choose which things to make in real life, and perhaps a summary of some of the techniques, what they are, and how they differ. That'll set us up for talking about MD in one paragraph and DFT in another paragraph, their strengths, and hint or preview at how we might use them in this work.
-This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlab
-experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
-mirrored in the software used to study them. Ab initio DFT methods are prohibitivly slow on the nanometer
-scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend the
-work, and often utilize proprietary software. On the contrary, the software used in this 
-work is maintained in public. In the
-case of MorphCT, actively developed for this thesis, workflows are
-also maintained in public. These workflows, maintained as jupyter notebook tutorials, 
-are meant to lower the cognitive load of taking on a research project in this vein. 
-
-
-% CURRENTLY Says: Summary of what we focus on, but also definitions of terms.
-% SHOULD Say: Something about acceptors and donors, which means it should go after a description of acceptor and donor moieties, and maybe after a description of structure
 
 In our present work, we present results from a computational investigation of two OPV materials
 used in the design of the active layer of BHJ OSCs. These are P3HT, a
@@ -208,14 +191,11 @@ organic analogue of p-type inorganic semiconductors and `donors' the analogue
 of the n-type. We make this note because in the methods we describe a model of
 a charge `hopping' from one molecule to another. And as we describe, our
 investigation involves hops within a pure donor domain or within a pure
-acceptor domain. A common point of confusion is distinguishing between which
-molecules are donors or acceptors.
+acceptor domain. 
 Any molecule can accept or donate a charge carrier OPV.
 They merely receive their donor/acceptor designation as a result of how they
 are primarily utilized in electronic devices. 
 
-% CURRENTLY Says: Definitions of P3HT and ITIC
-% SHOULD Say: Maybe a bit more about these molecules, but this needs to go after a generic description of OSC's (why OSC and not OPV that we use everywhere else?). 
 P3HT is a polymeric material that is highly polymorphic in that it can self-assemble into a wide spectrum of
 crystallinities depending on how it is processed. Shown in \autoref{molecules}, the molecular struture of P3HT
 is such that these molecules can pi-stack into lamalear strucutes. 
@@ -226,19 +206,19 @@ It was first synthesized in 2015. \cite{Bai201U}
 
 \begin{figure}
 \centering
-\begin{subfigure}{.9\textwidth}
+\begin{subfigure}{.6\textwidth}
     \centering
     \textbf{(A)} P3HT \\
-    \includegraphics[width=.9\textwidth]{figures/p3ht-molecule-figure.png}
+    \includegraphics[width=\textwidth]{figures/p3ht-molecule-figure.png}
     \newline
 \end{subfigure}%
 \\
-\begin{subfigure}{.5\textwidth}
+\begin{subfigure}{.3\textwidth}
     \textbf{(B)} ITIC
     \centering
     \includegraphics[width=\textwidth]{figures/itic-backbone-figure.png}
 \end{subfigure}%
-\begin{subfigure}{.5\textwidth}
+\begin{subfigure}{.3\textwidth}
     \textbf{(C)} ITIC
     \centering
     \includegraphics[width=\textwidth]{figures/itic-sidechain-figure.png}
@@ -261,7 +241,8 @@ of material properties. This pipeline is laid out in further detail by Jones et 
 To begin, from an atomistic description of a given molecule, 
 equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
 The data obtained from these simulations can then be fed as an input into kinetic Monte
-Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the.
+Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the
+energetics of chromophores within the morphology.
 We introduce MD and our software stack used to implement it in \autoref{results}. 
 The focus of this thesis, however, involves
 the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
@@ -289,18 +270,18 @@ repetitive tasks, (4) develop open-source code, (5) write code in the highest la
 
 % SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
 In this thesis, we seek to improve the TRUEness of the pipeline outlined above.
-To do this, we: (1) integrate an open source quantum chemical package into MorphCT,
+To do this, we: (1) integrate an open source quantum chemical package into \texttt{MorphCT},
 (2) perform validation and sensitivity analysis on benchmark P3HT
 (3) deploy the pipeline from start to finish on ITIC. 
 We found that the pipeline can indeed connect moluclar sturcture to morphology to charge
 mobility. As with other software the greatest hitch to the TRUEness is the
 cognitive load. The cognitive load I found most overbearing was the quantum theory underlying the algorithm 
-at the molecular level and the cognitive load of learning the MorphCT API. 
-I also found that the most useful tool to onboarding the MorphCT API was the
+at the molecular level and the cognitive load of learning the \texttt{MorphCT} API. 
+I also found that the most useful tool to onboarding the \texttt{MorphCT} API was the
 trail of breadcrumbs left by previous developers on github issues, documention and tutorials. 
 With that workflows, codified into jupyter notebook tutorials are the resourse that I would want if I was to
 attempt this research again and therefore are my best attempt to bring an aspiring developer into the fold.
-We have found that interactive tutorials provide an exposure to the MorphCT while also shoring up the
+We have found that interactive tutorials provide an exposure to the \texttt{MorphCT} while also shoring up the
 theoritcal gaps in knowlegde necessary to navigate this kind of research. 
 
 In \autoref{methods}, we
@@ -311,10 +292,10 @@ the application of our workflow to materials
 used in OSC desing. However, the methods are
 not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
 electronic devices, like those mentioned above. 
-In \autoref{results}, we use MorphCT to validate our current workflow against a predecessor of the 
+In \autoref{results}, we use \texttt{MorphCT} to validate our current workflow against a predecessor of the 
 workflow on three benchmark MD simulated morpholgies of P3HT. 
 Following that, again using P3HT, we test the sensitivity of our charge mobility prediction, 
-implemented with MorphCT, to various inputs. We conclude \autoref{results} by applying our pipeline,
+implemented with \texttt{MorphCT}, to various inputs. We conclude \autoref{results} by applying our pipeline,
 start to finish, to ITIC. 
 In \autoref{conclusion}, we outline the ramification of \autoref{results} and detail the areas of future development of the workflow. 
 
@@ -322,6 +303,18 @@ THESE SENTECES HAS NO HOME Researchers have to
 balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility
 of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of
 variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. 
+% CURRENTLY Says: Trial and error is hard, DFT is hard, and software is closed. Too much! 
+% SHOULD Say: We're at least missing a paragraph that says something about how simulations can help us choose which things to make in real life, and perhaps a summary of some of the techniques, what they are, and how they differ. That'll set us up for talking about MD in one paragraph and DFT in another paragraph, their strengths, and hint or preview at how we might use them in this work.
+This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlab
+experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
+mirrored in the software used to study them. Ab initio DFT methods are prohibitivly slow on the nanometer
+scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend the
+work, and often utilize proprietary software. On the contrary, the software used in this 
+work is maintained in public. In the
+case of \texttt{MorphCT}, actively developed for this thesis, workflows are
+also maintained in public. These workflows, maintained as jupyter notebook tutorials, 
+are meant to lower the cognitive load of taking on a research project in this vein. 
+
 
 %%% Local Variables: 
 %%% mode: latex
