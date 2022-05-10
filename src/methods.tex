@@ -195,14 +195,14 @@ A particular
 choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
 workflow modularly to facilitate upgrading the QCC as more effecient methods and/or software emerges.
 The software we have chosen to perform our QQC is
-provided by pySCF (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
+provided by \texttt{pySCF} (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
 was chosen in the interest of reproducability and extensibility.
-PySCF is implemented almost entirly in the Python 
+\texttt{pySCF} is implemented almost entirly in the Python 
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
-pySCF allowed for the entire QQC code to be implememted in five lines of code. These lines of code in 
+\texttt{pySCF} allowed for the entire QQC code to be implememted in five lines of code. These lines of code in 
 our natively maintaned package
 for performing KMC simulations, \texttt{MorphCT}, discussed in
-\autoref{methods}, asked asks pySCF to approximate the frontier
+\autoref{methods}, asked asks \texttt{pySCF} to approximate the frontier
 energy levels given the chromophore's molecular arrangement.  
 
 Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
@@ -210,8 +210,8 @@ semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}.
 Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
 ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
 ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
-creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with pySCF. The
-performance of pySCF and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
+creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
+performance of \texttt{pySCF} and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
 
 As discussed above, calculating the frontier molecular orbital energies for large atomistic morphologies is
 a heavy computational lift. 
@@ -241,7 +241,7 @@ any other chromophore center. Chromophores are considered neighbors if their vor
 
 For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
 of the crystalline P3HT system described in \autoref{md}. To carry out this analysis, \texttt{MorphCT} incorperates the
-Voronoi class provided by Freud; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
+Voronoi class provided by \texttt{freud}; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
 This class is compatible with 2D or 3D simulation data. 
 
 Shown in \autoref{fig:ln}, 15,000 thousand dots represent the chromophore's geometric centers projected
@@ -439,20 +439,20 @@ The packages and tools are enumerated in \autoref{packages}.
 Package/tool & Description \\ [0.5ex] % inserts table
 %heading
 \hline % inserts single horizontal line
-    foyer & python package for applying atom-typing rules  \cite{Klein2018a}\\ [1ex] % inserting body of the table
-freud & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
-HOOMD-blue & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
-    mBuild & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
+    \texttt{foyer} & python package for applying atom-typing rules  \cite{Klein2018a}\\ [1ex] % inserting body of the table
+\texttt{freud} & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
+\texttt{HOOMD-Blue} & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
+    \texttt{mBuild} & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
 \texttt{MorphCT} & python package for simulating and analyzing charge transport from 
     snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
 OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
-packmol & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
-\texttt{Planckton} & python based convenience package for running HOOMD-blue
+\texttt{packmol} & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
+\texttt{Planckton} & python based convenience package for running \texttt{HOOMD-Blue}
     simulations of OPVs \cite{cmelab}\\[1ex]
     \texttt{Planckton-flow} & python based package that supports the use of \texttt{Planckton} on
     high performance clusters\cite{cmelab}\\[1ex]
-pySCF & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
-signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
+\texttt{pySCF} & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
+\texttt{signac} & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
 VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
     systems \cite{Humphrey1996}\\
 
@@ -484,8 +484,8 @@ compatible with the more draconian permissions often present on HPCs. With that,
 Singularity, software designed to overcome these shortcomings,
 to pull a docker image of \texttt{Planckton} to a container on the server. 
 
-\texttt{Planckton} is built using HOOMD-Blue simulation toolkit \cite{Anderson2020a}.
-The native file format of HOOMD-Blue is the GSD file. GSD files store simulation data in a binary file. As MD
+\texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
+The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. As MD
 simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
 \texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
 
