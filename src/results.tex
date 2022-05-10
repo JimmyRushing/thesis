@@ -5,26 +5,26 @@
 
 We present our results in three parts. 
 
-In \autoref{validation}, we first use MorphCT to test the performance of PySCF at the level of the chromophore.
+In \autoref{validation}, we first use \texttt{MorphCT} to test the performance of \texttt{pySCF} at the level of the chromophore.
 Two experiments are reported. In the first, we calculate the frontier molecular orbital
 energies for fused ring oligomers of increasing length. We compare the results of our experiment to the
 results of the same experiment done with more rigerous DFT methods. In the second, we test the 
-performance of the PySCF dimer calculations outlined in \autoref{methods}. 
+performance of the \texttt{pySCF} dimer calculations outlined in \autoref{methods}. 
 We take two simple chromophores, two thiophene rings, in 4300 different oreintations and calculate the
 electronic coupling between them. We do so to test if our dimer calculation correlates sensibly to the angle
 and distance between chromophores. These experiments are broadly meant to confirm that we have integrated
-PySCF into MorphCT properly, and that the quantities produced comport with the physics of these systems.
-We then deploy MorphCT on three benchmark P3HT morphologies to obtain charge mobility
+\texttt{pySCF} into \texttt{MorphCT} properly, and that the quantities produced comport with the physics of these systems.
+We then deploy \texttt{MorphCT} on three benchmark P3HT morphologies to obtain charge mobility
 and compare the results to previously reported values for these morphologies. This section is meant to
-validate the current implementation of MorphCT against a previous implementation. 
+validate the current implementation of \texttt{MorphCT} against a previous implementation. 
 
-In \autoref{sensitivity}, we test the sensitivity of our MorphCT calculated mobilites to dcut, chromophore
+In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT} calculated mobilites to dcut, chromophore
 reorganization energy, KMC temperature, and choice of charge carrier lifetimes for MSD analysis. Using a
 benchmark P3HT morphology, holding all other parameters constant and sweeping accross relevant scales
 provides context for how to treat these parameters in future investigations. 
 
 In \autoref{itic}, we present the results of an investigation of ITIC from molecular structure to MD predicted
-morphology to KMC predicted charge mobility. We use this opportunity to explore the TRUEness of MorphCT as
+morphology to KMC predicted charge mobility. We use this opportunity to explore the TRUEness of \texttt{MorphCT} as
 well as the comprehensive workflow.  
 
 
@@ -39,9 +39,9 @@ First it is used to estimate free energy
 difference between individual chromophores as the difference in their HOMO (or LUMO) energy levels.
 Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dimer splitting method which involves
 calculating the HOMO(or LUMO) of the dimer formed by the two chromophores. We present the results from two
-exploratory experiments meant to evaluate pySCF's suitabilitity for performing these duties:
-(1) we compare frontier molecular energies of single chromophores given by pySCF to those
-given by more rigorous DFT and (2) we evaluate performance pySCF's dimer calculation.
+exploratory experiments meant to evaluate \texttt{pySCF}'s suitabilitity for performing these duties:
+(1) we compare frontier molecular energies of single chromophores given by \texttt{pySCF} to those
+given by more rigorous DFT and (2) we evaluate performance \texttt{pySCF}'s dimer calculation.
 
 \subsubsection{Experiment 1 Methods}
 
@@ -55,7 +55,7 @@ The fused thiophenes in this experiment represent a generic FREA core, whose fro
 the landing cites for a charge propigating through an acceptor material. 
 
 To recreate these experiments, using Mbuild \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
-were intialized and saved to a GSD file. The GSD files were fed into MorphCT which uses pySCF to quantify the
+were intialized and saved to a GSD file. The GSD files were fed into \texttt{MorphCT} which uses \texttt{pySCF} to quantify the
 frontier orbital energy levels \autoref{qccmethods}.
 
 \subsubsection{Experiment 1 Results}
@@ -65,7 +65,7 @@ Our HOMO-LUMO gap ranges between $7.27eV$ and $6.34eV$. Consistent with our find
 in \autoref{itic}, the wall time for these individual calculations take place on the order of seconds. 
 
 Furthermore, it is known that there is a near linear
-relationship between HOMO-LUMO gap and oligomer length. We find that our use of pySCF (MINDO/3) replicates
+relationship between HOMO-LUMO gap and oligomer length. We find that our use of \texttt{pySCF} (MINDO/3) replicates
 this trend and this is clear from \autoref{fig:fused}.
 
 As INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
@@ -76,7 +76,7 @@ These results compare well to the values found using ab initio DFT were between 
 \begin{figure}
   \center
   \includegraphics[width = .6\textwidth]{figures/fused-ring-figure.png}
-  \caption{HOMO-LUMO gap obtained using MorphCT for fused-ring molecules of oligmer length $4-8$.}
+  \caption{HOMO-LUMO gap obtained using \texttt{MorphCT} for fused-ring molecules of oligmer length $4-8$.}
   \label{fig:fused}
 \end{figure}
 
@@ -95,13 +95,13 @@ product of these sets define a space of $12^{4}= 20736$ oreintations for second 
 Oreintations resulting in atoms that were less
 than 3 angstroms were removed from the data set as distances shorter than this are considered
 unphysical. The resulting $5680$ atomic arrangements were saved to a GSD and the $T_{ij}$s quantified 
-with MorphCT. 
+with \texttt{MorphCT}. 
 
 \subsubsection{Experiment 2 Results}
 
 The data resulting from this experiment, $5680$ oreintations of electronically 
 interacting non-nonded thiophenes and the
-correspinding $T_{ij}$ between them, provide evidence that MorphCT is rationally capturing the orbital
+correspinding $T_{ij}$ between them, provide evidence that \texttt{MorphCT} is rationally capturing the orbital
 overlap between chromophores. 
 The $T_{ij}$ resulting from these $5680$ orientations are shown in \autoref{TIplots}. 
 The figure shows that, as expected, a decrease in 
@@ -155,7 +155,7 @@ center-to-center distance and rotation about the y-axis. \cite{Jankowski2019c}
 \end{figure}
 
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
-requires the use of an iterative algorithm. For this we employ KMC simulations using MorphCT.
+requires the use of an iterative algorithm. For this we employ KMC simulations using \texttt{MorphCT}.
 
 \subsection{Charge Transport Calculation Validation}
 
@@ -169,10 +169,10 @@ requires the use of an iterative algorithm. For this we employ KMC simulations u
 
 
 
-Having explored the performance of PySCF on the level of the molecule, we graduate these computations to the
-macroscopic scale with MorphCT to obtain charge mobility.
-In a previous work \cite{Miller2018}, researchers used MorphCT to predict charge mobility in P3HT. 
-With pySCF newly integrated into MorphCT for reasons outlined in \autoref{morphct},
+Having explored the performance of \texttt{pySCF} on the level of the molecule, we graduate these computations to the
+macroscopic scale with \texttt{MorphCT} to obtain charge mobility.
+In a previous work \cite{Miller2018}, researchers used \texttt{MorphCT} to predict charge mobility in P3HT. 
+With \texttt{pySCF} newly integrated into \texttt{MorphCT} for reasons outlined in \autoref{morphct},
 we validate our charge mobility against this work.
 The benchmark morphologies, which are the final frame of benchmark MD simulations,
 used to carry out this validation are public \cite{P3HTData}. 
@@ -188,10 +188,10 @@ at which individual grains can form within the morphology. The orientation and b
 charge transport and therefore provide a critical benchmark to compare against. 
 
 We first fined-grained MD data (hydrogens appended back into
-the morphology) and converted from .xml to .gsd format. At current, morphCT is compatable with all atom data
+the morphology) and converted from .xml to .gsd format. At current, \texttt{MorphCT} is compatable with all atom data
 and .gsd format. As visualized in \autoref{molecules}, chromophores are taken to be individual monomers. 
-Using morphCT, for each chromophore, a unique object is instantiated and the energetics are obtained using
-pySCF. A KMC simulation is performed on the basis of these energetics with KMC temperature set to 300K. For
+Using \texttt{MorphCT}, for each chromophore, a unique object is instantiated and the energetics are obtained using
+\texttt{pySCF}. A KMC simulation is performed on the basis of these energetics with KMC temperature set to 300K. For
 each morphology, 10,000 individual charge carriers are injected (one at a time) into the morphology, with
 5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond.
 As outlined in \autoref{kmcanalysis}, from the difference in MSD bewteeen these sets of charge carriers the
@@ -202,7 +202,7 @@ We validate on three morpholgies with crystallinities that vary from amorphous t
 We refer to these morphologies as disordered, semi-crystalline, and crystalline.
 
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
-the QCC calculation, and the charge mobility obtained using using the current workflow, which uses PySCF. 
+the QCC calculation, and the charge mobility obtained using using the current workflow, which uses \texttt{pySCF}. 
 The previous work found that charge mobility is highest for the crystalline morphology, followed by the
 amorphous, and finally the semicrystalline. This seemingly anomolous behavoir can be explained. While the
 semicrystalline morphology has more ordered high speed highways of transport, the anisotropic movement
@@ -262,14 +262,14 @@ pairs, which could suggest that beyond dcut 10 there is a diminishing returns on
 additional chromophores. 
 
 However, we found for the materials currently under investigation,
-PySCF is speedy enough such that intrucing dcut adds more ambiguity
+\texttt{pySCF} is speedy enough such that intrucing dcut adds more ambiguity
 into the workflow than is necessary given that the average time per QCC dimer calculation is .036s for P3HT and
-1.2s for ITIC. Furthermore, with MorphCT acting on static atomistic oreintations, these calculations 
+1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic oreintations, these calculations 
 are only necessarily performed once per morphology. With that, our workflow defaults this cutoff distance to half
 the length of the simulation box, rendering it effectively moot. 
 
 If, in the future, more computationally expensive methods are incorperated into the QCC step, or chromophores in other
-organic materials are a heavier lift PySCF, it could be benificial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
+organic materials are a heavier lift \texttt{pySCF}, it could be benificial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
 material its at a discount to do some preliminary analysis to determine an apporiate value. We tested the
 sensitivity of the algorithm to the value (dcut). 
 
@@ -432,7 +432,7 @@ mobility. This further suggests that going lifetime crazy is a waste of computat
 \section{ITIC}
 \label{itic}
 
-To explore the extensibility of the workflow on another benchmark OPV material, using planckton-flow, a 1000
+To explore the extensibility of the workflow on another benchmark OPV material, using \texttt{planckton-flow}, a 1000
 molecule morphology of ITIC was equillibrated over a 10e-7 step MD simulation at room temperature. From the results of the MD
 simulation, the last frame of the atomic trajectories is taken to represent an accruate equalibrium geometry
 of ITIC. The purpose of this work isnt to justify the efficacy of this type of molecular simulation but it has
@@ -474,8 +474,8 @@ $10^{-2}$ \cite{Park2018} have been reported.
 A single molecule ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
 approaches to the delineation of chomophores within the ITIC morphology. In addition the the simulation of hopping
 from backbone to backbone we ran simulations with the whole molecule prescibed as chromophores. This
-necessarily requires more heavy lifting from PySCF but is trivially easy from an indexing perspective. Similar to the results of the DCUT
-investigation, this implemenation of PySCF combined with clever pickling of system objects at various stages
+necessarily requires more heavy lifting from \texttt{pySCF} but is trivially easy from an indexing perspective. Similar to the results of the DCUT
+investigation, this implemenation of \texttt{pySCF} combined with clever pickling of system objects at various stages
 of the workflow suggest that the laborious delineation of chromophores either via manual perscription or
 by clever use of smarts matching is a fools errand. We found that, while the 70 atom chomophores took 1.2s
 per dimer while the whole molecule dimer calculations with 186 atoms per chomophore to on average 3.3s.

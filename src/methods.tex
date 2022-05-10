@@ -17,7 +17,7 @@ In \autoref{KMC}, we describe the basics of stochastically modeling kinetic proc
 our specific kinetic Monte Carlo approach to modeling charge transport.
 Finally, in \autoref{software-methods}, we enumerate the software used in this thesis and outline the means by
 which it is developed. Particular focus is given to two packages that are principly developed by members of the CMELab:
-Planckton and MorphCT.  
+\texttt{Planckton} and \texttt{MorphCT}.  
  
 
 \section{Molecular Dynamics}
@@ -129,7 +129,7 @@ Every atom in the MD morphology has a unique index. All of the methods that foll
 This task is perfunctory but nontrivial. 
 In this work, we manually index these chromophores. The visualization software VMD has proven
 adjuvant to this process. For this thesis, a tutorial for using VMDs graphical user interface to visually select the desired
-atoms indices and save them as a numpy array is maintained on the MorphCT github [gotta reference all this]. \ej{This paragraph starts out suggesting that we're going to discuss the nuance and justification associated with assigning chromophores, but somehow ends up at using numpy arrays to save manual IDs with a mention of VMD and indexes in the middle. I think either (a) you need a picture showing a minimal example of a morphology that's being chopped into chromophores to explain it, or (b) have just a sentence like ``Once we as modelers make the decision about what constitutes a chromophore in a simulation volume, we automate the identification of chromophore positions so we can use these coordinates, leading us into Quantum chemical methods. Oh hey! Perfect timing!}
+atoms indices and save them as a numpy array is maintained on the \texttt{MorphCT} github [gotta reference all this]. \ej{This paragraph starts out suggesting that we're going to discuss the nuance and justification associated with assigning chromophores, but somehow ends up at using numpy arrays to save manual IDs with a mention of VMD and indexes in the middle. I think either (a) you need a picture showing a minimal example of a morphology that's being chopped into chromophores to explain it, or (b) have just a sentence like ``Once we as modelers make the decision about what constitutes a chromophore in a simulation volume, we automate the identification of chromophore positions so we can use these coordinates, leading us into Quantum chemical methods. Oh hey! Perfect timing!}
 
 
 \subsection{Quantum Chemical Methods}
@@ -201,17 +201,17 @@ PySCF is implemented almost entirly in the Python
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
 pySCF allowed for the entire QQC code to be implememted in five lines of code. These lines of code in 
 our natively maintaned package
-for performing KMC simulations, MorphCT, discussed in
+for performing KMC simulations, \texttt{MorphCT}, discussed in
 \autoref{methods}, asked asks pySCF to approximate the frontier
 energy levels given the chromophore's molecular arrangement.  
 
 Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
 semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
-Their work utilized an earlier version of MorphCT which used the QCC software 
+Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
 ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
-ORCA's proprietary licensing was prohibitive in the efforts to containerize MorphCT for use on cluster and for
-creating reproducible results. This motivated the restructuring of MorphCT for use with pySCF. The
-performance of pySCF and of the current MorphCT workflow is the subject \autoref{results}.
+ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
+creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with pySCF. The
+performance of pySCF and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
 
 As discussed above, calculating the frontier molecular orbital energies for large atomistic morphologies is
 a heavy computational lift. 
@@ -240,7 +240,7 @@ center. The polyhedron cell consists of every point in space that is closer to t
 any other chromophore center. Chromophores are considered neighbors if their voronoi cells abut one another.
 
 For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
-of the crystalline P3HT system described in \autoref{md}. To carry out this analysis, MorphCT incorperates the
+of the crystalline P3HT system described in \autoref{md}. To carry out this analysis, \texttt{MorphCT} incorperates the
 Voronoi class provided by Freud; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
 This class is compatible with 2D or 3D simulation data. 
 
@@ -311,7 +311,7 @@ Monte Carlo algorithms use pseudorandom numbers to solve computational problems.
 described as a first choice method KMC algorithm, where the kinetics involved is the rate of one electron
 charge transfer reactions and the first choice is that of the fastest available hop for a given charge.
 
-Using MorphCT, a charge is implanted as quasi-particle into a random chromophore within 
+Using \texttt{MorphCT}, a charge is implanted as quasi-particle into a random chromophore within 
 the morphology. In this model, we assume that the only events that can take place in the system are hops
 between chromophores. With this, the rate of all possible events in the system are known and are given by
 \autoref{marcus}. 
@@ -356,7 +356,7 @@ single KMC simulations to obtatin macroscopic charge mobility is the subject of 
 
 \subsection{KMC analysis}
 \label{kmcanalysis}
-MorphCT allows for the creation of a system object that holds all the information necesarry to carry out the
+\texttt{MorphCT} allows for the creation of a system object that holds all the information necesarry to carry out the
 KMC simulations outlined above. Running the simulation requires the choice of three system parameters: the
 KMC temperature, the carrier liftimes, and the number of indivual KMC simulations to perform.
 
@@ -404,7 +404,7 @@ conditions \cite{Chen2000a}.
 
 A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
 to be "embarrasingly parrel," in that the subprocesses(charge carriers) require no communication.
-MorphCT utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
+\texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
 simulated accross all available cores.
 
 \section{Software Development}
@@ -418,13 +418,13 @@ simulated accross all available cores.
 
 
 Two open source python packages for
-facilitating these two legs of the pipeline, Planckton and MorphCT, are maintained at 
+facilitating these two legs of the pipeline, \texttt{Planckton} and \texttt{MorphCT}, are maintained at 
 the CMElab github repository \cite{cmelab}.
-The use of Planckton in the methods and results sections below
+The use of \texttt{Planckton} in the methods and results sections below
 constitute the experience of an end user, as I had not personally developed this package before conscripting it
-to do my MD simulating. \ej{Let's try not to sound like we're making excuses for ourselves :)}
-Using Planckton-flow (also maintained on github), a sister package
-of Planckton we took a container of planckton off the shelf and ran MD simulations of benchmark OPV
+to do my MD simulating. 
+Using \texttt{Planckton-flow} (also maintained on github), a sister package
+of \texttt{Planckton} we took a container of \texttt{Planckton} off the shelf and ran MD simulations of benchmark OPV
 molecules on a high performance computing cluster without having to build the software stack or write the
 simulation scripts from scratch. 
 
@@ -443,13 +443,13 @@ Package/tool & Description \\ [0.5ex] % inserts table
 freud & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
 HOOMD-blue & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
     mBuild & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
-MorphCT & python package for simulating and analyzing charge transport from 
+\texttt{MorphCT} & python package for simulating and analyzing charge transport from 
     snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
 OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
 packmol & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
-Planckton & python based convenience package for running HOOMD-blue
+\texttt{Planckton} & python based convenience package for running HOOMD-blue
     simulations of OPVs \cite{cmelab}\\[1ex]
-Planckton-flow & python based package that supports the use of Planckton on
+    \texttt{Planckton-flow} & python based package that supports the use of \texttt{Planckton} on
     high performance clusters\cite{cmelab}\\[1ex]
 pySCF & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
 signac & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
@@ -463,7 +463,7 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 \end{table}
 
 My experience evinces what TRUE simulation engines can achieve and
-informs the direction in which we want to continue to take MorphCT. 
+informs the direction in which we want to continue to take \texttt{MorphCT}. 
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
 I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
@@ -474,20 +474,20 @@ can make in silico experimentation with these materials realistically attainable
 
 The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry, 
 a high performance computing cluster at Boise State University. 
-Planckton-Flow is a dataspace manager that uses
+\texttt{Planckton-flow} is a dataspace manager that uses
 singularity \cite{singularity2017} and docker \cite{Merkel:2014:DLL:2600239.2600241} 
 to contanerize a package developed to facilitate simulating self-assembly in
-organic photovoltaic materials; Planckton \cite{cmelab}. Docker images are binary files that contain the
+organic photovoltaic materials; \texttt{Planckton} \cite{cmelab}. Docker images are binary files that contain the
 entire software stack necessary to execute some code. This allows researchers to minimize dependency issues
 and increase reproducibility. However, docker has no native support for the use of GPUs and is not
-compatible with the more draconian permissions often present on HPCs. With that, Planckton-flow uses 
+compatible with the more draconian permissions often present on HPCs. With that, \texttt{Planckton-flow} uses 
 Singularity, software designed to overcome these shortcomings,
-to pull a docker image of Planckton to a container on the server. 
+to pull a docker image of \texttt{Planckton} to a container on the server. 
 
-Planckton is built using HOOMD-Blue simulation toolkit \cite{Anderson2020a}.
+\texttt{Planckton} is built using HOOMD-Blue simulation toolkit \cite{Anderson2020a}.
 The native file format of HOOMD-Blue is the GSD file. GSD files store simulation data in a binary file. As MD
 simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
-MorphCT is developed to operate on particular microstates stored in GSD files.
+\texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
 
 The forcefield used to generate the ITIC data was the Generalized
 Amber Force Field (GAFF)\cite{Wang2004a}.
