@@ -218,15 +218,19 @@ It was first synthesized in 2015. \cite{Bai201U}
 
 % CURRENTLY Says: We need a modular pipeline to do this sequence of things.
 % SHOULD Say: The sequence of steps for going from chemistry to charge transport. Wait till another paragraph for modularity. This will be a good place for a figure of ``the pipeline''
-Taking for granted that electronic devices utilizing OPVs is an exciting
-space, and with the immensity of the parameter space involved in molecular design, it is desirable that a modular
-open-source pipeline exhist for simulating the morphology of candidate molecules as well as simulating the 
-associated charge charecteristics. Jones2017 has laid out this
-pipeline in detail. To begin, equillibrium molecular dynamics (MD) simulations can predict the chemical
-structure of OPVs. The data obtained from these simulations can then be fed as an input into kinetic monte
-carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries. We introduce MD
-and our software stack used to implement it in \autoref{results}. The focus of this thesis, however, involves
+% ACTION : Made a figure and now need an appropriate paragraph to accompany it. 
+
+With the pipeline laid out in \autoref{pipeline}, we can take atomistic representations like those shown in
+\autoref{molecules} and, through a series of computations and simulations, arrive at data that is predictive
+of material properties. This pipeline is laid out in further detail by Jones et al.~\cite{Jones2017} 
+To begin, from an atomistic description of a given molecule, 
+equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
+The data obtained from these simulations can then be fed as an input into kinetic Monte
+Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the.
+We introduce MD and our software stack used to implement it in \autoref{results}. 
+The focus of this thesis, however, involves
 the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
+
 \begin{figure}
   \center
   \includegraphics[width=0.8\linewidth]{figures/the-pipeline.png} 
