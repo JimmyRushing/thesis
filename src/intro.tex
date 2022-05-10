@@ -28,7 +28,7 @@ OSC devices could afford all the above functional improvements in flexibilty and
 potentially revolutionary design capabilites.  
 For example, researchers have exploited a unique feature of the physics the excitonic photoabsorbtion in 
 organic materials. Namely, that absorbtion spectrum
-in these materials is relatively narrow ($\approx300nm$).
+in these materials is relatively narrow ($\sim300nm$).
 With this, they are able to tune the active layer material to absorb radiation right above or right below the
 visible spectrum (into the NIR or UV spectrum respectively). This 
 could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent OSCs have already
@@ -53,7 +53,7 @@ $\epsilon_{r}$, is a unitless quantity that describes a materials polarizability
 to that of free space. That is, relative
 permativity describes the readiness of a material
 to polarize in response to an electric field. A low
-relative permitivitty, $\epsilon_{r}\approx3$, in OPVs ($\epsilon_{r}\approx12$ for silicon)
+relative permitivitty, $\epsilon_{r}\sim3$, in OPVs ($\epsilon_{r}\sim12$ for silicon)
 means that these materials are only $3$ times more polarizable than free space, which
 is not all that polariazable. And, because the material occupying the space between electron and hole
 is not willing (or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
@@ -110,27 +110,30 @@ The excited electron would like to relax
 back into is lower energy level, but at the interface with the acceptor, it finds a better option. The
 acceptor's LUMO is engineered to sit between the energy of the donor's excited electron's energy level and the
 available lower energy level. Because of this, the electron cascades down to the acceptors LUMO through a charge
-tranfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
+transfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
 
 % CURRENTLY Says: Too many things: Active layer structure good and bad, our work focuses on pure domains, space-charge buildup is a thing. 
 % SHOULD Say: Something more about solution processability and how it dictates structure, focus in on the structure of the pure domains, and pull out space-charge buildup for its own paragraph (or move in CT mechanisms above)
-Our work in this work
-is most expressely related to stage four in that we seek to simulate the self-assembly and
+%ACTION: added a bit about solution processabilty
+
+Our work in this thesis
+is most expressly related to stage $4$ in that we seek to simulate the self-assembly and
 charge mobility in pure acceptor (or
 pure donor) domains post deposition. 
 These materials can be deposited from solution.
 How these materials will self-assemble in the environment in which they are deposited determines
-the morphology.  
+the morphology which intern governs charge mobility.  
 Successfully doing so could inform the ideal conditions for optimizing the morphology.
 
-The charge mobility of both donor and accpetor
-are known to be relevant to overall device performace \cite{Wang2019e}.
+Engineering the charge mobility of both donor and accpetor domains is critical
+to overall device performance \cite{Wang2019e}.
 An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
-If the electrons in stage 4 reach the andode much faster than the holes reach the cathode, a traffic jam can
-occur at the anode which causes losses. 
-Further, imbalanced charge-carrier mobility of this kind can lead to space-charge build up in the 
-low mobilty material that can screen the built in field \cite{Bartelt2015}.
+If the electrons in stage $4$ reach the andode much faster than the holes reach the cathode, a traffic jam can
+occur at the anode which can result in recombination with surrounding holes and ultimately a loss of the
+charge via annihilation. 
+The imbalanced charge-carrier mobility can also lead to space-charge build up in the 
+low mobility material that can screen the built in field \cite{Bartelt2015}.
 This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
 
 % CURRENTLY Says: A bit about the history of PCE, but also here's our first mention of DFT for some reason.
