@@ -1,0 +1,53 @@
+\chapter{Conclusion}
+\label{conclusion}
+
+As others have argued \cite{Evans2016}[this is a long list], the kind of workflow outlined in this thesis
+can allow for cheaper and more expansive screening of OPV materials accross varied chemistries and processing
+conditions. Beyond providing proof that it is theoretically possible to simulate these materials, we seek to
+show that it is also practically attainable to do so. To that end,
+particular effort is given to developing TRUE simulation tools. 
+
+Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
+iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
+
+Dynamic disorder does effect charge mobility (CT in high mobility conjugated polymers) with every pico second
+may have a 10-20\% fluxuation in TI. Need to find the paper but using the dynamic dimer methor for TI calc
+could be a way to introduce dynamic disorder. Or it could be done as mentioned before in another paper where
+they use two different methods one with a guassians fluxuation and sime ohther fancy method. 
+
+In our kmc algorithm we could incorperate the rates of other events like recombination.
+
+Mention Grits
+
+The computational bottle neck of simulation charge mobility is also the most theoretically challenging.
+Estimating the TI for each pair of chromophores. A future improvement to MorphCT will be accelerating this step
+with Machine learning techniques. Musil et al. have shown that ML could produce a 90 \% decrease in
+computational effort \cite{Musil2018}
+
+Something to do is allow morphct as to figure out what to do with donor accpeter mixtures. It would be pretty
+easy to run asyncronously on the donor/acceptor materials and compare. this could be a measure of morphology.
+If you run pure donor and pure acceptor and you got mobities, if on of those drops in the mixed morph more
+that the other you probably dont have a nice domain for BHJ.
+
+I hope one day a submission to a quantum computer could solve with extreme precicission the shrodinger
+equation for an entire morphology. Quantum algorithms are most advanced in this space and we await the race
+to large qubit computers. 
+
+I havent looked into it but I think reorganization energry should scale in out algorythm with crystallinity
+iasfaras we can measure crystallinity. the external reorganization energy of the material ,at least for p3ht
+was 200, and thats the lions share of overall reorganization energy which we have all ready shown to
+monitonically scale with the calculated mobilioty in this algorith. But external reorganization energy is
+related to the distortion of the surrounding medium. if the surrounding medium is shaped like a net if will
+certainly distort less than a disordered medium. Maybe this all ready talked about but energy does scale with
+molucaler size and rigidity \cite{McMahon2010a}
+
+In the
+same way  that we appropriated GAFF for use in OPVs, we hope morphCT will be similarly canabalized by researcher in the other fields, like the ones oulined above. \ej{Polish later}
+
+in the context of decorrelation time and testing the workflow accross independent sample of equillibrium
+microstates instead of just one at a time. 
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "BSUmain"
+%%% End: 

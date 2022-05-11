@@ -370,6 +370,7 @@ DOI: https://doi.org/10.1021/cr050140x
     zero field.) 
     -diffusion is a local displacement around an average position and drift is a displacement of 
     the average position
+    - small molecules and oligomers usually processed in vacuum and polymers in solution
     
 DOI: https://www.youtube.com/watch?v=YFzeMMOvhl0&t=4273s&ab_channel=Ren%C3%A9M.Williams
 
@@ -390,3 +391,142 @@ DOI: thoughts from scipy conference
     -the first observed black holes were obsereved using open source tools
     -need to do a liturature review that motivated revamping morph using open source tools
     -:
+
+
+DOI:10.1016/j.orgel.2015.11.021
+    
+    ESTIMATION OF CHARGE CARRIER MOBILITY IN AMORPHOUS ORGANIC MATERIALS USING RANDOM WALK
+
+
+        -these guys use a similar model as morph ct. they used 50 CPUs. even with that they found
+        that this "in silico" investigations can parse candidates for opvs. but times have changed since 
+        2006 in terms of large data management/open source/ gpu computing . because , much of the heavy lifting
+        of these simulations requires pairwise calculations the workflows are highly parrelizable and well
+        suited to gpu computing.
+
+
+DOI:10.1119/1.2188962
+
+    EINSTIEN AND BROWNIAN MOTION. 
+
+    -Of the imfamous einstien papers published in 1905, the most cited, and possibly least heralded was the 
+    publuication of his doctoral theses. The paper was "A New determination of Molecular Dimensions". He 
+    vant Hoffs law and stokes law together to estimate the size of dissolved sugar molecules. On his way, He 
+    derived a formula for the diffusion coefficeint of a suspended picroscopic particle. With similar assumptions, 
+    in his 1905 paper on Brownian motion, he would go on to derive the Einstien equation, which relates the
+    MSD of a particle to this diffusion coeeficiont. 
+
+https://www.youtube.com/watch?v=Qg7pQ_CYaIQ&ab_channel=MITOpenCourseWare
+
+    WAVE PARTICLE DUALITY OF MATTTER
+
+    -de broglie won a noble prize for wavelength = planks constant divided by (mass * velocity) which was 
+    essentially his PHD thesis
+
+    - a 75 mile an hour fast ball has  a wave length 10^-34. thats not a relevant frequncy
+    to a base ball. an electron has roughly a wavelegth of 2 *10^{-10} = 2 angstroms. The diameter of
+    an atom is anywhere from .5 to 4 angstroms. so this electrons wave function is very relevant
+
+    -
+
+DOI: 10.1002@chem.200903343
+
+    - The ionization potential value decreases with oligomer length due to the extension of
+    the pi-conjugated backbone."IPs were calculated as the energy differ- ence between 
+    the minimum-energy optimized structures of the radical cation and the neutral molecule." 
+    this is just homo-lumo?  with 4 fused ringed thiophenes at 5.26eV to 4.92eV for 8 fused
+    ring . this is pretty easily reproducable with morphCT? So i ran a quick notebook on this.
+    call it fused-experiment. and the band gap is reduced by 5 percent. the above ionization potential
+    is a reduction of 7 percenct. 
+
+    -display an almost perfect linear dependence on the reciprical number of fuseed thiophenes
+
+DOI: https://doi.org/10.1021/acs.chemrev.8b00803
+    
+    QUANTUM CHEMISTRY IN THE AGE OF QUANTUM COMPUTING
+
+    - doing quantum chemistry with classical computers has been a square peg in a round hole for
+    50 years
+
+    - its critical that every thing we do is modular because when we want our algorithms to 
+    combine with the results from quantum computers not be suplanted
+
+    -Hartree-fock method or Hartree equation is what MINDO3 uses. it is an approximate solution
+    to the shrodinger equation 
+
+    -this paper is over my head but extremely relevant to informing what is the most efficeint
+    path to simulating organic molecules. What if the fastest way to software that accurately 
+    simulatates organic molecules is to start making software that works on quantum computers?
+
+    -
+DOI: 10.1145/2889160.2891057
+
+    USING DOCKER CONTAINERS TO IMPROVE REPRODUCIBILITY IN SOFTWARE ENGINEERING RESEARCH
+
+    -reproducibility is a problem. not just from peer to peer but from mentor to mentee
+    Docker/ singularity containers work. the reus proved it. 
+    - Docker is an open source container. containers are virtual machines that contain all the
+    dependencies, configurataion,, code and data necessary to reproduce results. 
+    -
+    
+DOI: doi.org/10.1145/2723872.2723882
+
+    AN INTRODUCTION TO DOCKER FOR REPRODUCIBLE RESEARCH
+
+    -one would think, computer codes should be more easilty reproducible than
+    wet lab experemiments. That is, unless you have ever tried to do it. 
+    -they say the back in 2015 people didnt even want to publish the code to their work?
+    I mean, my code sucks but if you want to dive in.....
+    -and they say that many journals dont even require it????
+    -they say its not in the curriculum. 
+    -two made heuristics for achieving reproducibility. 
+        1.workflow software- This on is GUI heavy but requires mass adoption
+        not adopted because no one is willing to pay for with public moneys
+        and if companies make it, it is proprietary. 
+
+        2.virtual machines- this approach hijacks the whole operating system. They propose
+        running on the cloud. critics say that these monolithic containers will keep researchers
+        from weaving together new software
+
+    - the DevOPS strategy is basically script everything. 
+    - docker images are binary files that conatain all the software is all ready there and
+    configured. this addressses the dependency issue because you are reproducing the 
+    exact code that the researchers produced.
+    - the difference between a other VMs and docker is that the docker image shares a kernal 
+    with the host machine. 
+    -docker images have built in version control
+    -
+
+DOI: 10.1371/journal.pone.0177459
+
+    SINGULARITY: SCIENTIFIC CONTAINERS FOR MOBILITY OF COMPUTE
+
+        
+    -random thought: if, when, quantum computers become critical to various industries and
+    researchers, the tactics and workflows bolstered from remote computations on high performance 
+    clusters will be critical . because no one will have a local quantum machine.
+    -they say docker is fire but it isnt optimized for HPC's and to use it would introduce security
+    risks
+    -docker has no native support for GPUs
+    -they have a nice spreadsheet of what singularity uses vs what docker uses
+    -wow, found a typo "In essence, mobility ofcompute means being able to contain the entire software stack, from data files up through the library stack, and reliability move it from system to system." reliably . either way
+    this is the title of the paper so a good definition to have around. 
+
+DOI:10.1109/HPCC/SmartCity/DSS.2019.00362
+
+    EXPLORING THE PERFORMANCE OF SINGULARITY FOR HIGH PERFORMANCE COMPUTING SCENARIOS
+
+    -singularity meshes well with SLURM
+    -basiacally using singualrity negligeby slows down the HPC computing but
+    awards many many benifits. 
+
+DOI: 10.1016/j.energy.2020.116921
+    
+    THERMOMECHANICAL CHARACTERISATIONS OF PTFE, PEEK, PEKK AS ENCAPSULATION MATERIALS FOR MEDIUM TEMPERATURE SOLAR APPLICATIONS
+
+    - peek and pekk are also of interst to solar enegy applications for use as macroencapsulation
+    materials for PCM (phase change material). I guess the heat turns it into a liquid and 
+    you turn it back into a solid to extract heat . 
+    -10.1016/j.rser.2013.07.028 this paper explains how thermal energy storage works. 
+    dreamer thought: solar cells work worse when they get hot so use a TES system to extract heat
+    and store it for later. two birds one stone. 

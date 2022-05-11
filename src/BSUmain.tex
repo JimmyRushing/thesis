@@ -13,11 +13,12 @@
 % \usepackage{acro}
 % probably a good idea for the nomenclature entries:
 % \acsetup{first-style=short}
-
+\usepackage{subcaption}
 \newcommand\inputfile[1]{%
     \InputIfFileExists{#1}{}{\typeout{No file #1.}}%
 } % this command keep latexmk from erroring when \input is missing
 \newcommand{\todo}[1]{\textcolor{red}{#1 -- TODO}}
+\newcommand{\ej}[1]{\textcolor{red}{EJ: #1}}
 
 % For abbreviations
 \makeglossaries
@@ -33,21 +34,22 @@
 %------------------------------------------------------------------------------
 \author{James Rushing}
 %------------------------------------------------------------------------------
-\degree{Doctor of Philosophy}
-% \degreetype{Doctor of Philosophy}
+\degree{Master of Science}
+% \degreetype{Master of Science}
 %------------------------------------------------------------------------------
-\discipline{Geophysics}
+\discipline{Materials Science}
 %------------------------------------------------------------------------------
-\title{Template for a BSU Graduate Thesis} % use correct capitalization
+%\title{Simulating Charge Transport in Organic Materials with Open Source Software} % use correct capitalization
+\title{Reproducible Prediction Of Organic Semiconductor Properties Through Open Source Software Development} % use correct capitalization: EJ: THOUGHTS?
 %------------------------------------------------------------------------------
-\advisor{Dylan Mikesell}{Ph.D.}
-\committeeMemberA{Jeffrey B. Johnson}{Ph.D.}
-\committeeMemberB{Lee M. Liberty}{M.S.}
+\advisor{Eric Jankowski}{Ph.D.}
+\committeeMemberA{Jens Harlander}{Ph.D.}
+\committeeMemberB{Mahmood Mamivand}{Ph.D.}
 %------------------------------------------------------------------------------
-\dean{Tammi Vacha-Haase}{Dean of the Graduate College}
+\dean{Tammi Vacha-Haase, Ph.D.}{Dean of the Graduate College}
 %------------------------------------------------------------------------------
 % insert month and year of your thesis, only:
-\date{December 2017}
+\date{December 2021}
 \oralexamdate{25 October 2017}
 %------------------------------------------------------------------------------
 % optional external member: 
@@ -60,27 +62,27 @@
 \submittalsheet
 %------------------------------------------------------------------------------
 \setcounter{page}{4}
-\input dedication
 %------------------------------------------------------------------------------
+%\input dedication
 \input acknowledgment
 %------------------------------------------------------------------------------
-\input autobiographics
+%\input autobiographics
 %------------------------------------------------------------------------------
 \input abstract
 %------------------------------------------------------------------------------
 % \cleardoublepage
 \tableofcontents
 %------------------------------------------------------------------------------
-\cleardoublepage
-\addcontentsline{toc}{chapter}{List of figures} 
-\listoffigures
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{List of figures} 
+%\listoffigures
 %------------------------------------------------------------------------------
-\cleardoublepage
-\addcontentsline{toc}{chapter}{List of tables} 
-\listoftables
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{List of tables} 
+%\listoftables
 %------------------------------------------------------------------------------
 % print abbreviations
-\printglossary[title={List of abbreviations},type=\acronymtype]
+%\printglossary[title={List of abbreviations},type=\acronymtype]
 %------------------------------------------------------------------------------
 % print symbols
 % \cleardoublepage% or \clearpage
@@ -99,13 +101,18 @@
 %------------------------------------------------------------------------------
 \input intro
 %------------------------------------------------------------------------------
-\input chapter
+\input methods
 %------------------------------------------------------------------------------
+\input results                                                                                                
+%------------------------------------------------------------------------------    
+\input conclusions                                                                                
+%------------------------------------------------------------------------------    
+
 % bibliography:
 % \cleardoublepage
 \addcontentsline{toc}{chapter}{References} 
 \bibliography{cmelab}
-\bibliographystyle{authordate1}
+\bibliographystyle{unsrt}
 %------------------------------------------------------------------------------
 % \cleardoublepage
 \addcontentsline{toc}{chapter}{Appendices}
