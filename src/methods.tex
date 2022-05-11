@@ -134,11 +134,17 @@ atoms indices and save them as a numpy array is maintained on the \texttt{MorphC
 
 \subsection{Quantum Chemical Methods}
 \label{qccmethods}
-%Electrons (holes) exist at discrete energy levels. \ej{Cool, yes, but maybe a bit early.}
-\ej{Maybe: ``Calculating the rate at which a charge hops from one chromophore to the next using Marcus theory requires an understanding of the energy changes associated with the hop, which requires a calculation of chromophore's electronic orbital structure. 
-    Calculating electronic orbital structure requires quantum chemical calculations to account for the quantum behavior of these subatomic particles.
-    Quantum chemical calculations comprise a set of methods, including \textit{ab initio} calculations implemented in Density Functional Theory packages that work from first principles, and semi-empirical mehtods that use experimental data to make modeling approximations.(cite)''?}
-Quantum chemistry allows for the estimation of the energy levels of electrons (holes) whose molecular orbitals are implied by the chromophore's current atomic configuration. 
+\ej{Maybe: ``Calculating the rate at which a charge hops from one chromophore to the next
+using Marcus theory requires an understanding of the energy changes associated with the hop, 
+which requires a calculation of chromophore's electronic orbital structure. 
+Calculating electronic orbital structure requires quantum chemical calculations to account for the quantum 
+behavior of these subatomic particles.
+Quantum chemical calculations comprise a set of methods, including \textit{ab initio} calculations implemented 
+in Density Functional Theory packages that work from first principles, 
+and semi-empirical mehtods that use experimental data to make modeling approximations.(cite)''?}
+
+Quantum chemistry allows for the estimation of the energy levels of electrons (holes) whose molecular orbitals 
+are implied by the chromophore's current atomic configuration. 
 We assume that the electrons occupying the frontier molecular orbitals are the sole participants in the
 hopping that is going on between chromophores. That is, if an electron hops from $i$ to $j$, it will hop
 into the lowest unoccupied molecular orbital (LUMO) of $j$, and out of the
@@ -170,8 +176,9 @@ and $E_{homo-1,dimer}$ are the two highest energy occupied molecular orbitals of
 again to approximate the eigenvalues of the frontier molecular orbitals, but this time of the dimer
 Hamiltonian. 
 
-I found the intuition for this method to be elusive.\ej{Doesn't matter? We gonna tell the story about how Taylor series were hard the first time in here, too?}
-Imagine taking the dimer and pulling it apart, these two highest occupied energy levels of the dimer will become the HOMOs of their respective chromophores. \ej{I like it.}
+The dimer method can be understood best by imagining a dimer being pulled apart. At some distance
+the two highest occupied energy levels of the dimer will 
+be the HOMOs of their respective chromophores. \ej{I like it.}
 If the chromophores are not interacting, 
 then the two highest energy molecular orbitals of the dimer will be the HOMO of chromophore $i$ and the 
 HOMO of chromophore $j$. If there is electronic overlap, a comparison bewteen the two highest occupied
@@ -181,7 +188,6 @@ electronic overlap. Indeed, $T_{ij}$ is written as follows:
     T_{ij} = \frac{1}{2}\sqrt{ (E_{homo,dimer} - E_{homo-1,dimer})^{2} - (\Delta E_{ij})^{2} }.
 \end{align}
  
-
 Solving shrodingers equation, with any level of accuracy,
 across an entire molecular arrangment is a prodigious computational lift.
 Other studies have implemented ab initio DFT methods at this stage of predicting
