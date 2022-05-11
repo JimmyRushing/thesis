@@ -1,36 +1,43 @@
 
 
-DOI: 10.1039/D1CP00674F
-    These guys have there own morphCT at https://github.com/tobiaskoch1988/charge_transport_package
+DOI: 10.1039/D1CP00674F (JF I can't find this paper anywhere :c )
+
+    These guys have their own morphCT at https://github.com/tobiaskoch1988/charge_transport_package
+    P3HT:DIPBI blend compared to amophous P3HT
+    - what is internal vs. outer-sphere reorganization energies?
+    - their package can use VOTCA?
+    - docs are confusing and require multiple fortran compilation steps.
 
 DOI DOI: 10.1002/aic.16760
 
-    Machine learning predictions . Evans paper
+    Machine learning predictions. Evans paper
 
     Tested five techniques for using machine learning to predict mobility and random forests were the most succesful
 
-    15 percent efficiency is all you need for one day pay back times .
+    15 percent efficiency is all you need for one day pay back times.
 
-    fed into the maching was 1. bonded or non bonded
-                                2. distance between thiothenen rings center of mass
-                                3. angles between thiothene rings
-                                4. distance between sulfurs in thiothen rings
-                                5. x y and z coordinat distances between cetners
+    fed into the machine was 1. bonded or non bonded
+                                2. distance between thiophene rings center of mass
+                                3. angles between thiophene rings
+                                4. distance between sulfurs in thiophene rings
+                                5. x y and z coordinate distances between centers
                                 6. energy difference between chomophores
 
 
-DOI doi.org/10.1063/5.0047421 
+DOI doi.org/10.1063/5.0052592 
 
     DOPING RELATED BROADENING OF DENSITY OF STATES GOVERNS INTEGER-CHARGE TRANSFER IN P3HT
     
-    conjugated polymers can be engineered to have high "figure of merit" ZT=ST/(\rho*\kappa) where the demonetor 
+    conjugated polymers can be engineered to have high "figure of merit" ZT=ST/(\rho*\kappa) where the denominator 
     is resistivity vs thermal conductivity. thermal conductivity is small in conjugated polymers and resistivity can be 
     significantly doped away. 
 
-    they say that ICT and FCT are in competition and that by adding a p-dopant with electron affinity higher that the
-    ionization energy of the surrounding material(P3Ht) you can encourage ICT. I seems to me like FCT is ignored in JONES2017
+    they say that ICT and FCT (integer and fractional charge-transfer) are in competition and that by adding a p-dopant with electron affinity higher that the
+    ionization energy of the surrounding material(P3HT) you can encourage ICT. I seems to me like FCT is ignored in JONES2017
+        - this may be because we do not consider charge _transfer_ only charge _transport_.
+        - charge transfer being the creation of carriers (holes or electrons) and charges transport being the movement of carriers.
     via the assumption that a chromophore is one monomer. ie you cant have the excitation delocalized over large chains. it has to hop. 
-    Also should we  can we "dope" our simulations of P3HT
+    Also should we can we "dope" our simulations of P3HT
 
 DOI DOI:10.1038/s41578-019-0137-9
 
@@ -40,7 +47,7 @@ CHARGE TRANSFER ELECTRONIC STATES IN ORGANIC SOLAR CELLS
     donor acceptor interface where a CT state can be generated. This is characerized by the electron sittin in the lumo of the 
     acceptor and the hole sitting in the homo of the donor
 
-    they say a three state model is needed to fully describe the interation between the 1.) the electronic state if the exciton 
+    they say a three state model is needed to fully describe the interation between the 1.) the electronic state of the exciton 
     2.) the electronic state of the CT state and 3.) the electronic state of the ground state. but a two state approximation can
     be used to ignore the interation between the absorbed electron state. that is to say a a charge tranfer state and a ground state 
     have weak vibronic enteraction with the the local electron state. almost like the rate limiting step approximation
@@ -53,11 +60,11 @@ CHARGE TRANSFER ELECTRONIC STATES IN ORGANIC SOLAR CELLS
 
     energy distributions of CT states generally follw a gaussiain distribution do to the relation of electron-vibration interaction. 
 
-    urbach energy is a measure of disorder and takkes contributions from static and dynamic disorder
+    urbach energy is a measure of disorder and takes contributions from static and dynamic disorder
     
     the Voc in OSCs is lower than traditional cells. this is attricbuted to the fact that the CT-state has a lower energy
-    than the optical gap and there for lower energy than the photo induced electron. voltage is also lose to non-radiative
-    decay to ground states. voltage loss can be describes in terms of the quantum efficiency of electroluminescence EQE.  this
+    than the optical gap and there for lower energy than the photo induced electron. voltage is also lost to non-radiative
+    decay to ground states. voltage loss can be described in terms of the quantum efficiency of electroluminescence EQE.  this
     value is proportional to the CT decay rates. all that is to say that voltage loss increase with a decrease in CT-state energy.
 
 
@@ -66,32 +73,32 @@ DOI: Liu, Y. (2021). Spectroscopic study of charge-transfer states in organic se
 
     based on the Shockley-Quiesser theoretical framework, an ideal solar cell has no non-radiative reconbination. only radiative which is
     unavoidable. They say that a great solar cell is a great LED because it has small non-radiative recombination. 
-    basically, energy in is enrgy out in one form or the other.
+    basically, energy in is energy out in one form or the other.
 
     something new that this work is doing is considering the local excitons(specifically thier lifetimes) 
-    influence on the photolumninesent yield of the CT state. Could be reading this worng but this is a consideration explicitally
+    influence on the photolumninesent yield of the CT state. Could be reading this wrong but this is a consideration explicitly
     ignores in the the two state theory
 
     they state as does the work above that the simple bilayer organic photovaoltaics is doomed because the excitons cant diffuse far enough
-    (they diffuse up to 10nm probably impossible to make a 5nm thin flim)to reach a dissasotiating interface. 
+    (they diffuse up to 10nm probably impossible to make a 5nm thin film)to reach a dissociatiatin interface. 
 
     fullerene acceptors are hard to tune. 
 
     they say non-symmetrical acceptors could lead to highly intermixed morphology which would require novel morphological control to tune 
-    exciton splittting and charge transtport. 
+    exciton splitting and charge transtport. 
 
     over all energy loss is defined as the difference bewtween E_{s1}, the energy of the low band gap exciton and the free carriers E_{carriers}
     or, \Delta E = E_{s1} - E_{carriers} .
 
 
-    They are studying 4TIC which has a more eleictron rich donor core , 4T, which they expect to give rise to
+    They are studying 4TIC which has a more electron rich donor core, 4T, which they expect to give rise to
     stronger intramolecular charge transfer with IC. they say that 4TIC extends the absorption into the 
     nIR (near infared ) wavelengths compared to og ITIC.
 
 
 DOI: 	Phys. Chem. Chem. Phys., 2015,17, 28451-28462
         
-"HOT OR COLD :HOW DO CHARGE TRANSFER STATES AT DONOR-ACCEPTOR INTERFACE OF AN ORAGNIC SOLAR CELL DISSACSOCIATE."
+"HOT OR COLD: HOW DO CHARGE TRANSFER STATES AT DONOR-ACCEPTOR INTERFACE OF AN ORAGNIC SOLAR CELL DISSACSOCIATE."
         
 DOI: 10.1021/cr900271s
 
