@@ -79,7 +79,9 @@ conductivity of the material we use Marcus theory coupled with KMC.
 
 Marcus's nonadiabatic electron transfer theory allows us to model charge hopping between chromophores as two
 intersecting parabolic potential energy surfaces. 
-In our case, a parabola represents the potential energy of a dimer consisting of two chromophores plotted by 
+In our case, a parabola represents the potential energy well of a charge that is localized on a 
+one of two chromophores in a dimer complex. The movement of charges therefore can be modeled as a thermally
+activated process from one potential well to the next.  The surfaces are plotted by 
 the dimer's nuclear coordinates. 
 With that, if our dimer consists of chromophores $i$ and $j$, the potential energy curve of the dimer with a
 charge on chromophore $i$ will be offset from that of the dimer with a charge on chromophore $j$. The
@@ -114,17 +116,29 @@ potential hops throughout the morphology.
 Simulating a charge hopping around a morphology requires identification of
 individual chromophores and calculating the rate at which a charge will hop to neighboring
 chromophores. 
-Each chemistry requires its own justification for which segments in the morphology \ej{I like where you're going here, but why?}
-can be considered to harbor a fully delocalized charge. 
-Researchers have previously found that, despite experimental results suggesting that delocalizaion occurs along roughly 7 monomers in P3HT, treating every monomer as a chromophore gives accurate results \cite{jones2017}.\ej{kindof a lot packed in this sentence. Let's unpack this and take our time: In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
+Each local molecular environment requires its own justification for where chromophores in the morphology 
+can be considered to harbor a fully localized charge.
 
+In organic systems, charges are localized due to the disorder in the available electronic states.
+The spacial extent of chromophores is therefore dependent on the local environment of individual chromophores
+and correspond roughly to the boundary between strongly interacting molecular regions and weakly interacting
+ones. 
+In the case of conducting polymers like P3HT this boundary is affected by the how the chains are twisted
+or bent. Therefore, while experimental studies have suggested that charges localize along roughly 7 monomer chains
+in P3HT, our application of our model to three morphologies of P3HT with vastly different structure mean 
+that this may not be broadly applicable. To disambiguate the results in this thesis we chose to take the
+simplest model. Individual monomers in the system to be chromophores. The single monomer chromophore model has been shown to
+produce good results \cite{jones2017}.
+\ej{In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
 With ITIC, the frontier molecular orbitals, that is, the HOMO
-and LUMO have negligible electron density along the side chains. With that, significant computational resources \ej{OK! This is some of the stuff I wanted up above, so, cool, it just means that you've got some bigger jumps in logic as-organized and moving things around will bring clarity here..  }
+and LUMO have negligible electron density along the side chains. With that, significant computational resources 
 can be conserved by leaving these atoms out of the of the QCCs. 
-To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}. 
+To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}.
 
-Deciding where a chromophore should be expected is one step in the workflow that requires nuance and scientific justifications.  \ej{This belongs before explaining how ITIC is chopped up.}
-However, after that decision has been made, a significant hurdle to the aspiring researcher remains. \ej{WHAT A TEASER! Just tell us what's important instead. }
+
+Deciding where a chromophore should be expected is one step in the workflow that requires nuance and
+scientific justifications. However, after that decision has been made, a significant hurdle of 
+ascribing the atoms to their respective chromophores computationally. 
 Every atom in the MD morphology has a unique index. All of the methods that follow hinge on assigning the prescribed atom indices to their respective chromophore. 
 This task is perfunctory but nontrivial. 
 In this work, we manually index these chromophores. The visualization software VMD has proven
