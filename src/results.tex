@@ -109,8 +109,31 @@ Also observable in the figure is that
 a negative rotation about the x-axis orients the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
 and a greater $T_{ij}$. 
 
-For the oreintations found to be most and least optimal we calculate (shown in \autoref{TIplots})
-a $T{ij}$ of $.00005eV$ and $.15eV$ respectively. In the context of \autoref{marcus} and \autoref{waittime},
+\begin{figure}
+\centering
+\begin{subfigure}{.9\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
+    \caption{Individual dots correspond to $5680$ 
+    distinct combinations of rotations and translations of the upper
+    thiophene.
+    Dots are colored based on the $T_{ij}$ between thiophenes for the given x-axis rotation,
+    z-axis rotation, and center to
+    center distance from the reference thiophene.}
+\end{subfigure}
+\\
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/thiophene-oreintations.png}
+    \caption{The orientation with the hightest $T_{ij}$ on the left and
+    the lowest on the right.}
+\end{subfigure}%
+\caption{ }
+\label{TIplots}
+\end{figure}
+
+For the oreintations found to be most and least optimal we calculate (shown in \autoref{TIplots}),
+a $T_{ij}$ of $.00005eV$ and $.15eV$ respectively. In the context of \autoref{marcus} and \autoref{waittime},
 the corresponding wait time for a charge to hop between to thiophenes in these oreintations is $\tau = 2
 \cdot 10^{-14}s$ and $\tau = 2 \cdot 10^{-7}s$. With latter case being two orders of magnitude slower than the
 lifetimes allowed in our KMC simulations, a hop would be highly unfavored for this oreintation. 
@@ -118,7 +141,7 @@ lifetimes allowed in our KMC simulations, a hop would be highly unfavored for th
 Creating the directory of GSDs and quantifying the $T_{ij}$ between them took a wall time of $3.2h$ which
 avereges to ${\sim}2s$ per oreintation. 
 
-As evidenced by \autoref{TIplots}(b)), for oreintations resulting in a center-to-center distance of less than
+As evidenced by \autoref{TIplots}((a)), for oreintations resulting in a center-to-center distance of less than
 $0.5nm$ we calculate an average $T_{ij}$ of ${\sim} 0.28eV$.  
 These calculations match closely those
 calculated using more rigerous ab initio DFT methods\cite{Lan2008},
@@ -130,41 +153,10 @@ between thiophenes based on 9 input features, the authors found that the
 features of most importance for predicting $T_{ij}$ was bonded vs non bonded,
 center-to-center distance and rotation about the y-axis. \cite{Jankowski2019c}
 
-\begin{figure}
-\centering
-\begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/thiophene-oreintations.png}
-    \caption{The orientation with the hightest $T_{ij}$ on the left and
-    the lowest on the right.}
-\end{subfigure}%
-\\
-\begin{subfigure}{.9\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/transfer_integral_plot.png}
-    \caption{Individual dots correspond to $5680$ 
-    distinct combinations of rotations and translations of the upper
-    thiophene.
-    Dots are colored based on the $T_{ij}$ between thiophenes for the given x-axis rotation,
-    z-axis rotation, and center to
-    center distance from the reference thiophene.}
-\end{subfigure}
-    \caption{ }
-\label{TIplots}
-\end{figure}
-
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
 requires the use of an iterative algorithm. For this we employ KMC simulations using \texttt{MorphCT}.
 
 \subsection{Charge Transport Calculation Validation}
-
-
-\begin{figure}
-  \center
-  \includegraphics[width = .6\textwidth]{figures/validation.png}
-  \caption{}
-  \label{mobility-validation}
-\end{figure}
 
 Having explored the performance of \texttt{pySCF} on the level of the molecule, we graduate these computations to the
 macroscopic scale with \texttt{MorphCT} to obtain charge mobility.
@@ -193,6 +185,13 @@ each morphology, 10,000 individual charge carriers are injected (one at a time) 
 5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond.
 As outlined in \autoref{kmcanalysis}, from the difference in MSD bewteeen these sets of charge carriers the
 zero-field charge mobility for the morphology is obtained. 
+
+\begin{figure}
+  \center
+  \includegraphics[width = .6\textwidth]{figures/validation.png}
+  \caption{}
+  \label{mobility-validation}
+\end{figure}
 
 It is known about P3HT that it can have vastly different crystallinities based on how it has been processed. 
 We validate on three morpholgies with crystallinities that vary from amorphous to highly crystalline. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. 
