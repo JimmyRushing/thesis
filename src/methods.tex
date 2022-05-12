@@ -79,10 +79,10 @@ conductivity of the material we use Marcus theory coupled with KMC.
 
 %% JF this first sentence is a little jarring to me. We are not modeling charge hopping as two parabolas... We are using a frame from a simulation trajectory and the (atom) particles do not move for the duration of the kmc simulation (born-oppenheimer approximation). We use the energies obtained from quantum chemical calculations of pairs and single chromophores to inform the rate of the carrier "hop" between each chromophore. I might reorganize this section a little to take up where you left off with the MD section. MD gives us a sampling of the equilibrium thermodynamic state, then we use one frame from that sample, we pick the chromophores, we calculate the energies, etc.
 %% using the parabola graphic to explain where the reorganization energy comes from is good, but I think leading with two parabolas representing the model is a little confusing.
-A free charges movement through a morphology can be modeled as a series of charge transfer reactions, or
-`hops' between relatively weakly interacting chromophores in the system. 
-Marcus's nonadiabatic electron transfer theory allows us to model each individual hop between chromophores as two
-intersecting parabolic potential energy surfaces. 
+A free charges movement through a morphology can be modeled as a series of Marcus nonadiabatic electron transfer
+reactions, or `hops' between relatively weakly interacting chromophores in the system. 
+Each hop then is a thermally activated process, the rate of which is given by the interesction of
+two parabolic potential energy surfaces. 
 In our case, a parabola represents the potential energy well of a charge that is localized on
 one of two chromophores in a dimer complex. The movement of charges therefore can be modeled as a thermally
 activated process from one potential well to the next.
