@@ -49,12 +49,12 @@ boundaries, crystallinity etcetera) that govern charge transport occur across ma
 are suited to this task because they enable the combination of coarse-grained models with atomistic
 representations to predict experimentally relevant length scales \cite{Miller2018}.
 
-The morphologies used in this work  were obtained from equilibrium Molecular Dynamics simulations. 
+The morphologies used in this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equilibrium geometries of molecular
 systems. MD simulations proceed iteratively by solving Newtons laws of motion
 in accordance with a predefined interatomic interaction potentials.
 At each iteration, the velocities and positions of molecules are
-updated based on this solution and they are pushes and pulled in accordance with
+updated based on this solution and they are pushed and pulled in accordance with
 the interaction between neighbors. The pair potentials are defined by a Leonard-Jonsian (LJ) potential \cite{Jones1924a}
 \ej{JANK: Cite some of the OG papers here, like LJ simulation of Argon. JIMMY: not really sure what or how much to
 say here but added the reference.}
@@ -68,8 +68,8 @@ temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
 The system can be considered equilibrated when the potential energy no longer decreases with time. 
 From the the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
 simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
-into distinct regions, working backwards in time, the bin is added to the equillibrated region if its standard
-deviation is less than twice that of the previous bin. \cite{Henry2017a}
+into distinct regions, working backwards in time, a bin is added to the equillibrated region if its standard
+deviation is less than twice that of the previous bin \cite{Henry2017a}.
 
 MD simulations can predict the self-assembly of OPV materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with KMC.

@@ -441,15 +441,12 @@ To apply the hopping model to this atomistic morphology requires the
 delineation of segments within the morphology upon which charges can delocalize along the within a the HOMO(or in
 the case of LUMO for the acceptor). It should be noted that acceptor in this context doesn't refer to
 chomophore $j$ as such.  
-This nonadiabatic marcus theory apply to high coulpling for the 7 molecule thing is justified by matty becuase
-it works. In ITIC no bonding between chromos insures the weak coupling limit where hopping model is more
-easliy justified.
 The LUMO of ITIC delocalizes along the backbone of the molecule, with
 negligible electron density in the side chains. This has been quantified using DFT and well visualized at the
-level of the molecule by Han et al \cite{Han2019}. We have visualized this at the nanometer scale in figure \ref{ITIC} using the openly
+level of the molecule by Han et al \cite{Han2019}.
+We have visualized this at the nanometer scale in figure \ref{ITIC} using the openly
 available visualization tool OVITO \cite{Stukowski2010a}. This makes the the backbone of this kind of small molecule
-material the obvious choice. In more polymeric materials like P3HT, the hopping model has received further
-justification elsewhere. 
+material the obvious choice.
 
 \begin{figure}
 \centering
@@ -464,12 +461,6 @@ justification elsewhere.
 \label{ITIC}
 \end{figure}
 
-
-
-The the reported
-experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
-$10^{-2}$ \cite{Park2018} have been reported. 
-
 A single molecule ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
 approaches to the delineation of chomophores within the ITIC morphology. In addition the the simulation of hopping
 from backbone to backbone we ran simulations with the whole molecule prescibed as chromophores. This
@@ -479,16 +470,21 @@ of the workflow suggest that the laborious delineation of chromophores either vi
 by clever use of smarts matching is a fools errand. We found that, while the 70 atom chomophores took 1.2s
 per dimer while the whole molecule dimer calculations with 186 atoms per chomophore to on average 3.3s.
 Comprable mobilities of $(1.019 \pm 0.001)\cdot 10^{-3}$ or the backbone chromophores and 
-$(1.275 \pm 0.001)\cdot 10^{-3}$ [rerunning this because it got over written] for the whole molecule. 
-
+$(1.275 \pm 0.001)\cdot 10^{-3}$ for the whole molecule. 
 For small molecule materials this suggests forgoing labor intinsive indexing of chromophores.
 
-As discussed in the sensitivit analysis, our mobility calcualtions are relatively sensitive to the choice of
+As discussed in the sensitivity analysis, our mobility calcualtions are relatively sensitive to the choice of
 reorganization energy. For ITIC, $\lambda_{internal}$ has been well investigated and is widely reported as
 $~0.15eV$. The external reorganization is harder to estimate. We take $\lambda_{total}=0.3eV$ as we did for
 P3HT. With the fused
 backbone resulting in a higher internal contribution and the lack of long range order resulting in a lower
 external contribution. 
+
+The the reported
+experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. 
+Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
+$10^{-2}$ \cite{Park2018} have been reported. 
+
 
 %%% Local Variables: 
 %%% mode: latex
