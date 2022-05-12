@@ -435,6 +435,7 @@ to be "embarrasingly parrel," in that the subprocesses(charge carriers) require 
 simulated accross all available cores.
 
 \section{Software Development}
+
 \label{software-methods}
 % this section should be about about HOW we develop software? Using version control, pull requests, 
 %jupyter notebooks, continuous integration, tests, and validation? This can given in the context of true
@@ -446,16 +447,15 @@ github.com\cite{cmelab}.
 As with any open-source software project, these repositories serve as a
 central hub for developers to collaberate and integrate code into the code base. These repositories are
 version controlled with a snapshot of the code based saved at each iteration. This allows researchers to 
-reproduce each others work with the exact version used to carry out the analysis. 
+reproduce each others work with the exact version used to carry out the analysis. It also provides a
+documented and controlled way to merge together divergent code through pull requests and unit testing. 
 
-Using \texttt{Planckton-flow} (also maintained on github), a sister package
-of \texttt{Planckton} we took a container of \texttt{Planckton} off the shelf and ran MD simulations of benchmark OPV
-molecules on a high performance computing cluster without having to build the software stack or write the
-simulation scripts from scratch. 
+Modular, python based code allows for the curation and publication of Jupyter notebooks workflows and
+tutorials for performing reproducable analysis. Jupyter notebooks are a document format for publising code
+that is excecutable and interactive \cite{Kluyver2016}. 
 
-All the tools used to implement, analyze, and
-visualize this work are freely available. 
-The packages and tools are enumerated in \autoref{packages}.
+ 
+
 \begin{table}[]
     \caption{Packages} % title of Table
 \centering % used for centering table
@@ -487,15 +487,22 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 \label{packages} % is used to refer this table in the text
 \end{table}
 
-My experience evinces what TRUE simulation engines can achieve and
-informs the direction in which we want to continue to take \texttt{MorphCT}. 
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
 I was able to take an investigation of ITIC from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
-can make in silico experimentation with these materials realistically attainable by any aspiring researcher.
+can make in silico screening of OPV materials realistically attainable by any aspiring researcher.
+
+All the tools used to implement, analyze, and
+visualize this work are freely available. 
+The packages and tools are enumerated in \autoref{packages}.
 
 \subsection{MD Software}
 \label{planckton}
+
+Using \texttt{Planckton-flow} (also maintained on github), a sister package
+of \texttt{Planckton} we took a container of \texttt{Planckton} off the shelf and ran MD simulations of benchmark OPV
+molecules on a high performance computing cluster without having to build the software stack or write the
+simulation scripts from scratch.
 
 The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry, 
 a high performance computing cluster at Boise State University. 
@@ -525,7 +532,7 @@ comprised of H,C,N,O, and P and produces accurate simulations of organic molecul
 
 
 It was determined
-that in the interest of reprducabitilty, it was critical to ``containerize'' this pipeline. Until as recently as
+that in the interest of reprducabitilty, it was critical to `containerize' this pipeline. Until as recently as
 the past few years it was common place to not publish code with the results of computational works. Containers
 are virtual machines that contain all the dependencies, configurations, code and data necessary to reproduce
 results \cite{Cito2016a}. 
