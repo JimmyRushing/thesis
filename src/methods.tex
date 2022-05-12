@@ -516,16 +516,16 @@ compatible with the more draconian permissions often present on HPCs. With that,
 Singularity, software designed to overcome these shortcomings,
 to pull a docker image of \texttt{Planckton} to a container on the server. 
 
-\texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
-The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. As MD
-simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
-\texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
-
-The forcefield used to generate the ITIC data was the Generalized
+\texttt{Planckton} is compatable with the forcefield used to generate the ITIC data; the Generalized
 Amber Force Field (GAFF)\cite{Wang2004a}.
 The Amber forcefield was designed for use in modeling protein and
 nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
 comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. 
+
+\texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
+The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. As MD
+simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
+\texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
 
 \subsection{KMC Software}
 \label{morphct}
