@@ -426,23 +426,27 @@ mobility. This further suggests that going lifetime crazy is a waste of computat
 \section{ITIC}
 \label{itic}
 
-To explore the extensibility of the workflow on another benchmark OPV material, using \texttt{planckton-flow}, a 1000
-molecule morphology of ITIC was equillibrated over a 10e-7 step MD simulation at room temperature. From the results of the MD
-simulation, the last frame of the atomic trajectories is taken to represent an accruate equalibrium geometry
-of ITIC. The purpose of this work isnt to justify the efficacy of this type of molecular simulation but it has
-been used to affect elsewhere[REFS].
+Using \texttt{planckton-flow}, a 1000
+molecule morphology of ITIC was equillibrated over a 10e-7 step MD simulation at room temperature. 
+\texttt{Planckton-flow} allowed for a container of \texttt{Planckton} to be taken 
+off the shelf an pulled to a the performance computing cluster without having to build the software stack or write the
+simulation scripts from scratch.
+
+From the results of the MD
+simulation, the last frame of the atomic trajectories is taken to represent an accurate equillibrium geometry
+of ITIC. 
 
 To apply the hopping model to this atomistic morphology requires the
-delineation of segments within the morphology upon which charges can delocalize along the within a the HOMO(or in
-the case of LUMO for the acceptor). It should be noted that acceptor in this context doesn't refer to
-chomophore $j$ as such.  
+delineation of segments within the morphology upon which charges can delocalize along LUMO (or 
+HOMO for donors). It should be noted that acceptor in this context doesn't refer to
+chromophore $j$ as such.  
 The LUMO of ITIC delocalizes along the backbone of the molecule, with
-negligible electron density in the side chains. This has been quantified using DFT and well visualized at the
-level of the molecule by Han et al \cite{Han2019}.
+negligible electron density in the side chains and this makes the backbone of this kind of small molecule
+material the obvious choice of chromophore.
+. This has been quantified and well visualized using \textit{ab
+initio} DFT at the level of the molecule by Han et al.~\cite{Han2019}.
 We have visualized this at the nanometer scale in figure \ref{ITIC} using the openly
-available visualization tool OVITO \cite{Stukowski2010a}. This makes the the backbone of this kind of small molecule
-material the obvious choice.
-
+available visualization tool OVITO \cite{Stukowski2010a}. 
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
