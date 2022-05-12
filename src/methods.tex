@@ -77,9 +77,7 @@ conductivity of the material we use Marcus theory coupled with KMC.
 \section{Marcus Model}
 \label{marcusmodel}
 
-%% JF this first sentence is a little jarring to me. We are not modeling charge hopping as two parabolas... We are using a frame from a simulation trajectory and the (atom) particles do not move for the duration of the kmc simulation (born-oppenheimer approximation). We use the energies obtained from quantum chemical calculations of pairs and single chromophores to inform the rate of the carrier "hop" between each chromophore. I might reorganize this section a little to take up where you left off with the MD section. MD gives us a sampling of the equilibrium thermodynamic state, then we use one frame from that sample, we pick the chromophores, we calculate the energies, etc.
-%% using the parabola graphic to explain where the reorganization energy comes from is good, but I think leading with two parabolas representing the model is a little confusing.
-A free charges movement through a morphology can be modeled as a series of Marcus nonadiabatic electron transfer
+ free charges movement through a morphology can be modeled as a series of Marcus nonadiabatic electron transfer
 reactions, or `hops' between relatively weakly interacting chromophores in the system. 
 Each hop then is modeled as a thermally activated process, the rate of which can be solved for analytically
 from the interesction of two parabolic potential energy surfaces. 
@@ -88,9 +86,10 @@ one of two chromophores in a dimer complex.
 With electron transfer much much faster than the movement of nuclear coordinantes (Franck-Condon principle),
 the intersection of the parabolas corresponds to the unique nuclear geometry, and distinct vibrational mode, at
 which charge transfer is assumed to take place. 
+
 \begin{figure}
   \center
-  \includegraphics[width=0.99\linewidth]{figures/marcus-plot.png} 
+  \includegraphics[width=0.7\linewidth]{figures/marcus-plot.png} 
     \caption{Two intersecting dimer potential energy surfaces annotated with $\lambda_{ij}$, the
     reorganization energy, $\Delta E_{ij}$, the free energy difference bewtween dimers. $C_{i}^*/C_{j}$ 
     and $C_{i}/C_{j}^*$ the dimer with charge on chromophore $i$ and on chromophore $j$ respectively}
@@ -120,7 +119,6 @@ chromophores.
 Each local molecular environment requires its own justification for where chromophores in the morphology 
 can be considered to harbor a localized free charge.
 
-%% JF: I'm not sure what you mean by this part of the statement "due to the disorder in the available electronic states". Charges in a molecular morphology are localized compared to those in a metal. Due to the small group of strongly connected atoms in a molecule, the energy levels these charges can occupy are quantized and distinct molecular orbital energy levels as compared to the broad smear of the energy "bands" seen in metals.In organic systems, free charges are localized due to the fact that they are married to the vibrational mode
 In disorderd organic systems, unlike in metals or single crystal organic materials, 
 electronic states are localized to the frontier molecular orbitals of tightly
 bound packets of atoms within the morphology. 
@@ -143,7 +141,7 @@ in P3HT, our application of our model to three morphologies of P3HT with vastly 
 that this may not be broadly applicable. To disambiguate the results in this thesis we chose to take the
 simplest model. Individual monomers in the system to be chromophores. The single monomer chromophore model has been shown to
 produce good results \cite{jones2017}.
-\ej{In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
+%%\ej{In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
 
 Deciding where a chromophore should be expected is one step in the workflow that requires nuanced
 scientific justifications. However, after that decision has been made, the significant procedural hurdle of 
@@ -152,7 +150,9 @@ Every atom in the MD morphology has a unique index. All of the methods that foll
 In this work, we manually index these chromophores. A tutorial for using VMDs graphical user interface to
 visually select chromophores is maintained for \texttt{MorphCT}.
 We also maintain workflows for automating the identification of chromophore positions using smarts
-matching. With the morphology chopped into chromophores and stored in memory, the energetics between
+matching.
+
+With the morphology chopped into chromophores and stored in memory, the energetics between
 neighboring chromophores can be estimated with quantum chemical methods.
 
 \subsection{Quantum Chemical Methods}
@@ -165,7 +165,7 @@ Quantum chemistry allows for the estimation of the energy levels of electrons (h
 are implied by the chromophore's current atomic configuration. 
 Quantum chemical calculations comprise a set of methods, including \textit{ab initio} calculations implemented 
 in Density Functional Theory packages that work from first principles, 
-and semi-empirical methods that use experimental data to make modeling approximations.(cite)
+and semi-empirical methods that use experimental data to make modeling approximations \cite{Cui2014a}.
 
 We assume that the electrons occupying the frontier molecular orbitals are the sole participants in the
 hopping that is going on between chromophores. That is, if an electron hops from $i$ to $j$, it will hop
@@ -197,7 +197,7 @@ and $E_{homo-1,dimer}$ are the two highest energy occupied molecular orbitals of
 again to approximate the eigenvalues of the frontier molecular orbitals, but this time of the dimer
 Hamiltonian. 
 
-The dimer method can be understood best by imagining a dimer being pulled apart. At some distance
+The dimer method can be imagined as a dimer being pulled apart. At some distance
 the two highest occupied energy levels of the dimer will 
 be the HOMOs of their respective chromophores. \ej{I like it.}
 If the chromophores are not interacting, 
