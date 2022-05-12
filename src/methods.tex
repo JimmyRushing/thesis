@@ -81,16 +81,13 @@ conductivity of the material we use Marcus theory coupled with KMC.
 %% using the parabola graphic to explain where the reorganization energy comes from is good, but I think leading with two parabolas representing the model is a little confusing.
 A free charges movement through a morphology can be modeled as a series of Marcus nonadiabatic electron transfer
 reactions, or `hops' between relatively weakly interacting chromophores in the system. 
-Each hop then is a thermally activated process, the rate of which is given by the interesction of
-two parabolic potential energy surfaces. 
-In our case, a parabola represents the potential energy well of a charge that is localized on
-one of two chromophores in a dimer complex. The movement of charges therefore can be modeled as a thermally
-activated process from one potential well to the next.
-The potential energy difference between th
-With that, if our dimer consists of chromophores $i$ and $j$, the potential energy curve of the dimer with a
-charge on chromophore $i$ will be offset from that of the dimer with a charge on chromophore $j$. The
-intersection of the parabolas corresponds to the unique nuclear geometry, and distinct vibrational mode, at
-which charge transfer is assumed to take place. We visualize these parabolas in \autoref{marcus-plot}.
+Each hop then is modeled as a thermally activated process, the rate of which can be solved for analytically
+from the interesction of two parabolic potential energy surfaces. 
+Each parabola in \autoref{marcus-plot} represents the potential energy well of a charge that is localized on
+one of two chromophores in a dimer complex. 
+With electron transfer much much faster than the movement of nuclear coordinantes (Franck-Condon principle),
+the intersection of the parabolas corresponds to the unique nuclear geometry, and distinct vibrational mode, at
+which charge transfer is assumed to take place. 
 \begin{figure}
   \center
   \includegraphics[width=0.99\linewidth]{figures/marcus-plot.png} 
@@ -117,22 +114,29 @@ our work, $\lambda_{ij}$ and $T$ are set as constants. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$ for all
 potential hops throughout the morphology.
 
-Simulating a charge hopping around a morphology requires identification of
+Computationally, simulating a charge hopping around a morphology requires identification of
 individual chromophores and calculating the rate at which a charge will hop to neighboring
 chromophores. 
 Each local molecular environment requires its own justification for where chromophores in the morphology 
-can be considered to harbor a fully localized free charge.
-
+can be considered to harbor a localized free charge.
 
 %% JF: I'm not sure what you mean by this part of the statement "due to the disorder in the available electronic states". Charges in a molecular morphology are localized compared to those in a metal. Due to the small group of strongly connected atoms in a molecule, the energy levels these charges can occupy are quantized and distinct molecular orbital energy levels as compared to the broad smear of the energy "bands" seen in metals.In organic systems, free charges are localized due to the fact that they are married to the vibrational mode
 In disorderd organic systems, unlike in metals or single crystal organic materials, 
 electronic states are localized to the frontier molecular orbitals of tightly
 bound packets of atoms within the morphology. 
 The spacial extent of chromophores is therefore dependent on the local environment of individual chromophores
-and correspond roughly to the boundary between packets of strongly interacting molecular regions. 
+and correspond roughly to the boundary between packets of strongly interacting molecular regions.
+For ITIC, the justification for the location of chromophores naturally arises from its composition of distinct
+macromolecules.
+The charges are taken to be localized on inividual molecules of ITIC. The frontier molecular orbitals have 
+negligible electron density along the side chains. Therefore, the simplest model for chromophores then is
+taken to be the backbone of individual molecules. Significant computational resources 
+can be conserved by leaving the side chain atoms out of the of the QCCs. 
+To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}.
+ 
 In the case of conducting polymers like P3HT this boundary is affected by the how the chains are twisted
 or bent. A material that spans the gambit of disorder and crystallinity can be difficult to model, because
-charge transport can occur in a hopping way, as described here, and also in an adiabatic metal-like transport. 
+charge transport can occur in a hopping way, as described here, and also occur in an adiabatic metal-like transport. 
 
 Therefore, while experimental studies have suggested that charges localize along roughly 7 monomer chains
 in P3HT, our application of our model to three morphologies of P3HT with vastly different structure mean 
@@ -140,11 +144,6 @@ that this may not be broadly applicable. To disambiguate the results in this the
 simplest model. Individual monomers in the system to be chromophores. The single monomer chromophore model has been shown to
 produce good results \cite{jones2017}.
 \ej{In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
-With ITIC, the frontier molecular orbitals, that is, the HOMO
-and LUMO have negligible electron density along the side chains. The simplest model for chromophores then is
-taken to be the backbone of individual molecules. Significant computational resources 
-can be conserved by leaving these atoms out of the of the QCCs. 
-To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}.
 
 Deciding where a chromophore should be expected is one step in the workflow that requires nuanced
 scientific justifications. However, after that decision has been made, the significant procedural hurdle of 
