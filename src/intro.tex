@@ -146,6 +146,27 @@ These materials can be deposited from solution.
 How the materials will self-assemble in the environment in which they are deposited determines
 the morphology which intern governs charge mobility.  
 
+With the pipeline laid out in \autoref{pipeline}, we can take atomistic representations like those shown in
+\autoref{molecules} and, through a series of computations and simulations, arrive at data that is predictive
+of material properties. This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
+To begin, from an atomistic description of a given molecule, 
+equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
+The data obtained from these simulations can then be fed as an input into kinetic Monte
+Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the
+energetics of chromophores within the morphology.
+We introduce MD and our software stack used to implement it in \autoref{results}. 
+The focus of this thesis, however, involves
+the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
+
+\begin{figure}
+  \center
+  \includegraphics[width=0.9\linewidth]{figures/the-pipeline.png} 
+    \caption{The pipeline for progressively graduating atomistic data to charge characteristics. On the left
+    we see our packages developed for navigating the pipeline.}
+  \label{pipeline}
+\end{figure}
+
+
 Engineering the charge mobility of both donor and accpeptor domains is critical
 to overall device performance \cite{Wang2019e}.
 An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
@@ -235,25 +256,6 @@ It was first synthesized in 2015. \cite{Bai201U}
 % SHOULD Say: The sequence of steps for going from chemistry to charge transport. Wait till another paragraph for modularity. This will be a good place for a figure of ``the pipeline''
 % ACTION : Made a figure and now need an appropriate paragraph to accompany it. 
 
-With the pipeline laid out in \autoref{pipeline}, we can take atomistic representations like those shown in
-\autoref{molecules} and, through a series of computations and simulations, arrive at data that is predictive
-of material properties. This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
-To begin, from an atomistic description of a given molecule, 
-equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
-The data obtained from these simulations can then be fed as an input into kinetic Monte
-Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the
-energetics of chromophores within the morphology.
-We introduce MD and our software stack used to implement it in \autoref{results}. 
-The focus of this thesis, however, involves
-the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
-
-\begin{figure}
-  \center
-  \includegraphics[width=0.9\linewidth]{figures/the-pipeline.png} 
-    \caption{The pipeline for progressively graduating atomistic data to charge characteristics. On the left
-    we see our packages developed for navigating the pipeline.}
-  \label{pipeline}
-\end{figure}
 
 % SHOULD Say: More about what TRUE is, why we think it's good, and then pivot to talking about how modularity is can help with TRUE. 
 TRUE materials simulation tools are developed with an emphasis on creating tools that are
