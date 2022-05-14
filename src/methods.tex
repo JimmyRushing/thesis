@@ -500,10 +500,20 @@ The packages and tools are enumerated in \autoref{packages}.
 \label{planckton}
 
 \texttt{Planckton} is a convenience package that integrates, \texttt{Mbuild}, \texttt{foyer},
-\texttt{HOOMD-Blue} for performing MD simulations of self-assembly in OPVs. At current, \texttt{Planckton}
-provides clearly documented template scripts for inititializing and runnning MD simulations and can be
-implemented with GAFF or OPLS forcefields. Also provided are files that define the atomic structure of many of
-the most commonly studies OPVs for OSC reseach in a format that are compatible with GAFF forcefields. 
+\texttt{HOOMD-Blue} for performing MD simulations of self-assembly in OPVs.  \texttt{Planckton}
+provides clearly documented template scripts for inititializing and running MD simulations. 
+ 
+\texttt{Planckton} uses \texttt{foyer} to interpret the forcefields used to generate the MD data. The MD
+simulations performed for this thesis employ the Generalized Amber Force Field (GAFF)\cite{Wang2004a}.
+The Amber forcefield was designed for use in modeling protein and
+nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
+comprised of H,C,N,O, and P and can produces accurate simulations of organic molecules for use in OPVs. 
+Also provided are files that define the atomic structure of many of
+the most commonly studied OPVs for OSC research in a format that are compatible with GAFF forcefields.
+
+\texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
+The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. 
+As MD simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
 
 \texttt{Planckton-flow} is a dataspace manager that uses
 singularity \cite{singularity2017} and \texttt{docker} \cite{Merkel:2014:DLL:2600239.2600241} 
@@ -521,16 +531,6 @@ cumbersome data sets. \texttt{Planckton-flow} automates the management of large 
 data sets with \texttt{signac}.
 
 
-
-\texttt{Planckton} is compatable with the forcefield used to generate the ITIC data; the Generalized
-Amber Force Field (GAFF)\cite{Wang2004a}.
-The Amber forcefield was designed for use in modeling protein and
-nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
-comprised of H,C,N,O, and P and produces accurate simulations of organic molecules for use in OPVs. 
-
-\texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
-The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. As MD
-simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
 \texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
 
 \subsection{KMC Software}
