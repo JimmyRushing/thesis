@@ -515,7 +515,10 @@ the most commonly studied OPVs for OSC research in a format that are compatible 
 \texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
 The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. 
 As MD simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
+\texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
 
+Containers are virtual machines that contain all the dependencies, configurations, code and data 
+necessary to reproduce results \cite{Cito2016a}. 
 \texttt{Planckton-flow} is a dataspace manager that uses
 singularity \cite{singularity2017} and \texttt{docker} \cite{Merkel:2014:DLL:2600239.2600241} 
 to `contanerize' \texttt{Planckton} \cite{cmelab}. \texttt{Docker} images are binary files that contain the
@@ -531,18 +534,17 @@ simulation scripts from scratch. Screening OPV materials across many thermodynam
 cumbersome data sets. \texttt{Planckton-flow} automates the management of large these large multidimensional
 data sets with \texttt{signac}.
 
-
-\texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
-
 \subsection{KMC Software}
 \label{morphct}
 
+\texttt{MorphCT} is a package for running KMC simulations of charge transport in organics systems.
+\texttt{MorphCT} operates on data containing the cartesian coordinates and atom types of particles in a
+system. We operate \texttt{MorphCT} on equillbrium microstates obtained from MD simulations. However,
+\texttt{MorphCT} is indifferent to how the morphological data was obtained and does not measure physical
+accuracy of that data. 
 
-It was determined
-that in the interest of reprducabitilty, it was critical to `containerize' this pipeline. Until as recently as
-the past few years it was common place to not publish code with the results of computational works. Containers
-are virtual machines that contain all the dependencies, configurations, code and data necessary to reproduce
-results \cite{Cito2016a}. 
+These workflows, maintained as jupyter notebook tutorials, 
+are meant to lower the cognitive load of taking on a research project in this vein. 
 
 
 %%% Local Variables: 
