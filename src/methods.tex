@@ -56,8 +56,8 @@ At each iteration, a numerical integation over these potentials provide an updat
 of particles in the system. 
 \ej{Picture or cartoon of atoms, forces, and one update?}
 
-Using the canonical ensemble (NVT) for example, holding the number of
-particles, the volume, and the temperature constant allows for the exploration of the potential energy surface
+Using the canonical ensemble (NVT) for example, conserving the number of
+particles, the volume, and the temperature allows for the exploration of the potential energy surface
 of the system and sample the microstates from equillibrated region the simulation for statistical analysis.  
 Simulation ensembles are regulated via the Nos\'{e}-Hoover thermostat \cite{Hoover1985} to maintain 
 temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
@@ -442,10 +442,12 @@ simulated accross all available cores.
 We manage development of the \texttt{Planckton} and \texttt{MorphCT} software packages using public repositories hosted at
 github.com\cite{cmelab} for the excecution of these methods.
 As with any open-source software project, these repositories serve as a
-central hub for developers to collaberate and integrate code into the code base. These repositories are
+central hub for developers to collaberate and integrate code into the code base. Repositories are
 version controlled with a snapshot of the code base saved at each iteration. This allows researchers to 
 reproduce each others work with the exact version used to carry out the analysis. It also provides a
-documented and controlled way to merge together divergent code through pull requests and unit testing. 
+documented and controlled way to merge together divergent code through pull requests. Unit testing and
+continuous integrationg techniues provide passive protection against bugs in the software that might emerge
+from active development on the code base. 
 
 Modular, python based code allows for the curation and publication of Jupyter notebooks workflows and
 tutorials for performing reproducable analysis. Jupyter notebooks are a document format for publising code
@@ -494,19 +496,26 @@ visualize this work are freely available.
 The packages and tools are enumerated in \autoref{packages}.
 
 \subsection{MD Software}
+
 \label{planckton}
 
 The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry, 
 a high performance computing cluster at Boise State University. 
 \texttt{Planckton-flow} is a dataspace manager that uses
 singularity \cite{singularity2017} and docker \cite{Merkel:2014:DLL:2600239.2600241} 
-to contanerize a package developed to facilitate simulating self-assembly in
+to `contanerize' a package developed to facilitate simulating self-assembly in
 organic photovoltaic materials; \texttt{Planckton} \cite{cmelab}. Docker images are binary files that contain the
 entire software stack necessary to execute some code. This allows researchers to minimize dependency issues
 and increase reproducibility. However, docker has no native support for the use of GPUs and is not
 compatible with the more draconian permissions often present on HPCs. With that, \texttt{Planckton-flow} uses 
 Singularity, software designed to overcome these shortcomings,
 to pull a docker image of \texttt{Planckton} to a container on the server. 
+
+\texttt{Planckton-flow} allowed for a container of \texttt{Planckton} to be taken 
+off the shelf an pulled to a the performance computing cluster without having to build the software stack or write the
+simulation scripts from scratch.
+
+
 
 \texttt{Planckton} is compatable with the forcefield used to generate the ITIC data; the Generalized
 Amber Force Field (GAFF)\cite{Wang2004a}.
