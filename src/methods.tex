@@ -38,26 +38,22 @@ which it is developed. Particular focus is given to two packages that are princi
 \label{ITIC/P3HT}
 \end{figure}
 
-\ej{
-     (cite Mikes and evan's papers) with atomistic resolution. ''
-    NOW let's say what MD is, and how we implement it...
-}
-
 Modelling charge transport in OPVs demands a methodology that is accurate across orders of magnitude of
 resolution. Electronic wave functions operate at the atomic scale while the morphological features (grain
 boundaries, crystallinity etcetera) that govern charge transport occur across many nanometers. MD simulations
 are suited to this task because they enable the combination of coarse-grained models with atomistic
 representations to predict experimentally relevant length scales \cite{Miller2018}.
 
-The morphologies used in this work were obtained from equilibrium Molecular Dynamics simulations. 
 Molecular dynamics is a method of computer simulation for predicting the equilibrium geometries of molecular
 systems. MD simulations proceed iteratively by solving Newtons laws of motion
-in accordance with a predefined interatomic interaction potentials.
-At each iteration, the velocities and positions of molecules are
-updated based on this solution and they are pushed and pulled in accordance with
-the interaction between neighbors. The pair potentials are defined by a Leonard-Jonsian (LJ) potential \cite{Jones1924a}
-\ej{JANK: Cite some of the OG papers here, like LJ simulation of Argon. JIMMY: not really sure what or how much to
-say here but added the reference.}
+in accordance with a predefined interatomic interaction potentials which define the forces between particles
+in the system.  
+The non-bonded ineraction potentials are modeled with a classic Leonard-Jones(LJ)
+potential \cite{Jones1924a}. Potentials are also defined in accordance with the bonds that each particle is
+participating in and can include parameteres for equillibrium bond distances and equillibrium angles between
+$3$ bonded atoms and between $4$ bonded atoms (dihedral angles).
+At each iteration, a numerical integation over these potentials provide an update to the velocities and positions
+of particles in the system. 
 \ej{Picture or cartoon of atoms, forces, and one update?}
 
 Using the canonical ensemble (NVT), holding the number of
@@ -77,7 +73,8 @@ conductivity of the material we use Marcus theory coupled with KMC.
 \section{Marcus Model}
 \label{marcusmodel}
 
- free charges movement through a morphology can be modeled as a series of Marcus nonadiabatic electron transfer
+The movement of a free charge through a morphology can be modeled as a series of 
+Marcus nonadiabatic electron transfer
 reactions, or `hops' between relatively weakly interacting chromophores in the system. 
 Each hop then is modeled as a thermally activated process, the rate of which can be solved for analytically
 from the interesction of two parabolic potential energy surfaces. 
