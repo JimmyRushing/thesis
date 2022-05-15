@@ -138,36 +138,29 @@ BHJ). They also found
 that this flourination tends to reduce the reorganization energy, which we see in \autoref{results}, has a
 drastic effect on charge mobility.
 
-% CURRENTLY Says: Too many things: Active layer structure good and bad, our work focuses on pure domains, space-charge buildup is a thing. 
 % SHOULD Say: Something more about solution processability and how it dictates structure, focus in on the structure of the pure domains, and pull out space-charge buildup for its own paragraph (or move in CT mechanisms above)
 %ACTION: added a bit about solution processabilty
 
 Our work in this thesis
-is most expressly related to stage $4$ in that we seek to simulate the self-assembly and
+is most expressly related to stage $4$ in that we simulate the self-assembly and
 charge mobility in pure acceptor (or
 pure donor) domains post deposition. 
-These materials can be deposited from solution.
 How the materials will self-assemble in the environment in which they are deposited determines
-the morphology which intern governs charge mobility. Self-assembly is simulated through MD techniques and the
-resulting charge mobility with KMC techniques. 
-The movement of charges through pure domains can be modeled as a particle hopping 
-to and from nearby frontier molecular orbitals throughout the morphology.
-The generic hopping model goes as follows: the wave functions of
-free charges are localized on particular molecular segments due to the lack of long range electronic structure, 
-and the movements of these charges can be described as series
-of hops bewtween these molecular segments.   
-
-With the pipeline laid out in \autoref{pipeline}, we can take atomistic representations like those shown in
-\autoref{molecules} and, through a series of computations and simulations, arrive at data that is predictive
-of material properties. This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
-To begin, from an atomistic description of a given molecule, 
-equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
-The data obtained from these simulations can then be fed as an input into kinetic Monte
+the morphology which intern governs charge mobility. 
+With that, we outline the data pipeline in \autoref{pipeline}, through which we take atomistic representations like
+those shown in \autoref{molecules} and, through a series of computations and simulations,
+arrive at data that is predictive of material properties. 
+This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
+The pipeline begins with an atomistic description of a given molecule's atom types and bonding structure.
+On the basis of this description, forces between all atoms are defined. On the basis of these interacting
+forces, equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
+The structural data obtained from these simulations can then be fed as an input into kinetic Monte
 Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the
 energetics of chromophores within the morphology.
-We introduce MD and our software stack used to implement it in \autoref{results}. 
-The focus of this thesis, however, involves
-the second leg of the pipeline; KMC simulation methods and software are explore in detail in autoref{results}.
+We introduce MD and our software stack used to implement it in \autoref{planckton}. 
+The focus of this thesis, however, is the development of \texttt{MorphCT} for running KMC simulations which we
+introduce more thoroughly in 
+\autoref{morphct-software}.
 
 \begin{figure}
   \center
@@ -176,7 +169,6 @@ the second leg of the pipeline; KMC simulation methods and software are explore 
     we see our packages developed for navigating the pipeline.}
   \label{pipeline}
 \end{figure}
-
 
 Engineering the charge mobility of both donor and accpeptor domains is critical
 to overall device performance \cite{Wang2019e}.
