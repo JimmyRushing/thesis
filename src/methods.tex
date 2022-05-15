@@ -213,17 +213,13 @@ mobility from molecular arrangement to good effect \cite{Deng2004}. These more r
 untenable on the scale of the morphologies studied in this thesis. While INDO methods are less precise, 
 the results of using this method have shown good agreement with experimental and \textit{ab initio}
 DFT methods~\cite{Bredas2002}. 
-
 Compuational quantum chemistry is a nascent and evolving field of its
 own, with quickly increasing efficiencies and accuracies.
 A particular 
 choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
 workflow modularly to facilitate upgrading the QCC as more effecient methods and/or software emerges.
 
-As discussed above, calculating the frontier molecular orbital energies for large atomistic morphologies is
-a heavy computational lift. 
-In our model, a QQC must be performed for every chromophore and every chromophore pair. 
-
+In our implementation, a quantum chemical calculation must be performed for every chromophore and every chromophore pair. 
 To understand the scale of this lift, the reader is reminded that
 `n choose k' notation gives the number of ways to choose `k' objects from a set of 
 `n' objects as follows 
