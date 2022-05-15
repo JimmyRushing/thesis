@@ -156,11 +156,10 @@ On the basis of this description, forces between all atoms are defined. On the b
 forces, equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
 The structural data obtained from these simulations can then be fed as an input into kinetic Monte
 Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the
-energetics of chromophores within the morphology.
-We introduce MD and our software stack used to implement it in \autoref{planckton}. 
-The focus of this thesis, however, is the development of \texttt{MorphCT} for running KMC simulations which we
-introduce more thoroughly in 
-\autoref{morphct-software}.
+energetics of electronically active molecular segments (`chromophores') within the morphology.
+We \texttt{Planckton}, our package for navigation MD simulations of OPVS in \autoref{planckton}. 
+The focus of this thesis, however, is the development of \texttt{MorphCT} for running KMC simulations, which we
+introduce more thoroughly in \autoref{morphct}.
 
 \begin{figure}
   \center
@@ -170,21 +169,11 @@ introduce more thoroughly in
   \label{pipeline}
 \end{figure}
 
-Engineering the charge mobility of both donor and accpeptor domains is critical
-to overall device performance \cite{Wang2019e}.
-An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
-If the electrons in stage $4$ reach the anode much faster than the holes reach the cathode, a traffic jam can
-occur at the anode which can result in recombination with surrounding holes and ultimately a loss of the
-charge via annihilation. 
-The imbalanced charge-carrier mobility can also lead to space-charge build up in the 
-low mobility material that can screen the built in field \cite{Bartelt2015}.
-This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
-
-In \autoref{results} we explore the delineation of these localiztion segments for simulation,
-which we hereafter refer to as a ``chromophore.'' 
+We use the term `chromophore' liberally in this thesis and for that reason we take a brief aside to be more
+explicit about its meaning.  
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
-In this context, a chromophore is associated with the color of a material.
+In this context, a chromophore is so named because these molecules are associated with the color of a material.
 This is because, mechanistically, a photon collides with a chromophore, the absorbed energy
 excites an electron from the HOMO to the
 LUMO. When the chromophore relaxes to its
@@ -194,11 +183,23 @@ energy difference of the HOMO and LUMO. In plants, this amounts to a rejection o
 light in the green region which can damage the plant's DNA. 
 
 Our BHJ active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
-protect and no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
+protect and (hopefully) no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
 for the sake of brevity. In what is to follow, chromophore is taken to be defined as a molecular segment over which the 
-wave function of an electron (hole) is assumed to be localized in a pure acceptor (donor) domain. 
+wave function of an electron (hole) is assumed to be localized within a pure acceptor (donor) domain. 
 It is under this assumption that we execute a hopping model of charge transfer between
 chromophores based on the Marcus rates of electrochemical reactions.
+
+%%In \autoref{results} we explore the delineation of these localiztion segments for simulation, which we hereafter refer to as a `chromophore.' 
+
+Engineering the charge mobility of pure donor and accpeptor domains is critical
+to overall device performance \cite{Wang2019e}.
+An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
+If the electrons in stage $4$ reach the anode much faster than the holes reach the cathode, a traffic jam can
+occur at the anode which can result in recombination with surrounding holes and ultimately a loss of the
+charge via annihilation. 
+The imbalanced charge-carrier mobility can also lead to space-charge build up in the 
+low mobility material that can screen the built in field \cite{Bartelt2015}.
+This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
 
 \begin{figure}
 \centering
