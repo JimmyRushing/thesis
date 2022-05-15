@@ -197,6 +197,14 @@ It is known about P3HT that it can have vastly different crystallinities based o
 We validate on three morpholgies with crystallinities that vary from amorphous to highly crystalline. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. 
 We refer to these morphologies as disordered, semi-crystalline, and crystalline.
 
+Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
+semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
+Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
+ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
+ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
+creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
+performance of \texttt{pySCF} and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
+
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
 the QCC calculation, and the charge mobility obtained using using the current workflow, which uses \texttt{pySCF}. 
 The previous work found that charge mobility is highest for the crystalline morphology, followed by the
@@ -480,14 +488,6 @@ The the reported
 experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. 
 Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
-
-Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
-semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
-Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
-ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
-ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
-creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
-performance of \texttt{pySCF} and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
 
 
 %%% Local Variables: 
