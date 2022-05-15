@@ -185,9 +185,11 @@ light in the green region which can damage the plant's DNA.
 Our BHJ active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
 protect and (hopefully) no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
 for the sake of brevity. In what is to follow, chromophore is taken to be defined as a molecular segment over which the 
-wave function of an electron (hole) is assumed to be localized within a pure acceptor (donor) domain. 
+wave function of a free electron (hole) is assumed to be localized.
 It is under this assumption that we execute a hopping model of charge transfer between
-chromophores based on the Marcus rates of electrochemical reactions.
+chromophores based on the Marcus rates of electrochemical reactions. We will also use chromophore to refer to
+the object in computer memory that stores all the infromation that we know about a given chromophore in morphology
+(ie, atom locations, neighbors, energy levels).
 
 %%In \autoref{results} we explore the delineation of these localiztion segments for simulation, which we hereafter refer to as a `chromophore.' 
 
@@ -197,17 +199,43 @@ An understanding of why this is the case can be found from the inspection of \au
 If the electrons in stage $4$ reach the anode much faster than the holes reach the cathode, a traffic jam can
 occur at the anode which can result in recombination with surrounding holes and ultimately a loss of the
 charge via annihilation. 
-The imbalanced charge-carrier mobility can also lead to space-charge build up in the 
-low mobility material that can screen the built in field \cite{Bartelt2015}.
-This phenomena has been shown by space charge limited current experiments \cite{Small2013}.
+The imbalanced charge carrier mobility can also lead to space-charge build up in the 
+low mobility material that can screen the built in field~\cite{Bartelt2015}.
+This phenomena has been shown by space charge limited current experiments~\cite{Small2013}.
+
+
+% SHOULD Say: More about what TRUE is, why we think it's good, and then pivot to talking about how modularity is can help with TRUE. 
+
+TRUE materials simulation tools are developed with an emphasis on creating tools that are
+transparent, reproducable, usable, and extensible (\cite{Cummings2017}).
+With scientific research being an innately distributed endeavor, these virtues provide a lens through which to
+evaluate the adherence to basic scientific principles and to the best practices of distributed software development
+simultaneously. As enumerated by Jankowski et al, some of emerging best practices for scientific software
+development include the following: (1) address cognitive load, (2) use version control, (3) automate
+repetitive tasks, (4) develop open-source code, (5) write code in the highest language possible~\cite{Jankowski2020}.
+
+% SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
+We seek to improve the TRUEness of the pipeline outlined in \autoref{pipeline}.
+To do this, we: (1) integrate an open source quantum chemical package into \texttt{MorphCT},
+(2) perform validation and sensitivity analysis on benchmark P3HT
+(3) deploy the pipeline from start to finish on ITIC. 
+We found that the pipeline can indeed connect moluclar sturcture to morphology to charge
+mobility. As with other software the greatest hitch to the TRUEness is the
+cognitive load. The cognitive load I found most overbearing was the quantum theory underlying the algorithm 
+at the molecular level and the cognitive load of learning the \texttt{MorphCT} API. 
+I also found that the most useful tool to onboarding the \texttt{MorphCT} API was the
+trail of breadcrumbs left by previous developers on github issues, documention and tutorials. 
+With that workflows, codified into jupyter notebook tutorials are the resourse that I would want if I was to
+attempt this research again and therefore are my best attempt to bring an aspiring developer into the fold.
+We have found that interactive tutorials provide an exposure to the \texttt{MorphCT} while also shoring up the
+theoritcal gaps in knowlegde necessary to navigate this kind of research. 
 
 \begin{figure}
 \centering
-\begin{subfigure}{.6\textwidth}
+\begin{subfigure}{.5\textwidth}
     \centering
     \textbf{(A)} P3HT \\
     \includegraphics[width=\textwidth]{figures/p3ht-molecule-figure.png}
-    \newline
 \end{subfigure}%
 \\
 \begin{subfigure}{.3\textwidth}
@@ -228,58 +256,26 @@ This phenomena has been shown by space charge limited current experiments \cite{
 \label{molecules}
 \end{figure}
 
-In our present work, we present results from a computational investigation of two OPV materials
-used in the design of the active layer of BHJ OSCs. These are P3HT, a
+Two OPV materials are studied throughout this thesis.
+These are P3HT, a
 donor molecule, and ITIC, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
 organic analogue of p-type inorganic semiconductors and `donors' the analogue
 of the n-type. We make this note because in the methods we describe a model of
 a charge `hopping' from one molecule to another. And as we describe, our
 investigation involves hops within a pure donor domain or within a pure
-acceptor domain. 
-Any molecule can accept or donate a charge carrier OPV.
-They merely receive their donor/acceptor designation as a result of how they
+acceptor domain (not to and from donor and acceptor as would be the case at the interface). 
+Any molecule can accept or donate a charge carrier.
+They merely receive a donor/acceptor designation as a result of how they
 are primarily utilized in electronic devices. 
 
+%need to say more things and cleaner things but im not sure what right now
 P3HT is a polymeric material that is highly polymorphic in that it can self-assemble into a wide spectrum of
 crystallinities depending on how it is processed. Shown in \autoref{molecules}, the molecular struture of P3HT
 is such that these molecules can pi-stack into lamalear strucutes. 
 P3HT was first synthesized by Rick Mcullough in 1992. Polythiophenes as a whole have been well investigated 
-since 1883 when they were first characterized.\cite{Poelking2014}.
+since 1883 when they were first characterized~\cite{Poelking2014}.
 ITIC is not polymeric. Rather, it a material consisting of small molecules with no long range bonding.
-It was first synthesized in 2015. \cite{Bai201U}
-
-
-% CURRENTLY Says: We need a modular pipeline to do this sequence of things.
-% SHOULD Say: The sequence of steps for going from chemistry to charge transport. Wait till another paragraph for modularity. This will be a good place for a figure of ``the pipeline''
-% ACTION : Made a figure and now need an appropriate paragraph to accompany it. 
-
-
-% SHOULD Say: More about what TRUE is, why we think it's good, and then pivot to talking about how modularity is can help with TRUE. 
-TRUE materials simulation tools are developed with an emphasis on creating tools that are
-transferable, reproducable, usable, and extensible (\cite{Cummings2017}).
-With scientific research being an innately distributed endeavor, these virtues provide a lens through which to
-evaluate the adherence to basic scientific principles and to the best practices of distributed software development
-simultaneously. As enumerated by Jankowski et al, some of emerging best practices for scientific software
-development include the following: (1) address cognitive load, (2) use version control, (3) automate
-repetitive tasks, (4) develop open-source code, (5) write code in the highest language possible
-\cite{Jankowski2020}.
-
-
-% SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
-In this thesis, we seek to improve the TRUEness of the pipeline outlined above.
-To do this, we: (1) integrate an open source quantum chemical package into \texttt{MorphCT},
-(2) perform validation and sensitivity analysis on benchmark P3HT
-(3) deploy the pipeline from start to finish on ITIC. 
-We found that the pipeline can indeed connect moluclar sturcture to morphology to charge
-mobility. As with other software the greatest hitch to the TRUEness is the
-cognitive load. The cognitive load I found most overbearing was the quantum theory underlying the algorithm 
-at the molecular level and the cognitive load of learning the \texttt{MorphCT} API. 
-I also found that the most useful tool to onboarding the \texttt{MorphCT} API was the
-trail of breadcrumbs left by previous developers on github issues, documention and tutorials. 
-With that workflows, codified into jupyter notebook tutorials are the resourse that I would want if I was to
-attempt this research again and therefore are my best attempt to bring an aspiring developer into the fold.
-We have found that interactive tutorials provide an exposure to the \texttt{MorphCT} while also shoring up the
-theoritcal gaps in knowlegde necessary to navigate this kind of research. 
+It was first synthesized in 2015~\cite{Bai201U}.
 
 In \autoref{methods}, we
 provide an exposition of the theories and software packages used to model and simulate self-assembly and charge mobility in
@@ -296,19 +292,9 @@ implemented with \texttt{MorphCT}, to various inputs. We conclude \autoref{resul
 start to finish, to ITIC. 
 In \autoref{conclusion}, we outline the ramification of \autoref{results} and detail the areas of future development of the workflow. 
 
-THESE SENTECES HAS NO HOME Researchers have to
-balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility
-of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of
-variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. 
-% CURRENTLY Says: Trial and error is hard, DFT is hard, and software is closed. Too much! 
-% SHOULD Say: We're at least missing a paragraph that says something about how simulations can help us choose which things to make in real life, and perhaps a summary of some of the techniques, what they are, and how they differ. That'll set us up for talking about MD in one paragraph and DFT in another paragraph, their strengths, and hint or preview at how we might use them in this work.
-This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlab
-experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not
-mirrored in the software used to study them. \textit{Ab initio} DFT methods are prohibitivly slow on the nanometer
-scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend the
-work, and often utilize proprietary software. On the contrary, the software used in this 
-work is maintained in public. In the
-%%% Local Variables: 
+%%THESE SENTECES HAS NO HOME Researchers have to balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlb experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not mirrored in the software used to study them. \textit{Ab initio} DFT methods are prohibitivly slow on the nanometer scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend thework, and often utilize proprietary software. On the contrary, the software used in this work is maintained in public. In the
+%
+%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "BSUmain"
 %%:set textwidth=80

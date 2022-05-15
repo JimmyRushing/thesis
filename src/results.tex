@@ -481,6 +481,14 @@ experimental electron mobility of ITIC varies depending on how it was processed 
 Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
 
+Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
+semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
+Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
+ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
+ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
+creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
+performance of \texttt{pySCF} and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
+
 
 %%% Local Variables: 
 %%% mode: latex

@@ -186,7 +186,7 @@ Shrodinger equation \cite{Thiel2014}.
 
 The value $T_{ij}$ in \autoref{marcus} is a measure of the electronic orbital overlap between chromophores.
 This values can be obtained using the
-the dimer splitting methed \cite{Huang2005b}. This method comares the HOMO energies of chromophores $i$ and
+the dimer splitting methed~\cite{Huang2005b}. This method comares the HOMO energies of chromophores $i$ and
 $j$ in isolation to the energies of the frontier molecular orbitals of a dimer
 consisting of the two chromophores. 
 This difference is written as ($E_{homo,dimer} - E_{homo-1,dimer}$) where $E_{homo,dimer}$ 
@@ -210,22 +210,15 @@ Solving shrodingers equation, with any level of accuracy,
 across an entire molecular arrangment is a prodigious computational lift.
 Other studies have implemented \textit{ab initio} DFT methods at this stage of predicting
 mobility from molecular arrangement to good effect \cite{Deng2004}. These more rigerous methods are
-untenable on the scale of the morphologies discussed above and, while INDO methods are less precise, the results
-of using this method have shown good agreement with experimental and DFT methods \cite{Bredas2002}. 
+untenable on the scale of the morphologies studied in this thesis. While INDO methods are less precise, 
+the results of using this method have shown good agreement with experimental and \textit{ab initio}
+DFT methods~\cite{Bredas2002}. 
 
 Compuational quantum chemistry is a nascent and evolving field of its
 own, with quickly increasing efficiencies and accuracies.
 A particular 
 choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
 workflow modularly to facilitate upgrading the QCC as more effecient methods and/or software emerges.
-
-Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
-semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
-Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
-ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
-ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
-creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
-performance of \texttt{pySCF} and of the current \texttt{MorphCT} workflow is the subject \autoref{results}.
 
 As discussed above, calculating the frontier molecular orbital energies for large atomistic morphologies is
 a heavy computational lift. 
