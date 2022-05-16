@@ -363,7 +363,14 @@ the queue.
 
 From the rationally shuffled queue, the shortest waittime is chosen and the charge is moved to
 its new chromophore host. The system is then considered to have moved forward in time by $\tau$. This proceeds
-until the charge carrier stalls out or hops past a prespecified lifetime. How we aggregate data from 1000's of
+until the charge carrier stalls out or hops past a prespecified lifetime. 
+
+
+A core tenet of Monte carlo samling is ensuring a large sample size. For this reason, we average over
+thousands of individual kMC implementations to arrive at a charge mobility prediction. 
+A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
+to be `embarrasingly parrel' in that the subprocesses (charge carriers) require no communication.
+How we analyse and aggregate data from thousands of
 single KMC simulations to obtatin macroscopic charge mobility is the subject of the following section.
 
 
@@ -417,9 +424,6 @@ With that, our KMC simulation most closely models a measure of conductivity in a
 environment. That is, conditions wherein \autoref{conductivity} is measured with negligible $n$ and $E$.
 This is the case for time-of-flight experiment carried out on very thin films under low charge density
 conditions \cite{Chen2000a}.
-
-A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
-to be ``embarrasingly parrel'' in that the subprocesses (charge carriers) require no communication.
 
 \section{Software Development}
 
