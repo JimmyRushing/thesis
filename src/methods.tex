@@ -238,7 +238,9 @@ To understand the scale of this lift, the reader is reminded that
 Therefore, the upper bound of possible chomophore pairs (pairs setting $k=2$) is given by the 
 $n \choose 2$ where $n$ is the total number of chromophores in the simulated volume. 
 With this, the effort of exhaustively calculating all chromophore pairs scales as $\frac{n^{2} - n}{2}$, or using big Oh notation, $O(n^2)$.
-This quadratic scaling of computational effort before performing kMC simulations can represent a bottlneck, so we investigate and apply approaches for identifying and calculating only the chromophore pairs that are likely for charges to hop between.
+This quadratic scaling of computational effort before performing kMC simulations can represent a bottlneck, so
+we investigate and apply approaches for identifying and calculating only the chromophore pairs that are
+spacially proximal.
 
 In the following section we introduce our methods for determining
 which chromophore pairs to consider using Voronoi analysis. 
@@ -367,28 +369,30 @@ single KMC simulations to obtatin macroscopic charge mobility is the subject of 
 
 
 \subsection{KMC analysis}
+
 \label{kmcanalysis}
+
 \texttt{MorphCT} allows for the creation of a system object that holds all the information necesarry to carry out the
 KMC simulations outlined above. Running the simulation requires the choice of three system parameters: the
-KMC temperature, the carrier liftimes, and the number of indivual KMC simulations to perform.
+KMC temperature, the number of indivual KMC simulations to perform, and the charge carrier lifetimes. 
 
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
-each specified lifetime, the prescribed number of individual KMC simulations is run as described above. When a
+each specified lifetime, the prescribed number of individual KMC simulations is run as in \autoref{KMC}. When a
 given charge carrier hops past the specified lifetime, that is, the addition of the current iterations $\tau$ advances
 the simulation beyond the specified lifetime, 
 its displacement from its starting location is stored in the carrier object. After repeating this over a
 statistically significant number of carriers, the carrier data can be aggregated and the mean squared
 displacement (MSD) for particles over that amount of time can be calculated. MSD over a given time period is 
-the standard deviation in position for a charge walking randomly through this electronic environment. 
+the standard deviation in position for a free charge walking randomly through this electronic environment. 
 
 It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
 The slope of the MSD, $D$, as time
-goes to inifinity can be estimated as a linear fit between the MSD's at the specified lifetimes.
+goes to inifinity can be estimated as a linear fit between the MSD of charge carriers at the specified lifetimes.
 
 There is no objective best practice for determing the slope of the MSD as
-time goes to inifinty from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to simplifiy the MSD analysis as much as
-possible so as to accuratley report this stage of the analysis for clarity but also to facilitate apples to
-apples comparisons to future works using this workflow. 
+time goes to inifinty from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
+simplifiy the MSD analysis as much as possible. Doing so will make for more accurately reported results and
+easier apples to apples comparisons with future results. 
 
 Finally, the results of the MSD analysis are then used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
 \begin{align}
@@ -416,8 +420,6 @@ conditions \cite{Chen2000a}.
 
 A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
 to be ``embarrasingly parrel'' in that the subprocesses (charge carriers) require no communication.
-\texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
-simulated accross all available cores.
 
 \section{Software Development}
 
@@ -541,6 +543,9 @@ was chosen in the interest of reproducability and extensibility.
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
 \texttt{pySCF} allowed for the entire QQC code to be implememted in five lines of code. These lines of code in 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
+
+\texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
+simulated accross all available cores.
 
 These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
