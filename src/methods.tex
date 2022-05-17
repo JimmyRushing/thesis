@@ -225,7 +225,7 @@ DFT methods~\cite{Bredas2002}.
 Compuational quantum chemistry is a nascent and evolving field of its
 own, with quickly increasing efficiencies and accuracies.
 A particular 
-choice of method comes down to how well we can organize a workflow and integrate the QQC portion of the
+choice of method comes down to how well we can organize a workflow and integrate the QCC portion of the
 workflow modularly to facilitate upgrading the QCC as more effecient methods and/or software emerges.
 
 In our implementation, a quantum chemical calculation must be performed for every chromophore and every chromophore pair. 
@@ -540,12 +540,12 @@ accuracy of that data.
 In the delevopment of \texttt{MorphCT-flow} for analogous reasons to those outlined for \texttt{Planckton}, we
 found that ORCA, the software used to perform QCC in \texttt{MorphCT} inhibited containerization because it
 required a licsensing agreement. For this reason, ORCA was replaced with the fully open source pySCF. 
-The software we have chosen to perform our QQC is
+The software we have chosen to perform our QCC is
 provided by \texttt{pySCF} (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
 was chosen in the interest of reproducability and extensibility.
 \texttt{pySCF} is implemented almost entirly in the Python 
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
-\texttt{pySCF} allowed for the entire QQC code to be implememted in five lines of code. These lines of code in 
+\texttt{pySCF} allowed for the entire QCC code to be implememted in five lines of code. These lines of code in 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
 
 \texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
