@@ -11,7 +11,7 @@ to implement these methods.
 In \autoref{md}, we introduce molecular simulation techniques used to predict self-assembly of OPVs.
 In \autoref{marcusmodel}, we describe Marcus model of charge hopping between chromophores,
 the techniques we use to identify individual chromophores in simulated volumes, 
-and how we use quantum chemical calculations to estimate the Marcus hopping rate between
+and how we use \gls{qcc} to estimate the Marcus hopping rate between
 neighboring chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and 
 our specific kinetic Monte Carlo approach to modeling charge transport.
@@ -77,7 +77,7 @@ into distinct regions, working backwards in time, a bin is added to the equillib
 deviation is less than twice that of the previous bin \cite{Henry2017a}.
 
 MD simulations can predict the self-assembly of OPV materials. To connect the chemistry to the
-conductivity of the material we use Marcus theory coupled with KMC.
+conductivity of the material we use Marcus theory coupled with \glsxtrshort{kmc}.
 
 \section{Marcus Model}
 \label{marcusmodel}
@@ -113,7 +113,7 @@ with Boltzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameter
 $\Delta E_{ij}$, $T$ represent the electronic overlap, the reorganization energy, the free energy difference
 between chromophores, and
 temperature. These are discussed individually in the results section, wherein we test the sensitivity of
-the KMC results to the choice or computaion of these parameters individually.
+the \glsxtrshort{kmc} results to the choice or computaion of these parameters individually.
 The accuracy of the Marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
 our work, $\lambda_{ij}$ and $T$ are set as constants. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$ for all
@@ -136,7 +136,7 @@ macromolecules.
 The charges are taken to be localized on inividual molecules of ITIC. The frontier molecular orbitals have 
 negligible electron density along the side chains. Therefore, the simplest model for chromophores then is
 taken to be the backbone of individual molecules. Significant computational resources 
-can be conserved by leaving the side chain atoms out of the of the QCCs. 
+can be conserved by leaving the side chain atoms out of the of the \glsxtrshort{qcc}s. 
 To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}.
  
 In the case of conducting polymers like P3HT this boundary is affected by the how the chains are twisted
@@ -175,8 +175,8 @@ and semi-empirical methods that use experimental data to make modeling approxima
 
 We assume that the electrons occupying the frontier molecular orbitals are the sole participants in the
 hopping that is going on between chromophores. That is, if an electron hops from $i$ to $j$, it will hop
-into the lowest unoccupied molecular orbital (LUMO) of $j$, and out of the
-highest occupied molecular orbital (HOMO) of $i$.
+into the \glsxtrshort{lumo} of $j$, and out of the
+\glsxtrshort{homo} of $i$.
 The driving force for a one electron charge transfer reaction, 
 with a rate described by \autoref{marcus}, is the difference between the energy that our electron 
 currently posseses 
@@ -187,7 +187,7 @@ This is writtin as follows:
     \label{gibbs}
 \end{align}
 Quantum chemically, the values $E_{homo, i}$ and $E_{homo, j}$ represent the eigenvalues of the the
-time-independent Shrodinger equation corresponding to the HOMOs of chromophore $i$ and $j$ respectively. 
+time-independent Shrodinger equation corresponding to the \glsxtrshort{homo}s of chromophore $i$ and $j$ respectively. 
 In our work, these values are approximated with the MINDO/3 method, a variation of the intermediate neglect of 
 differential overlap (INDO) method. This method seeks recreate the \textit{ab initio} Hartree-Fock
 results, where Hatree-Fock theory allows for an iteratively convergent numerical solution to the
@@ -195,7 +195,7 @@ Shrodinger equation \cite{Thiel2014}.
 
 The value $T_{ij}$ in \autoref{marcus} is a measure of the electronic orbital overlap between chromophores.
 This values can be obtained using the
-the dimer splitting methed~\cite{Huang2005b}. This method comares the HOMO energies of chromophores $i$ and
+the dimer splitting methed~\cite{Huang2005b}. This method comares the \glsxtrshort{homo} energies of chromophores $i$ and
 $j$ in isolation to the energies of the frontier molecular orbitals of a dimer
 consisting of the two chromophores. 
 This difference is written as ($E_{homo,dimer} - E_{homo-1,dimer}$) where $E_{homo,dimer}$ 
@@ -205,11 +205,11 @@ Hamiltonian.
 
 The dimer method can be imagined as a dimer being pulled apart. At some distance
 the two highest occupied energy levels of the dimer will 
-be the HOMOs of their respective chromophores. \ej{I like it.}
+be the \glsxtrshort{homo}s of their respective chromophores. \ej{I like it.}
 If the chromophores are not interacting, 
-then the two highest energy molecular orbitals of the dimer will be the HOMO of chromophore $i$ and the 
-HOMO of chromophore $j$. If there is electronic overlap, a comparison bewteen the two highest occupied
-molecular orbitals of the dimer and the HOMOs of the chromophores calculated in isolation can quantify the degree of
+then the two highest energy molecular orbitals of the dimer will be the \glsxtrshort{homo} of chromophore $i$ and the 
+\glsxtrshort{homo} of chromophore $j$. If there is electronic overlap, a comparison bewteen the two highest occupied
+molecular orbitals of the dimer and the \glsxtrshort{homo}s of the chromophores calculated in isolation can quantify the degree of
 electronic overlap. Indeed, $T_{ij}$ is written as follows:
 \begin{align}
     T_{ij} = \frac{1}{2}\sqrt{ (E_{homo,dimer} - E_{homo-1,dimer})^{2} - (\Delta E_{ij})^{2} }.
@@ -225,8 +225,8 @@ DFT methods~\cite{Bredas2002}.
 Compuational quantum chemistry is a nascent and evolving field of its
 own, with quickly increasing efficiencies and accuracies.
 A particular 
-choice of method comes down to how well we can organize a workflow and integrate the QCC portion of the
-workflow modularly to facilitate upgrading the QCC as more effecient methods and/or software emerges.
+choice of method comes down to how well we can organize a workflow and integrate the \glsxtrshort{qcc} portion of the
+workflow modularly to facilitate upgrading the \glsxtrshort{qcc} as more effecient methods and/or software emerges.
 
 In our implementation, a quantum chemical calculation must be performed for every chromophore and every chromophore pair. 
 To understand the scale of this lift, the reader is reminded that
@@ -238,7 +238,7 @@ To understand the scale of this lift, the reader is reminded that
 Therefore, the upper bound of possible chomophore pairs (pairs setting $k=2$) is given by the 
 $n \choose 2$ where $n$ is the total number of chromophores in the simulated volume. 
 With this, the effort of exhaustively calculating all chromophore pairs scales as $\frac{n^{2} - n}{2}$, or using big Oh notation, $O(n^2)$.
-This quadratic scaling of computational effort before performing kMC simulations can represent a bottlneck, so
+This quadratic scaling of computational effort before performing \glsxtrshort{kmc} simulations can represent a bottlneck, so
 we investigate and apply approaches for identifying and calculating only the chromophore pairs that are
 spacially proximal.
 
@@ -297,7 +297,7 @@ neighbors are too far apart to interact electronically, but are nevertheless clo
 are to any other chromophores and are therefore counted as neighbors. 
 Inspection of \autoref{fig:dcut} reveals how this phenomena can arise from this type of construction.
 Because charges will not hop between these pairs, including them in the pair list will result in 
-superfluous QCCs. 
+superfluous \glsxtrshort{qcc}s. 
 
 In light of this, we introduce a parameter by which we further pare down the neighbor list. This parameter is
 a naive cutoff distance, referred to as `dcut' in this thesis. We visualize various dcut values as black
@@ -317,12 +317,12 @@ data. From this testing, we consider if the juice is worth radial squeeze from a
 
 With the MD data generated, the data chopped into individual chromophores, 
 the chromophores and chromophore pair energetics
-quantified with QCC, and the Marcus hop rate calculated, 
+quantified with \glsxtrshort{qcc}, and the Marcus hop rate calculated, 
 a single charges movement through the morphology can be simulatied with the
-application of a KMC algorthim.
+application of a \glsxtrshort{kmc} algorthim.
 
 Monte Carlo algorithms use pseudorandom numbers to solve computational problems. Our implementation can be
-described as a first choice method KMC algorithm, where the kinetics involved is the rate of one electron
+described as a first choice method \glsxtrshort{kmc} algorithm, where the kinetics involved is the rate of one electron
 charge transfer reactions and the first choice is that of the fastest available hop for a given charge.
 
 Using \texttt{MorphCT}, a charge is implanted as quasi-particle into a random chromophore within 
@@ -367,11 +367,11 @@ until the charge carrier stalls out or hops past a prespecified lifetime.
 
 
 A core tenet of Monte carlo samling is ensuring a large sample size. For this reason, we average over
-thousands of individual kMC implementations to arrive at a charge mobility prediction. 
+thousands of individual \glsxtrshort{kmc} implementations to arrive at a charge mobility prediction. 
 A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
 to be `embarrasingly parrel' in that the subprocesses (charge carriers) require no communication.
 How we analyse and aggregate data from thousands of
-single KMC simulations to obtatin macroscopic charge mobility is the subject of the following section.
+single \glsxtrshort{kmc} simulations to obtatin macroscopic charge mobility is the subject of the following section.
 
 
 
@@ -380,28 +380,28 @@ single KMC simulations to obtatin macroscopic charge mobility is the subject of 
 \label{kmcanalysis}
 
 \texttt{MorphCT} allows for the creation of a system object that holds all the information necesarry to carry out the
-KMC simulations outlined above. Running the simulation requires the choice of three system parameters: the
-KMC temperature, the number of indivual KMC simulations to perform, and the charge carrier lifetimes. 
+\glsxtrshort{kmc} simulations outlined above. Running the simulation requires the choice of three system parameters: the
+\glsxtrshort{kmc} temperature, the number of indivual \glsxtrshort{kmc} simulations to perform, and the charge carrier lifetimes. 
 
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
-each specified lifetime, the prescribed number of individual KMC simulations is run as in \autoref{KMC}. When a
+each specified lifetime, the prescribed number of individual \glsxtrshort{kmc} simulations is run as in \autoref{KMC}. When a
 given charge carrier hops past the specified lifetime, that is, the addition of the current iterations $\tau$ advances
 the simulation beyond the specified lifetime, 
 its displacement from its starting location is stored in the carrier object. After repeating this over a
-statistically significant number of carriers, the carrier data can be aggregated and the mean squared
-displacement (MSD) for particles over that amount of time can be calculated. MSD over a given time period is 
+statistically significant number of carriers, the carrier data can be aggregated and the \gls{msd}
+for particles over that amount of time can be calculated. \glsxtrshort{msd} over a given time period is 
 the standard deviation in position for a free charge walking randomly through this electronic environment. 
 
-It is known that the MSD of a diffusive particle increases linearly as time goes to infinity. 
-The slope of the MSD, $D$, as time
-goes to inifinity can be estimated as a linear fit between the MSD of charge carriers at the specified lifetimes.
+It is known that the \glsxtrshort{msd} of a diffusive particle increases linearly as time goes to infinity. 
+The slope of the \glsxtrshort{msd}, $D$, as time
+goes to inifinity can be estimated as a linear fit between the \glsxtrshort{msd} of charge carriers at the specified lifetimes.
 
-There is no objective best practice for determing the slope of the MSD as
+There is no objective best practice for determing the slope of the \glsxtrshort{msd} as
 time goes to inifinty from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
-simplifiy the MSD analysis as much as possible. Doing so will make for more accurately reported results and
+simplifiy the \glsxtrshort{msd} analysis as much as possible. Doing so will make for more accurately reported results and
 easier apples to apples comparisons with future results. 
 
-Finally, the results of the MSD analysis are then used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
+Finally, the results of the \glsxtrshort{msd} analysis are then used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
 \begin{align}
     \label{einstein}
     \mu_{0} = \frac{eD}{6k_{B}T},
@@ -420,7 +420,7 @@ defined as drift velocity, $v$, over the electric field, $E$ as follows \cite{Ko
     \label{m}
     \mu = \frac{v}{E}
 \end{align}
-With that, our KMC simulation most closely models a measure of conductivity in a bulk material in a controlled
+With that, our \glsxtrshort{kmc} simulation most closely models a measure of conductivity in a bulk material in a controlled
 environment. That is, conditions wherein \autoref{conductivity} is measured with negligible $n$ and $E$.
 This is the case for time-of-flight experiment carried out on very thin films under low charge density
 conditions \cite{Chen2000a}.
@@ -490,7 +490,7 @@ visualize this work are freely available.
 The packages and tools are enumerated in \autoref{packages}. We now describe \texttt{Planckton} and 
 \texttt{MorphCT} in more detail.
 
-\subsection{MD Software}
+\subsection{Software for Molecular Dynamics Simulation}
 
 \label{planckton}
 
@@ -528,24 +528,24 @@ simulation scripts from scratch. Screening OPV materials across many thermodynam
 cumbersome data sets. \texttt{Planckton-flow} automates the management of large these large multidimensional
 data sets with \texttt{signac}.
 
-\subsection{KMC Software}
+\subsection{Software for Kinetic Monte Carlo Simulation}
 \label{morphct}
 
-\texttt{MorphCT} is a package for running KMC simulations of charge transport in organics systems.
+\texttt{MorphCT} is a package for running \glsxtrshort{kmc} simulations of charge transport in organics systems.
 \texttt{MorphCT} operates on data containing the atom types and cartesian coordinates in a
 system. We operate \texttt{MorphCT} on equillbrium microstates obtained from MD simulations. However,
 \texttt{MorphCT} is indifferent to how the morphological data was obtained and does not measure physical
 accuracy of that data. 
 
 In the delevopment of \texttt{MorphCT-flow} for analogous reasons to those outlined for \texttt{Planckton}, we
-found that ORCA, the software used to perform QCC in \texttt{MorphCT} inhibited containerization because it
+found that ORCA, the software used to perform \glsxtrshort{qcc} in \texttt{MorphCT} inhibited containerization because it
 required a licsensing agreement. For this reason, ORCA was replaced with the fully open source pySCF. 
-The software we have chosen to perform our QCC is
+The software we have chosen to perform our \glsxtrshort{qcc} is
 provided by \texttt{pySCF} (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
 was chosen in the interest of reproducability and extensibility.
 \texttt{pySCF} is implemented almost entirly in the Python 
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
-\texttt{pySCF} allowed for the entire QCC code to be implememted in five lines of code. These lines of code in 
+\texttt{pySCF} allowed for the entire \glsxtrshort{qcc} code to be implememted in five lines of code. These lines of code in 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
 
 \texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be

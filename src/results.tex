@@ -33,7 +33,7 @@ morphology to KMC predicted charge mobility. We use this opportunity to explore 
 
 \subsection{Quantum Chemical Calculation Validation}
 
-As outlined in \autoref{qccmethods}, QCC is used in two distinct way in our workflow. 
+As outlined in \autoref{qccmethods}, \glsxtrshort{qcc} is used in two distinct way in our workflow. 
 First it is used to estimate free energy
 difference between individual chromophores as the difference in their HOMO (or LUMO) energy levels.
 Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dimer splitting method which involves
@@ -198,15 +198,15 @@ We validate on three morpholgies with crystallinities that vary from amorphous t
 We refer to these morphologies as disordered, semi-crystalline, and crystalline.
 
 Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
-semi-empirical QCC method \cite{Miller2018a}\cite{jones2017}. 
-Their work utilized an earlier version of \texttt{MorphCT} which used the QCC software 
+semi-empirical \glsxtrshort{qcc} method \cite{Miller2018a}\cite{jones2017}. 
+Their work utilized an earlier version of \texttt{MorphCT} which used the \glsxtrshort{qcc} software 
 ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
 ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
 creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
 performance of \texttt{pySCF} and of the current \texttt{MorphCT}.
 
 The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
-the QCC calculation, and the charge mobility obtained using using the current workflow, which uses \texttt{pySCF}. 
+the \glsxtrshort{qcc} calculation, and the charge mobility obtained using using the current workflow, which uses \texttt{pySCF}. 
 The previous work found that charge mobility is highest for the crystalline morphology, followed by the
 amorphous, and finally the semicrystalline. This seemingly anomolous behavoir can be explained. While the
 semicrystalline morphology has more ordered high speed highways of transport, the anisotropic movement
@@ -237,7 +237,7 @@ polyhedra chromophore cells. As shown in \ref{fig:dcut}, chromophore $i$ is the 
 if the voronoi cells constructed around their geometric center
 share a boundary with one another. 
 
-With each chromophore pair requiring a relatively costly QCC, after narrowing down the chromophore pairs with voronoi, it
+With each chromophore pair requiring a relatively costly \glsxtrshort{qcc}, after narrowing down the chromophore pairs with voronoi, it
 could be
 computationally preferable to calculate the distances between all pairs and remove neighbors more than dcut
 apart.
@@ -267,12 +267,12 @@ additional chromophores.
 
 However, we found for the materials currently under investigation,
 \texttt{pySCF} is speedy enough such that intrucing dcut adds more ambiguity
-into the workflow than is necessary given that the average time per QCC dimer calculation is .036s for P3HT and
+into the workflow than is necessary given that the average time per \glsxtrshort{qcc} dimer calculation is .036s for P3HT and
 1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic oreintations, these calculations 
 are only necessarily performed once per morphology. With that, our workflow defaults this cutoff distance to half
 the length of the simulation box, rendering it effectively moot. 
 
-If, in the future, more computationally expensive methods are incorperated into the QCC step, or chromophores in other
+If, in the future, more computationally expensive methods are incorperated into the \glsxtrshort{qcc} step, or chromophores in other
 organic materials are a heavier lift \texttt{pySCF}, it could be benificial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
 material its at a discount to do some preliminary analysis to determine an apporiate value. We tested the
 sensitivity of the algorithm to the value (dcut). 

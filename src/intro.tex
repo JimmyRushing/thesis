@@ -4,8 +4,8 @@ Organic semiconductors can provide flexibility, processability, and low manufact
 The solution processability of organic semiconducting materials allows for the consumption of less rare elements
 and the ability to assemble on curved substrates. Certain applications have all ready reached commercial
 viability.  
-For example, organic light emmitting diode (OLED) devices are widely utilized today in TVs and cellphones.  
-Cutting edge foldable OLED screens are commercially available, and a rollable tv was debuted in 2019
+For example, \gls{oled} devices are widely utilized today in TVs and cellphones.  
+Cutting edge foldable \glsxtrshort{oled} screens are commercially available, and a rollable tv was debuted in 2019
 \cite{Chen2020}. 
 Organic semiconductors are also integral to the design of next generation medical devices owing to their
 self-healing properties and their biodegradability \cite{Bettinger2010}. 
@@ -14,33 +14,33 @@ other emerging organic electronic technologies, can be found the survey text
 Organic Electronic: Emerging Concepts and Technologies
 \cite{FabioCicoiraEditor2013}. 
 
-In this thesis, we focus on OPVs for organic solar cell (OSC) design. 
-OSCs, the reverse of more popularly understood OLEDs,
+In this thesis, we focus on \gls{opv} materials. \glsxtrshort{opv}s are a subclass of organic semiconductors that are
+used in the active layer of \gls{osc} devices. 
+\glsxtrshort{osc}s, the reverse of more popularly understood OLEDs,
 are designed to absorb photonic energy and extract electronic energy. 
 We note that this phenomena is not
 local to these molecules, as any molecule is willing to promote an electron to a higher energy level if a
-photon of commenserate energy levels is incedent on the molecule. OPV materials are instead distinguished by
+photon of commenserate energy is incedent on the molecule. \glsxtrshort{opv} materials are instead distinguished by
 their capacity for electronic energy level 
 tuning and thier ability to be processed into structures suitable to a given design purpose.
 
-OSC devices could afford all the above functional improvements in flexibilty and processability as well as other
+\glsxtrshort{osc} devices could afford all the above functional improvements in flexibilty and processability as well as other
 potentially revolutionary design capabilites.  
 For example, researchers have exploited a unique feature of the physics the excitonic photoabsorbtion in 
 organic materials. Namely, that absorbtion spectrum
 in these materials is relatively narrow (${\sim}300nm$).
 With this, they are able to tune the active layer material to absorb radiation right above or right below the
 visible spectrum (into the NIR or UV spectrum respectively). This 
-could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent OSCs have already
+could allow for the production of windows that passively draw current while allowing in natural light. Semi-transparent \glsxtrshort{osc}s have already
 reached 11 \% efficeincy \cite{Brabec2020}. 
 
-Two major breakthroughs have ushered us into the modern era of OSCs,
+Two major breakthroughs have ushered us into the modern era of \glsxtrshort{osc}s,
 wherein effeciencies are approaching the milestone 20\% effeciency \cite{Liu2020b}.
-These are the design of bulk heterojunction (BHJ) active layers and non-fullerene, fused-ring electron
-acceptor (FREA) molecules. 
+These are the design of \gls{bhj} active layers and non-fullerene, \gls{frea} molecules. 
 
 A fundemental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
-invention of the BHJ. The coloumbic attraction, $V$, between the an excited
+invention of the \glsxtrshort{bhj}. The coloumbic attraction, $V$, between the an excited
 electron and the hole it leaves behind in the its molecular orbital
 is given by Coulombs law as follows:
 \begin{align}
@@ -52,7 +52,7 @@ $\epsilon_{r}$, is a unitless quantity that describes a materials polarizability
 to that of free space. That is, relative
 permativity describes the readiness of a material
 to polarize in response to an electric field. A low
-relative permitivitty of ${\sim}3$ in OPVs (${\sim}12$ for silicon \cite{Baroni1986} and ${\sim}78$ for water \cite{George2004})
+relative permitivitty of ${\sim}3$ in \glsxtrshort{opv}s (${\sim}12$ for silicon \cite{Baroni1986} and ${\sim}78$ for water \cite{George2004})
 means that these materials are only $3$ times more polarizable than free space, which
 is not all that polariazable. And, because the material occupying the space between electron and hole
 is not willing (or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
@@ -77,7 +77,7 @@ as possible.
 
 In 1986, Ching W. Tang
 showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
-into what is termed Bulk Heterojunction (BHJ) microstructure \cite{Tang1986c}. 
+into a \glsxtrshort{bhj} microstructure \cite{Tang1986c}. 
 The interlocking phases of donor accepter molecules, ensure
 that an exciton will intersect with the boundary between accepter and donor domains, while also ensuring that
 there
@@ -87,51 +87,52 @@ electrodes.
 \begin{figure}
     \center
     \includegraphics[width = .6\textwidth]{figures/BHJ-figure.png}
-    \caption{A cartoon representation of a bulk heterojunction device. All four stages involved in harvesting
-    photonic energy in a BHJ device are represtented. (1) The photon (green arrow) interacts with the material,
+    \caption{A cartoon representation of a \glsxtrshort{bhj} device. All four stages involved in harvesting
+    photonic energy in a \glsxtrshort{bhj} device are represented. (1) The photon (green arrow) interacts with the material,
     exciting an electron and creating an quasiparticle referred to as an exciton. (2) The exciton diffuses
-    about until it intersectects the interface between donor and acceptor material domains. (3) The exciton is
+    about until it intersects the interface between donor and acceptor material domains. (3) The exciton is
     coerced apart by the energy offset between donor and acceptor molecules. 
-    (4) The, now unbound,  hole and the electron are free to diffuse about until ther reach their respective
+    (4) The, now unbound,  hole and the electron are free to diffuse about until they reach their respective
     electrodes where they can be extracted \cite{Fusella2019}}.
     \label{bhj}
 \end{figure}
 
 % Keep attached to prior paragraph.
 
-As shown in \ref{bhj}, a BHJ active layer is designed to harvest photons through the following 
+As shown in \ref{bhj}, a \glsxtrshort{bhj} active layer is designed to harvest photons through the following 
 steps: (1) photoabsorbtions, 
 (2) exciton diffusion, (3) charge transfer, and (4) free charge diffusion \cite{Fusella2019}. 
 When a photon is incedent on
-an OSC active layer, if it intersects with a molecular segment in the donor whose 
-highest occupied molecular orbital (HOMO) has comprable energy levels to the photon, 
+an \glsxtrshort{osc} active layer, if it intersects with a molecular segment in the donor whose 
+\gls{homo} has comparable energy levels to the photon, 
 the energy can be absorbed via the promotion of
-an electron to the next available energy level; the lowest unoccupied molecular orbital (LUMO).
+an electron to the next available energy level; the \gls{lumo}.
 This forms an exciton as
 described above, which can then diffuse until it intersects the boundary. 
 The excited electron would like to relax
 back into is lower energy level, but at the interface with the acceptor, it finds a better option. The
-acceptor's LUMO is engineered to sit between the energy of the donor's excited electron's energy level and the
-available lower energy level. Because of this, the electron cascades down to the acceptors LUMO through a charge
+acceptor's \glsxtrshort{lumo} is engineered to sit between the energy of the donor's excited electron's energy level and the
+available lower energy level. Because of this, the electron cascades down to the acceptors \glsxtrshort{lumo} through a charge
 transfer reaction. Finally the free charges can diffuse until they interect the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
 
-The BHJ design pushed the effenciency beyond the 1\% effeiciency milestone. However early BHJ devices utilized
-fullerene derivitives as acceptors which have a theoetical efficiency limit of $\sim13\%$ \cite{Scharber2016}
+The \glsxtrshort{bhj} design pushed the efficiency beyond the 1\% milestone. However early \glsxtrshort{bhj} devices utilized
+fullerene derivetives as acceptors which have a theoretical efficiency limit of $\sim13\%$ \cite{Scharber2016}
 and their spherical
 structure leads to difficult chemical purification, weak absorption in the visible-NIR spectrum, and rapid
-device degradation. In 2015, a group of researchers conceptulized the use of
+device degradation. In 2015, a group of researchers conceptualized the use of
 fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
 a fused-ring core and end groups that can be engineered to achieve specific electronic characteristics and side
-chains that can be engineered to achieve desired morphological features. The modularity of FREAs
-layed the stage for headspinning progress in the following years from 4\% PCE to 18\% \cite{Wang2021a}. 
+chains that can be engineered to achieve desired morphological features. The modularity of \glsxtrshort{frea}s
+layed the stage for headspinning progress in the following years from 4\% efficiency to 18\% 
+efficiency~\cite{Wang2021a}. 
 This designed modularity is a benefit to researchers, as they can alter one moiety and test
 the effect on resulting charge characteristics. For example, in a paper published in 2019 \cite{Benatto2019},
 researchers, knowing that flourine is an electronegative atom, swapped 4 hydrogen atoms for flourine atoms on
-the end groups the FREA molecule ITIC. Using \textit{ab initio} DFT, they found 
+the end groups the \glsxtrshort{frea} molecule \glsxtrshort{itic}. Using \textit{ab initio} DFT, they found 
 that this substitution could lower the exciton
 binding energy (discussed above using \autoref{coulomb}), thus facilitating exciton disassociation (stage 3 of
-BHJ). They also found
+\glsxtrshort{bhj}). They also found
 that this flourination tends to reduce the reorganization energy, which we see in \autoref{results}, has a
 drastic effect on charge mobility.
 
@@ -147,12 +148,12 @@ arrive at data that is predictive of material properties.
 This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
 The pipeline begins with an atomistic description of a given molecule's atom types and bonding structure.
 On the basis of this description, forces between all atoms are defined. On the basis of these interacting
-forces, equillibrium molecular dynamics (MD) simulations can predict the morphological structure. 
-The structural data obtained from these simulations can then be fed as an input into kinetic Monte
-Carlo (KMC) simulations that characterize charge mobility (conductivity) in these chemistries based on the
+forces, equilibrium \gls{md} simulations can predict the morphological structure. 
+The structural data obtained from these simulations can then be fed as an input into \gls{kmc}
+simulations that characterize charge mobility (conductivity) in these chemistries based on the
 energetics of electronically active molecular segments (`chromophores') within the morphology.
-We \texttt{Planckton}, our package for navigation MD simulations of OPVS in \autoref{planckton}. 
-The focus of this thesis, however, is the development of \texttt{MorphCT} for running KMC simulations, which we
+We \texttt{Planckton}, our package for navigation MD simulations of \glsxtrshort{opv}S in \autoref{planckton}. 
+The focus of this thesis, however, is the development of \texttt{MorphCT} for running \glsxtrshort{kmc} simulations, which we
 introduce more thoroughly in \autoref{morphct}.
 
 \begin{figure}
@@ -169,25 +170,25 @@ The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
 In this context, a chromophore is so named because these molecules are associated with the color of a material.
 This is because, mechanistically, a photon collides with a chromophore, the absorbed energy
-excites an electron from the HOMO to the
-LUMO. When the chromophore relaxes to its
+excites an electron from the \glsxtrshort{homo} to the
+\glsxtrshort{lumo}. When the chromophore relaxes to its
 ground state, it releases a photon with wavelength (or color) $\lambda = \frac{\hbar c}{E}$,
 where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
-energy difference of the HOMO and LUMO. In plants, this amounts to a rejection of the overabundant amount of
+energy difference of the \glsxtrshort{homo} and \glsxtrshort{lumo}. In plants, this amounts to a rejection of the overabundant amount of
 light in the green region which can damage the plant's DNA. 
 
-Our BHJ active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
+Our \glsxtrshort{bhj} active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
 protect and (hopefully) no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
 for the sake of brevity. In what is to follow, chromophore is taken to be defined as a molecular segment over which the 
 wave function of a free electron (hole) is assumed to be localized.
 It is under this assumption that we execute a hopping model of charge transfer between
 chromophores based on the Marcus rates of electrochemical reactions. We will also use chromophore to refer to
-the object in computer memory that stores all the infromation that we know about a given chromophore in morphology
+the object in computer memory that stores all the information that we know about a given chromophore in morphology
 (ie, atom locations, neighbors, energy levels).
 
 %%In \autoref{results} we explore the delineation of these localiztion segments for simulation, which we hereafter refer to as a `chromophore.' 
 
-Engineering the charge mobility of pure donor and accpeptor domains is critical
+Engineering the charge mobility of pure donor and acceptor domains is critical
 to overall device performance \cite{Wang2019e}.
 An understanding of why this is the case can be found from the inspection of \autoref{bhj}.
 If the electrons in stage $4$ reach the anode much faster than the holes reach the cathode, a traffic jam can
@@ -209,48 +210,48 @@ repetitive tasks, (4) develop open-source code, (5) write code in the highest la
 % SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
 We seek to improve the TRUEness of the pipeline outlined in \autoref{pipeline}.
 To do this, we: (1) integrate an open source quantum chemical package into \texttt{MorphCT},
-(2) perform validation and sensitivity analysis on benchmark P3HT
-(3) deploy the pipeline from start to finish on ITIC. 
-We found that the pipeline can indeed connect moluclar sturcture to morphology to charge
+(2) perform validation and sensitivity analysis on benchmark \glsxtrshort{p3ht}
+(3) deploy the pipeline from start to finish on \glsxtrshort{itic}. 
+We found that the pipeline can indeed connect molecular structure to morphology to charge
 mobility. As with other software the greatest hitch to the TRUEness is the
 cognitive load. The cognitive load I found most overbearing was the quantum theory underlying the algorithm 
 at the molecular level and the cognitive load of learning the \texttt{MorphCT} API. 
 I also found that the most useful tool to onboarding the \texttt{MorphCT} API was the
-trail of breadcrumbs left by previous developers on github issues, documention and tutorials. 
-With that workflows, codified into jupyter notebook tutorials are the resourse that I would want if I was to
+trail of breadcrumbs left by previous developers on github issues, documentation and tutorials. 
+With that workflows, codified into jupyter notebook tutorials are the resource that I would want if I was to
 attempt this research again and therefore are my best attempt to bring an aspiring developer into the fold.
 We have found that interactive tutorials provide an exposure to the \texttt{MorphCT} while also shoring up the
-theoritcal gaps in knowlegde necessary to navigate this kind of research. 
+theoretical gaps in knowledge necessary to navigate this kind of research. 
 
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
     \centering
-    \textbf{(A)} P3HT \\
+    \textbf{(A)} \glsxtrshort{p3ht} \\
     \includegraphics[width=\textwidth]{figures/p3ht-molecule-figure.png}
 \end{subfigure}%
 \\
 \begin{subfigure}{.3\textwidth}
-    \textbf{(B)} ITIC
+    \textbf{(B)} \glsxtrshort{itic}
     \centering
     \includegraphics[width=\textwidth]{figures/itic-backbone-figure.png}
 \end{subfigure}%
 \begin{subfigure}{.3\textwidth}
-    \textbf{(C)} ITIC
+    \textbf{(C)} \glsxtrshort{itic}
     \centering
     \includegraphics[width=\textwidth]{figures/itic-sidechain-figure.png}
 \end{subfigure}
-    \caption[short]{(A) P3HT oligomer composed of 15 identical monomers imbued in blue.
-    (B) ITIC molecule viewed from above the plane of the backbone. 
-    (C) ITIC viewed in the plane of the backone to show the side chains. ITIC
+    \caption[short]{(A) \glsxtrshort{p3ht} oligomer composed of 15 identical monomers imbued in blue.
+    (B) \glsxtrshort{itic} molecule viewed from above the plane of the backbone. 
+    (C) \glsxtrshort{itic} viewed in the plane of the backone to show the side chains. \glsxtrshort{itic}
     molecule is imbued with blue, red, and green to call attention to the end groups, fused-ring core, and
     side chains respectively.}
 \label{molecules}
 \end{figure}
 
-Two OPV materials are studied throughout this thesis.
-These are P3HT, a
-donor molecule, and ITIC, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
+Two \glsxtrshort{opv} materials are studied throughout this thesis.
+These are \glsxtrshort{p3ht}, a
+donor molecule, and \glsxtrshort{itic}, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
 organic analogue of n-type inorganic semiconductors and `donors' the analogue
 of the p-type. We make this note because in the methods we describe a model of
 a charge hopping from one molecule to another. And as we describe, our
@@ -261,33 +262,33 @@ They merely receive a donor/acceptor designation as a result of how they
 are primarily utilized in electronic devices. 
 
 %need to say more things and cleaner things but im not sure what right now
-P3HT is a polymeric material that is highly polymorphic in that it can self-assemble into a wide spectrum of
+\glsxtrshort{p3ht} is a polymeric material that is highly polymorphic in that it can self-assemble into a wide spectrum of
 crystallinities depending on how it is processed.
 Polythiophenes as a whole have been well investigated 
 since 1883 when they were first characterized~\cite{Poelking2014}.
-Seen in \autoref{ITIC/P3HT}, the molecular structure of P3HT
+Seen in \autoref{ITIC/P3HT}, the molecular structure of \glsxtrshort{p3ht}
 is such that these molecules can pi-stack into lamellar structures that facilitate fast charge transport along
-the backbones. P3HT was first synthesized by Rick Mcullough in 1992. The first devices to utilize P3HT showed
+the backbones. \glsxtrshort{p3ht} was first synthesized by Rick Mcullough in 1992. The first devices to utilize \glsxtrshort{p3ht} showed
 a low mobility do to is regio-randomness inhibiting the lamellar packing exhibited by the now widely used
-regio-regular (head-to-tail) P3HT shown in \autoref{molecules}~\cite{Zaumseil2014}. 
+regio-regular (head-to-tail) \glsxtrshort{p3ht} shown in \autoref{molecules}~\cite{Zaumseil2014}. 
 
-ITIC is not polymeric. Rather, it a material consisting of small molecules with no long range bonding.
-ITIC is a FREA that was first synthesized in 2015~\cite{Bai201U}. The structure of ITIC is shown in
+\glsxtrshort{itic} is not polymeric. Rather, it a material consisting of small molecules with no long range bonding.
+\glsxtrshort{itic} is a \glsxtrshort{frea} that was first synthesized in 2015~\cite{Bai201U}. The structure of \glsxtrshort{itic} is shown in
 \autoref{molecules} wherein we have highlighted the moeities.  
 
 In \autoref{methods}, we
 provide an exposition of the theories and software packages used to model and simulate self-assembly and charge mobility in
-OPVs.
+\glsxtrshort{opv}s.
 The methods used in this thesis are centrally motivated by, and justified for, 
 the application of our workflow to materials
-used in OSC design. However, the methods are
+used in \glsxtrshort{osc} design. However, the methods are
 not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
 electronic devices, like those mentioned above. 
 In \autoref{results}, we use \texttt{MorphCT} to validate our current workflow against a predecessor of the 
-workflow on three benchmark MD simulated morpholgies of P3HT. 
-Following that, again using P3HT, we test the sensitivity of our charge mobility prediction, 
+workflow on three benchmark MD simulated morpholgies of \glsxtrshort{p3ht}. 
+Following that, again using \glsxtrshort{p3ht}, we test the sensitivity of our charge mobility prediction, 
 implemented with \texttt{MorphCT}, to various inputs. We conclude \autoref{results} by applying our pipeline,
-start to finish, to ITIC. 
+start to finish, to \glsxtrshort{itic}. 
 In \autoref{conclusion}, we outline the ramification of \autoref{results} and detail the areas of future development of the workflow. 
 
 %%THESE SENTECES HAS NO HOME Researchers have to balance the optimiztion of electron structures of candidate donor/acceptor materials against the miscibility of two candidate molecules as well as the resultant morphology across the thermodynamic landscape of variuos solution processes which ultimately govern the Jsc and FF of at the device level \cite{Zhu2020a}. This type of molecular tinkering is a critical first step that can lay the groundwork for further wetlb experiments and can ultimately inform device design. Unfortunately, the molecular modularity of FREAs is not mirrored in the software used to study them. \textit{Ab initio} DFT methods are prohibitivly slow on the nanometer scale. Furthermore, investigations like these rarely publish the code necessary to reproduce or extend thework, and often utilize proprietary software. On the contrary, the software used in this work is maintained in public. In the
