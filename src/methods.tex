@@ -73,7 +73,7 @@ temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
 The system can be considered equilibrated when the potential energy no longer decreases with time. 
 From the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
 simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
-into distinct regions, working backwards in time, a bin is added to the equillibrated region if its standard
+into distinct regions, working backwards in time, a bin is added to the equilibrated region if its standard
 deviation is less than twice that of the previous bin \cite{Henry2017a}.
 
 MD simulations can predict the self-assembly of OPV materials. To connect the chemistry to the
@@ -89,7 +89,7 @@ Each hop then is modeled as a thermally activated process, the rate of which can
 from the intersection of two parabolic potential energy surfaces. 
 Each parabola in \autoref{marcus-plot} represents the potential energy well of a charge that is localized on
 one of two chromophores in a dimer complex. 
-With electron transfer much much faster than the movement of nuclear coordinantes (Franck-Condon principle),
+With electron transfer much much faster than the movement of nuclear coordinates (Franck-Condon principle),
 the intersection of the parabolas corresponds to the unique nuclear geometry, and distinct vibrational mode, at
 which charge transfer is assumed to take place. 
 
@@ -98,7 +98,7 @@ which charge transfer is assumed to take place.
   \includegraphics[width=0.7\linewidth]{figures/marcus-plot.png} 
     \caption{Two intersecting dimer potential energy surfaces annotated with $\lambda_{ij}$, the
     reorganization energy, $\Delta E_{ij}$, the free energy difference between dimers. $C_{i}^*/C_{j}$ 
-    and $C_{i}/C_{j}^*$ the dimer with charge on chromophore $i$ and on
+    and $C_{i}/C_{j}^*$ represent the dimer with charge on chromophore $i$ and on
     chromophore $j$ respectively}
   \label{marcus-plot}
 \end{figure}
@@ -180,14 +180,14 @@ into the \glsxtrshort{lumo} of $j$, and out of the
 \glsxtrshort{homo} of $i$.
 The driving force for a one electron charge transfer reaction, 
 with a rate described by \autoref{marcus}, is the difference between the energy that our electron 
-currently posseses 
+currently possesses
 on chromophore $i$, and the energy that it could enjoy over on chromophore $j$. 
 This is writtin as follows:
 \begin{align}
     \Delta E_{ij} = E_{homo, i} - E_{homo, j}.
     \label{gibbs}
 \end{align}
-Quantum chemically, the values $E_{homo, i}$ and $E_{homo, j}$ represent the eigenvalues of the the
+Quantum chemically, the values $E_{homo, i}$ and $E_{homo, j}$ represent the eigenvalues of the
 time-independent Shrodinger equation corresponding to the \glsxtrshort{homo}s of chromophore $i$ and $j$ respectively. 
 In our work, these values are approximated with the MINDO/3 method, a variation of the intermediate neglect of 
 differential overlap (INDO) method. This method seeks recreate the \textit{ab initio} Hartree-Fock
@@ -196,7 +196,7 @@ Shrodinger equation \cite{Thiel2014}.
 
 The value $T_{ij}$ in \autoref{marcus} is a measure of the electronic orbital overlap between chromophores.
 This values can be obtained using the
-the dimer splitting methed~\cite{Huang2005b}. This method comares the \glsxtrshort{homo} energies of chromophores $i$ and
+the dimer splitting method~\cite{Huang2005b}. This method compares the \glsxtrshort{homo} energies of chromophores $i$ and
 $j$ in isolation to the energies of the frontier molecular orbitals of a dimer
 consisting of the two chromophores. 
 This difference is written as ($E_{homo,dimer} - E_{homo-1,dimer}$) where $E_{homo,dimer}$ 
@@ -209,7 +209,8 @@ the two highest occupied energy levels of the dimer will
 be the \glsxtrshort{homo}s of their respective chromophores. \ej{I like it.}
 If the chromophores are not interacting, 
 then the two highest energy molecular orbitals of the dimer will be the \glsxtrshort{homo} of chromophore $i$ and the 
-\glsxtrshort{homo} of chromophore $j$. If there is electronic overlap, a comparison bewteen the two highest occupied
+\glsxtrshort{homo} of chromophore $j$. If there is electronic overlap, a
+comparison between the two highest occupied
 molecular orbitals of the dimer and the \glsxtrshort{homo}s of the chromophores calculated in isolation can quantify the degree of
 electronic overlap. Indeed, $T_{ij}$ is written as follows:
 \begin{align}
@@ -219,11 +220,12 @@ electronic overlap. Indeed, $T_{ij}$ is written as follows:
 Solving shrodingers equation, with any level of accuracy,
 across an entire molecular arrangment is a prodigious computational lift.
 Other studies have implemented \textit{ab initio} DFT methods at this stage of predicting
-mobility from molecular arrangement to good effect \cite{Deng2004}. These more rigerous methods are
+mobility from molecular arrangement to good effect \cite{Deng2004}. These more
+rigorous methods are
 untenable on the scale of the morphologies studied in this thesis. While INDO methods are less precise, 
 the results of using this method have shown good agreement with experimental and \textit{ab initio}
 DFT methods~\cite{Bredas2002}. 
-Compuational quantum chemistry is a nascent and evolving field of its
+Computational quantum chemistry is a nascent and evolving field of its
 own, with quickly increasing efficiencies and accuracies.
 A particular 
 choice of method comes down to how well we can organize a workflow and integrate the \glsxtrshort{qcc} portion of the
@@ -255,7 +257,8 @@ center. The polyhedron cell consists of every point in space that is closer to t
 any other chromophore center. Chromophores are considered neighbors if their voronoi cells abut one another.
 
 For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
-of the crystalline P3HT system described in \autoref{md}. To carry out this analysis, \texttt{MorphCT} incorperates the
+of the crystalline P3HT system described in \autoref{md}.
+To carry out this analysis, \texttt{MorphCT} incorporates the
 Voronoi class provided by \texttt{freud}; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
 This class is compatible with 2D or 3D simulation data. 
 
@@ -266,7 +269,7 @@ equidistant from that point and its geometrically closest neighbor across the li
 In the 3D case, this analysis reduced the pairwise calculation from ${15000 \choose 2} = 112,492,500$
 to $113,315$. 
 
-Euclidean space searching algorithms of this sort are an effecient way to parse space. 
+Euclidean space searching algorithms of this sort are an efficient way to parse space. 
 They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)$ in the average case
 \cite{Bentley1980}.
 
@@ -319,8 +322,8 @@ data. From this testing, we consider if the juice is worth radial squeeze from a
 With the MD data generated, the data chopped into individual chromophores, 
 the chromophores and chromophore pair energetics
 quantified with \glsxtrshort{qcc}, and the Marcus hop rate calculated, 
-a single charges movement through the morphology can be simulatied with the
-application of a \glsxtrshort{kmc} algorthim.
+a single charges movement through the morphology can be simulated with the
+application of a \glsxtrshort{kmc} algorithm.
 
 Monte Carlo algorithms use pseudorandom numbers to solve computational problems. Our implementation can be
 described as a first choice method \glsxtrshort{kmc} algorithm, where the kinetics involved is the rate of one electron
@@ -340,7 +343,7 @@ and the system can be moved forward in time by $\tau$.
 
 However, hopping processes at the angstrom level do not proceed deterministically. 
 Our implementation, and others like it [NEED REFS?], have
-successfully captured the stochasticiity of these systems via a shuffling our hopping queue.
+successfully captured the stochasticity of these systems via a shuffling our hopping queue.
 The shuffled wait time for every potential hop from occupied chromophore $i$ onto a
 neighboring chromophore $j$ looks as follows:
 
@@ -368,11 +371,11 @@ its new chromophore host. The system is then considered to have moved forward in
 until the charge carrier stalls out or hops past a prespecified lifetime. 
 
 
-A core tenet of Monte carlo samling is ensuring a large sample size. For this reason, we average over
+A core tenet of Monte Carlo sampling is ensuring a large sample size. For this reason, we average over
 thousands of individual \glsxtrshort{kmc} implementations to arrive at a charge mobility prediction. 
-A benifit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
-to be `embarrasingly parrel' in that the subprocesses (charge carriers) require no communication.
-How we analyse and aggregate data from thousands of
+A benefit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
+to be `embarrassingly parallel' in that the subprocesses (charge carriers) require no communication.
+How we analyze and aggregate data from thousands of
 single \glsxtrshort{kmc} simulations to obtatin macroscopic charge mobility is the subject of the following section.
 
 
@@ -542,11 +545,10 @@ accuracy of that data.
 \texttt{MorphCT} is a collection of python scripts for defining, instantiating, reading
 and writing from the following three python objects: System, Chromophore, and
 Carrier. 
-
 In general, the \texttt{MorphCT} workflow proceeds via interfacing with the
 System object. The System object can be instantiated from a GSD file. Methods
 for adding chromophores, computing chromophore energies, and running
-\glsxtrshort{kMC} are coded into the System object. 
+\glsxtrshort{kmc} are coded into the System object. 
 
 In the development of \texttt{MorphCT-flow}, for analogous reasons to those outlined for \texttt{Planckton}, we
 found that ORCA, the software used to perform \glsxtrshort{qcc} in \texttt{MorphCT} inhibited containerization because it
