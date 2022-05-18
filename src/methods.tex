@@ -85,7 +85,7 @@ The movement of a free charge through a morphology can be modeled as a series of
 Marcus nonadiabatic electron transfer
 reactions, or `hops' between relatively weakly interacting chromophores in the system. 
 Each hop then is modeled as a thermally activated process, the rate of which can be solved for analytically
-from the interesction of two parabolic potential energy surfaces. 
+from the intersection of two parabolic potential energy surfaces. 
 Each parabola in \autoref{marcus-plot} represents the potential energy well of a charge that is localized on
 one of two chromophores in a dimer complex. 
 With electron transfer much much faster than the movement of nuclear coordinantes (Franck-Condon principle),
@@ -96,7 +96,7 @@ which charge transfer is assumed to take place.
   \center
   \includegraphics[width=0.7\linewidth]{figures/marcus-plot.png} 
     \caption{Two intersecting dimer potential energy surfaces annotated with $\lambda_{ij}$, the
-    reorganization energy, $\Delta E_{ij}$, the free energy difference bewtween dimers. $C_{i}^*/C_{j}$ 
+    reorganization energy, $\Delta E_{ij}$, the free energy difference between dimers. $C_{i}^*/C_{j}$ 
     and $C_{i}/C_{j}^*$ the dimer with charge on chromophore $i$ and on chromophore $j$ respectively}
   \label{marcus-plot}
 \end{figure}
@@ -346,17 +346,18 @@ neighboring chromophore $j$ looks as follows:
     \tau = \frac{1}{k_{ij}} \cdot \ln{\frac{1}{x}} 
     \label{waittime}
 \end{align}
-where x is a random number between 0 and 1 and $\log{(1/x)}$ is a scaling factor. To illucidate this
+where x is a random number between 0 and 1 and $\log{(1/x)}$ is a scaling
+factor. To elucidate this
 graphically, $\ln{(1/x)}$ is plotted in figure \ref{fig:ln} from 0 to 1. From this we can see that with
 a large enough sampling, significant reshuffling of the queue will take place, allowing for a rare hop to jump
 the queue.
 
 \begin{figure}
   \center
-  \includegraphics[width=0.8\linewidth]{figures/naturallog.png}
-  \caption{Graphical insight into the reshuffling of the wait time queue. Here the x-axis represents the 
-    interval from which numbers are drawn randomly such that the wait times in the queue can be scaled 
-    by ln(1/x).}
+  \includegraphics[width=0.5\linewidth]{figures/naturallog.png}
+  \caption{Graphical insight into the reshuffling of the wait time queue. The
+    scaling factor $\ln{(1/x)}$ in \label{waittime} is plotted over the
+    interval from which we draw random numbers. 
   \label{fig:ln}
 \end{figure}
 
