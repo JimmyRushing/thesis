@@ -533,13 +533,22 @@ data sets with \texttt{signac}.
 
 \texttt{MorphCT} is a package for running \glsxtrshort{kmc} simulations of charge transport in organics systems.
 \texttt{MorphCT} operates on data containing the atom types and cartesian coordinates in a
-system. We operate \texttt{MorphCT} on equillbrium microstates obtained from MD simulations. However,
+system. We operate \texttt{MorphCT} on equilibrium microstates obtained from MD simulations. However,
 \texttt{MorphCT} is indifferent to how the morphological data was obtained and does not measure physical
 accuracy of that data. 
 
-In the delevopment of \texttt{MorphCT-flow} for analogous reasons to those outlined for \texttt{Planckton}, we
+\texttt{MorphCT} is a collection of python scripts for defining, instantiating, reading
+and writing from the following three python objects: System, Chromophore, and
+Carrier. 
+
+In general, the \texttt{MorphCT} workflow proceeds via interfacing with the
+System object. The System object can be instantiated from a GSD file. Methods
+for adding chromophores, computing chromophore energies, and running
+\glsxtrshort{kMC} are coded into the System object. 
+
+In the development of \texttt{MorphCT-flow}, for analogous reasons to those outlined for \texttt{Planckton}, we
 found that ORCA, the software used to perform \glsxtrshort{qcc} in \texttt{MorphCT} inhibited containerization because it
-required a licsensing agreement. For this reason, ORCA was replaced with the fully open source pySCF. 
+required a licensing agreement. For this reason, ORCA was replaced with the fully open source pySCF. 
 The software we have chosen to perform our \glsxtrshort{qcc} is
 provided by \texttt{pySCF} (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
 was chosen in the interest of reproducability and extensibility.
@@ -549,7 +558,7 @@ language, which is becoming increasingly ubiquitous in the scientific computing 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
 
 \texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
-simulated accross all available cores.
+simulated across all available cores.
 
 These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
