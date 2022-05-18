@@ -149,15 +149,10 @@ that this may not be broadly applicable. To disambiguate the results in this the
 simplest model. Individual monomers in the system to be chromophores. The single monomer chromophore model has been shown to
 produce good results \cite{jones2017}.
 %%\ej{In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
-
 Deciding where a chromophore should be expected is one step in the workflow that requires nuanced
 scientific justifications. However, after that decision has been made, the significant procedural hurdle of 
-computationally ascribing the atoms to their respective chromophores remains. 
-Every atom in the MD morphology has a unique index. All of the methods that follow hinge on assigning the prescribed atom indices to their respective chromophore. 
-In this work, we manually index these chromophores. A tutorial for using VMDs graphical user interface to
-visually select chromophores is maintained for \texttt{MorphCT}.
-We also maintain workflows for automating the identification of chromophore positions using smarts
-matching.
+computationally ascribing the atoms to their respective chromophores remains.
+We our approach in \autoref{morphct}.
 
 With the morphology chopped into chromophores and stored in memory, the energetics between
 neighboring chromophores can be estimated with quantum chemical methods.
@@ -536,9 +531,11 @@ data sets with \texttt{signac}.
 \subsection{Software for Kinetic Monte Carlo Simulation}
 \label{morphct}
 
-\texttt{MorphCT} is a package for running \glsxtrshort{kmc} simulations of charge transport in organics systems.
-\texttt{MorphCT} operates on data containing the atom types and cartesian coordinates in a
-system. We operate \texttt{MorphCT} on equilibrium microstates obtained from MD simulations. However,
+\texttt{MorphCT} is a python package for running \glsxtrshort{kmc} simulations of 
+charge transport in organics systems.
+\texttt{MorphCT} operates on GSD files containing the atom types and cartesian
+coordinates of a system
+system. In this work we use \texttt{MorphCT} on equilibrium microstates obtained from MD simulations. However,
 \texttt{MorphCT} is indifferent to how the morphological data was obtained and does not measure physical
 accuracy of that data. 
 
@@ -546,9 +543,24 @@ accuracy of that data.
 and writing from the following three python objects: System, Chromophore, and
 Carrier. 
 In general, the \texttt{MorphCT} workflow proceeds via interfacing with the
-System object. The System object can be instantiated from a GSD file. Methods
-for adding chromophores, computing chromophore energies, and running
+System object. The System object can be instantiated from a GSD file. 
+
+Methods for adding chromophores, computing chromophore energies, and running
 \glsxtrshort{kmc} are coded into the System object. 
+The method for adding chromophores creates a chromophore object based on a list
+of atom indices for every chromophore. 
+ 
+Every atom in the MD morphology has a unique index. All of the methods that follow hinge on assigning the prescribed atom indices to their respective chromophore. 
+In this work, we manually index these chromophores. A tutorial for using VMDs graphical user interface to
+visually select chromophores is maintained for \texttt{MorphCT}.
+We also maintain workflows for automating the identification of chromophore positions using smarts
+matching.
+
+The method for running \glsxtrshort{kmc} simulations 
+\texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be simulated across all available cores.
+
+
+
 
 In the development of \texttt{MorphCT-flow}, for analogous reasons to those outlined for \texttt{Planckton}, we
 found that ORCA, the software used to perform \glsxtrshort{qcc} in \texttt{MorphCT} inhibited containerization because it
@@ -560,9 +572,6 @@ was chosen in the interest of reproducability and extensibility.
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
 \texttt{pySCF} allowed for the entire \glsxtrshort{qcc} code to be implememted in five lines of code. These lines of code in 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
-
-\texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be
-simulated across all available cores.
 
 These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
