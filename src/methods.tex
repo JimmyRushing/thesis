@@ -16,7 +16,8 @@ neighboring chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and 
 our specific kinetic Monte Carlo approach to modeling charge transport.
 Finally, in \autoref{software-methods}, we enumerate the software used in this thesis and outline the means by
-which it is developed. Particular focus is given to two packages that are principly developed by members of the CMELab:
+which it is developed. Particular focus is given to two packages that are
+principally developed by members of the CMELab:
 \texttt{Planckton} and \texttt{MorphCT}.  
  
 
@@ -41,7 +42,7 @@ which it is developed. Particular focus is given to two packages that are princi
 \centering
     \includegraphics[width=.7\textwidth]{figures/color-legend-p3ht.png}
 \end{subfigure}
-    \caption{Left: 1000 molecule atomistic morhology of ITIC. Right: 1000 oligomer atomistic simulation
+    \caption{Left: 1000 molecule atomistic morphology of ITIC. Right: 1000 oligomer atomistic simulation
     of P3HT}
 \label{ITIC/P3HT}
 \end{figure}
@@ -56,21 +57,21 @@ Molecular dynamics is a method of computer simulation for predicting the equilib
 systems. MD simulations proceed iteratively by solving Newtons laws of motion
 in accordance with a predefined interatomic interaction potentials which define the forces between particles
 in the system.  
-The non-bonded ineraction potentials are modeled with a classic Leonard-Jones(LJ)
+The non-bonded interaction potentials are modeled with a classic Leonard-Jones(LJ)
 potential \cite{Jones1924a}. Potentials are also defined in accordance with the bonds that each particle is
-participating in and can include parameteres for equillibrium bond distances and equillibrium angles between
+participating in and can include parameters for equilibrium bond distances and equilibrium angles between
 $3$ bonded atoms and between $4$ bonded atoms (dihedral angles).
-At each iteration, a numerical integation over these potentials provide an update to the velocities and positions
+At each iteration, a numerical integration over these potentials provide an update to the velocities and positions
 of particles in the system. 
 \ej{Picture or cartoon of atoms, forces, and one update?}
 
 Using the canonical ensemble (NVT) for example, conserving the number of
 particles, the volume, and the temperature allows for the exploration of the potential energy surface
-of the system and sample the microstates from equillibrated region the simulation for statistical analysis.  
+of the system and sample the microstates from equilibrated region the simulation for statistical analysis.  
 Simulation ensembles are regulated via the Nos\'{e}-Hoover thermostat \cite{Hoover1985} to maintain 
 temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
 The system can be considered equilibrated when the potential energy no longer decreases with time. 
-From the the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
+From the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
 simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
 into distinct regions, working backwards in time, a bin is added to the equillibrated region if its standard
 deviation is less than twice that of the previous bin \cite{Henry2017a}.
@@ -97,7 +98,8 @@ which charge transfer is assumed to take place.
   \includegraphics[width=0.7\linewidth]{figures/marcus-plot.png} 
     \caption{Two intersecting dimer potential energy surfaces annotated with $\lambda_{ij}$, the
     reorganization energy, $\Delta E_{ij}$, the free energy difference between dimers. $C_{i}^*/C_{j}$ 
-    and $C_{i}/C_{j}^*$ the dimer with charge on chromophore $i$ and on chromophore $j$ respectively}
+    and $C_{i}/C_{j}^*$ the dimer with charge on chromophore $i$ and on
+    chromophore $j$ respectively}
   \label{marcus-plot}
 \end{figure}
 
@@ -108,11 +110,11 @@ is given by the following equation:
     E_{ij} - \lambda_{ij})^2}{ 4 \pi \lambda_{ij} k_{B} T} \Bigg] }
     \label{marcus}
 \end{align}
-with Boltzmann's consant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
+with Boltzmann's constant, $k_{B}$, and Planck's constant, $\hbar$. The parameters $T_{ij}$, $\lambda_{ij}$,
 $\Delta E_{ij}$, $T$ represent the electronic overlap, the reorganization energy, the free energy difference
 between chromophores, and
 temperature. These are discussed individually in the results section, wherein we test the sensitivity of
-the \glsxtrshort{kmc} results to the choice or computaion of these parameters individually.
+the \glsxtrshort{kmc} results to the choice or computation of these parameters individually.
 The accuracy of the Marcus rate is thus dependent on the accuracy with which the inputs can be estimated. In
 our work, $\lambda_{ij}$ and $T$ are set as constants. In
 the following section we outline our quantum chemical treatment of both $T_{ij}$ and $\Delta E_{ij}$ for all
@@ -124,7 +126,7 @@ chromophores.
 Each local molecular environment requires its own justification for where chromophores in the morphology 
 can be considered to harbor a localized free charge.
 
-In disorderd organic systems, unlike in metals or single crystal organic materials, 
+In disordered organic systems, unlike in metals or single crystal organic materials, 
 electronic states are localized to the frontier molecular orbitals of tightly
 bound packets of atoms within the morphology. 
 The spacial extent of chromophores is therefore dependent on the local environment of individual chromophores
@@ -132,7 +134,7 @@ and correspond roughly to the boundary between packets of strongly interacting m
 
 For ITIC, the candidate location of chromophores naturally arises from its composition of distinct
 macromolecules.
-The charges are taken to be localized on inividual molecules of ITIC. The frontier molecular orbitals have 
+The charges are taken to be localized on individual molecules of ITIC. The frontier molecular orbitals have 
 negligible electron density along the side chains. Therefore, the simplest model for chromophores then is
 taken to be the backbone of individual molecules. Significant computational resources 
 can be conserved by leaving the side chain atoms out of the of the \glsxtrshort{qcc}s. 
@@ -357,7 +359,7 @@ the queue.
   \includegraphics[width=0.5\linewidth]{figures/naturallog.png}
   \caption{Graphical insight into the reshuffling of the wait time queue. The
     scaling factor $\ln{(1/x)}$ in \label{waittime} is plotted over the
-    interval from which we draw random numbers. 
+    interval from which we draw random numbers. }
   \label{fig:ln}
 \end{figure}
 
