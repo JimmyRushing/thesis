@@ -42,8 +42,8 @@ principally developed by members of the CMELab:
 \centering
     \includegraphics[width=.7\textwidth]{figures/color-legend-p3ht.png}
 \end{subfigure}
-    \caption{Left: 1000 molecule atomistic morphology of ITIC. Right: 1000 oligomer atomistic simulation
-    of P3HT}
+    \caption{Left: 1000 molecule atomistic morphology of \glsxtrshort{itic}. Right: 1000 oligomer atomistic simulation
+    of \glsxtrshort{p3ht}}
 \label{ITIC/P3HT}
 \end{figure}
 
@@ -132,19 +132,19 @@ bound packets of atoms within the morphology.
 The spacial extent of a chromophore
 correspond roughly to the boundary between packets of strongly interacting molecular regions.
 
-For ITIC, the candidate location of chromophores naturally arises from its composition of distinct
+For \glsxtrshort{itic}, the candidate location of chromophores naturally arises from its composition of distinct
 macromolecules.
-The charges are taken to be localized on individual molecules of ITIC. The frontier molecular orbitals have 
+The charges are taken to be localized on individual molecules of \glsxtrshort{itic}. The frontier molecular orbitals have 
 negligible electron density along the side chains. Therefore, the simplest model for chromophores then is
 taken to be the backbone of individual molecules. Significant computational resources 
 can be conserved by leaving the side chain atoms out of the of the \glsxtrshort{qcc}s. 
-To test this on ITIC, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}.
+To test this on \glsxtrshort{itic}, we delineate the backbone and the whole molecule and compare carrier mobility in \autoref{itic}.
  
-In the case of conducting polymers like P3HT this boundary is affected by the how the chains are twisted
+In the case of conducting polymers like \glsxtrshort{p3ht} this boundary is affected by the how the chains are twisted
 or bent. A material that spans the gambit of disorder and crystallinity can be difficult to model, because
 charge transport can occur in a hopping way, as described here, and also occur in an adiabatic metal-like transport. 
 Therefore, while experimental studies have suggested that charges localize along roughly 7 monomer chains
-in P3HT, our application of our model to three morphologies of P3HT with vastly different structure mean 
+in \glsxtrshort{p3ht}, our application of our model to three morphologies of \glsxtrshort{p3ht} with vastly different structure mean 
 that this may not be broadly applicable. To disambiguate the results in this thesis we chose to take the
 simplest model. Individual monomers in the system to be chromophores. The single monomer chromophore model has been shown to
 produce good results \cite{jones2017}.
@@ -252,7 +252,7 @@ center. The polyhedron cell consists of every point in space that is closer to t
 any other chromophore center. Chromophores are considered neighbors if their voronoi cells abut one another.
 
 For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
-of the crystalline P3HT system described in \autoref{md}.
+of the crystalline \glsxtrshort{p3ht} system described in \autoref{md}.
 To carry out this analysis, \texttt{MorphCT} incorporates the
 Voronoi class provided by \texttt{freud}; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
 This class is compatible with 2D or 3D simulation data. 
@@ -274,7 +274,7 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
 %\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
   \includegraphics[width=0.99\linewidth]{figures/crystalline_voronoi_smaller.png} 
  % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
-  \caption{A 2D Voronoi diagram that was drawn from the xy components of a crystalline P3HT morphology. Dots
+  \caption{A 2D Voronoi diagram that was drawn from the xy components of a crystalline \glsxtrshort{p3ht} morphology. Dots
     represent chromopore centers. Lines represent points that are equidistant to the chromophore centers.
     Polygons represent all points that are closer to the chromophore center contained within than any other
     chromophore center. RED SQUARE: \autoref{fig:dcut} shows the 15nm section of the sample zoomed in for
@@ -308,7 +308,7 @@ between chromophores in the system.
 
 A proper choice of dcut will depend on the material under investigation, 
 as the size of the individual chromophores will vary. In 
-\autoref{dcutresults}, we test the sensitiviy of our results to the value of dcut for the crystalline P3HT
+\autoref{dcutresults}, we test the sensitiviy of our results to the value of dcut for the crystalline \glsxtrshort{p3ht}
 data. From this testing, we consider if the juice is worth radial squeeze from a computational standpoint. 
 
 \section{Kinetic Monte Carlo}
@@ -481,7 +481,7 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 \end{table}
 
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
-I was able to take an investigation of ITIC from molecular
+I was able to take an investigation of \glsxtrshort{itic} from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
 can make in silico screening of OPV materials realistically attainable by any aspiring researcher.
 
