@@ -35,18 +35,18 @@ morphology to KMC predicted charge mobility. We use this opportunity to explore 
 
 As outlined in \autoref{qccmethods}, \glsxtrshort{qcc} is used in two distinct way in our workflow. 
 First it is used to estimate free energy
-difference between individual chromophores as the difference in their HOMO (or LUMO) energy levels.
+difference between individual chromophores as the difference in their \glsxtrshort{homo} (or \glsxtrshort{lumo}) energy levels.
 Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dimer splitting method which involves
-calculating the HOMO(or LUMO) of the dimer formed by the two chromophores. We present the results from two
-exploratory experiments meant to evaluate \texttt{pySCF}'s suitabilitity for performing these duties:
+calculating the \glsxtrshort{homo} (or \glsxtrshort{lumo}) of the dimer formed by the two chromophores. We present the results from two
+experiments meant to evaluate \texttt{pySCF}'s suitabilitity for performing these duties:
 (1) we compare frontier molecular energies of single chromophores given by \texttt{pySCF} to those
 given by more rigorous DFT and (2) we evaluate performance \texttt{pySCF}'s dimer calculation.
 
 \subsubsection{Experiment 1 Methods}
 
-At the level of a single chromophore, we calculate the HOMO-LUMO gap for fused-ring
+At the level of a single chromophore, we calculate the \glsxtrshort{homo}-\glsxtrshort{lumo} gap for fused-ring
 oligomers of increasing length. 
-The difference between the HOMO and LUMO energy levels, the HOMO-LUMO gap, is an approximation of the amount
+The difference between the \glsxtrshort{homo} and \glsxtrshort{lumo} energy levels, the \glsxtrshort{homo}-\glsxtrshort{lumo} gap, is an approximation of the amount
 of energy necessary to promote an electron to a higher energy level.  
 Fused-ring geometries are of particular interest for accepter
 molecules, as discussed for FREAs in the introduction. 
@@ -59,12 +59,12 @@ frontier orbital energy levels \autoref{qccmethods}.
 
 \subsubsection{Experiment 1 Results}
 
-Our values for the HOMO-LUMO gap are plotted by oligomer length in \autoref{fig:fused}. 
-Our HOMO-LUMO gap ranges between $7.27eV$ and $6.34eV$. Consistent with our findings using a larger data set
+Our values for the \glsxtrshort{homo}-\glsxtrshort{lumo} gap are plotted by oligomer length in \autoref{fig:fused}. 
+Our \glsxtrshort{homo}-\glsxtrshort{lumo} gap ranges between $7.27eV$ and $6.34eV$. Consistent with our findings using a larger data set
 in \autoref{itic}, the wall time for these individual calculations take place on the order of seconds. 
 
 Furthermore, it is known that there is a near linear
-relationship between HOMO-LUMO gap and oligomer length. We find that our use of \texttt{pySCF} (MINDO/3) replicates
+relationship between \glsxtrshort{homo}-\glsxtrshort{lumo} gap and oligomer length. We find that our use of \texttt{pySCF} (MINDO/3) replicates
 this trend and this is clear from \autoref{fig:fused}.
 
 As INDO methods are known to overestimate DFT values by a factor of 2-3 \cite{Gorelsky2001}, we find that our
@@ -75,7 +75,7 @@ These results compare well to the values found using ab initio DFT were between 
 \begin{figure}
   \center
   \includegraphics[width = .6\textwidth]{figures/fused-ring-figure.png}
-  \caption{HOMO-LUMO gap obtained using \texttt{MorphCT} for fused-ring molecules of oligmer length $4-8$.}
+  \caption{\glsxtrshort{homo}-\glsxtrshort{lumo} gap obtained using \texttt{MorphCT} for fused-ring molecules of oligmer length $4-8$.}
   \label{fig:fused}
 \end{figure}
 
@@ -442,9 +442,9 @@ simulation, the last frame of the atomic trajectories is taken to represent an a
 of ITIC. 
 
 To apply the hopping model to this atomistic morphology requires the
-delineation of segments within the morphology upon which charges can delocalize along LUMO (or 
-HOMO for donors).   
-The LUMO of ITIC delocalizes along the backbone of the molecule, with
+delineation of segments within the morphology upon which charges can delocalize along \glsxtrshort{lumo} (or 
+\glsxtrshort{homo} for donors).   
+The \glsxtrshort{lumo} of ITIC delocalizes along the backbone of the molecule, with
 negligible electron density in the side chains and this makes the backbone of this kind of small molecule
 material the obvious choice of chromophore.
 . This has been quantified and well visualized using \textit{ab
