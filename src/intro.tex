@@ -138,13 +138,14 @@ We simulate the self-assembly and charge mobility of pure acceptor (or
 pure donor) domains post deposition. 
 How the materials will self-assemble in the environment in which they are deposited determines
 the morphology which intern governs charge mobility~\cite{Vanlaeke2006}\cite{McMahon2011}. 
-With that, we outline the data pipeline in \autoref{pipeline}, through which we take atomistic representations like
+
+With that, we outline the data pipeline in \autoref{pipeline} through which we take atomistic representations like
 those shown in \autoref{molecules} and, through a series of computations and simulations,
 arrive at data that is predictive of material properties. 
 This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
 The pipeline begins with an atomistic description of a given molecule's atom types and bonding structure.
-On the basis of this description, forces between all atoms are defined. On the basis of these interacting
-forces, equilibrium \gls{md} simulations can predict the morphological structure. 
+On the basis of this description, forces between all atoms are defined. From the classical forces acting on
+particles in the system,  equilibrium \gls{md} simulations can predict the morphological structure. 
 The structural data obtained from these simulations can then be fed as an input into \gls{kmc}
 simulations that characterize charge mobility (conductivity) in these chemistries based on the
 energetics of electronically active molecular segments (`chromophores') within the morphology.
