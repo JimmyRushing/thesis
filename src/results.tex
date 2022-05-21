@@ -8,9 +8,9 @@ We present our results in three parts.
 In \autoref{validation}, we use \texttt{MorphCT} to test the performance of \texttt{pySCF} at the level of the chromophore.
 Two experiments are reported. In the first, we calculate the frontier molecular orbital
 energies for fused ring oligomers of increasing length. We compare the results of our experiment to the
-results of the same experiment done with more rigerous DFT methods. In the second, we test the 
+results of the same experiment done with more rigorous DFT methods. In the second, we test the 
 performance of the \texttt{pySCF} dimer calculations outlined in \autoref{methods}. 
-We take two simple chromophores, two thiophene rings, in $5680$ oreintations and calculate the
+We take two simple chromophores, two thiophene rings, in $5680$ orientations and calculate the
 electronic coupling between them. We do so to test if our dimer calculation correlates sensibly to the angle
 and distance between chromophores. These experiments are broadly meant to confirm that we have integrated
 \texttt{pySCF} into \texttt{MorphCT} properly, and that the quantities produced comport with the physics of these systems.
@@ -20,12 +20,10 @@ validate the current implementation of \texttt{MorphCT} against a previous imple
 
 In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT} calculated mobilites to dcut, chromophore
 reorganization energy, KMC temperature, and choice of charge carrier lifetimes for MSD analysis. Using a
-benchmark P3HT morphology, holding all other parameters constant and sweeping accross relevant scales
+benchmark P3HT morphology, holding all other parameters constant and sweeping across relevant scales
 provides context for how to treat these parameters in future investigations. 
 
-In \autoref{itic}, we present the results of an investigation of ITIC from molecular structure to MD predicted
-morphology to KMC predicted charge mobility. We use this opportunity to explore the TRUEness of
-\texttt{MorphCT}. 
+In \autoref{itic}, we deploy our data pipeline on \gls{itic} to obtain charge mobility. 
 
 \section{Validation}
 
@@ -38,9 +36,9 @@ First it is used to estimate free energy
 difference between individual chromophores as the difference in their \glsxtrshort{homo} (or \glsxtrshort{lumo}) energy levels.
 Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dimer splitting method which involves
 calculating the \glsxtrshort{homo} (or \glsxtrshort{lumo}) of the dimer formed by the two chromophores. We present the results from two
-experiments meant to evaluate \texttt{pySCF}'s suitabilitity for performing these duties:
+experiments meant to evaluate \texttt{pySCF}'s suitability for performing these duties:
 (1) we compare frontier molecular energies of single chromophores given by \texttt{pySCF} to those
-given by more rigorous DFT and (2) we evaluate performance \texttt{pySCF}'s dimer calculation.
+given by more rigorous \textit{ab initio} DFT and (2) we evaluate performance \texttt{pySCF}'s dimer calculation.
 
 \subsubsection{Experiment 1 Methods}
 
@@ -51,10 +49,10 @@ of energy necessary to promote an electron to a higher energy level.
 Fused-ring geometries are of particular interest for accepter
 molecules, as discussed for FREAs in the introduction. 
 The fused thiophenes in this experiment represent a generic FREA core, whose frontier molecular oribitals are
-the landing cites for a charge propigating through an acceptor material. 
+the landing cites for a charge propagating through an acceptor material. 
 
 To recreate these experiments, using \texttt{mBuild} \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
-were intialized and saved to a GSD file. The GSD files were fed into \texttt{MorphCT} which uses \texttt{pySCF} to quantify the
+were initialized and saved to a GSD file. The GSD files were fed into \texttt{MorphCT} which uses \texttt{pySCF} to quantify the
 frontier orbital energy levels \autoref{qccmethods}.
 
 \subsubsection{Experiment 1 Results}
@@ -88,25 +86,25 @@ Two thiophene rings are positioned in electronic proximity using \texttt{mBuild}
 A reference thiophene was placed at the origin in the xy-plane
 with the y-axis running through the sulfur atom as shown in \autoref{TIplots}(a). For the second thiophene,
 two sets of 12 rotations about the x-axis and z-axis (with $- \frac{\pi}{2} < \theta< \frac{\pi}{2}$)
-and two sets of 12 translations bewteen $0nm$ and $0.5nm$ along the x-axis and z-axis were defined.
-The cartesian product of these sets define a space of $12^{4}= 20736$ oreintations for second thiophene. 
+and two sets of 12 translations between $0nm$ and $0.5nm$ along the x-axis and z-axis were defined.
+The Cartesian product of these sets define a space of $12^{4}= 20736$ orientations for second thiophene. 
 
-Oreintations resulting in atoms that were less
+Orientations resulting in atoms that were less
 than $0.3nm$ were removed from the data set as distances shorter than this are considered
 unphysical. The remaining $5680$ atomic arrangements were saved to a GSD and the $T_{ij}$ was quantified for
 each with \texttt{MorphCT}. 
 
 \subsubsection{Experiment 2 Results}
 
-The data resulting from this experiment, $5680$ oreintations of electronically 
-interacting non-nonded thiophenes and the
-correspinding $T_{ij}$ between them, provide evidence that \texttt{MorphCT} is rationally capturing the orbital
+The data resulting from this experiment, $5680$ orientations of electronically 
+interacting non-bonded thiophenes and the
+corresponding $T_{ij}$ between them, provide evidence that \texttt{MorphCT} is rationally capturing the orbital
 overlap between chromophores. 
 The $T_{ij}$ resulting from these $5680$ orientations are shown in \autoref{TIplots}. 
 The figure shows that, as expected, a decrease in 
 center-to-center distance results in more orbital overlap and thus an increase in $T_{ij}$. 
 Also observable in the figure is that
-a negative rotation about the x-axis orients the sulfer downward, resulting in a smaller sulfer-to-sulfler distance 
+a negative rotation about the x-axis orients the sulfur downward, resulting in a smaller sulfur-to-sulfur distance 
 and a greater $T_{ij}$. 
 
 \begin{figure}
@@ -132,16 +130,16 @@ and a greater $T_{ij}$.
 \label{TIplots}
 \end{figure}
 
-For the oreintations found to be most and least optimal we calculate (shown in \autoref{TIplots}),
+For the orientations found to be most and least optimal we calculate (shown in \autoref{TIplots}),
 a $T_{ij}$ of $.00005eV$ and $.15eV$ respectively. In the context of \autoref{marcus} and \autoref{waittime},
-the corresponding wait time for a charge to hop between to thiophenes in these oreintations is $\tau = 2
+the corresponding wait time for a charge to hop between to thiophenes in these orientations is $\tau = 2
 \cdot 10^{-14}s$ and $\tau = 2 \cdot 10^{-7}s$. With latter case being two orders of magnitude slower than the
-lifetimes allowed in our KMC simulations, a hop would be highly unfavored for this oreintation. 
+lifetimes allowed in our KMC simulations, a hop would be highly unfavored for this orientation. 
 
 Creating the directory of GSDs and quantifying the $T_{ij}$ between them took a wall time of $3.2h$ which
-avereges to ${\sim}2s$ per oreintation. 
+avereges to ${\sim}2s$ per orientation. 
 
-As evidenced by \autoref{TIplots}((a)), for oreintations resulting in a center-to-center distance of less than
+As evidenced by \autoref{TIplots}((a)), for orientations resulting in a center-to-center distance of less than
 $0.5nm$ we calculate an average $T_{ij}$ of ${\sim} 0.28eV$.  
 These calculations match closely those
 calculated using more rigerous ab initio DFT methods\cite{Lan2008},
@@ -268,22 +266,22 @@ additional chromophores.
 However, we found for the materials currently under investigation,
 \texttt{pySCF} is speedy enough such that intrucing dcut adds more ambiguity
 into the workflow than is necessary given that the average time per \glsxtrshort{qcc} dimer calculation is .036s for P3HT and
-1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic oreintations, these calculations 
+1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic orientations, these calculations 
 are only necessarily performed once per morphology. With that, our workflow defaults this cutoff distance to half
 the length of the simulation box, rendering it effectively moot. 
 
-If, in the future, more computationally expensive methods are incorperated into the \glsxtrshort{qcc} step, or chromophores in other
-organic materials are a heavier lift \texttt{pySCF}, it could be benificial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
-material its at a discount to do some preliminary analysis to determine an apporiate value. We tested the
+If, in the future, more computationally expensive methods are incorporated into the \glsxtrshort{qcc} step, or chromophores in other
+organic materials are a heavier lift \texttt{pySCF}, it could be beneficial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
+material its at a discount to do some preliminary analysis to determine an appropriate value. We tested the
 sensitivity of the algorithm to the value (dcut). 
 
 \subsection{Reorganization energy}
 
 In the context of \autoref{marcusmodel}, 
 reorganization energy, $\lambda_{ij}$, constitutes the energy required to distort the dimer's equilibrium geometry with a
-charge on chromophore $i$ into the dimers equillibrium geometry with charge on chromophore $j$.
-Reorganization energy consist of the energy change associated with the destortion of the dimers geometry,
-and the distortion of the surrounding medium in responce the movement of the charge. It can be written as
+charge on chromophore $i$ into the dimers equilibrium geometry with charge on chromophore $j$.
+Reorganization energy consist of the energy change associated with the distortion of the dimers geometry,
+and the distortion of the surrounding medium in response the movement of the charge. It can be written as
 follows:
 \begin{align}
     \lambda_{total} = \lambda_{internal} + \lambda_{external}.
@@ -311,10 +309,10 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
     \centering
     \includegraphics[width=\textwidth]{figures/donor_hopping_rate_clusters_reorg800.png}
 \end{subfigure}
-    \caption{Figure (A) shows how KMC simulated mobility values scale with the perscribed
-    reorganization energy values, $\lambda$. Figures (B) and (C) show the distrubtion of hopping rates with
+    \caption{Figure (A) shows how KMC simulated mobility values scale with the prescribed
+    reorganization energy values, $\lambda$. Figures (B) and (C) show the distribution of hopping rates with
     $\lambda = 100eV$ and $\lambda = 800eV$ respectively. These show how $\lambda$ effects the in the Marcus
-    rate accros the morphology and thus the charge mobiility.}
+    rate across the morphology and thus the charge mobility.}
 \label{reorg}
 \end{figure}
 
@@ -327,7 +325,7 @@ To test the sensitivity of the algorithm to this value we ran 8
 simulations with chromophores assigned reorganization energies of 100-800meV. The results, shown in
 \autoref{reorg}, are expected from the inspection of \autoref{marcus}. Because these simulation were run on
 the same morphology, the variation in distributions of $k_{ij}$ values, shown in \autoref{reorg}(B)(C), is
-solely due to the choice of $\lambda$. The cumulative outcome of this is the exponetial decay in mobility as
+solely due to the choice of $\lambda$. The cumulative outcome of this is the exponential decay in mobility as
 $\lambda$ is increased.
 
 \subsection{Temperature}
@@ -384,47 +382,47 @@ any single charge carrier.
 The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
 particles in the system. Repeating along relevant time scales for 
 charge transport, the slope of this relationship
-can be estimated and related to to the 3D diffusion coeffiecient as discussed in the methods section of this
-work. Mobility is obtained useing \autoref{einstein}, 
-the groundwork for which Einstein derived in his doctoral dissertaion.
+can be estimated and related to to the 3D diffusion coefficient as discussed in the methods section of this
+work. Mobility is obtained using \autoref{einstein}, 
+the groundwork for which Einstein derived in his doctoral dissertation.
 
 It is critical that we not include the ballistic transport timescale in the approximation of the limit
 if the slope as time goes to infinity \cite{Maginn2018}. Estimating an upperbound for lifetimes such that
 we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
 carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
-charge trapping, temperature, and charge density, whose dynamics play out accros a picosecond to microsecond
-timescales and vary widly form material to material as well as from microstrtucture to microstrucute for a
+charge trapping, temperature, and charge density, whose dynamics play out across a picosecond to microsecond
+timescales and vary widly form material to material as well as from microstructure to microstructure for a
 given material \cite{Laquai2015}.
 
 For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
 that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
 simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping for 9 wall time hours.
-It is advised that a preanalysis to determine where a given morphology's MSD will convergeb be performed so as
-to never simulate past that point. Doing so is superflous and could introduce unessacery noise into the data. 
+It is advised that a preanalysis to determine where a given morphology's MSD will converge be performed so as
+to never simulate past that point. Doing so is superfluous and could introduce unnecessary noise into the data. 
 
-In the previous work on these P3HT morphologies, 7 liftimes were chosen and a linear regression was performed
-to estimate the slope of the MSD. The current work found that the mobility can be apporpriately reproduced
+In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
+to estimate the slope of the MSD. The current work found that the mobility can be appropriately reproduced
 with an appropriate choice of 2 lifetimes beyond the ballistic transport timescale. It was found that with the 
 squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the MSD can be
-commensurety reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
-section above were aquired with these 2 chosen lifetimes. I am currently running accross 7 lifetimes on the
+commensurately reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
+section above were acquired with these 2 chosen lifetimes. I am currently running across 7 lifetimes on the
 crystalline morph. 
 
 \begin{figure}
   \center
   \includegraphics[width=0.6\linewidth]{figures/lifetime.png} 
     \caption{The results of running 5 KMC simulations with the first lifetimes as described in the text. It
-    can be seen that below the the ballistic timescale (roughly $10^{-10}$), the resulting mobility is affected}
+    can be seen that below the ballistic timescale ({\sim}$10^{-10}s$), the resulting mobility is affected}
   \label{lifetime}
 \end{figure}
 
 With the slope between MSD at the first lifetime and at the second lifetime proving an estimate of the slope
-of the MSD, 6 simulations we run with progressiveily shorter first lifetimes. That is, the second lifetime was
+of the MSD, 6 simulations we run with progressively shorter first lifetimes. That is, the second lifetime was
 set to $10^{-8}s$ for all 5 simulations and the first lifetime was set to $10^{-9}s$, $10^{-10}s$,
 $10^{-11}s$, $10^{-12}s$, and $10^{-13}s$ respectively. The results are plotted in figure
 \ref{lifetime}. As expected, as the first lifetime progresses in the ballistic transport timescale, which this work
 estimates around $10^{-10}s$, the resulting mobility increases. If the starting lifetime is even shorter the
-workflow breaks down becuase as can be seen from the hop rate distribution in figure \ref{TEMP}(D), even at
+workflow breaks down because as can be seen from the hop rate distribution in figure \ref{TEMP}(D), even at
 extreme temperatures, holes need more time that that to hop even once. 
 
 Interestingly, the algorithm seems to be quite robust against choice of lifetimes. As can be seen in the
@@ -436,9 +434,9 @@ mobility. This further suggests that going lifetime crazy is a waste of computat
 The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry,         
 a high performance computing cluster at Boise State University.  
 Using \texttt{planckton-flow}, a 1000
-molecule morphology of ITIC was equillibrated over a 10e-7 step MD simulation at room temperature. 
+molecule morphology of ITIC was equilibrated over a 10e-7 step MD simulation at room temperature. 
 From the results of the MD
-simulation, the last frame of the atomic trajectories is taken to represent an accurate equillibrium geometry
+simulation, the last frame of the atomic trajectories is taken to represent an accurate equilibrium geometry
 of ITIC. 
 
 To apply the hopping model to this atomistic morphology requires the
@@ -465,26 +463,26 @@ available visualization tool OVITO \cite{Stukowski2010a}.
 \end{figure}
 
 A single molecule ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
-approaches to the delineation of chomophores within the ITIC morphology. In addition the the simulation of hopping
-from backbone to backbone we ran simulations with the whole molecule prescibed as chromophores. This
-necessarily requires more heavy lifting from \texttt{pySCF} but is trivially easy from an indexing perspective. Similar to the results of the DCUT
-investigation, this implemenation of \texttt{pySCF} combined with clever pickling of system objects at various stages
-of the workflow suggest that the laborious delineation of chromophores either via manual perscription or
+approaches to the delineation of chomophores within the ITIC morphology. In addition, the simulation of hopping
+from backbone to backbone we ran simulations with the whole molecule presrcibed as chromophores. This
+necessarily requires more heavy lifting from \texttt{pySCF} but is trivially easy from an indexing perspective.
+Similar to the results of the DCUT investigation, 
+this implementation of \texttt{pySCF} combined with clever pickling of system objects at various stages
+of the workflow suggest that the laborious delineation of chromophores either via manual prescription or
 by clever use of smarts matching is a fools errand. We found that, while the 70 atom chomophores took 1.2s
 per dimer while the whole molecule dimer calculations with 186 atoms per chomophore to on average 3.3s.
-Comprable mobilities of $(1.019 \pm 0.001)\cdot 10^{-3}$ or the backbone chromophores and 
+We found comprable mobilities of $(1.019 \pm 0.001)\cdot 10^{-3}$ for the backbone chromophores and 
 $(1.275 \pm 0.001)\cdot 10^{-3}$ for the whole molecule. 
-For small molecule materials this suggests forgoing labor intinsive indexing of chromophores.
+For small molecule materials, this suggests forgoing labor intensive indexing of chromophores.
 
-As discussed in the sensitivity analysis, our mobility calcualtions are relatively sensitive to the choice of
+As discussed in the sensitivity analysis, our mobility calculations are relatively sensitive to the choice of
 reorganization energy. For ITIC, $\lambda_{internal}$ has been well investigated and is widely reported as
 $~0.15eV$. The external reorganization is harder to estimate. We take $\lambda_{total}=0.3eV$ as we did for
 P3HT. With the fused
 backbone resulting in a higher internal contribution and the lack of long range order resulting in a lower
 external contribution. 
 
-The the reported
-experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. 
+The reported experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. 
 Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
 
