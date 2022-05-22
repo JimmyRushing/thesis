@@ -19,7 +19,7 @@ and compare the results to previously reported values for these morphologies. Th
 validate the current implementation of \texttt{MorphCT} against a previous implementation. 
 
 In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT} calculated mobilites to dcut, chromophore
-reorganization energy, KMC temperature, and choice of charge carrier lifetimes for MSD analysis. Using a
+reorganization energy, \glsxtrshort{kmc} temperature, and choice of charge carrier lifetimes for \glsxtrshort{msd} analysis. Using a
 benchmark P3HT morphology, holding all other parameters constant and sweeping across relevant scales
 provides context for how to treat these parameters in future investigations. 
 
@@ -136,7 +136,7 @@ For the orientations found to be most and least optimal we calculate (shown in \
 a $T_{ij}$ of $.00005eV$ and $.15eV$ respectively. In the context of \autoref{marcus} and \autoref{waittime},
 the corresponding wait time for a charge to hop between to thiophenes in these orientations is $\tau = 2
 \cdot 10^{-14}s$ and $\tau = 2 \cdot 10^{-7}s$. With latter case being two orders of magnitude slower than the
-lifetimes allowed in our KMC simulations, a hop would be highly unfavored for this orientation. 
+lifetimes allowed in our \glsxtrshort{kmc} simulations, a hop would be highly unfavored for this orientation. 
 
 Creating the directory of GSDs and quantifying the $T_{ij}$ between them took a wall time of $3.2h$ which
 avereges to ${\sim}2s$ per orientation. 
@@ -154,7 +154,7 @@ features of most importance for predicting $T_{ij}$ was bonded vs non bonded,
 center-to-center distance and rotation about the y-axis. \cite{Jankowski2019c}
 
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
-requires the use of an iterative algorithm. For this we employ KMC simulations using \texttt{MorphCT}.
+requires the use of an iterative algorithm. For this we employ \glsxtrshort{kmc} simulations using \texttt{MorphCT}.
 
 \subsection{Charge Transport Calculation Validation}
 
@@ -180,10 +180,10 @@ We first fined-grained MD data (hydrogens appended back into
 the morphology) and converted from .xml to .gsd format. At current, \texttt{MorphCT} is compatable with all atom data
 and .gsd format. As visualized in \autoref{molecules}, chromophores are taken to be individual monomers. 
 Using \texttt{MorphCT}, for each chromophore, a unique object is instantiated and the energetics are obtained using
-\texttt{pySCF}. A KMC simulation is performed on the basis of these energetics with KMC temperature set to 300K. For
+\texttt{pySCF}. A \glsxtrshort{kmc} simulation is performed on the basis of these energetics with \glsxtrshort{kmc} temperature set to 300K. For
 each morphology, 10,000 individual charge carriers are injected (one at a time) into the morphology, with
 5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond.
-As outlined in \autoref{kmcanalysis}, from the difference in MSD bewteeen these sets of charge carriers the
+As outlined in \autoref{kmcanalysis}, from the difference in \glsxtrshort{msd} bewteeen these sets of charge carriers the
 zero-field charge mobility for the morphology is obtained. 
 
 \begin{figure}
@@ -311,7 +311,7 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
     \centering
     \includegraphics[width=\textwidth]{figures/donor_hopping_rate_clusters_reorg800.png}
 \end{subfigure}
-    \caption{Figure (A) shows how KMC simulated mobility values scale with the prescribed
+    \caption{Figure (A) shows how \glsxtrshort{kmc} simulated mobility values scale with the prescribed
     reorganization energy values, $\lambda$. Figures (B) and (C) show the distribution of hopping rates with
     $\lambda = 100eV$ and $\lambda = 800eV$ respectively. We see that the exponential decay of charge mobility as
  reorganization energy increases is a result of a shift in the distribution of hop rates throughout the
@@ -335,13 +335,13 @@ $\lambda$ is increased.
 \subsection{Temperature}
 
 Another parameter of interest in the Marcus theory mention above is temperature. To test the sensitivity to
-temperature, 15 KMC simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It
+temperature, 15 \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It
 is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature. With relatively
 weak electronic coupling ($T_{ij}$) between chromophores, electron transfer proceeds nonadiabatically
 \cite{clarke2010}. With this weak coupling, the temperature in the Gibbs free energy of activation term
 dominates the effect temperature has hop rate.
 
-An unanticipated result is that increasing the temperature of the KMC
+An unanticipated result is that increasing the temperature of the \glsxtrshort{kmc}
 simulation also increases the wall time that the simulations required to
 complete. As an illustration of why this is the case, the distribution of hop
 rates is plotted for 100K and 800K in figure \ref{TEMP}(C)(D). With the distribution of hop rates skewed
@@ -381,18 +381,17 @@ any single charge carrier.
 \label{TEMP}
 \end{figure}
 
-\subsection{MSD (lifetimes)}
+\subsection{\glsxtrshort{msd} (lifetimes)}
 
-The KMC algorithm allows an explicit calculation of the MSD accross a large number of 
+The \glsxtrshort{kmc} algorithm allows an explicit calculation of the \glsxtrshort{msd} across a large number of 
 particles in the system. Repeating along relevant time scales for 
 charge transport, the slope of this relationship
-can be estimated and related to to the 3D diffusion coefficient as discussed in the methods section of this
-work. Mobility is obtained using \autoref{einstein}, 
-the groundwork for which Einstein derived in his doctoral dissertation.
+can be estimated and related to to the 3D diffusion coefficient as discussed in \autoref{kmcanalysis}. Mobility is obtained using \autoref{einstein}, the groundwork for which Einstein derived in his doctoral dissertation.
 
-It is critical that we not include the ballistic transport timescale in the approximation of the limit
-if the slope as time goes to infinity \cite{Maginn2018}. Estimating an upperbound for lifetimes such that
-we can estimate the slope of the MSD as time goes to infinity can be messy. In real systems, free chrage
+Including a \gls{msd} for lifetime in the ballistic transport timescale can effect the linear regression
+estimate of the slope of the \gls{msd} as time goes to inifinity.
+\cite{Maginn2018}. Estimating an upperbound for lifetimes such that
+we can estimate the slope of the \glsxtrshort{msd} as time goes to infinity can be messy. In real systems, free chrage
 carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
 charge trapping, temperature, and charge density, whose dynamics play out across a picosecond to microsecond
 timescales and vary widly form material to material as well as from microstructure to microstructure for a
@@ -401,13 +400,13 @@ given material \cite{Laquai2015}.
 For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
 that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
 simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping for 9 wall time hours.
-It is advised that a preanalysis to determine where a given morphology's MSD will converge be performed so as
+It is advised that a preanalysis to determine where a given morphology's \glsxtrshort{msd} will converge be performed so as
 to never simulate past that point. Doing so is superfluous and could introduce unnecessary noise into the data. 
 
 In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
-to estimate the slope of the MSD. The current work found that the mobility can be appropriately reproduced
+to estimate the slope of the \glsxtrshort{msd}. The current work found that the mobility can be appropriately reproduced
 with an appropriate choice of 2 lifetimes beyond the ballistic transport timescale. It was found that with the 
-squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the MSD can be
+squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the \glsxtrshort{msd} can be
 commensurately reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
 section above were acquired with these 2 chosen lifetimes. I am currently running across 7 lifetimes on the
 crystalline morph. 
@@ -415,13 +414,13 @@ crystalline morph.
 \begin{figure}
   \center
   \includegraphics[width=0.6\linewidth]{figures/lifetime.png} 
-    \caption{The results of running 5 KMC simulations with the first lifetimes as described in the text. It
+    \caption{The results of running 5 \glsxtrshort{kmc} simulations with the first lifetimes as described in the text. It
     can be seen that below the ballistic timescale (${\sim}10^{-10}s$), the resulting mobility is affected}
   \label{lifetime}
 \end{figure}
 
-With the slope between MSD at the first lifetime and at the second lifetime proving an estimate of the slope
-of the MSD, 6 simulations we run with progressively shorter first lifetimes. That is, the second lifetime was
+With the slope between \glsxtrshort{msd} at the first lifetime and at the second lifetime proving an estimate of the slope
+of the \glsxtrshort{msd}, 6 simulations we run with progressively shorter first lifetimes. That is, the second lifetime was
 set to $10^{-8}s$ for all 5 simulations and the first lifetime was set to $10^{-9}s$, $10^{-10}s$,
 $10^{-11}s$, $10^{-12}s$, and $10^{-13}s$ respectively. The results are plotted in figure
 \ref{lifetime}. As expected, as the first lifetime progresses in the ballistic transport timescale, which this work
