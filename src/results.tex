@@ -198,12 +198,12 @@ We refer to these morphologies as disordered, semi-crystalline, and crystalline.
 Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
 semi-empirical \glsxtrshort{qcc} method \cite{Miller2018a}\cite{jones2017}. 
 Their work utilized an earlier version of \texttt{MorphCT} which used the \glsxtrshort{qcc} software 
-ORCA \cite{Neese2012b} to provide the quantum chemical approximations. 
-ORCA's proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
+\texttt{ORCA} \cite{Neese2012b} to provide the quantum chemical approximations. 
+\texttt{ORCA}'s proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
 creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
 performance of \texttt{pySCF} and of the current \texttt{MorphCT}.
 
-The results in \ref{table:nonlin} show the charge mobility reported in the prior work, which used ORCA for
+The results in \ref{mobility-validation} show the charge mobility reported in the prior work, which used \texttt{ORCA} for
 the \glsxtrshort{qcc} calculation, and the charge mobility obtained using using the current workflow, which uses \texttt{pySCF}. 
 The previous work found that charge mobility is highest for the crystalline morphology, followed by the
 amorphous, and finally the semicrystalline. This seemingly anomolous behavoir can be explained. While the
