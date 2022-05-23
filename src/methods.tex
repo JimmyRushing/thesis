@@ -340,13 +340,18 @@ where x is a random number between 0 and 1 and $\log{(1/x)}$ is a scaling
 factor. To elucidate this
 graphically, $\ln{(1/x)}$ is plotted in figure \ref{fig:ln} from 0 to 1. From this we can see that with
 a large enough sampling, significant reshuffling of the queue will take place, allowing for a rare hop to jump
-the queue.
+the queue. For example, a charge carrier that hopped a million times, and had
+exactly 5 neighbors at each hop, would require forming a million wait time
+queues and $5$ million individual wait time calculations. Shuffling each wait
+time by $\ln{(1/x)}$, we can expect to see${\sim}50$ wait times that have been
+shortened by 5 orders, ${\sim}500$ shortened by 4 orders of magnitude, and so
+on.
 
 \begin{figure}
   \center
   \includegraphics[width=0.5\linewidth]{figures/naturallog.png}
   \caption{Graphical insight into the reshuffling of the wait time queue. The
-    scaling factor $\ln{(1/x)}$ in \label{waittime} is plotted over the
+    scaling factor $\ln{(1/x)}$ in \autoref{waittime} is plotted over the
     interval from which we draw random numbers. }
   \label{fig:ln}
 \end{figure}
