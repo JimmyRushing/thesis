@@ -333,38 +333,18 @@ solely due to the choice of $\lambda$. The cumulative outcome of this is the exp
 $\lambda$ is increased.
 
 \subsection{Temperature}
-
-Another parameter of interest in the Marcus theory mention above is temperature. To test the sensitivity to
-temperature, 15 \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It
-is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature. With relatively
-weak electronic coupling ($T_{ij}$) between chromophores, electron transfer proceeds nonadiabatically
-\cite{clarke2010}. With this weak coupling, the temperature in the Gibbs free energy of activation term
-dominates the effect temperature has hop rate.
-
-An unanticipated result is that increasing the temperature of the \glsxtrshort{kmc}
-simulation also increases the wall time that the simulations required to
-complete. As an illustration of why this is the case, the distribution of hop
-rates is plotted for 100K and 800K in figure \ref{TEMP}(C)(D). With the distribution of hop rates skewed
-drastically higher at 800K, each charge carrier will experience orders of
-magnitude more hops during its specified lifetime. 
-
-If extremely cold
-temperatures are to be investigates in the future, thought should probably be given to
-the decreasing contribution to statistical significance from the addition of
-any single charge carrier. 
-
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
     \textbf{(A)}
     \centering
-    \includegraphics[width=\textwidth]{figures/temp.png}
+    \includegraphics[width=.9\textwidth]{figures/temp.png}
     \newline
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
     \textbf{(B)}
     \centering
-    \includegraphics[width=\textwidth]{figures/temp_simtime_plot.png}
+    \includegraphics[width=.9\textwidth]{figures/temp_simtime_plot.png}
     \newline
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
@@ -377,9 +357,28 @@ any single charge carrier.
     \centering
     \includegraphics[width=\textwidth]{figures/donor_hopping_rate_clusters_temp800.png}
 \end{subfigure}
-\caption{A beautiful, well written caption}
+    \caption{The resulting mobility (A) and \gls{kmc} wall time (B) of 15 \gls{kmc} simulations from $100K$ to
+    $800K$. The hop rate distribution for the lowest (C) and highest (D) temperature \gls{kmc}
+    simulations are provided as context for the relationships observed in (A) and (B).
+    With each hop modeled as a thermally
+    activated process, an increase in temperature increases average hop rate and mobility. Orders of
+    magnitude faster hops means orders of magnitude more hops to track in computer memory over a charge
+    carrier's lifetime, which we see results in longer \gls{kmc} simulation wall times.}
 \label{TEMP}
 \end{figure}
+
+To test the sensitivity of our implementation to
+temperature, 15 \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature.
+This should be expected from the assumptions of the model outlined in \autoref{marcusmodel}. 
+With relatively weak electronic coupling ($T_{ij}$) between chromophores, electron transfer proceeds nonadiabatically \cite{clarke2010}. With this weak coupling, the temperature in the Gibbs free energy of activation term
+dominates the effect that temperature has on the hop rate value calculated with \autoref{marcus}.
+
+An interesting result is that increasing the temperature of the \glsxtrshort{kmc}
+simulation also increases the wall time of the \gls{kmc} simulations.
+As an illustration of why this is the case, the distribution of hop
+rates is plotted for 100K and 800K in figure \ref{TEMP}(C)(D). With the distribution of hop rates skewed
+drastically higher at 800K, each charge carrier will experience orders of
+magnitude more hops during its specified lifetime. 
 
 \subsection{\glsxtrshort{msd} (lifetimes)}
 
