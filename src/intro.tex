@@ -10,7 +10,8 @@ self-healing properties and their biodegradability \cite{Bettinger2010}.
 For more on bioelectronic materials, see Organic Electronic: Emerging Concepts and Technologies
 \cite{FabioCicoiraEditor2013}.
 
-In this thesis, we focus on \gls{opv} materials. \glsxtrshort{opv}s are a subclass of organic semiconductors that are used in the active layer of \gls{osc} devices.  
+In this thesis, we focus on a subclass of organic semiconductors, \gls{opv} materials, and their use in the
+active layer of \gls{osc} devices.  
 \glsxtrshort{osc}s, the reverse of the more popularly understood OLEDs,
 are devices that absorb photonic energy and extract electronic energy. 
 A rudimentary \gls{osc} is drawn in \autoref{bhj}.
@@ -20,11 +21,11 @@ photon with commensurate energy is incident on the material.
 their capacity for electronic energy level 
 tuning and their ability to be processed into structures suitable to a given design purpose.
 
-\glsxtrshort{osc} devices exhibit improvements in
+\glsxtrshort{osc}s exhibit improvements in
 flexibility, processability, and cost of manufacturing.
 They are also used in more revolutionary electronic designs.
-For example, researchers have exploited the relatively narrow window
-of${\sim}300nm$ to make windows that act as OSCs. 
+For example, researchers have exploited the relatively narrow absorption spectrum in \glsxtrshort{opv}s
+(${\sim}300nm$) to make windows that act as OSCs. 
 They achieved this by tuning the active layer material to absorb radiation right above or right below the
 visible spectrum (into the NIR or UV spectrum respectively). 
 Semi-transparent \glsxtrshort{osc}s have already
@@ -33,7 +34,6 @@ reached 11 \% efficiency \cite{Brabec2020}.
 OSC's are approaching 20\% efficiency \cite{Liu2020b}.
 Two major breakthroughs have ushered us into the modern era of
 \glsxtrshort{osc}s.
-These are the design of \gls{bhj} active layers and non-fullerene, \gls{frea} molecules. 
 
 A fundamental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
@@ -65,13 +65,11 @@ energetically favorable for the donor to undergo electron transfer with an adjac
 it is to radiatively decay to its ground state and photoemit.
 This means that, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
 extracted. Because an exciton can only diffuse so far (${\sim}10nm$ \cite{clarke2010}) before it relaxes to
-its ground state, it is critical that absorption take place as near as possible to the donor/acceptor
+its ground state, it is critical that absorption take place close to a donor/acceptor
 interface. 
 Producing extremely thin active layers could conceivably achieve this. However,
-producing a layer this small is untenable from a manufacturing standpoint. Furthermore, in the interest of
-efficiency, a thicker layer
-is desirable to interact with as much radiation as possible so as to `catch' as many photons
-as possible. 
+producing a layer this small is untenable from a manufacturing standpoint. Furthermore, extremely thin active
+layers restrict the amount of radiation that a device interacts with. 
 
 In 1986, Ching W. Tang
 showed that, processed under the right conditions, a blend of donor and acceptor molecules can self-assemble
@@ -114,12 +112,12 @@ available lower energy level. Because of this, the electron cascades down to the
 transfer reaction. Finally the free charges can diffuse until they interact the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
 
-The \glsxtrshort{bhj} design pushed the efficiency beyond the 1\% milestone. However early \glsxtrshort{bhj} devices utilized
+The \glsxtrshort{bhj} design pushed the efficiency beyond the 1\% milestone. However, early \glsxtrshort{bhj} devices utilized
 fullerene derivatives as acceptors which have a theoretical efficiency limit of $\sim13\%$ \cite{Scharber2016}
 and their spherical
 structure leads to difficult chemical purification, weak absorption in the visible-NIR spectrum, and rapid
 device degradation. In 2015, a group of researchers conceptualized the use of
-fused-ring electron acceptors, a class of non-fullerene acceptors. This class of molecules consists of
+\gls{frea}s. \glsxtrshort{frea}s consist of
 a fused-ring core and end groups that can be engineered to achieve specific electronic characteristics and side
 chains that can be engineered to achieve desired morphological features. The modularity of \glsxtrshort{frea}s
 laid the stage for headspinning progress in the following years from 4\% efficiency to 18\% 
@@ -135,22 +133,23 @@ that this flourination tends to reduce the reorganization energy, which we see
 in \autoref{results}, drastically increases charge mobility.
 
 Our work in this thesis
-is most expressly related to stage $4$ in that we simulate the self-assembly and
-charge mobility in pure acceptor (or
+is most expressly related to stage $4$ of charge photogeneration in \gls{bhj} active layers.
+We simulate the self-assembly and charge mobility of pure acceptor (or
 pure donor) domains post deposition. 
 How the materials will self-assemble in the environment in which they are deposited determines
-the morphology which intern governs charge mobility. 
-With that, we outline the data pipeline in \autoref{pipeline}, through which we take atomistic representations like
+the morphology which intern governs charge mobility~\cite{Vanlaeke2006}\cite{McMahon2011}. 
+
+With that, we outline the data pipeline in \autoref{pipeline} through which we take atomistic representations like
 those shown in \autoref{molecules} and, through a series of computations and simulations,
 arrive at data that is predictive of material properties. 
 This pipeline is laid out in further detail by Jones et al.~\cite{jones2017}.
 The pipeline begins with an atomistic description of a given molecule's atom types and bonding structure.
-On the basis of this description, forces between all atoms are defined. On the basis of these interacting
-forces, equilibrium \gls{md} simulations can predict the morphological structure. 
+On the basis of this description, forces between all atoms are defined. From the classical forces acting on
+particles in the system,  equilibrium \gls{md} simulations can predict the morphological structure. 
 The structural data obtained from these simulations can then be fed as an input into \gls{kmc}
 simulations that characterize charge mobility (conductivity) in these chemistries based on the
 energetics of electronically active molecular segments (`chromophores') within the morphology.
-We \texttt{Planckton}, our package for navigation MD simulations of \glsxtrshort{opv}S in \autoref{planckton}. 
+We present \texttt{Planckton}, our package for navigation MD simulations of \glsxtrshort{opv}S in \autoref{planckton}. 
 The focus of this thesis, however, is the development of \texttt{MorphCT} for running \glsxtrshort{kmc} simulations, which we
 introduce more thoroughly in \autoref{morphct}.
 
@@ -162,7 +161,7 @@ introduce more thoroughly in \autoref{morphct}.
   \label{pipeline}
 \end{figure}
 
-We use the term `chromophore' liberally in this thesis and for that reason we take a brief aside to be more
+We use the term `chromophore' liberally in this thesis. We take a brief aside to be more
 explicit about its meaning.  
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
@@ -172,17 +171,16 @@ excites an electron from the \glsxtrshort{homo} to the
 \glsxtrshort{lumo}. When the chromophore relaxes to its
 ground state, it releases a photon with wavelength (or color) $\lambda = \frac{\hbar c}{E}$,
 where $\hbar$ is Plank's constant, $c$ is the speed of light, and $E$ represents the
-energy difference of the \glsxtrshort{homo} and \glsxtrshort{lumo}. In plants, this amounts to a rejection of the overabundant amount of
+energy difference between the \glsxtrshort{homo} and \glsxtrshort{lumo}. 
+In plants, this amounts to a rejection of the overabundant amount of
 light in the green region which can damage the plant's DNA. 
-
-Our \glsxtrshort{bhj} active layer amounts to a kind of synthetic photosynthesis (woof), and with that we have no DNA to
-protect and (hopefully) no colors emitting from our devices. We nevertheless continue with the use of the term chromophore
+We continue with the use of the term chromophore
 for the sake of brevity. In what is to follow, chromophore is taken to be defined as a molecular segment over which the 
 wave function of a free electron (hole) is assumed to be localized.
 It is under this assumption that we execute a hopping model of charge transfer between
 chromophores based on the Marcus rates of electrochemical reactions. We will also use chromophore to refer to
-the object in computer memory that stores all the information that we know about a given chromophore in morphology
-(ie, atom locations, neighbors, energy levels).
+the object in computer memory that stores all the information that we know about a chromophore within morphology
+(e.g., atom locations, neighbors, energy levels).
 
 %%In \autoref{results} we explore the delineation of these localiztion segments for simulation, which we hereafter refer to as a `chromophore.' 
 
@@ -282,7 +280,7 @@ The methods used in this thesis are centrally motivated by, and justified for,
 the application of our workflow to materials
 used in \glsxtrshort{osc} design. However, the methods are
 not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
-electronic devices, like those mentioned above. 
+electronic devices. 
 In \autoref{results}, we use \texttt{MorphCT} to validate our current workflow against a predecessor of the 
 workflow on three benchmark MD simulated morpholgies of \glsxtrshort{p3ht}. 
 Following that, again using \glsxtrshort{p3ht}, we test the sensitivity of our charge mobility prediction, 

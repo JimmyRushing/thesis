@@ -8,13 +8,13 @@ the atomic structure of organic molecules, how they arrange, and how charges mov
 For each of these approaches, we then describe the open-source software tools that we create, modify, and use 
 to implement these methods. 
 
-In \autoref{md}, we introduce molecular simulation techniques used to predict self-assembly of OPVs.
+In \autoref{md}, we introduce the \gls{md} techniques used to predict self-assembly of OPVs.
 In \autoref{marcusmodel}, we describe Marcus model of charge hopping between chromophores,
 the techniques we use to identify individual chromophores in simulated volumes, 
 and how we use \gls{qcc} to estimate the Marcus hopping rate between
 neighboring chromophores.
 In \autoref{KMC}, we describe the basics of stochastically modeling kinetic processes and 
-our specific kinetic Monte Carlo approach to modeling charge transport.
+our specific kinetic Monte Carlo approach to modeling charge transport in \gls{opv}s.
 Finally, in \autoref{software-methods}, we enumerate the software used in this thesis and outline the means by
 which it is developed. Particular focus is given to two packages that are
 principally developed by members of the CMELab:
@@ -28,22 +28,13 @@ principally developed by members of the CMELab:
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
-    \includegraphics[width=\textwidth]{figures/consistent-color-itic.png}
-\end{subfigure}%
-\begin{subfigure}{.5\textwidth}
     \includegraphics[width=\textwidth]{figures/consistent-color-p3ht.png}
-\end{subfigure}
-\\
-\begin{subfigure}{.5\textwidth}
-\centering
-    \includegraphics[width=.7\textwidth]{figures/itic-legend.png}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
-\centering
-    \includegraphics[width=.7\textwidth]{figures/color-legend-p3ht.png}
+    \includegraphics[width=\textwidth]{figures/consistent-color-itic.png}
 \end{subfigure}
-    \caption{Left: 1000 molecule atomistic morphology of \glsxtrshort{itic}. Right: 1000 oligomer atomistic simulation
-    of \glsxtrshort{p3ht}}
+\caption{Left: 1000 oligomer atomistic simulation
+    of \glsxtrshort{p3ht}. Right: 1000 molecule atomistic morphology of \glsxtrshort{itic}.}
 \label{ITIC/P3HT}
 \end{figure}
 
@@ -55,15 +46,13 @@ representations to predict experimentally relevant length scales \cite{Miller201
 
 Molecular dynamics is a method of computer simulation for predicting the equilibrium geometries of molecular
 systems. MD simulations proceed iteratively by solving Newtons laws of motion
-in accordance with a predefined interatomic interaction potentials which define the forces between particles
-in the system.  
+in accordance with a predefined interatomic interaction potentials.  
 The non-bonded interaction potentials are modeled with a classic Leonard-Jones(LJ)
 potential \cite{Jones1924a}. Potentials are also defined in accordance with the bonds that each particle is
 participating in and can include parameters for equilibrium bond distances and equilibrium angles between
 $3$ bonded atoms and between $4$ bonded atoms (dihedral angles).
 At each iteration, a numerical integration over these potentials provide an update to the velocities and positions
 of particles in the system. 
-\ej{Picture or cartoon of atoms, forces, and one update?}
 
 Using the canonical ensemble (NVT) for example, conserving the number of
 particles, the volume, and the temperature allows for the exploration of the potential energy surface
@@ -71,7 +60,7 @@ of the system and sample the microstates from equilibrated region the simulation
 Simulation ensembles are regulated via the Nos\'{e}-Hoover thermostat \cite{Hoover1985} to maintain 
 temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
 The system can be considered equilibrated when the potential energy no longer decreases with time. 
-From the sum of all LJ potentials as the systems potential energy. Determining the equilibrated region of the
+From the sum of all interatomic potentials as the systems potential energy. Determining the equilibrated region of the
 simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
 into distinct regions, working backwards in time, a bin is added to the equilibrated region if its standard
 deviation is less than twice that of the previous bin \cite{Henry2017a}.
@@ -99,7 +88,8 @@ which charge transfer is assumed to take place.
     \caption{Two intersecting dimer potential energy surfaces annotated with $\lambda_{ij}$, the
     reorganization energy, $\Delta E_{ij}$, the free energy difference between dimers. $C_{i}^*/C_{j}$ 
     and $C_{i}/C_{j}^*$ represent the dimer with charge on chromophore $i$ and on
-    chromophore $j$ respectively}
+    chromophore $j$ respectively. $C^{*}$ represents an excited chromophore, with the superscript
+    representing an electron that has been promoted to the \gls{lumo} (in the case of acceptor transport).}
   \label{marcus-plot}
 \end{figure}
 
@@ -201,7 +191,7 @@ Hamiltonian.
 
 The dimer method can be imagined as a dimer being pulled apart. At some distance
 the two highest occupied energy levels of the dimer will 
-be the \glsxtrshort{homo}s of their respective chromophores. \ej{I like it.}
+be the \glsxtrshort{homo}s of their respective chromophores. 
 If the chromophores are not interacting, 
 then the two highest energy molecular orbitals of the dimer will be the \glsxtrshort{homo} of chromophore $i$ and the 
 \glsxtrshort{homo} of chromophore $j$. If there is electronic overlap, a
@@ -337,8 +327,8 @@ longest wait time, slowest hop. From this queue, the shortest wait time (first c
 and the system can be moved forward in time by $\tau$.
 
 However, hopping processes at the angstrom level do not proceed deterministically. 
-Our implementation, and others like it [NEED REFS?], have
-successfully captured the stochasticity of these systems via a shuffling our hopping queue.
+Our implementation, and others like it \cite{Gali2017}\cite{Kaiser2018}, have
+successfully captured the stochasticity of these systems via a shuffling hopping queue.
 The shuffled wait time for every potential hop from occupied chromophore $i$ onto a
 neighboring chromophore $j$ looks as follows:
 
@@ -399,7 +389,8 @@ goes to inifinity can be estimated as a linear fit between the \glsxtrshort{msd}
 There is no objective best practice for determing the slope of the \glsxtrshort{msd} as
 time goes to inifinty from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
 simplifiy the \glsxtrshort{msd} analysis as much as possible. Doing so will make for more accurately reported results and
-easier apples to apples comparisons with future results. 
+easier apples to apples comparisons with future results. With that in mind, we choose only two lifetimes in
+this work. We take 
 
 Finally, the results of the \glsxtrshort{msd} analysis are then used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
 \begin{align}
@@ -422,7 +413,7 @@ defined as drift velocity, $v$, over the electric field, $E$ as follows \cite{Ko
 \end{align}
 With that, our \glsxtrshort{kmc} simulation most closely models a measure of conductivity in a bulk material in a controlled
 environment. That is, conditions wherein \autoref{conductivity} is measured with negligible $n$ and $E$.
-This is the case for time-of-flight experiment carried out on very thin films under low charge density
+This is the case for time-of-flight experiments carried out on very thin films under low charge density
 conditions \cite{Chen2000a}.
 
 \section{Software Development}
@@ -436,16 +427,16 @@ conditions \cite{Chen2000a}.
 We manage development of the \texttt{Planckton} and \texttt{MorphCT} software packages using public repositories hosted at
 github.com\cite{cmelab} for the excecution of these methods.
 As with any open-source software project, these repositories serve as a
-central hub for developers to collaberate and integrate code into the code base. Repositories are
+central hub for developers to collaborate and integrate code into the code base. Repositories are
 version controlled with a snapshot of the code base saved at each iteration. This allows researchers to 
 reproduce each others work with the exact version used to carry out the analysis. It also provides a
 documented and controlled way to merge together divergent code through pull requests. Unit testing and
-continuous integrationg techniues provide passive protection against bugs in the software that might emerge
+continuous integrating techniques provide passive protection against bugs in the software that might emerge
 from active development on the code base. 
 
 Modular, python based code allows for the curation and publication of Jupyter notebooks workflows and
-tutorials for performing reproducable analysis. Jupyter notebooks are a document format for publising code
-that is excecutable and interactive \cite{Kluyver2016}. 
+tutorials for performing reproducable analysis. Jupyter notebooks are a document format for publishing code
+that is executable and interactive \cite{Kluyver2016}. 
 
  
 
