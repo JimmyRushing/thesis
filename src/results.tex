@@ -383,25 +383,34 @@ magnitude more hops during its specified lifetime.
 
 \subsection{\glsxtrshort{msd} (lifetimes)}
 
-The \glsxtrshort{kmc} algorithm allows an explicit calculation of the \glsxtrshort{msd} across a large number of 
-particles in the system. Repeating along relevant time scales for 
-charge transport, the slope of this relationship
-can be estimated and related to to the 3D diffusion coefficient as discussed in \autoref{kmcanalysis}. Mobility is obtained using \autoref{einstein}, the groundwork for which Einstein derived in his doctoral dissertation.
+Introduced in \autoref{kmc-anaylsis}, the `carrier lifetimes' chosen for a given
+simulation can effect the analysis of the slope of the \gls{msd} as time goes
+to infinity. 
+Including \gls{msd} data for an extremely short lifetime can inflate
+the estimation. Including \gls{msd} data for extremely long lifetimes wastes computation and could introduce unnecessary noise into the data \cite{Maginn2018}. 
 
-Including a \gls{msd} for lifetime in the ballistic transport timescale can effect the linear regression
-estimate of the slope of the \gls{msd} as time goes to inifinity.
-\cite{Maginn2018}. Estimating an upperbound for lifetimes such that
-we can estimate the slope of the \glsxtrshort{msd} as time goes to infinity can be messy. In real systems, free chrage
+In real systems, free charge
 carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
-charge trapping, temperature, and charge density, whose dynamics play out across a picosecond to microsecond
-timescales and vary widly form material to material as well as from microstructure to microstructure for a
+charge trapping, temperature, and charge density. These dynamics play out across a picosecond to microsecond
+timescales and vary wildly form material to material and from microstructure to microstructure for a
 given material \cite{Laquai2015}.
 
+Testing the sensitivity of this choice was not as one-to-one as it was for the
+parameters tested above. We could choose as many lifetimes across whatever
+length scales we please. We saw that the choice of two lifetimes is sufficient
+for estimating slope in \autoref{validation}. So we test the sensitivity to
+including first lifetimes in the ballistic region. 
+
+To do so, we set the second lifetime comfortably in the linear region of the
+\gls{msd} at one nanosecond. 
+In a previous work on \gls{p3ht}, the slope becomes linear around a tenth of a
+nanosecond \cite{jones2017}. 
+
 For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
-that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
+that are achievable computationally.For example, in an attempt to simulate out to the physical limit, a
 simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping for 9 wall time hours.
 It is advised that a preanalysis to determine where a given morphology's \glsxtrshort{msd} will converge be performed so as
-to never simulate past that point. Doing so is superfluous and could introduce unnecessary noise into the data. 
+to never simulate past that point. Doing so is superfluous and . 
 
 In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
 to estimate the slope of the \glsxtrshort{msd}. The current work found that the mobility can be appropriately reproduced
