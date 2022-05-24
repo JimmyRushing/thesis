@@ -307,7 +307,7 @@ data. From this testing, we consider if the juice is worth radial squeeze from a
 \label{KMC}
 
 With the MD data generated, the data chopped into individual chromophores, 
-the chromophores and chromophore pair energetics
+the chromophore energetics
 quantified with \glsxtrshort{qcc}, and the Marcus hop rate calculated, 
 a single charges movement through the morphology can be simulated with the
 application of a \glsxtrshort{kmc} algorithm.
@@ -321,56 +321,59 @@ the morphology. In this model, we assume that the only events that can take plac
 between chromophores. With this, the rate of all possible events in the system are known and are given by
 \autoref{marcus}. 
 
-With the charge implanted, the hop rate, $k_{ij}$, from the occupied chromophore to any
-given neighboring chromophore is taken to be
+With the charge implanted, the hop rate, $k_{ij}$, to any
+neighboring chromophore is taken to be
 inversely proportional to the amount of time, $\tau$, that the system will have to wait before that hop will
-take place. The $\tau$ of all available hops forms a queue of hops from shortest wait time, fastest hop, to
-longest wait time, slowest hop. From this queue, the shortest wait time (first choice) can be selected
+take place. The $\tau$ of all available hops forms a queue of hops from
+shortest wait time (fastest hop), to
+longest wait time (slowest hop). From this queue, the shortest wait time (first choice) can be selected
 and the system can be moved forward in time by $\tau$.
 
 However, hopping processes at the angstrom level do not proceed deterministically. 
 Our implementation, and others like it \cite{Gali2017}\cite{Kaiser2018}, have
-successfully captured the stochasticity of these systems via a shuffling hopping queue.
-The shuffled wait time for every potential hop from occupied chromophore $i$ onto a
-neighboring chromophore $j$ looks as follows:
+successfully captured the stochasticity of these systems via a random shuffling
+of the hopping queue.
+The randomly shuffled wait time for every potential hop from occupied chromophore $i$ onto a
+neighboring chromophore $j$ is calculated as follows:
 
 \begin{align}
     \tau = \frac{1}{k_{ij}} \cdot \ln{\frac{1}{x}} 
     \label{waittime}
 \end{align}
 where x is a random number between 0 and 1 and $\log{(1/x)}$ is a scaling
-factor. To elucidate this
-graphically, $\ln{(1/x)}$ is plotted in figure \ref{fig:ln} from 0 to 1. From this we can see that with
-a large enough sampling, significant reshuffling of the queue will take place, allowing for a rare hop to jump
-the queue. For example, a charge carrier that hopped a million times, and had
-exactly 5 neighbors at each hop, would require forming a million wait time
-queues and $5$ million individual wait time calculations. Shuffling each wait
-time by $\ln{(1/x)}$, we can expect to see${\sim}50$ wait times that have been
-shortened by 5 orders, ${\sim}500$ shortened by 4 orders of magnitude, and so
-on.
-
-\begin{figure}
-  \center
-  \includegraphics[width=0.5\linewidth]{figures/naturallog.png}
-  \caption{Graphical insight into the reshuffling of the wait time queue. The
-    scaling factor $\ln{(1/x)}$ in \autoref{waittime} is plotted over the
-    interval from which we draw random numbers. }
-  \label{fig:ln}
-\end{figure}
-
-From the rationally shuffled queue, the shortest wait time is chosen and the charge is moved to
+factor. From the rationally shuffled queue, the shortest wait time is chosen and the charge is moved to
 its new chromophore host. The system is then considered to have moved forward in time by $\tau$. This proceeds
 until the charge carrier stalls out or hops past a prespecified lifetime. 
 
+A core tenet of Monte Carlo sampling is ensuring a large sample size.
+%To elucidate this graphically, $\ln{(1/x)}$ is plotted in figure \ref{fig:ln} from 0 to 1.
+With a large enough sampling, significant reshuffling of the queue will take place, 
+allowing for a rare hop to jump the queue. 
+For example, a charge carrier that hopped a million times, and had
+exactly 5 neighbors at each hop, would require forming a million wait time
+queues and $5$ million individual wait time calculations. Shuffling each wait
+time by $\ln{(1/x)}$, we can expect to see ${\sim}50$ wait times that have been
+shortened by 5 orders of magnitude, ${\sim}500$ shortened by 4 orders of magnitude, and so
+on.
+%Leaving this commented for now becuase I think I can make a plot that does
+%what I want theis one to do but there is no time to make it
+%\begin{figure}
+%  \center
+%  \includegraphics[width=0.5\linewidth]{figures/naturallog.png}
+%  \caption{Graphical insight into the reshuffling of the wait time queue. The
+%    scaling factor $\ln{(1/x)}$ in \autoref{waittime} is plotted over the
+%    interval from which we draw random numbers. }
+%  \label{fig:ln}
+%\end{figure}
 
-A core tenet of Monte Carlo sampling is ensuring a large sample size. For this reason, we average over
-thousands of individual \glsxtrshort{kmc} implementations to arrive at a charge mobility prediction. 
-A benefit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
+This is a lot to track in computer memory and this is carried out for hundreds
+or thousands of individual charge carriers. 
+A benefit to Monte Carlo analysis of this type is that charge carriers can be
+simulated simultaneously. It is considered
 to be `embarrassingly parallel' in that the subprocesses (charge carriers) require no communication.
+We discuss this from a software engineering point of view in \autoref{morphct}
 How we analyze and aggregate data from thousands of
 single \glsxtrshort{kmc} simulations to obtain macroscopic charge mobility is the subject of the following section.
-
-
 
 \subsection{KMC Analysis}
 
@@ -393,15 +396,15 @@ In other words, the \glsxtrshort{msd} over a given time period is
 the standard deviation in position for a free charge walking randomly through this electronic environment. 
 
 It is known that the \glsxtrshort{msd} of a diffusive particle increases linearly as time goes to infinity. 
-The slope of the \glsxtrshort{msd}, $D$, as time
-goes to infinity can be estimated as a linear fit between the \glsxtrshort{msd} of charge carriers at the specified lifetimes.
+The slope of the \glsxtrshort{msd} (diffusion coefficient), $D$, as time
+goes to infinity can be estimated as a linear fit between the \glsxtrshort{msd} at the specified lifetimes.
 There is no objective best practice for determining the slope of the \glsxtrshort{msd} as
 time goes to infinity from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
 simplify the \glsxtrshort{msd} analysis as much as possible. Doing so will make for more accurately reported results and
 easier apples to apples comparisons with future results. With that in mind, we choose only two lifetimes in
 this work.
 
-Finally, the results of the \glsxtrshort{msd} analysis are then used to determine the zero-field mobility using the following Einstein-Smoluchowski relation:
+Finally, the results of the \glsxtrshort{msd} analysis can be related to  zero-field mobility using the following Einstein-Smoluchowski relation:
 \begin{align}
     \label{einstein}
     \mu_{0} = \frac{eD}{6k_{B}T},
