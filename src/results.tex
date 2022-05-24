@@ -442,23 +442,23 @@ across multiple studies.
 \label{itic}
 
 Our pipeline is meant to facilitate the computational screening of \gls{opv}s.
-To test the extensibility of the pipeline, we perform a charge mobility
-prediction for \gls{itic}.
+Here we use the pipeline to predict charge mobility in \gls{itic}.
+This is a first foray into the extensibility of the complete pipeline to a
+material not named \gls{p3ht}. 
 
-The ITIC morphology simulated using Plankton-Flow \cite{cmelab} on Fry,         
+The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry,         
 a high performance computing cluster at Boise State University.  
 Using \texttt{planckton-flow}, a 1000
-molecule morphology of ITIC was equilibrated over a 10e-7 step MD simulation at room temperature. 
-From the results of the MD
-simulation, the last frame of the atomic trajectories is taken to represent an accurate equilibrium geometry
+molecule morphology of ITIC was equilibrated over a $10^{7}$ step MD simulation at room temperature. 
+From the results of the MD simulation, the last frame of the atomic
+trajectories is taken to represent an accurate equilibrium geometry
 of ITIC. 
 
 To apply the hopping model to this atomistic morphology requires the
 delineation of segments within the morphology upon which charges can delocalize along \glsxtrshort{lumo} (or 
 \glsxtrshort{homo} for donors).   
 The \glsxtrshort{lumo} of ITIC delocalizes along the backbone of the molecule, with
-negligible electron density in the side chains and this makes the backbone of this kind of small molecule
-material the obvious choice of chromophore.
+negligible electron density in the side chains. This makes the backbone the obvious choice of chromophore.
 This has been quantified and well visualized using \textit{ab
 initio} DFT at the level of the molecule by Han et al.~\cite{Han2019}.
 We have visualized this at the nanometer scale in figure \ref{ITIC} using the openly
