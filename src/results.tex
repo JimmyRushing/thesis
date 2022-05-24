@@ -414,14 +414,22 @@ To do so, we set the second lifetime comfortably in the linear region of the
 In a previous work on \gls{p3ht}, the slope becomes linear around a tenth of a
 nanosecond \cite{jones2017}. With that, we take the second life time to be two
 orders of magnitude beyond that at $10^{-8}s$.
+With the slope between \glsxtrshort{msd} at the first lifetime and at the second lifetime proving an estimate of the slope
+of the \glsxtrshort{msd}, 6 simulations we run with progressively shorter first lifetimes.
+The first lifetime was set to $10^{-9}s$, $10^{-10}s$,
+$10^{-11}s$, $10^{-12}s$, and $10^{-13}s$ respectively. The results are plotted in figure
+\ref{lifetime}. 
+
+As expected, as the first lifetime progresses in the ballistic transport
+timescale, the resulting mobility increases. If the starting lifetime is even shorter the
+workflow breaks down because as can be seen from the hop rate distribution in figure \ref{TEMP}(D), even at
+extreme temperatures, holes need more time that that to hop even once.
 
 For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
-that are achievable computationally.For example, in an attempt to simulate out to the physical limit, a
+that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
 simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping for 9 wall time hours.
 It is advised that a preanalysis to determine where a given morphology's \glsxtrshort{msd} will converge be performed so as
 to never simulate past that point. Doing so is superfluous and . 
-
-
 
 \begin{figure}
   \center
@@ -431,14 +439,7 @@ to never simulate past that point. Doing so is superfluous and .
   \label{lifetime}
 \end{figure}
 
-With the slope between \glsxtrshort{msd} at the first lifetime and at the second lifetime proving an estimate of the slope
-of the \glsxtrshort{msd}, 6 simulations we run with progressively shorter first lifetimes. That is, the second lifetime was
-set to $10^{-8}s$ for all 5 simulations and the first lifetime was set to $10^{-9}s$, $10^{-10}s$,
-$10^{-11}s$, $10^{-12}s$, and $10^{-13}s$ respectively. The results are plotted in figure
-\ref{lifetime}. As expected, as the first lifetime progresses in the ballistic transport timescale, which this work
-estimates around $10^{-10}s$, the resulting mobility increases. If the starting lifetime is even shorter the
-workflow breaks down because as can be seen from the hop rate distribution in figure \ref{TEMP}(D), even at
-extreme temperatures, holes need more time that that to hop even once. 
+ 
 
 Interestingly, the algorithm seems to be quite robust against choice of lifetimes. As can be seen in the
 figure, order of magnitude differences in lifetime choices results in less than 2X difference in the resulting
