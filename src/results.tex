@@ -438,8 +438,14 @@ important then is reporting the lifetimes used in the study for comparison
 across multiple studies. 
 
 \section{ITIC}
+
 \label{itic}
-The ITIC morphology studied in \autoref{itic} was simulated using Plankton-Flow \cite{cmelab} on Fry,         
+
+Our pipeline is meant to facilitate the computational screening of \gls{opv}s.
+To test the extensibility of the pipeline, we perform a charge mobility
+prediction for \gls{itic}.
+
+The ITIC morphology simulated using Plankton-Flow \cite{cmelab} on Fry,         
 a high performance computing cluster at Boise State University.  
 Using \texttt{planckton-flow}, a 1000
 molecule morphology of ITIC was equilibrated over a 10e-7 step MD simulation at room temperature. 
@@ -453,7 +459,7 @@ delineation of segments within the morphology upon which charges can delocalize 
 The \glsxtrshort{lumo} of ITIC delocalizes along the backbone of the molecule, with
 negligible electron density in the side chains and this makes the backbone of this kind of small molecule
 material the obvious choice of chromophore.
-. This has been quantified and well visualized using \textit{ab
+This has been quantified and well visualized using \textit{ab
 initio} DFT at the level of the molecule by Han et al.~\cite{Han2019}.
 We have visualized this at the nanometer scale in figure \ref{ITIC} using the openly
 available visualization tool OVITO \cite{Stukowski2010a}. 
@@ -470,16 +476,19 @@ available visualization tool OVITO \cite{Stukowski2010a}.
 \label{ITIC}
 \end{figure}
 
-A single molecule ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
-approaches to the delineation of chomophores within the ITIC morphology. In addition, the simulation of hopping
-from backbone to backbone we ran simulations with the whole molecule presrcibed as chromophores. This
+A single molecule of ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
+approaches to the delineation of chromophores within the ITIC morphology. 
+We first take the backbone to be the chromophores. In another simulation, we
+take the whole molecule to be a chromophore. 
+from backbone to backbone we ran simulations with the whole molecule prescribed as chromophores. This
 necessarily requires more heavy lifting from \texttt{pySCF} but is trivially easy from an indexing perspective.
 Similar to the results of the DCUT investigation, 
 this implementation of \texttt{pySCF} combined with clever pickling of system objects at various stages
 of the workflow suggest that the laborious delineation of chromophores either via manual prescription or
-by clever use of smarts matching is a fools errand. We found that, while the 70 atom chomophores took 1.2s
-per dimer while the whole molecule dimer calculations with 186 atoms per chomophore to on average 3.3s.
-We found comprable mobilities of $(1.019 \pm 0.001)\cdot 10^{-3}$ for the backbone chromophores and 
+by clever use of smarts matching is a fools errand. We found that, while the 70
+atom chromophores took 1.2s
+per dimer while the whole molecule dimer calculations with 186 atoms per chromophore to on average 3.3s.
+We found comparable mobilities of $(1.019 \pm 0.001)\cdot 10^{-3}$ for the backbone chromophores and 
 $(1.275 \pm 0.001)\cdot 10^{-3}$ for the whole molecule. 
 For small molecule materials, this suggests forgoing labor intensive indexing of chromophores.
 
