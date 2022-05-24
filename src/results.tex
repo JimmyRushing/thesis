@@ -391,7 +391,7 @@ magnitude more hops during its specified lifetime.
 
 \subsection{MSD (lifetimes)}
 
-Introduced in \autoref{kmc-anaylsis}, the `carrier lifetimes' chosen for a given
+Introduced in \autoref{kmcanaylsis}, the `carrier lifetimes' chosen for a given
 simulation can effect the analysis of the slope of the \gls{msd} as time goes
 to infinity. 
 Including \gls{msd} data for an extremely short lifetime can inflate
@@ -410,12 +410,11 @@ for estimating slope in \autoref{validation}. So we test the sensitivity to
 setting the first lifetime progressively shorter. 
 
 To do so, we set the second lifetime comfortably in the linear region of the
-\gls{msd} at one nanosecond. 
+\gls{msd}. 
 In a previous work on \gls{p3ht}, the slope becomes linear around a tenth of a
 nanosecond \cite{jones2017}. With that, we take the second life time to be two
-orders of magnitude beyond that at $10^{-8}s$.
-With the slope between \glsxtrshort{msd} at the first lifetime and at the second lifetime proving an estimate of the slope
-of the \glsxtrshort{msd}, 6 simulations we run with progressively shorter first lifetimes.
+orders of magnitude beyond that at ten nanoseconds.
+$6$ simulations were run with progressively shorter first lifetimes.
 The first lifetime was set to $10^{-9}s$, $10^{-10}s$,
 $10^{-11}s$, $10^{-12}s$, and $10^{-13}s$ respectively. The results are plotted in figure
 \ref{lifetime}. 
@@ -428,8 +427,7 @@ extreme temperatures, holes need more time that that to hop even once.
 For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
 that are achievable computationally. For example, in an attempt to simulate out to the physical limit, a
 simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping for 9 wall time hours.
-It is advised that a preanalysis to determine where a given morphology's \glsxtrshort{msd} will converge be performed so as
-to never simulate past that point. Doing so is superfluous and . 
+It is advised that a preanalysis to determine where a given morphology's \glsxtrshort{msd} will converge be performed so as to never simulate past that point. 
 
 \begin{figure}
   \center
@@ -438,8 +436,6 @@ to never simulate past that point. Doing so is superfluous and .
     can be seen that below the ballistic timescale (${\sim}10^{-10}s$), the resulting mobility is affected}
   \label{lifetime}
 \end{figure}
-
- 
 
 Interestingly, the algorithm seems to be quite robust against choice of lifetimes. As can be seen in the
 figure, order of magnitude differences in lifetime choices results in less than 2X difference in the resulting
