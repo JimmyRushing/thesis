@@ -356,7 +356,7 @@ on.
   \label{fig:ln}
 \end{figure}
 
-From the rationally shuffled queue, the shortest waittime is chosen and the charge is moved to
+From the rationally shuffled queue, the shortest wait time is chosen and the charge is moved to
 its new chromophore host. The system is then considered to have moved forward in time by $\tau$. This proceeds
 until the charge carrier stalls out or hops past a prespecified lifetime. 
 
@@ -366,34 +366,36 @@ thousands of individual \glsxtrshort{kmc} implementations to arrive at a charge 
 A benefit to Monte Carlo analysis of this type is that charge carriers can be simultaneously. It is considered
 to be `embarrassingly parallel' in that the subprocesses (charge carriers) require no communication.
 How we analyze and aggregate data from thousands of
-single \glsxtrshort{kmc} simulations to obtatin macroscopic charge mobility is the subject of the following section.
+single \glsxtrshort{kmc} simulations to obtain macroscopic charge mobility is the subject of the following section.
 
 
 
-\subsection{KMC analysis}
+\subsection{KMC Analysis}
 
 \label{kmcanalysis}
 
-\texttt{MorphCT} allows for the creation of a system object that holds all the information necesarry to carry out the
-\glsxtrshort{kmc} simulations outlined above. Running the simulation requires the choice of three system parameters: the
-\glsxtrshort{kmc} temperature, the number of indivual \glsxtrshort{kmc} simulations to perform, and the charge carrier lifetimes. 
+
+Running a \gls{kmc} simulation with \texttt{MorphCT} requires the choice of three parameters: the
+\glsxtrshort{kmc} temperature, the number of individual \glsxtrshort{kmc}
+simulations to perform, and the charge carrier lifetimes. Here we outline how
+average over the chosen number of individual hopping simulations. 
 
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
 each specified lifetime, the prescribed number of individual \glsxtrshort{kmc} simulations is run as in \autoref{KMC}. When a
-given charge carrier hops past the specified lifetime, that is, the addition of the current iterations $\tau$ advances
-the simulation beyond the specified lifetime, 
-its displacement from its starting location is stored in the carrier object. After repeating this over a
-statistically significant number of carriers, the carrier data can be aggregated and the \gls{msd}
-for particles over that amount of time can be calculated. \glsxtrshort{msd} over a given time period is 
+given charge carrier hops past the specified lifetime, that is, the addition of the current iterations 
+$\tau$ advances the simulation beyond the specified lifetime, 
+its displacement from its starting location is stored in the carrier object. 
+The \gls{msd} of a charge over the course of that lifetime is taken to be the
+average squared displacement across all the individual \gls{kmc} runs. 
+In other words, the \glsxtrshort{msd} over a given time period is 
 the standard deviation in position for a free charge walking randomly through this electronic environment. 
 
 It is known that the \glsxtrshort{msd} of a diffusive particle increases linearly as time goes to infinity. 
 The slope of the \glsxtrshort{msd}, $D$, as time
-goes to inifinity can be estimated as a linear fit between the \glsxtrshort{msd} of charge carriers at the specified lifetimes.
-
-There is no objective best practice for determing the slope of the \glsxtrshort{msd} as
-time goes to inifinty from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
-simplifiy the \glsxtrshort{msd} analysis as much as possible. Doing so will make for more accurately reported results and
+goes to infinity can be estimated as a linear fit between the \glsxtrshort{msd} of charge carriers at the specified lifetimes.
+There is no objective best practice for determining the slope of the \glsxtrshort{msd} as
+time goes to infinity from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
+simplify the \glsxtrshort{msd} analysis as much as possible. Doing so will make for more accurately reported results and
 easier apples to apples comparisons with future results. With that in mind, we choose only two lifetimes in
 this work.
 
@@ -455,18 +457,18 @@ Package/tool & Description \\ [0.5ex] % inserts table
 \hline % inserts single horizontal line
     \texttt{foyer} & python package for applying atom-typing rules  \cite{Klein2018a}\\ [1ex] % inserting body of the table
 \texttt{freud} & python package for analyzing particle simulations  \cite{Ramasubramani2020}\\ [1ex] %
-\texttt{HOOMD-Blue} & general purpuse toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
+\texttt{HOOMD-Blue} & general purpose toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
     \texttt{mBuild} & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
 \texttt{MorphCT} & python package for simulating and analyzing charge transport from 
     snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
-OVITO basic & tool for visualiztion simulation data \cite{Stukowski2010a}\\[1ex] 
+OVITO basic & tool for visualization simulation data \cite{Stukowski2010a}\\[1ex] 
 \texttt{packmol} & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
 \texttt{Planckton} & python based convenience package for running \texttt{HOOMD-Blue}
     simulations of OPVs \cite{cmelab}\\[1ex]
     \texttt{Planckton-flow} & python based package that supports the use of \texttt{Planckton} on
     high performance clusters\cite{cmelab}\\[1ex]
 \texttt{pySCF} & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
-\texttt{signac} & python based framework for managing large heterogenous data spaces \cite{Adorf2016}\\[1ex]
+\texttt{signac} & python based framework for managing large heterogeneous data spaces \cite{Adorf2016}\\[1ex]
 VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
     systems \cite{Humphrey1996}\\
 
@@ -554,9 +556,6 @@ matching.
 
 The method for running \glsxtrshort{kmc} simulations 
 \texttt{MorphCT} utilizes the python multiprocessing module to divide the prescribed number of charge carriers to be simulated across all available cores.
-
-
-
 
 In the development of \texttt{MorphCT-flow}, for analogous reasons to those outlined for \texttt{Planckton}, we
 found that ORCA, the software used to perform \glsxtrshort{qcc} in \texttt{MorphCT} inhibited containerization because it
