@@ -267,7 +267,7 @@ pairs, which could suggest that beyond dcut 10 there is a diminishing returns on
 additional chromophores. 
 
 However, we found for the materials currently under investigation,
-\texttt{pySCF} is speedy enough such that intrucing dcut adds more ambiguity
+\texttt{pySCF} is speedy enough such that introducing dcut adds more ambiguity
 into the workflow than is necessary given that the average time per \glsxtrshort{qcc} dimer calculation is .036s for P3HT and
 1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic orientations, these calculations 
 are only necessarily performed once per morphology. With that, our workflow defaults this cutoff distance to half
@@ -316,7 +316,7 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
     reorganization energy values, $\lambda$. Figures (B) and (C) show the distribution of hopping rates with
     $\lambda = 100eV$ and $\lambda = 800eV$ respectively. We see that the exponential decay of charge mobility as
  reorganization energy increases is a result of a shift in the distribution of hop rates throughout the
-    simultation.  
+    simulation.  
     }
 \label{reorg}
 \end{figure}
@@ -395,12 +395,11 @@ charge trapping, temperature, and charge density. These dynamics play out across
 timescales and vary wildly form material to material and from microstructure to microstructure for a
 given material \cite{Laquai2015}.
 
-
 Testing the sensitivity of this choice was not as one-to-one as it was for the
 parameters tested above. We could choose as many lifetimes across whatever
 length scales we please. We saw that the choice of two lifetimes is sufficient
 for estimating slope in \autoref{validation}. So we test the sensitivity to
-including first lifetimes in the ballistic region. 
+progressively shorter lifetimes. 
 
 To do so, we set the second lifetime comfortably in the linear region of the
 \gls{msd} at one nanosecond. 
@@ -416,10 +415,8 @@ to never simulate past that point. Doing so is superfluous and .
 In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
 to estimate the slope of the \glsxtrshort{msd}. The current work found that the mobility can be appropriately reproduced
 with an appropriate choice of 2 lifetimes beyond the ballistic transport timescale. It was found that with the 
-squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the \glsxtrshort{msd} can be
-commensurately reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
-section above were acquired with these 2 chosen lifetimes. I am currently running across 7 lifetimes on the
-crystalline morph. 
+squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the \glsxtrshort{msd} can be reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
+section above were acquired with these 2 chosen lifetimes.
 
 \begin{figure}
   \center

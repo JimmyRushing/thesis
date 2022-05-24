@@ -202,7 +202,7 @@ electronic overlap. Indeed, $T_{ij}$ is written as follows:
     T_{ij} = \frac{1}{2}\sqrt{ (E_{homo,dimer} - E_{homo-1,dimer})^{2} - (\Delta E_{ij})^{2} }.
 \end{align}
  
-Solving shrodingers equation, with any level of accuracy,
+Solving Shrodinger's equation, with any level of accuracy,
 across an entire molecular arrangment is a prodigious computational lift.
 Other studies have implemented \textit{ab initio} DFT methods at this stage of predicting
 mobility from molecular arrangement to good effect \cite{Deng2004}. These more
@@ -214,7 +214,8 @@ Computational quantum chemistry is a nascent and evolving field of its
 own, with quickly increasing efficiencies and accuracies.
 A particular 
 choice of method comes down to how well we can organize a workflow and integrate the \glsxtrshort{qcc} portion of the
-workflow modularly to facilitate upgrading the \glsxtrshort{qcc} as more effecient methods and/or software emerges.
+workflow modularly to facilitate upgrading the \glsxtrshort{qcc} as more
+efficient methods and/or software emerges.
 
 In our implementation, a quantum chemical calculation must be performed for every chromophore and every chromophore pair. 
 To understand the scale of this lift, the reader is reminded that
@@ -226,9 +227,10 @@ To understand the scale of this lift, the reader is reminded that
 Therefore, the upper bound of possible chomophore pairs (pairs setting $k=2$) is given by the 
 $n \choose 2$ where $n$ is the total number of chromophores in the simulated volume. 
 With this, the effort of exhaustively calculating all chromophore pairs scales as $\frac{n^{2} - n}{2}$, or using big Oh notation, $O(n^2)$.
-This quadratic scaling of computational effort before performing \glsxtrshort{kmc} simulations can represent a bottlneck, so
+This quadratic scaling of computational effort before performing \glsxtrshort{kmc} 
+simulations can represent a bottleneck, so
 we investigate and apply approaches for identifying and calculating only the chromophore pairs that are
-spacially proximal.
+spatially proximal.
 
 In the following section we introduce our methods for determining
 which chromophore pairs to consider using Voronoi analysis. 
@@ -281,7 +283,7 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
   \label{fig:dcut}
 \end{figure}
 
-However, an artifact of constructing nieghborlists in this way is that some
+However, an artifact of constructing neighbor lists in this way is that some
 neighbors are too far apart to interact electronically, but are nevertheless closer to each other than they
 are to any other chromophores and are therefore counted as neighbors. 
 Inspection of \autoref{fig:dcut} reveals how this phenomena can arise from this type of construction.
@@ -292,13 +294,13 @@ In light of this, we introduce a parameter by which we further pare down the nei
 a naive cutoff distance, referred to as `dcut' in this thesis. We visualize various dcut values as black
 circles in \autoref{fig:dcut}.
 It is clear from this image that the choice of dcut is could drastically effect the
-neighborlist.  
+neighbor list.  
 Note that the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
 between chromophores in the system.
 
 A proper choice of dcut will depend on the material under investigation, 
 as the size of the individual chromophores will vary. In 
-\autoref{dcutresults}, we test the sensitiviy of our results to the value of dcut for the crystalline \glsxtrshort{p3ht}
+\autoref{dcutresults}, we test the sensitivity of our results to the value of dcut for the crystalline \glsxtrshort{p3ht}
 data. From this testing, we consider if the juice is worth radial squeeze from a computational standpoint. 
 
 \section{Kinetic Monte Carlo}
@@ -378,7 +380,7 @@ single \glsxtrshort{kmc} simulations to obtain macroscopic charge mobility is th
 Running a \gls{kmc} simulation with \texttt{MorphCT} requires the choice of three parameters: the
 \glsxtrshort{kmc} temperature, the number of individual \glsxtrshort{kmc}
 simulations to perform, and the charge carrier lifetimes. Here we outline how
-average over the chosen number of individual hopping simulations. 
+we combine the data from the specified number of individual \gls{kmc} runs.  
 
 The choice of carrier lifetimes effectively serve as checkpoints at which the displacement of charge carriers is recorded. For
 each specified lifetime, the prescribed number of individual \glsxtrshort{kmc} simulations is run as in \autoref{KMC}. When a
