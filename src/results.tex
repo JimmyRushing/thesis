@@ -213,6 +213,14 @@ amorphous, and finally the semicrystalline. This seemingly anomolous behavoir ca
 semicrystalline morphology has more ordered high speed highways of transport, the anisotropic movement
 inhibits average displacement. 
 
+\ej{this paragraph was moved from the msd section to here so it need to be
+adjusted}
+In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
+to estimate the slope of the \glsxtrshort{msd}. The current work found that the mobility can be appropriately reproduced
+with an appropriate choice of 2 lifetimes beyond the ballistic transport timescale. It was found that with the 
+squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the \glsxtrshort{msd} can be reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
+section above were acquired with these 2 chosen lifetimes.
+
 Our work replicates this trend. However, the absolute value of charge mobility is only an order of magnitude
 match for the crystalline morphology. 
 
@@ -399,12 +407,13 @@ Testing the sensitivity of this choice was not as one-to-one as it was for the
 parameters tested above. We could choose as many lifetimes across whatever
 length scales we please. We saw that the choice of two lifetimes is sufficient
 for estimating slope in \autoref{validation}. So we test the sensitivity to
-progressively shorter lifetimes. 
+setting the first lifetime progressively shorter. 
 
 To do so, we set the second lifetime comfortably in the linear region of the
 \gls{msd} at one nanosecond. 
 In a previous work on \gls{p3ht}, the slope becomes linear around a tenth of a
-nanosecond \cite{jones2017}. 
+nanosecond \cite{jones2017}. With that, we take the second life time to be two
+orders of magnitude beyond that at $10^{-8}s$.
 
 For this work, the primary strategy was to avoid the ballistic region while exploring lifetimes
 that are achievable computationally.For example, in an attempt to simulate out to the physical limit, a
@@ -412,11 +421,7 @@ simulation a microsecond($10^{-6}s$) lifetime resulted in a single hole hopping 
 It is advised that a preanalysis to determine where a given morphology's \glsxtrshort{msd} will converge be performed so as
 to never simulate past that point. Doing so is superfluous and . 
 
-In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
-to estimate the slope of the \glsxtrshort{msd}. The current work found that the mobility can be appropriately reproduced
-with an appropriate choice of 2 lifetimes beyond the ballistic transport timescale. It was found that with the 
-squared displacement averaged over 1000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the \glsxtrshort{msd} can be reproduced with 1000's less individual holes having to be simulated. The results in the accuracy
-section above were acquired with these 2 chosen lifetimes.
+
 
 \begin{figure}
   \center
