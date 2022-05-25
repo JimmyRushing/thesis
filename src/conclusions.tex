@@ -5,13 +5,44 @@ As others have argued \cite{Evans2016}\cite{Gali2017}\cite{Jones2017}, the kind 
 can allow for cheaper and more expansive screening of OPV materials across varied chemistries and processing
 conditions. 
 
-
 We have shown that it is theoretically possible and computationally
 achievable to simulate OPVs. 
 Through the publication
 of workflows, code development, and data we have outline a \glsxtrlong{true}
 pipeline through which any researcher can quantify material properties in
-organic semiconductors. 
+organic semiconductors. We have validated and performed sensitivity analysis on our pipeline using benchmark
+\gls{p3ht} morphologies. Through our study on \gls{itic},  have also seen that the pipeline is readily
+extensible to other \gls{opvs}.
+
+Throughout this work, the most critical resource has been collaboration with
+other developers. This collaboration took place in real time with active
+developers and asynchronously through the trails of bread crumbs left behind
+by predecessors in the form of documentation, searchable public communication,
+and tutorials. This is unsurprising, because learners that are new to an area
+of research, or to an application programming interface, will often experience
+similar pitfalls. Open source software development provides a scaffolding
+around which we can make the path progressively smoother for the next
+researcher to expand the boundaries of the research further.
+
+Through this lens, we have seen that the frayed edges, the pure
+scientific theory and the pure data/computer science, of scientific software
+development can entangle an aspiring researcher. For this particular project,
+that meant learning quantum theory and data science simultaneously. We have
+attempted to tie these ends together by creating tutorials that expose a new
+user to the \texttt{MorphCT} code base and to the scientific theory
+underlying it. Maintaining these tutorials as part of the code base allows
+future researchers to modify and expand on them. 
+
+As for the algorithm employed with \texttt{MorphCT}, we have learned that
+\texttt{PySCF} is quantitatively and computationally sufficient for providing
+\gls{qcc} across large atomistic morphologies. We found that the efficacy of
+\text{PySCF} allows for the simplification of our algorithms for neighbor
+listing and chromophore delineation. 
+
+
+
+
+
 %Others have had success intruducing dynamic disorder via nudging the QQC calculated TI value at every
 %iteration of the KMC algorithm by a number drawn randomly from a Gaussian Distribtion \cite{Gali2017}.
 
