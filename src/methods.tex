@@ -584,7 +584,8 @@ large \gls{p3ht} of may take $5$ days of computation, with a day to create all
 the chromophore objects, a day to perform the \gls{qcc}s, and $3$ days to
 run the \gls{kmc} simulation. Pickling the system object after these steps
 allows us to return to these morphologies for further analysis without having
-to reconstruct the objects from scratch. 
+to reconstruct the objects from scratch. Importantly, this means that the
+energetics of the chromophores need only be calculated once per morphology. 
 
 These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
