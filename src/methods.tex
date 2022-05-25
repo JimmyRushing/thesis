@@ -574,6 +574,17 @@ language, which is becoming increasingly ubiquitous in the scientific computing 
 \texttt{pySCF} allowed for the entire \glsxtrshort{qcc} code to be implememted in five lines of code. These lines of code in 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
 
+With each step in the \texttt{MorphCT} corresponding to a method called on the
+system object, saving progress becomes trivially easy. With the python pickle
+module, complex objects can be saved as a binary file and subsequently brought
+back into computer memory. In its current form, pickling is critical to the
+\texttt{MorphCT} workflow. For example, a complete \gls{kmc} simulation and analysis of a
+large \gls{p3ht} of may take $5$ days of computation, with a day to create all
+the chromophore objects, a day to perform the \gls{qcc}s, and $3$ days to
+run the \gls{kmc} simulation. Pickling the system object after these steps
+allows us to return to these morphologies for further analysis without having
+to reconstruct the objects from scratch. 
+
 These workflows, maintained as jupyter notebook tutorials, 
 are meant to lower the cognitive load of taking on a research project in this vein. 
 
