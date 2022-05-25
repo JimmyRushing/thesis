@@ -137,7 +137,7 @@ Therefore, while experimental studies have suggested that charges localize along
 in \glsxtrshort{p3ht}, our application of our model to three morphologies of \glsxtrshort{p3ht} with vastly different structure mean 
 that this may not be broadly applicable. To disambiguate the results in this thesis we chose to take the
 simplest model. Individual monomers in the system to be chromophores. The single monomer chromophore model has been shown to
-produce good results \cite{jones2017}.
+produce good results \cite{Jones2017}.
 %%\ej{In this paragraph you should be talking about what charge delocalization is, show some examples of big and small chromophores from the literature, then state the facts about P3HT. THEN we can talk about how choosing chromophores is also a modeling choice: We could do 7-mers of P3HT as a chromophore, but then we're in the awkward situation of modeling hops down a chain where either (a) we have to think about a chromophore losing one monomer at the tail and adding a monomer at the head, or (b) we chop up polymers into 7-mer-chromophores which may not evenly divide into the chain lengths we're using. PLUS charge delocalization depends on the structure of the chain (what if the chain is super twisted? or bent??), so we chose to model P3HT charge hopping along individual monomers (a) because it was a simpler implementation than the above alternatives and seems reasonably justified, (b) as a test to see if it works at all. It does OK!}
 Deciding where a chromophore should be expected is one step in the workflow that requires nuanced
 scientific justifications. However, after that decision has been made, the significant procedural hurdle of 
@@ -264,7 +264,7 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
 \begin{figure}
   \center
 %\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
-  \includegraphics[width=0.99\linewidth]{figures/crystalline_voronoi_smaller.png} 
+  \includegraphics[width=0.99\linewidth]{figures/voronoi-with-legend.png} 
  % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
   \caption{A 2D Voronoi diagram that was drawn from the xy components of a crystalline \glsxtrshort{p3ht} morphology. Dots
     represent chromopore centers. Lines represent points that are equidistant to the chromophore centers.
@@ -275,7 +275,7 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
 \end{figure}
 \begin{figure}
   \center
-  \includegraphics[width=\linewidth]{figures/crystalline_voronoi_d_cut_circles.png} 
+  \includegraphics[width=\linewidth]{figures/voronoi-dcut-with-legend.png} 
     \caption{Zoomed section of \autoref{fig:2d} wherein we see a cartoon version of a dcut radius cutoff
     used to supplement Voronoi analysis. Circles represent the neighbor cutoff
     radius (dcut) beyond which we truncate chromophores from the neighbor list.
@@ -435,9 +435,10 @@ conditions \cite{Chen2000a}.
 %jupyter notebooks, continuous integration, tests, and validation? This can given in the context of true
 %After all, how we do things is a method.
 %action: made a NEW section for this and morpchct in general
+Implementing these methods requires the active development of scientific software. We develop two packages, 
+\texttt{Planckton} and \texttt{MorphCT}, for performing and analyzing \gls{md} and \gls{kmc} simulations.  
 
-We manage development of the \texttt{Planckton} and \texttt{MorphCT} software packages using public repositories hosted at
-github.com\cite{cmelab} for the excecution of these methods.
+We manage the development of the \texttt{Planckton} and \texttt{MorphCT} in public repositories hosted at github.com\cite{cmelab} for the execution of these methods.
 As with any open-source software project, these repositories serve as a
 central hub for developers to collaborate and integrate code into the code base. Repositories are
 version controlled with a snapshot of the code base saved at each iteration. This allows researchers to 
@@ -465,7 +466,7 @@ Package/tool & Description \\ [0.5ex] % inserts table
 \texttt{HOOMD-Blue} & general purpose toolkit for performing simulations.   \cite{Anderson2020a}\\ [1ex] %
     \texttt{mBuild} & python based molecule builder \cite{Klein2018a}\\ [1ex] % [1ex] adds vertical space
 \texttt{MorphCT} & python package for simulating and analyzing charge transport from 
-    snapshots of MD simulations \cite{jones2017}\cite{cmelab}\\[1ex] 
+    snapshots of MD simulations \cite{Jones2017}\cite{cmelab}\\[1ex] 
 OVITO basic & tool for visualization simulation data \cite{Stukowski2010a}\\[1ex] 
 \texttt{packmol} & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
 \texttt{Planckton} & python based convenience package for running \texttt{HOOMD-Blue}

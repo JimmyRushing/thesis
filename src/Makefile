@@ -34,6 +34,7 @@ BSUmain.pdf: BSUmain.tex
 	#latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make BSUmain.tex
 	#makeindex BSUmain.nlo -s nomencl.ist -o BSUmain.nls
 	#latexmk -C
+	makeglossaries "bsumain"
 	pdflatex BSUmain.tex
 	pdflatex BSUmain.tex
 	bibtex BSUmain
@@ -52,6 +53,7 @@ one:
 clean:
 	#latexmk -C BSUmain.tex
 	rm BSUmain.{aux,bbl,log,out,pdf,acn,alg,blg,glg,glo,gls,ist,lof,lot,nlo,toc}
+	
 
 
 # This MAKEFILE was taken from an example at http://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project
