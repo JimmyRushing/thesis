@@ -18,7 +18,7 @@ We then deploy \texttt{MorphCT} on three benchmark P3HT morphologies to obtain c
 and compare the results to previously reported values for these morphologies. This section is meant to
 validate the current implementation of \texttt{MorphCT} against a previous implementation. 
 
-In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT} calculated mobilites to dcut, chromophore
+In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT} calculated mobilites to $d_{cut}$, chromophore
 reorganization energy, \glsxtrshort{kmc} temperature, and choice of charge carrier lifetimes for \glsxtrshort{msd} analysis. Using a
 benchmark P3HT morphology, holding all other parameters constant and sweeping across relevant scales
 provides context for how to treat these parameters in future investigations. 
@@ -233,7 +233,7 @@ it should be confirmed that it is not because the researcher used a lower reorga
 [section needs work]
 
 
-\subsection{Neighbor Cutoff (dcut)}
+\subsection{Neighbor Cutoff ($d_{cut}$)}
 \label{dcutresults}
 Voronoi analysis allows for the computationally efficient partitioning of space into
 polyhedra chromophore cells. As shown in \ref{fig:dcut}, chromophore $i$ is the neighbor of chromophore $j$
@@ -242,15 +242,15 @@ share a boundary with one another.
 
 With each chromophore pair requiring a relatively costly \glsxtrshort{qcc}, after narrowing down the chromophore pairs with voronoi, it
 could be
-computationally preferable to calculate the distances between all pairs and remove neighbors more than dcut
+computationally preferable to calculate the distances between all pairs and remove neighbors more than $d_{cut}$
 apart.
 
 \begin{table}
-\caption{Dcut Sensitivity}
+\caption{$d_{cut}$ Sensitivity}
 \centering % used for centering table
 \begin{tabular}{c c c c c c c c} % centered columns (4 columns)
 \hline\hline %inserts double horizontal lines
-    dcut $\text{\AA}$ & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [0.5ex] % inserts table
+    $d_{cut}$ $\text{\AA}$ & 4 & 6 & 8 & 10 & 12 & 14 & 16 \\ [0.5ex] % inserts table
 %heading
 \hline  % inserts single horizontal line
 pairs & 318 & 22000 & 49000 & 96000 & 113026 & 113315 & 113315 \\ [1ex]% inserting body of the table
@@ -263,22 +263,22 @@ $\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17 \cdot 10^{-6}$ & $6.13 \cdot 10^{-4}$ & .01 & .
 
 \autoref{table:dcut-sense} shows the effect of cutoff distance on value of
 calculated mobility.  
- We can see in table \ref{table:dcut-sense}, that with dcut = 10 we get comparable mobilities to the
-dcut 12 simulation with $10^5$ less
-pairs, which could suggest that beyond dcut 10 there is a diminishing returns on mobility prediction with the
+ We can see in table \ref{table:dcut-sense}, that with $d_{cut}$ = 10 we get comparable mobilities to the
+$d_{cut}$ 12 simulation with $10^5$ less
+pairs, which could suggest that beyond $d_{cut}$ 10 there is a diminishing returns on mobility prediction with the
 additional chromophores. 
 
 However, we found for the materials currently under investigation,
-\texttt{pySCF} is speedy enough such that introducing dcut adds more ambiguity
+\texttt{pySCF} is speedy enough such that introducing $d_{cut}$ adds more ambiguity
 into the workflow than is necessary given that the average time per \glsxtrshort{qcc} dimer calculation is .036s for P3HT and
 1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic orientations, these calculations 
 are only necessarily performed once per morphology. With that, our workflow defaults this cutoff distance to half
 the length of the simulation box, rendering it effectively moot. 
 
 If, in the future, more computationally expensive methods are incorporated into the \glsxtrshort{qcc} step, or chromophores in other
-organic materials are a heavier lift \texttt{pySCF}, it could be beneficial to reintroduce this cutoff distance. The optimal dcut will vary depending on the material and before doing large sweeping analysis on a new
+organic materials are a heavier lift \texttt{pySCF}, it could be beneficial to reintroduce this cutoff distance. The optimal $d_{cut}$ will vary depending on the material and before doing large sweeping analysis on a new
 material its at a discount to do some preliminary analysis to determine an appropriate value. We tested the
-sensitivity of the algorithm to the value (dcut). 
+sensitivity of the algorithm to the value ($d_{cut}$). 
 
 \subsection{Reorganization energy}
 
@@ -482,7 +482,7 @@ We first take the backbone to be the chromophores. In another simulation, we
 take the whole molecule to be a chromophore. 
 from backbone to backbone we ran simulations with the whole molecule prescribed as chromophores. This
 necessarily requires more heavy lifting from \texttt{pySCF} but is trivially easy from an indexing perspective.
-Similar to the results of the DCUT investigation, 
+Similar to the results of the $d_{cut}$ investigation, 
 this implementation of \texttt{pySCF} combined with clever pickling of system objects at various stages
 of the workflow suggest that the laborious delineation of chromophores either via manual prescription or
 by clever use of smarts matching is a fools errand. We found that, while the 70

@@ -276,9 +276,9 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
 \begin{figure}
   \center
   \includegraphics[width=\linewidth]{figures/voronoi-dcut-with-legend.png} 
-    \caption{Zoomed section of \autoref{fig:2d} wherein we see a cartoon version of a dcut radius cutoff
+    \caption{Zoomed section of \autoref{fig:2d} wherein we see a cartoon version of a $d_{cut}$ radius cutoff
     used to supplement Voronoi analysis. Circles represent the neighbor cutoff
-    radius (dcut) beyond which we truncate chromophores from the neighbor list.
+    radius ($d_{cut}$) beyond which we truncate chromophores from the neighbor list.
     Cells are colored by number of neighbors.}
   \label{fig:dcut}
 \end{figure}
@@ -291,16 +291,16 @@ Because charges will not hop between these pairs, including them in the pair lis
 superfluous \glsxtrshort{qcc}s. 
 
 In light of this, we introduce a parameter by which we further pare down the neighbor list. This parameter is
-a naive cutoff distance, referred to as `dcut' in this thesis. We visualize various dcut values as black
+a naive cutoff distance, referred to as `$d_{cut}$' in this thesis. We visualize various $d_{cut}$ values as black
 circles in \autoref{fig:dcut}.
-It is clear from this image that the choice of dcut is could drastically effect the
+It is clear from this image that the choice of $d_{cut}$ is could drastically effect the
 neighbor list.  
 Note that the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
 between chromophores in the system.
 
-A proper choice of dcut will depend on the material under investigation, 
+A proper choice of $d_{cut}$ will depend on the material under investigation, 
 as the size of the individual chromophores will vary. In 
-\autoref{dcutresults}, we test the sensitivity of our results to the value of dcut for the crystalline \glsxtrshort{p3ht}
+\autoref{dcutresults}, we test the sensitivity of our results to the value of $d_{cut}$ for the crystalline \glsxtrshort{p3ht}
 data. From this testing, we consider if the juice is worth radial squeeze from a computational standpoint. 
 
 \section{Kinetic Monte Carlo}
