@@ -14,14 +14,14 @@ We take two simple chromophores, two thiophene rings, in $5680$ orientations and
 electronic coupling between them. We do so to test if our dimer calculation correlates sensibly to the angle
 and distance between chromophores. These experiments are broadly meant to confirm that we have integrated
 \texttt{pySCF} into \texttt{MorphCT} properly, and that the quantities produced comport with the physics of these systems.
-We then deploy \texttt{MorphCT} on three benchmark P3HT morphologies to obtain charge mobility
+We then deploy \texttt{MorphCT} on three benchmark \glsxtrshort{p3ht} morphologies to obtain charge mobility
 and compare the results to previously reported values for these morphologies. This section is meant to
 validate the current implementation of \texttt{MorphCT} against a previous implementation. 
 
 In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT}
 calculated mobilities to $d_{cut}$, chromophore
 reorganization energy, \glsxtrshort{kmc} temperature, and choice of charge carrier lifetimes for \glsxtrshort{msd} analysis. Using a
-benchmark P3HT morphology, holding all other parameters constant and sweeping across relevant scales
+benchmark \glsxtrshort{p3ht} morphology, holding all other parameters constant and sweeping across relevant scales
 provides context for how to treat these parameters in future investigations. 
 
 In \autoref{itic}, we deploy our data pipeline on \gls{itic} to obtain charge mobility. 
@@ -146,7 +146,7 @@ As evidenced by \autoref{TIplots}((a)), for orientations resulting in a center-t
 $0.5nm$ we calculate an average $T_{ij}$ of ${\sim} 0.28eV$.  
 These calculations match closely those
 calculated using more rigerous ab initio DFT methods\cite{Lan2008},
-where realistic distances between thiophene rings in lamaeler P3HT crystals 
+where realistic distances between thiophene rings in lamaeler \glsxtrshort{p3ht} crystals 
 between $0.38nm$ and $0.4 nm$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. 
 
 In a similar work using a random forest machine learning to predict $T_{ij}$
@@ -161,7 +161,7 @@ requires the use of an iterative algorithm. For this we employ \glsxtrshort{kmc}
 
 Having explored the performance of \texttt{pySCF} on the level of the molecule, we graduate these computations to the
 macroscopic scale with \texttt{MorphCT} to obtain charge mobility.
-In a previous work \cite{Miller2018}, researchers used \texttt{MorphCT} to predict charge mobility in P3HT. 
+In a previous work \cite{Miller2018}, researchers used \texttt{MorphCT} to predict charge mobility in \glsxtrshort{p3ht}. 
 With \texttt{pySCF} newly integrated into \texttt{MorphCT} for reasons outlined in \autoref{morphct},
 we validate our charge mobility against this work.
 The benchmark morphologies, which are the final frame of benchmark MD simulations,
@@ -190,12 +190,12 @@ zero-field charge mobility for the morphology is obtained.
 \begin{figure}
   \center
   \includegraphics[width = .6\textwidth]{figures/validation.png}
-  \caption{The results of mobility prediction on benchmark P3HT mobilities. We report the data in this way to
+  \caption{The results of mobility prediction on benchmark \glsxtrshort{p3ht} mobilities. We report the data in this way to
     show that the we found the same trend as previously reported using \texttt{ORCA} for \gls{qcc}s. }
   \label{mobility-validation}
 \end{figure}
 
-It is known about P3HT that it can have vastly different crystallinities based on how it has been processed. 
+It is known about \glsxtrshort{p3ht} that it can have vastly different crystallinities based on how it has been processed. 
 We validate on three morpholgies with crystallinities that vary from amorphous to highly crystalline. These morphologies have been coerced into various levels of crystallinity through a simulated anhealing process. 
 We refer to these morphologies as disordered, semi-crystalline, and crystalline.
 
@@ -214,7 +214,7 @@ amorphous, and finally the semicrystalline. This seemingly anomolous behavoir ca
 semicrystalline morphology has more ordered high speed highways of transport, the anisotropic movement
 inhibits average displacement. Our work replicates this trend.
 
-In the previous work on these P3HT morphologies, 7 lifetimes were chosen and a linear regression was performed
+In the previous work on these \glsxtrshort{p3ht} morphologies, 7 lifetimes were chosen and a linear regression was performed
 to estimate the slope of the \glsxtrshort{msd}. The current work found that the mobility can be appropriately reproduced
 with an appropriate choice of 2 lifetimes beyond the ballistic transport timescale. It was found that with the 
 squared displacement averaged over 5000 holes at $10^{-9}s$ and again $10^{-10}s$ the slope of the \glsxtrshort{msd} can be reproduced with 1000's less individual holes having to be simulated.
@@ -223,16 +223,24 @@ squared displacement averaged over 5000 holes at $10^{-9}s$ and again $10^{-10}s
 
 \label{sensitivity}
 
-The sensitivity of our charge mobility calculations to various parameters was performed on the benchmark 
-crystalline P3HT morphology. As the overarching goal is to connect the morphological features to charge
-mobility, it is critical to be explicit about how each parameter can proscribe the resulting value of charge
-mobility. Sensitivty analysis of this type can help us understand where to invest recources into dialing
-the accuracy of any given parameter. It also gives motivation to be meticulous about keeping these parameters
-consant accross analysis of the same material under different processing conditions. For example, if a higher
-charge mobility is discovered for a given morphology after some simulated annhealing,
-it should be confirmed that it is not because the researcher used a lower reorganization energy for example. 
-[section needs work]
+The sensitivity of our \gls{kmc} simulation analysis to various parameters was performed on the benchmark 
+crystalline \glsxtrshort{p3ht} morphology. As the overarching goal is to
+connect the morphological features to charge mobility, it is critical to be
+explicit about how each parameter can affect the resulting value of charge
+mobility. 
 
+By pressure testing the algorithm with a range of values for our input
+parameter, we explore the robustness of the algorithm to individual inputs.
+Sensitivity analysis can also help us understand where to
+invest resources into dialing
+the accuracy of any given parameter. It also gives motivation to be meticulous about keeping these parameters
+constant across analysis of the same material under different processing conditions. For example, if a higher
+charge mobility is discovered for a given morphology after some simulated annealing,
+it should be confirmed that it is not because the researcher used a lower reorganization energy for example. 
+
+We perform sensitivity analysis for $4$ parameters: (1) neighbor cutoff
+distance ($d_{cut}$), (2) chromophore reorganization energy, (3) \gls{kmc}
+temperature, and (4) choice of carrier lifetimes. 
 
 \subsection{Neighbor Cutoff ($d_{cut}$)}
 \label{dcutresults}
@@ -271,8 +279,8 @@ additional chromophores.
 
 However, we found for the materials currently under investigation,
 \texttt{pySCF} is speedy enough such that introducing $d_{cut}$ adds more ambiguity
-into the workflow than is necessary given that the average time per \glsxtrshort{qcc} dimer calculation is .036s for P3HT and
-1.2s for ITIC. Furthermore, with \texttt{MorphCT} acting on static atomistic orientations, these calculations 
+into the workflow than is necessary given that the average time per \glsxtrshort{qcc} dimer calculation is .036s for \glsxtrshort{p3ht} and
+1.2s for \glsxtrshort{itic}. Furthermore, with \texttt{MorphCT} acting on static atomistic orientations, these calculations 
 are only necessarily performed once per morphology. With that, our workflow defaults this cutoff distance to half
 the length of the simulation box, rendering it effectively moot. 
 
@@ -293,7 +301,7 @@ follows:
     \lambda_{total} = \lambda_{internal} + \lambda_{external}.
 \end{align} 
 $\lambda = 0.3eV$ is chosen to be the default reorganization energy ($\lambda_{internal} = 0.1eV$
-and $\lambda_{external} = .02eV$) as others have done with P3HT \cite{Jones2017} and
+and $\lambda_{external} = .02eV$) as others have done with \glsxtrshort{p3ht} \cite{Jones2017} and
 a flourene-triphenylamine copolymer, TFB \cite{Gali2017}. 
 
 \begin{figure}
@@ -372,7 +380,7 @@ $\lambda$ is increased.
 \end{figure}
 
 To test the sensitivity of our implementation to
-temperature, 15 \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark P3HT crystalline morphology. It is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature.
+temperature, 15 \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark \glsxtrshort{p3ht} crystalline morphology. It is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature.
 This should be expected from the assumptions of the model outlined in \autoref{marcusmodel}. 
 With relatively weak electronic coupling ($T_{ij}$) between chromophores, electron transfer proceeds nonadiabatically \cite{clarke2010}. With this weak coupling, the temperature in the Gibbs free energy of activation term
 dominates the effect that temperature has on the hop rate value calculated with \autoref{marcus}.
@@ -438,7 +446,7 @@ This suggests that going lifetime crazy is a waste of computation. What is more
 important then is reporting the lifetimes used in the study for comparison
 across multiple studies. 
 
-\section{ITIC}
+\section{\glsxtrshort{itic}}
 
 \label{itic}
 
@@ -447,18 +455,18 @@ Here we use the pipeline to predict charge mobility in \gls{itic}.
 This is a first foray into the extensibility of the complete pipeline to a
 material not named \gls{p3ht}. 
 
-The ITIC morphology was simulated using Plankton-Flow \cite{cmelab} on Fry,         
+The \glsxtrshort{itic} morphology was simulated using Plankton-Flow \cite{cmelab} on Fry,         
 a high performance computing cluster at Boise State University.  
 Using \texttt{planckton-flow}, a 1000
-molecule morphology of ITIC was equilibrated over a $10^{7}$ step MD simulation at room temperature. 
+molecule morphology of \glsxtrshort{itic} was equilibrated over a $10^{7}$ step MD simulation at room temperature. 
 From the results of the MD simulation, the last frame of the atomic
 trajectories is taken to represent an accurate equilibrium geometry
-of ITIC. 
+of \glsxtrshort{itic}. 
 
 To apply the hopping model to this atomistic morphology requires the
 delineation of segments within the morphology upon which charges can delocalize along \glsxtrshort{lumo} (or 
 \glsxtrshort{homo} for donors).   
-The \glsxtrshort{lumo} of ITIC delocalizes along the backbone of the molecule, with
+The \glsxtrshort{lumo} of \glsxtrshort{itic} delocalizes along the backbone of the molecule, with
 negligible electron density in the side chains. This makes the backbone the obvious choice of chromophore.
 This has been quantified and well visualized using \textit{ab
 initio} DFT at the level of the molecule by Han et al.~\cite{Han2019}.
@@ -472,13 +480,13 @@ available visualization tool OVITO \cite{Stukowski2010a}.
 \begin{subfigure}{.5\textwidth}
     \includegraphics[width=\textwidth]{figures/ITIC-blackedout-unwrapped.png}
 \end{subfigure}
-\caption{1000 molecule ITIC morphology. Right: Segments known to participate in frontier
+\caption{1000 molecule \glsxtrshort{itic} morphology. Right: Segments known to participate in frontier
     molecular orbitals are in color and side chains in black.}
 \label{ITIC}
 \end{figure}
 
-A single molecule of ITIC has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
-approaches to the delineation of chromophores within the ITIC morphology. 
+A single molecule of \glsxtrshort{itic} has 186 atoms, with the backbone consisting of 70 atoms. We deployed two different
+approaches to the delineation of chromophores within the \glsxtrshort{itic} morphology. 
 We first take the backbone to be the chromophores. In another simulation, we
 take the whole molecule to be a chromophore. 
 from backbone to backbone we ran simulations with the whole molecule prescribed as chromophores. This
@@ -494,13 +502,13 @@ $(1.275 \pm 0.001)\cdot 10^{-3}$ for the whole molecule.
 For small molecule materials, this suggests forgoing labor intensive indexing of chromophores.
 
 As discussed in the sensitivity analysis, our mobility calculations are relatively sensitive to the choice of
-reorganization energy. For ITIC, $\lambda_{internal}$ has been well investigated and is widely reported as
+reorganization energy. For \glsxtrshort{itic}, $\lambda_{internal}$ has been well investigated and is widely reported as
 $~0.15eV$ \cite{Han2019}. The external reorganization is harder to estimate. We take $\lambda_{total}=0.3eV$ as we did for
-P3HT. With the fused
+\glsxtrshort{p3ht}. With the fused
 backbone resulting in a higher internal contribution and the lack of long range order resulting in a lower
 external contribution. 
 
-The reported experimental electron mobility of ITIC varies depending on how it was processed and how it was measured. 
+The reported experimental electron mobility of \glsxtrshort{itic} varies depending on how it was processed and how it was measured. 
 Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. 
 
