@@ -52,6 +52,7 @@ one:
 clean:
 	#latexmk -C BSUmain.tex
 	rm BSUmain.{aux,bbl,log,out,pdf,acn,alg,blg,glg,glo,gls,ist,lof,lot,nlo,toc}
+	
 
 
 # This MAKEFILE was taken from an example at http://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project
