@@ -48,12 +48,12 @@ oligomers of increasing length.
 The difference between the \glsxtrshort{homo} and \glsxtrshort{lumo} energy levels, the \glsxtrshort{homo}-\glsxtrshort{lumo} gap, is an approximation of the amount
 of energy necessary to promote an electron to a higher energy level.  
 Fused-ring geometries are of particular interest for accepter
-molecules, as discussed for FREAs in the introduction. 
-The fused thiophenes in this experiment represent a generic FREA core, whose frontier molecular oribitals are
+molecules, as discussed for \glsxtrshort{frea}s in the introduction. 
+The fused thiophenes in this experiment represent a generic \glsxtrshort{frea} core, whose frontier molecular oribitals are
 the landing cites for a charge propagating through an acceptor material. 
 
 To recreate these experiments, using \texttt{mBuild} \cite{Klein2016}, oligomers composed of 4-8 planar fused thiophene rings
-were initialized and saved to a GSD file. The GSD files were fed into \texttt{MorphCT} which uses \texttt{pySCF} to quantify the
+were initialized and saved to a \texttt{gsd} file. The \texttt{gsd} files were fed into \texttt{MorphCT} which uses \texttt{pySCF} to quantify the
 frontier orbital energy levels \autoref{qccmethods}.
 
 \subsubsection{Experiment 1 Results}
@@ -82,7 +82,7 @@ These results compare well to the values found using ab initio DFT were between 
 
 At the level of the chromophore pair, we explore the effect of angle and distance on the electronic orbital
 overlap, $T_{ij}$, between two non-bonded thiophene rings.
-Two thiophene rings are positioned in electronic proximity using \texttt{mBuild} and saved to gsd. 
+Two thiophene rings are positioned in electronic proximity using \texttt{mBuild} and saved to \texttt{gsd}. 
 
 A reference thiophene was placed at the origin in the xy-plane
 with the y-axis running through the sulfur atom as shown in \autoref{TIplots}(a). For the second thiophene,
@@ -92,7 +92,7 @@ The Cartesian product of these sets define a space of $12^{4}= 20736$ orientatio
 
 Orientations resulting in atoms that were less
 than $0.3nm$ were removed from the data set as distances shorter than this are considered
-unphysical. The remaining $5680$ atomic arrangements were saved to a GSD and the $T_{ij}$ was quantified for
+unphysical. The remaining $5680$ atomic arrangements were saved to a \texttt{gsd} and the $T_{ij}$ was quantified for
 each with \texttt{MorphCT}. 
 
 \subsubsection{Experiment 2 Results}
@@ -139,14 +139,14 @@ the corresponding wait time for a charge to hop between to thiophenes in these o
 \cdot 10^{-14}s$ and $\tau = 2 \cdot 10^{-7}s$. With latter case being two orders of magnitude slower than the
 lifetimes allowed in our \glsxtrshort{kmc} simulations, a hop would be highly unfavored for this orientation. 
 
-Creating the directory of GSDs and quantifying the $T_{ij}$ between them took a wall time of $3.2h$ which
-avereges to ${\sim}2s$ per orientation. 
+Creating the directory of \texttt{gsd}s and quantifying the $T_{ij}$ between
+them took a wall time of $3.2h$ which averages to ${\sim}2s$ per orientation. 
 
 As evidenced by \autoref{TIplots}((a)), for orientations resulting in a center-to-center distance of less than
 $0.5nm$ we calculate an average $T_{ij}$ of ${\sim} 0.28eV$.  
 These calculations match closely those
-calculated using more rigerous ab initio DFT methods\cite{Lan2008},
-where realistic distances between thiophene rings in lamaeler \glsxtrshort{p3ht} crystals 
+calculated using more rigorous \textit{ab initio} DFT methods\cite{Lan2008},
+where realistic distances between thiophene rings in lamellar \glsxtrshort{p3ht} crystals 
 between $0.38nm$ and $0.4 nm$ gives $T_{ij}$ values between $0.07eV$ and $0.1eV$. 
 
 In a similar work using a random forest machine learning to predict $T_{ij}$
@@ -178,13 +178,16 @@ at which individual grains can form within the morphology. The orientation and b
 charge transport and therefore provide a critical benchmark to compare against. 
 
 We first fined-grained MD data (hydrogens appended back into
-the morphology) and converted from .xml to .gsd format. At current, \texttt{MorphCT} is compatable with all atom data
-and .gsd format. As visualized in \autoref{molecules}, chromophores are taken to be individual monomers. 
+the morphology) and converted from \texttt{xml} to \texttt{gsd} format. At
+current, \texttt{MorphCT} is compatible with all-atom data and \texttt{gsd} format. 
+As visualized in \autoref{molecules}, chromophores are taken to be individual monomers. 
 Using \texttt{MorphCT}, for each chromophore, a unique object is instantiated and the energetics are obtained using
 \texttt{pySCF}. A \glsxtrshort{kmc} simulation is performed on the basis of these energetics with \glsxtrshort{kmc} temperature set to 300K. For
 each morphology, 10,000 individual charge carriers are injected (one at a time) into the morphology, with
-5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted to a liftime of a nanosecond.
-As outlined in \autoref{kmcanalysis}, from the difference in \glsxtrshort{msd} bewteeen these sets of charge carriers the
+5,000 restricted to a lifetime of a tenth of a nanosecoond and 5,000 restricted
+to a lifetime of a nanosecond.
+As outlined in \autoref{kmcanalysis}, from the difference in \glsxtrshort{msd}
+between these sets of charge carriers, the
 zero-field charge mobility for the morphology is obtained. 
 
 \begin{figure}

@@ -511,9 +511,10 @@ Also provided are files that define the atomic structure of many of
 the most commonly studied OPVs for OSC research in a format that are compatible with GAFF forcefields.
 
 \texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
-The native file format of \texttt{HOOMD-Blue} is the GSD file. GSD files store simulation data in a binary file. 
-As MD simulations proceed, the GSD files are populated with the microstate of the system at regular intervals.
-\texttt{MorphCT} is developed to operate on particular microstates stored in GSD files.
+The native file format of \texttt{HOOMD-Blue} is the \texttt{gsd} file.
+\texttt{gsd} files store simulation data in a binary format. 
+As MD simulations proceed, the \texttt{gsd} files are populated with the microstate of the system at regular intervals.
+\texttt{MorphCT} is developed to operate on particular microstates stored within \texttt{gsd} files.
 
 Containers are virtual machines that contain all the dependencies, configurations, code and data 
 necessary to reproduce results \cite{Cito2016a}. 
@@ -537,7 +538,7 @@ data sets with \texttt{signac}.
 
 \texttt{MorphCT} is a python package for running \glsxtrshort{kmc} simulations of 
 charge transport in organics systems.
-\texttt{MorphCT} operates on GSD files containing the atom types and cartesian
+\texttt{MorphCT} operates on \texttt{gsd} files containing the atom types and cartesian
 coordinates of a system
 system. In this work we use \texttt{MorphCT} on equilibrium microstates obtained from MD simulations. However,
 \texttt{MorphCT} is indifferent to how the morphological data was obtained and does not measure physical
@@ -547,7 +548,7 @@ accuracy of that data.
 and writing from the following three python objects: System, Chromophore, and
 Carrier. 
 In general, the \texttt{MorphCT} workflow proceeds via interfacing with the
-System object. The System object can be instantiated from a GSD file. 
+System object. The System object can be instantiated from a \texttt{gsd} file. 
 
 Methods for adding chromophores, computing chromophore energies, and running
 \glsxtrshort{kmc} are coded into the System object. 
