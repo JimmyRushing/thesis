@@ -38,6 +38,7 @@ OSCs are approaching 20\% efficiency \cite{Liu2020b}.
 Two major breakthroughs have ushered us into the modern era of
 \glsxtrshort{osc}s.
 
+\ej{This paragraph needs a big fix. }
 A fundamental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
 invention of the \glsxtrshort{bhj}.
@@ -49,10 +50,7 @@ is given by Coulombs law as follows:
     V  = k_{e} \cdot \frac{e^{2}}{\epsilon_{r}}
 \end{align}
 where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron.
-Relative
-permittivity,
-$\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative
-to that of free space.
+Relative permittivity, $\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative to that of free space.
 That is, relative
 permittivity describes the readiness of a material
 to polarize in response to an electric field. 
@@ -106,7 +104,7 @@ electrodes.
 
 % Keep attached to prior paragraph.
 
-As shown in \ref{bhj}, a \glsxtrshort{bhj} active layer is designed to harvest photons through the following 
+As described in \ref{bhj}, a \glsxtrshort{bhj} active layer harvests photons through the following 
 steps: (1) photoabsorbtions, 
 (2) exciton diffusion, (3) charge transfer, and (4) free charge diffusion \cite{Fusella2019}. 
 When a photon is incident on
@@ -117,8 +115,8 @@ an electron to the next available energy level; the \gls{lumo}.
 This forms an exciton as
 described above, which can then diffuse until it intersects the boundary. 
 The excited electron would like to relax
-back into is lower energy level, but at the interface with the acceptor, it finds a better option. The
-acceptor's \glsxtrshort{lumo} is engineered to sit between the energy of the donor's excited electron's energy level and the
+back into is lower energy level, but at the interface with the acceptor, it finds a better option. 
+The acceptor's \glsxtrshort{lumo} is engineered to sit between the energy of the donor's excited electron's energy level and the
 available lower energy level. Because of this, the electron cascades down to the acceptors \glsxtrshort{lumo} through a charge
 transfer reaction. Finally the free charges can diffuse until they interact the electrode where it can be
 extracted. This is, of course, an ideal description, as there are loss mechanisms at all four stages. 
@@ -141,10 +139,9 @@ that this substitution could lower the exciton
 binding energy (discussed above using \autoref{coulomb}), thus facilitating exciton disassociation (stage 3 of
 \glsxtrshort{bhj}). They also found
 that this flourination tends to reduce the reorganization energy, which we see
-in \autoref{results}, drastically increases charge mobility.
+in \autoref{results}, drastically increases charge mobility.%ej: do we see the trend later of higher mobility with lower reorganization energy?
 
-Our work in this thesis
-is most expressly related to stage $4$ of charge photogeneration in \gls{bhj} active layers.
+Here we focus on $(4)$, charge transport in \gls{bhj} active layers.
 We simulate the self-assembly and charge mobility of pure acceptor (or
 pure donor) domains post deposition. 
 How the materials will self-assemble in the environment in which they are deposited determines
@@ -172,7 +169,7 @@ introduce more thoroughly in \autoref{morphct}.
   \label{pipeline}
 \end{figure}
 
-We use the term `chromophore' liberally in this thesis. We take a brief aside to be more
+We use the term ``chromophore'' liberally in this thesis. We take a brief aside to be more
 explicit about its meaning.  
 The term chromophore arose in a biochemical context and is generally defined
 as a light-absorbing group or molecule \cite{biochemistry}.
@@ -208,18 +205,18 @@ This phenomena has been shown by space charge limited current experiments~\cite{
 To improve the efficacy of the pipeline we focus on
 developing simulation tools are that are
 \gls{true} (\cite{Cummings2017}).
-With scientific research being an innately distributed endeavor, these virtues provide a lens through which to
+With scientific research being an innately distributed endeavor, these virtues provide a lens through which to %EJ: UGH
 evaluate the adherence to basic scientific principles and to the best practices of distributed software development
 simultaneously. As enumerated by Jankowski et al., some of emerging best practices for scientific software
-development include the following: (1) address cognitive load, (2) use version control, (3) automate
+development include the following: (1) address cognitive load, (2) use version control, (3) automate %EJ: What's cognitive load?
 repetitive tasks, (4) develop open-source code, (5) write code in the highest language possible~\cite{Jankowski2020}.
-`Addressing cognitive load' amounts to an admission that a learner has a
+``Addressing cognitive load'' amounts to an admission that a learner has a
 finite capacity for new ideas~\cite{Jankowski2019}. With that, if a new user is spending
 substantial time navigating aspects of the pipeline that are not clearly
 germane to the science, we have an opportunity to improve our software.
 % SHOULD Say: Thesis summary. Add a sentence or two on each of (a) your thesis plan, (b) what you found, (c) what it means. 
 
-We seek to improve the pipeline outlined in \autoref{pipeline}.
+Here we improve the pipeline outlined in \autoref{pipeline}.
 To do this, we: (1) integrate an open source quantum chemical package into \texttt{MorphCT},
 (2) perform validation and sensitivity analysis on benchmark \glsxtrshort{p3ht}
 morphologies and
@@ -268,8 +265,7 @@ the publication of interactive Jupyter notebook tutorials.
 \label{molecules}
 \end{figure}
 
-Two \glsxtrshort{opv} materials are studied throughout this thesis.
-These are \glsxtrshort{p3ht}, a
+We perform case studies using the charge transport prediction pipeline of \glsxtrshort{p3ht}, a
 donor molecule, and \glsxtrshort{itic}, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
 organic analogue of n-type inorganic semiconductors and `donors' the analogue
 of the p-type. We make this note because in the methods we describe a model of
