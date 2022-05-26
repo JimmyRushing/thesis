@@ -1,14 +1,14 @@
 \chapter{Methods}
 \label{methods}
 
-Predicting morphology and charge transport properties in OPVs is accomplished through the combination 
+Predicting morphology and charge transport properties in \glsxtrshort{opv}s is accomplished through the combination 
 of techniques, each modeling specific physical phenomena.
 In this section we outline the models and theory employed throughout the pipeline to describe 
 the atomic structure of organic molecules, how they arrange, and how charges move through them. 
 For each of these approaches, we then describe the open-source software tools that we create, modify, and use 
 to implement these methods. 
 
-In \autoref{md}, we introduce the \gls{md} techniques used to predict self-assembly of OPVs.
+In \autoref{md}, we introduce the \gls{md} techniques used to predict self-assembly of \glsxtrshort{opv}s.
 In \autoref{marcusmodel}, we describe Marcus model of charge hopping between chromophores,
 the techniques we use to identify individual chromophores in simulated volumes, 
 and how we use \gls{qcc} to estimate the Marcus hopping rate between
@@ -38,7 +38,7 @@ principally developed by members of the CMELab:
 \label{ITIC/P3HT}
 \end{figure}
 
-Modelling charge transport in OPVs demands a methodology that is accurate across orders of magnitude of
+Modelling charge transport in \glsxtrshort{opv}s demands a methodology that is accurate across orders of magnitude of
 resolution. Electronic wave functions operate at the atomic scale while the morphological features (grain
 boundaries, crystallinity etcetera) that govern charge transport occur across many nanometers. MD simulations
 are suited to this task because they enable the combination of coarse-grained models with atomistic
@@ -65,7 +65,7 @@ simulation can be fleshed out from the progression of the systems potential ener
 into distinct regions, working backwards in time, a bin is added to the equilibrated region if its standard
 deviation is less than twice that of the previous bin \cite{Henry2017a}.
 
-MD simulations can predict the self-assembly of OPV materials. To connect the chemistry to the
+MD simulations can predict the self-assembly of \glsxtrshort{opv} materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with \glsxtrshort{kmc}.
 
 \section{Marcus Model}
@@ -203,7 +203,7 @@ electronic overlap. Indeed, $T_{ij}$ is written as follows:
 \end{align}
  
 Solving Shrodinger's equation, with any level of accuracy,
-across an entire molecular arrangment is a prodigious computational lift.
+across an entire molecular arrangement is a prodigious computational lift.
 Other studies have implemented \textit{ab initio} DFT methods at this stage of predicting
 mobility from molecular arrangement to good effect \cite{Deng2004}. These more
 rigorous methods are
@@ -224,7 +224,7 @@ To understand the scale of this lift, the reader is reminded that
 \begin{align}
     {n \choose k} =  \frac{n!}{k!(n-k)!}.
 \end{align}
-Therefore, the upper bound of possible chomophore pairs (pairs setting $k=2$) is given by the 
+Therefore, the upper bound of possible chromophore pairs (pairs setting $k=2$) is given by the 
 $n \choose 2$ where $n$ is the total number of chromophores in the simulated volume. 
 With this, the effort of exhaustively calculating all chromophore pairs scales as $\frac{n^{2} - n}{2}$, or using big Oh notation, $O(n^2)$.
 This quadratic scaling of computational effort before performing \glsxtrshort{kmc} 
@@ -239,7 +239,7 @@ which chromophore pairs to consider using Voronoi analysis.
 
 To minimize the number of dimer calculations, we use Vornoi analysis to locate the spatially
 nearest neighboring chromophores. This analysis is performed on the cartesian coordinates of
-the geometric center of the chromophore. A polyhedron cell is connstucted around the geometric center.
+the geometric center of the chromophore. A polyhedron cell is constructed around the geometric center.
 The polyhedron cell consists of every point in space that is closer to that chromophore center than
 any other chromophore center. Chromophores are considered neighbors if their Voronoi cells abut one another.
 
@@ -473,7 +473,7 @@ Package/tool & Description \\ [0.5ex] % inserts table
 OVITO basic & tool for visualization simulation data \cite{Stukowski2010a}\\[1ex] 
 \texttt{packmol} & python package for creating initial configurations of simulations \cite{Martinez2009}\\[1ex] 
 \texttt{Planckton} & python based convenience package for running \texttt{HOOMD-Blue}
-    simulations of OPVs \cite{cmelab}\\[1ex]
+    simulations of \glsxtrshort{opv}s \cite{cmelab}\\[1ex]
     \texttt{Planckton-flow} & python based package that supports the use of \texttt{Planckton} on
     high performance clusters\cite{cmelab}\\[1ex]
 \texttt{pySCF} & open-source collection of electronic structure modules \cite{Sun2018a}\\[1ex]
@@ -490,7 +490,7 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
 I was able to take an investigation of \glsxtrshort{itic} from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
-can make in silico screening of OPV materials realistically attainable by any aspiring researcher.
+can make in silico screening of \glsxtrshort{opv} materials realistically attainable by any aspiring researcher.
 
 All the tools used to implement, analyze, and
 visualize this work are freely available. 
@@ -502,16 +502,16 @@ The packages and tools are enumerated in \autoref{packages}. We now describe \te
 \label{planckton}
 
 \texttt{Planckton} is a convenience package that integrates, \texttt{Mbuild}, \texttt{foyer},
-\texttt{HOOMD-Blue} for performing MD simulations of self-assembly in OPVs.  \texttt{Planckton}
+\texttt{HOOMD-Blue} for performing MD simulations of self-assembly in \glsxtrshort{opv}s.  \texttt{Planckton}
 provides clearly documented template scripts for inititializing and running MD simulations. 
  
 \texttt{Planckton} uses \texttt{foyer} to interpret the forcefields used to generate the MD data. The MD
 simulations performed for this thesis employ the Generalized Amber Force Field (GAFF)\cite{Wang2004}.
 The Amber forcefield was designed for use in modeling protein and
 nucleic acid systems. Serendipitously, the generalized Amber forcefield has parameters for organic molecules
-comprised of H,C,N,O, and P and can produces accurate simulations of organic molecules for use in OPVs. 
+comprised of H,C,N,O, and P and can produces accurate simulations of organic molecules for use in \glsxtrshort{opv}s. 
 Also provided are files that define the atomic structure of many of
-the most commonly studied OPVs for OSC research in a format that are compatible with GAFF forcefields.
+the most commonly studied \glsxtrshort{opv}s for OSC research in a format that are compatible with GAFF forcefields.
 
 \texttt{Planckton} is built using \texttt{HOOMD-Blue} simulation toolkit \cite{Anderson2020a}.
 The native file format of \texttt{HOOMD-Blue} is the \texttt{gsd} file.
@@ -532,7 +532,7 @@ to pull a \texttt{docker} image of \texttt{Planckton} to a container on the serv
 
 \texttt{Planckton-flow} allows for a container of \texttt{Planckton} to be taken 
 off the shelf an pulled to performance computing cluster without having to build the software stack or write the
-simulation scripts from scratch. Screening OPV materials across many thermodynamic parameters can results in
+simulation scripts from scratch. Screening \glsxtrshort{opv} materials across many thermodynamic parameters can results in
 cumbersome data sets. \texttt{Planckton-flow} automates the management of large these large multidimensional
 data sets with \texttt{signac}.
 
