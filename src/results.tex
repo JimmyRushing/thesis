@@ -335,13 +335,15 @@ a flourene-triphenylamine copolymer, TFB \cite{Gali2017}.
 \label{reorg}
 \end{figure}
 
-Reorganization energy has a strong effect on charge mobility in organic
-molecules[REFS]. In our workflow, reorganization energy is set as an attribute
-to the chomophore object. It is defaulted to $~300meV$ as for all chromophore
+In our workflow, reorganization energy is set as an attribute
+to the chromophore object. It is defaulted to $~300meV$ as for all chromophore
 objects.
+To test the sensitivity of the algorithm to this value we ran $8$
+simulations with chromophores assigned reorganization energies of $100-800meV$.
+This is as easy as retrieving the pickled crystalline system, looping through the chromophores, setting the
+reorganization energy, and rerunning the \gls{kmc} simulation. 
 
-To test the sensitivity of the algorithm to this value we ran 8
-simulations with chromophores assigned reorganization energies of 100-800meV. The results, shown in
+The results, shown in
 \autoref{reorg}, are expected from the inspection of \autoref{marcus}. Because these simulation were run on
 the same morphology, the variation in distributions of $k_{ij}$ values, shown in \autoref{reorg}(B)(C), is
 solely due to the choice of $\lambda$. The cumulative outcome of this is the exponential decay in mobility as
@@ -383,7 +385,7 @@ $\lambda$ is increased.
 \end{figure}
 
 To test the sensitivity of our implementation to
-temperature, 15 \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark \glsxtrshort{p3ht} crystalline morphology. It is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature.
+temperature, $15$ \glsxtrshort{kmc} simulations from 100K to 800k were run on the benchmark \glsxtrshort{p3ht} crystalline morphology. It is clear from the results in figure \ref{TEMP}(A) that the mobilities trend upward with temperature.
 This should be expected from the assumptions of the model outlined in \autoref{marcusmodel}. 
 With relatively weak electronic coupling ($T_{ij}$) between chromophores, electron transfer proceeds nonadiabatically \cite{clarke2010}. With this weak coupling, the temperature in the Gibbs free energy of activation term
 dominates the effect that temperature has on the hop rate value calculated with \autoref{marcus}.
