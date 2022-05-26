@@ -340,7 +340,7 @@ to the chromophore object. It is defaulted to $~300meV$ as for all chromophore
 objects.
 To test the sensitivity of the algorithm to this value we ran $8$
 simulations with chromophores assigned reorganization energies of $100-800meV$.
-This is as easy as retrieving the pickled crystalline system, looping through the chromophores, setting the
+In \texttt{MorphCT}, this is as easy as retrieving the pickled crystalline system, looping through the chromophores, setting the
 reorganization energy, and rerunning the \gls{kmc} simulation. 
 
 The results, shown in
@@ -350,6 +350,7 @@ solely due to the choice of $\lambda$. The cumulative outcome of this is the exp
 $\lambda$ is increased.
 
 \subsection{Temperature}
+
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
