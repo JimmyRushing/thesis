@@ -239,9 +239,9 @@ which chromophore pairs to consider using Voronoi analysis.
 
 To minimize the number of dimer calculations, we use Vornoi analysis to locate the spatially
 nearest neighboring chromophores. This analysis is performed on the cartesian coordinates of
-the geometric center of the chromophore. With that, a polyhedron cell is constructed around this geometric
-center. The polyhedron cell consists of every point in space that is closer to that chromophore center than
-any other chromophore center. Chromophores are considered neighbors if their voronoi cells abut one another.
+the geometric center of the chromophore. A polyhedron cell is connstucted around the geometric center.
+The polyhedron cell consists of every point in space that is closer to that chromophore center than
+any other chromophore center. Chromophores are considered neighbors if their Voronoi cells abut one another.
 
 For simplicity, we construct and visualize a Voronoi diagram of the xy components of the chromophore centers
 of the crystalline \glsxtrshort{p3ht} system described in \autoref{md}.
@@ -249,7 +249,7 @@ To carry out this analysis, \texttt{MorphCT} incorporates the
 Voronoi class provided by \texttt{freud}; a python package for analysing and visualizing simulation data\cite{Ramasubramani2020}. 
 This class is compatible with 2D or 3D simulation data. 
 
-Shown in \autoref{fig:ln}, 15,000 thousand dots represent the chromophore's geometric centers projected
+Shown in \autoref{fig:2d}, 15,000 thousand dots represent the chromophore's geometric centers projected
 in the xy-plane. In this 2D analogue,
 cell edges are drawn in a Euclidean way, with lines between polygons representing the set of points 
 equidistant from that point and its geometrically closest neighbor across the line. 
@@ -266,10 +266,10 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
 %\includegraphics[width=25cm]{figures/crystalline_voronoi.png}
   \includegraphics[width=0.99\linewidth]{figures/voronoi-with-legend.png} 
  % \includegraphics[width=\linewidth]{figures/crystalline_voronoi_smaller.png}
-  \caption{A 2D Voronoi diagram that was drawn from the xy components of a crystalline \glsxtrshort{p3ht} morphology. Dots
-    represent chromopore centers. Lines represent points that are equidistant to the chromophore centers.
+  \caption{A 2D Voronoi diagram that was drawn from the xy components of a crystalline \glsxtrshort{p3ht} morphology. Dots represent chromopore centers. Lines represent points that are equidistant to the chromophore centers.
     Polygons represent all points that are closer to the chromophore center contained within than any other
-    chromophore center. RED SQUARE: \autoref{fig:dcut} shows the 15nm section of the sample zoomed in for
+    chromophore center. Even in 2d, the lamellar crystal structure is visible in the clustering of chromophores.
+    RED SQUARE: \autoref{fig:dcut} shows the 15nm section of the sample zoomed in for
     detail.}
   \label{fig:2d}
 \end{figure}
@@ -279,7 +279,10 @@ They are known to scale with $O(n\log{n})$ in the worst case and as low as $O(n)
     \caption{Zoomed section of \autoref{fig:2d} wherein we see a cartoon version of a $d_{cut}$ radius cutoff
     used to supplement Voronoi analysis. Circles represent the neighbor cutoff
     radius ($d_{cut}$) beyond which we truncate chromophores from the neighbor list.
-    Cells are colored by number of neighbors.}
+    Cells are colored by number of neighbors. This chromophore has ten Voronoi neighbors. If we applied the
+    $d_{cut}$ radii implied in this figure, the chromophore would have $0$,$2$,$4$,$7$ and $10$ neighbors for
+    the increasing $d_{cut}$ radii.
+    }
   \label{fig:dcut}
 \end{figure}
 
