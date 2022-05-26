@@ -2,27 +2,30 @@
 
 %
 The unique properties of organic semiconductors make them ideal candidates for
-many electronic applications. They are used today in ultra high resolution \gls{oled} 
-TVs and cellphone displays. They enable cutting edge
+many electronic applications.
+They are used today in ultra high resolution \gls{oled} 
+TVs and cellphone displays.
+They enable 
 foldable \glsxtrshort{oled} screens and rollable TVs \cite{Chen2020}.
 Organic semiconductors are also integral to the design of next generation medical devices owing to their
-self-healing properties and their biodegradability \cite{Bettinger2010}. 
+self-healing properties and their biodegradability \cite{Bettinger2010}.
+
 For more on bioelectronic materials, see Organic Electronic: Emerging Concepts and Technologies
 \cite{FabioCicoiraEditor2013}.
 
 In this thesis, we focus on a subclass of organic semiconductors, \gls{opv} materials, and their use in the
-active layer of \gls{osc} devices.  
-\glsxtrshort{osc}s, the reverse of the more popularly understood OLEDs,
-are devices that absorb photonic energy and extract electronic energy. 
-A rudimentary \gls{osc} is drawn in \autoref{bhj}.
-We note that any organic semiconductor can exhibit a photovoltaic effect if a
-photon with commensurate energy is incident on the material.
-\glsxtrshort{opv}s are therefore distinguished by
-their capacity for electronic energy level 
-tuning and their ability to be processed into structures suitable to a given design purpose.
+active layer of \gls{osc} devices.
+ 
+A simple model for \glsxtrshort{osc}s is that they they are OLEDs working in reverse, absorbing photons and generating current rather than converting current into light.
+
+The \gls{osc} schematic in \autoref{bhj} summarizes the main processes involved in the generation of electrical current.
+%EJ: is the drawing or the OSC rudimentary? I'm editing.
+Any organic semiconductor can exhibit a photovoltaic effect when photons with appropriate energy (equivalently, wavelength) are absorbed.
+Therefore tuning an \glsxtrshort{opv}s absorption spectra represents one opportunity to optimizeits properties a particular application.
 
 \glsxtrshort{osc}s exhibit improvements in
 flexibility, processability, and cost of manufacturing.
+%EJ: Compared to what?
 They are also used in more revolutionary electronic designs.
 For example, researchers have exploited the relatively narrow absorption spectrum in \glsxtrshort{opv}s
 (${\sim}300nm$) to make windows that act as OSCs. 
@@ -37,38 +40,46 @@ Two major breakthroughs have ushered us into the modern era of
 
 A fundamental physical difference in the nature of photoabsorbtion in inorganic and organic 
 semiconducting materials necessitated the
-invention of the \glsxtrshort{bhj}. The coulombic attraction, $V$, between an excited
+invention of the \glsxtrshort{bhj}.
+The coulombic attraction, $V$, between an excited
 electron and the hole it left in a molecular orbital
 is given by Coulombs law as follows:
 \begin{align}
     \label{coulomb}
     V  = k_{e} \cdot \frac{e^{2}}{\epsilon_{r}}
 \end{align}
-where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron. Relative
+where $k_{e}$ is Coulomb's constant and $e$ is charge of an electron.
+Relative
 permittivity,
 $\epsilon_{r}$, is a unitless quantity that describes a materials polarizability relative
-to that of free space. That is, relative
+to that of free space.
+That is, relative
 permittivity describes the readiness of a material
-to polarize in response to an electric field. A low
+to polarize in response to an electric field. 
+A low
 relative permittivity of ${\sim}3$ in \glsxtrshort{opv}s (${\sim}12$ for silicon \cite{Baroni1986} and ${\sim}78$ for water \cite{George2004})
-means that these materials are only $3$ times more polarizable than free space, which
-is not all that polariazable. And, because the material occupying the space between electron and hole
+means that these materials are only $3$ times more polarizable than free space. 
+And, because the material occupying the space between electron and hole %EJ: What's this have to do with excitons? Excitons don't form in silicon.
 is not willing (or able?) to fight back against the electric field created between them, they stick together and behave as a quasipartcle. 
 This bound electron-hole quasiparticle is referred to herein as an exciton.
 
 % keep attachced to prior paragraph
 This excitonic absorption introduces a unique design challenge.
 That is, to extract a charge from the device, the exciton
-must first be coerced apart. This coercion can take place at the interface between donor and acceptor molecules,
+must first be coerced apart.
+This coercion can take place at the interface between donor and acceptor molecules,
 where the slight offset in energy levels creates a charge transfer state wherein it is more
 energetically favorable for the donor to undergo electron transfer with an adjacent acceptor than
 it is to radiatively decay to its ground state and photoemit.
 This means that, after photoabsorbtion, the exciton must to diffuse to this interface for the charge to be
-extracted. Because an exciton can only diffuse so far (${\sim}10nm$ \cite{clarke2010}) before it relaxes to
+extracted.
+Because an exciton can only diffuse so far (${\sim}10nm$ \cite{clarke2010}) before it relaxes to
 its ground state, it is critical that absorption take place close to a donor/acceptor
 interface. 
-Producing extremely thin active layers could conceivably achieve this. However,
-producing a layer this small is untenable from a manufacturing standpoint. Furthermore, extremely thin active
+Producing extremely thin active layers could conceivably achieve this.
+However,
+producing a layer this small is untenable from a manufacturing standpoint.
+Furthermore, extremely thin active
 layers restrict the amount of radiation that a device interacts with. 
 
 In 1986, Ching W. Tang
