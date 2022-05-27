@@ -486,10 +486,11 @@ available visualization tool OVITO \cite{Stukowski2010a}.
     \includegraphics[width=\textwidth]{figures/ITIC-blackedout-unwrapped-allatom.png}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
-    \includegraphics[width=\textwidth]{figures/ITIC-blackedout-unwrapped.png}
+    \includegraphics[width=\textwidth]{figures/ITIC-unwrapped.png}
 \end{subfigure}
-\caption{1000 molecule \glsxtrshort{itic} morphology. Right: Segments known to participate in frontier
-    molecular orbitals are in color and side chains in black.}
+    \caption{$1000$ molecule \glsxtrshort{itic} morphology. Colored atoms were included in the
+    \gls{qcc}s for the backbone chromophore simutlation (LEFT) and whole molecule chromophore simulations
+    (RIGHT).}
 \label{ITIC}
 \end{figure}
 
@@ -502,7 +503,7 @@ Including the whole molecule necessarily requires more heavy lifting from \textt
 Similar to the results of the $d_{cut}$ investigation, 
 this implementation of \texttt{pySCF}, combined with clever pickling of system objects at various stages
 of the workflow, suggest that the laborious delineation of chromophores can be
-largely circumvented in the macromolecular systems.
+largely circumvented in macromolecular systems like \gls{itic}.
 We found that, while the 70 atom chromophores took $1.2s$ 
 per dimer while, the whole molecule dimer calculations with 186 atoms per
 chromophore took on average $3.3s$. This is a substantial increase across a
