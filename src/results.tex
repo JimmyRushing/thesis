@@ -200,15 +200,14 @@ It is known about \glsxtrshort{p3ht} that it can have vastly different crystalli
 We validate on three morphologies with crystallinities that vary from amorphous
 to highly crystalline. These morphologies have been coerced into various levels
 of crystallinity through a simulated annealing process. 
-We refer to these morphologies as disordered, semi-crystalline, and crystalline.
+We refer to these morphologies as amorphous, semi-crystalline, and crystalline.
 
 Results from our work compare well to a predecessor of our work, which implemented ZINDO/s, another
 semi-empirical \glsxtrshort{qcc} method \cite{Miller2018a}\cite{Jones2017}. 
 Their work utilized an earlier version of \texttt{MorphCT} which used the \glsxtrshort{qcc} software 
 \texttt{ORCA} \cite{Neese2012b} to provide the quantum chemical approximations. 
 \texttt{ORCA}'s proprietary licensing was prohibitive in the efforts to containerize \texttt{MorphCT} for use on cluster and for
-creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}. The
-performance of \texttt{pySCF} and of the current \texttt{MorphCT}.
+creating reproducible results. This motivated the restructuring of \texttt{MorphCT} for use with \texttt{pySCF}.
 
 The results in \ref{mobility-validation} show the charge mobility reported in the prior work, which used \texttt{ORCA} for
 the \glsxtrshort{qcc} calculation, and the charge mobility obtained using using the current workflow, which uses \texttt{pySCF}. 
@@ -411,7 +410,7 @@ simulation with a microsecond($10^{-6}s$) lifetime resulted in a single hole hop
 In real systems, free charge
 carrier lifetime is subject to a complex interplay between geminate recombination, non-geminate recombination,
 charge trapping, temperature, and charge density. These dynamics play out across a picosecond to microsecond
-timescales and vary wildly form material to material and from microstructure to microstructure for a
+timescales and vary wildly from material to material and from microstructure to microstructure for a
 given material \cite{Laquai2015}.
 
 Testing the sensitivity of this choice was not as one-to-one as it was for the
