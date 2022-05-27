@@ -48,11 +48,9 @@ Molecular dynamics is a method of computer simulation for predicting the equilib
 systems. MD simulations proceed iteratively by solving Newtons laws of motion
 in accordance with a predefined interatomic interaction potentials.  
 The non-bonded interaction potentials are modeled with a classic Leonard-Jones(LJ)
-potential \cite{Jones1924a}. Potentials are also defined in accordance with the bonds that each particle is
-participating in and can include parameters for equilibrium bond distances and equilibrium angles between
-$3$ bonded atoms and between $4$ bonded atoms (dihedral angles).
-At each iteration, a numerical integration over these potentials provide an update to the velocities and positions
-of particles in the system. 
+potential \cite{Jones1924a}. Parameters can also be defined for equilibrium bond lengths,
+angles between $3$ bonded atoms, and angles between $4$ bonded atoms (dihedral angles).
+At each iteration, a numerical integration over these potentials provide an update to the velocities and positions of particles in the system. 
 
 Using the canonical ensemble (NVT) for example, conserving the number of
 particles, the volume, and the temperature allows for the exploration of the potential energy surface
@@ -296,8 +294,8 @@ superfluous \glsxtrshort{qcc}s.
 In light of this, we introduce a parameter by which we further pare down the neighbor list. This parameter is
 a naive cutoff distance, referred to as `$d_{cut}$' in this thesis. We visualize various $d_{cut}$ values as black
 circles in \autoref{fig:dcut}.
-It is clear from this image that the choice of $d_{cut}$ is could drastically effect the
-neighbor list.  
+It is clear from this image that the choice of $d_{cut}$ could drastically effect the
+neighbor list and the resulting charge mobilty calculation.  
 Note that the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
 between chromophores in the system.
 
@@ -399,8 +397,8 @@ In other words, the \glsxtrshort{msd} over a given time period is
 the standard deviation in position for a free charge walking randomly through this electronic environment. 
 
 It is known that the \glsxtrshort{msd} of a diffusive particle increases linearly as time goes to infinity. 
-The slope of the \glsxtrshort{msd} (diffusion coefficient), $D$, as time
-goes to infinity can be estimated as a linear fit between the \glsxtrshort{msd} at the specified lifetimes.
+The slope of the \glsxtrshort{msd} (diffusion coefficient), $D$, 
+can be estimated as a linear fit between the \glsxtrshort{msd} values at the specified lifetimes.
 There is no objective best practice for determining the slope of the \glsxtrshort{msd} as
 time goes to infinity from simulation data of this kind \cite{Maginn2018}. With that, we seek primarily to
 simplify the \glsxtrshort{msd} analysis as much as possible. Doing so will make for more accurately reported results and
@@ -415,12 +413,12 @@ Finally, the results of the \glsxtrshort{msd} analysis can be related to  zero-f
 where $e$ is the elemental charge of a charge carrier, $D$ is the diffusion coefficient, $k_{B}$ is Planck's
 constant and $T$ is temperature. 
 
-The conductivity of a material given by 
+The conductivity, $\sigma$, of a material is given by 
 \begin{align}
     \label{conductivity}
     \sigma = n \cdot e \cdot \mu,
 \end{align}
-where $n$ is the number of charge carriers, $e$ is the charge of an electron and $\mu$ is empirically
+where $n$ is the number of charge carriers, $e$ is the charge of an electron. $\mu$ is empirically
 defined as drift velocity, $v$, over the electric field, $E$ as follows \cite{Kokil2012}:
 \begin{align}
     \label{m}
@@ -441,14 +439,15 @@ conditions \cite{Chen2000a}.
 Implementing these methods requires the active development of scientific software. We develop two packages, 
 \texttt{Planckton} and \texttt{MorphCT}, for performing and analyzing \gls{md} and \gls{kmc} simulations.  
 
-We manage the development of the \texttt{Planckton} and \texttt{MorphCT} in public repositories hosted at github.com\cite{cmelab} for the execution of these methods.
+We manage the development of \texttt{Planckton} and \texttt{MorphCT} 
+in public repositories hosted at github.com\cite{cmelab}.
 As with any open-source software project, these repositories serve as a
 central hub for developers to collaborate and integrate code into the code base. Repositories are
 version controlled with a snapshot of the code base saved at each iteration. This allows researchers to 
 reproduce each others work with the exact version used to carry out the analysis. It also provides a
 documented and controlled way to merge together divergent code through pull requests. Unit testing and
 continuous integrating techniques provide passive protection against bugs in the software that might emerge
-from active development on the code base. 
+from active development.
 
 Modular, python based code allows for the curation and publication of Jupyter notebooks workflows and
 tutorials for performing reproducable analysis. Jupyter notebooks are a document format for publishing code
@@ -481,7 +480,6 @@ OVITO basic & tool for visualization simulation data \cite{Stukowski2010a}\\[1ex
 VMD & a molecular visualization program for displaying, analyzing, and animating large biomolecular
     systems \cite{Humphrey1996}\\
 
-
 \hline %inserts single line
 \end{tabular}
 \label{packages} % is used to refer this table in the text
@@ -502,7 +500,7 @@ The packages and tools are enumerated in \autoref{packages}. We now describe \te
 \label{planckton}
 
 \texttt{Planckton} is a convenience package that integrates, \texttt{Mbuild}, \texttt{foyer},
-\texttt{HOOMD-Blue} for performing MD simulations of self-assembly in \glsxtrshort{opv}s.  \texttt{Planckton}
+and \texttt{HOOMD-Blue} for performing MD simulations of self-assembly in \glsxtrshort{opv}s.  \texttt{Planckton}
 provides clearly documented template scripts for inititializing and running MD simulations. 
  
 \texttt{Planckton} uses \texttt{foyer} to interpret the forcefields used to generate the MD data. The MD
@@ -519,11 +517,12 @@ The native file format of \texttt{HOOMD-Blue} is the \texttt{gsd} file.
 As MD simulations proceed, the \texttt{gsd} files are populated with the microstate of the system at regular intervals.
 \texttt{MorphCT} is developed to operate on particular microstates stored within \texttt{gsd} files.
 
-Containers are virtual machines that contain all the dependencies, configurations, code and data 
-necessary to reproduce results \cite{Cito2016a}. 
 \texttt{Planckton-flow} is a dataspace manager that uses
 singularity \cite{singularity2017} and \texttt{docker} \cite{Merkel:2014:DLL:2600239.2600241} 
-to `contanerize' \texttt{Planckton} \cite{cmelab}. \texttt{Docker} images are binary files that contain the
+to `contanerize' \texttt{Planckton} \cite{cmelab}.
+Containers are virtual machines that contain all the dependencies, configurations, code and data 
+necessary to reproduce results \cite{Cito2016a}. 
+ \texttt{Docker} images are binary files that contain the
 entire software stack necessary to execute some code. This allows researchers to minimize dependency issues
 and increase reproducibility. However, \texttt{docker} has no native support for the use of GPUs and is not
 compatible with the more draconian permissions often present on HPCs. With that, \texttt{Planckton-flow} uses 
@@ -531,7 +530,7 @@ compatible with the more draconian permissions often present on HPCs. With that,
 to pull a \texttt{docker} image of \texttt{Planckton} to a container on the server. 
 
 \texttt{Planckton-flow} allows for a container of \texttt{Planckton} to be taken 
-off the shelf an pulled to performance computing cluster without having to build the software stack or write the
+off the shelf and pulled to a high performance computing cluster without having to build the software stack or write the
 simulation scripts from scratch. Screening \glsxtrshort{opv} materials across many thermodynamic parameters can results in
 cumbersome data sets. \texttt{Planckton-flow} automates the management of large these large multidimensional
 data sets with \texttt{signac}.

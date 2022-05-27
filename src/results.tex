@@ -23,7 +23,7 @@ reorganization energy, \glsxtrshort{kmc} temperature, and choice of charge carri
 benchmark \glsxtrshort{p3ht} morphology, holding all other parameters constant and sweeping across relevant scales
 provides context for how to treat these parameters in future investigations. 
 
-In \autoref{itic}, we deploy our data pipeline on \gls{itic} to obtain charge mobility. 
+In \autoref{itic}, we extend our data pipeline \gls{itic}. 
 
 \section{Validation}
 
@@ -38,7 +38,7 @@ Secondly, it is used to estimate the electronic overlap ($T_{ij}$) with the dime
 calculating the \glsxtrshort{homo} (or \glsxtrshort{lumo}) of the dimer formed by the two chromophores. We present the results from two
 experiments meant to evaluate \texttt{pySCF}'s suitability for performing these duties:
 (1) we compare frontier molecular energies of single chromophores given by \texttt{pySCF} to those
-given by more rigorous \textit{ab initio} DFT and (2) we evaluate performance \texttt{pySCF}'s dimer calculation.
+given by more rigorous \textit{ab initio} DFT and (2) we evaluate the performance \texttt{pySCF}'s dimer calculation.
 
 \subsubsection{Experiment 1 Methods}
 
@@ -68,7 +68,7 @@ Our values for the \glsxtrshort{homo}-\glsxtrshort{lumo} gap are plotted by olig
 Our \glsxtrshort{homo}-\glsxtrshort{lumo} gap ranges between $7.27eV$ and $6.34eV$. Consistent with our findings using a larger data set
 in \autoref{itic}, the wall time for these individual calculations take place on the order of seconds. 
 
-Furthermore, it is known that there is a near linear
+It is known that there is a near linear
 relationship between \glsxtrshort{homo}-\glsxtrshort{lumo} gap and oligomer length. We find that our use of \texttt{pySCF} (MINDO/3) replicates
 this trend and this is clear from \autoref{fig:fused}.
 
@@ -275,9 +275,8 @@ $\mu_{0}$ $(cm^{2}/Vs)$ & $-2.17 \cdot 10^{-6}$ & $6.13 \cdot 10^{-4}$ & .01 & .
 \autoref{table:dcut-sense} shows the effect of cutoff distance on value of
 calculated mobility.  
  We can see in table \ref{table:dcut-sense}, that with $d_{cut}=10$ we get comparable mobilities to the
-$d_{cut}$ 12 simulation with $10^5$ less
-pairs, which could suggest that beyond $d_{cut}$ 10 there is a diminishing returns on mobility prediction with the
-additional chromophores. 
+$d_{cut}=12$ simulation with $10^5$ less
+pairs, which could suggest that beyond $d_{cut}=10$ there is a diminishing returns on mobility prediction with the additional chromophores. 
 
 However, we found for the materials currently under investigation,
 \texttt{pySCF} is speedy enough such that introducing $d_{cut}$ adds more ambiguity
@@ -288,8 +287,7 @@ the length of the simulation box, rendering it effectively moot.
 
 If, in the future, more computationally expensive methods are incorporated into the \glsxtrshort{qcc} step, or chromophores in other
 organic materials are a heavier lift \texttt{pySCF}, it could be beneficial to reintroduce this cutoff distance. The optimal $d_{cut}$ will vary depending on the material and before doing large sweeping analysis on a new
-material its at a discount to do some preliminary analysis to determine an appropriate value. We tested the
-sensitivity of the algorithm to the value ($d_{cut}$). 
+material it is at a discount to do some preliminary analysis to determine an appropriate value.
 
 \subsection{Reorganization energy}
 
@@ -511,7 +509,7 @@ hundred thousand pair calculation. However, as we have seen in
 performed once minimizes the computational blow.
 
 We found comparable mobilities of $(1.019 \pm 0.001)\cdot 10^{-3}$ for the backbone chromophores and 
-$(1.275 \pm 0.001)\cdot 10^{-3}$ for the whole molecule. This increase in
+$(1.275 \pm 0.001)\cdot 10^{-3}$ for the whole molecule. This slight increase in
 mobility comports with the reality, as including the side chains adds some
 electron density off the axis of the backbone which could facilitated hopping
 pathways unexplored by the backbone only simulations. While the contribution
@@ -530,7 +528,6 @@ The reported experimental electron mobility of \glsxtrshort{itic} varies dependi
 Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. Another computational study, that also used Marcus hopping and
 \gls{kmc}, found an electron mobility of $7\cdot10^{-4}$~\cite{Han2017b} in a pure \gls{itic} crystal.
-
 
 %%% Local Variables: 
 %%% mode: latex
