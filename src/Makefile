@@ -34,7 +34,6 @@ BSUmain.pdf: BSUmain.tex
 	#latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make BSUmain.tex
 	#makeindex BSUmain.nlo -s nomencl.ist -o BSUmain.nls
 	#latexmk -C
-	makeglossaries "bsumain"
 	pdflatex BSUmain.tex
 	pdflatex BSUmain.tex
 	bibtex BSUmain

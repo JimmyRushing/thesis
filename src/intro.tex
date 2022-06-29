@@ -221,7 +221,7 @@ germane to the science, we have an opportunity to improve our software.
 
 Here we improve the pipeline outlined in \autoref{pipeline}.
 To do this, we: (1) integrate an open source quantum chemical package into \texttt{MorphCT},
-(2) perform validation and sensitivity analysis on benchmark \glsxtrshort{p3ht}
+(2) perform verification and sensitivity analysis on benchmark \glsxtrshort{p3ht}
 morphologies and
 (3) deploy the pipeline from start to finish on \glsxtrshort{itic}. 
 Informing this work is a new developer's perspective on cognitive load. 
@@ -303,10 +303,8 @@ the application of our workflow to materials
 used in \glsxtrshort{osc} design. However, the methods are
 not exclusively applicable to these materials and could be applied similarly to supplement the engineering of any organic
 electronic devices. 
-In \autoref{results}, we use \texttt{MorphCT} to validate our current workflow against a predecessor of the 
-workflow on three benchmark MD simulated morphologies of \glsxtrshort{p3ht}. 
-Following that, again using \glsxtrshort{p3ht}, we test the sensitivity of our charge mobility prediction, 
-implemented with \texttt{MorphCT}, to various inputs. We conclude \autoref{results} by applying our pipeline,
+In \autoref{results}, we verify that our current \texttt{MorphCT} workflow produces results that are consistent with previous implementations of \texttt{MorphCT}. We do this by recreating charge mobility predictions on three benchmark MD simulated morphologies of \glsxtrshort{p3ht}. 
+Following that, again using \glsxtrshort{p3ht}, we test the sensitivity of our charge mobility prediction to various input parameters. We conclude \autoref{results} by applying our pipeline,
 start to finish, to \glsxtrshort{itic}. 
 In \autoref{conclusion}, we outline the ramification of \autoref{results} and detail the areas of future development of the workflow. 
 
