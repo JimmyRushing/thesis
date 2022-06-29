@@ -14,9 +14,7 @@ electronic coupling between them. We do so to test if our dimer calculation corr
 and distance between chromophores. These experiments are broadly meant to confirm that we have integrated
 \texttt{pySCF} into \texttt{MorphCT} properly, and that the quantities produced comport with the physics of these systems.
 We then deploy \texttt{MorphCT} on three benchmark \glsxtrshort{p3ht} morphologies to obtain charge mobility
-and compare the results to previously reported values for these morphologies. This section is meant to
-validate the current implementation of \texttt{MorphCT} against a previous implementation. 
-
+and compare the results to previously reported values for these morphologies. This section provides verification of the current implementation of \texttt{MorphCT}.
 In \autoref{sensitivity}, we test the sensitivity of our \texttt{MorphCT}
 calculated mobilities to $d_{cut}$, chromophore
 reorganization energy, \glsxtrshort{kmc} temperature, and choice of charge carrier lifetimes for \glsxtrshort{msd} analysis. Using a
@@ -25,11 +23,11 @@ provides context for how to treat these parameters in future investigations.
 
 In \autoref{itic}, we extend our data pipeline \gls{itic}. 
 
-\section{Validation}
+\section{Implementation Verification}
 
 \label{validation}
 
-\subsection{Quantum Chemical Calculation Validation}
+\subsection{Quantum Chemical Calculation Verification}
 
 As outlined in \autoref{qccmethods}, \glsxtrshort{qcc} is used in two distinct way in our workflow. 
 First it is used to estimate free energy
@@ -155,15 +153,15 @@ center-to-center distance and rotation about the y-axis. \cite{Jankowski2019c}
 Graduating these pairwise energetics to charge characteristics on the scale of MD simulations
 requires the use of an iterative algorithm. For this we employ \glsxtrshort{kmc} simulations using \texttt{MorphCT}.
 
-\subsection{Charge Transport Calculation Validation}
+\subsection{Charge Transport Calculation Verification}
 
 Having explored the performance of \texttt{pySCF} on the level of the molecule, we graduate these computations to the
 macroscopic scale with \texttt{MorphCT} to obtain charge mobility.
 In a previous work \cite{Miller2018}, researchers used \texttt{MorphCT} to predict charge mobility in \glsxtrshort{p3ht}. 
 With \texttt{pySCF} newly integrated into \texttt{MorphCT} for reasons outlined in \autoref{morphct},
-we validate our charge mobility against this work.
+we verify our charge mobility against this work.
 The benchmark morphologies, which are the final frame of benchmark MD simulations,
-used to carry out this validation are public \cite{P3HTData}. 
+used to carry out this veerification are public \cite{P3HTData}. 
 
 These benchmark simulations were carried out using coarse-graining techniques
 wherein molecular segments have been unified and treated as individual beads to lower
@@ -197,7 +195,7 @@ zero-field charge mobility for the morphology is obtained.
 \end{figure}
 
 It is known about \glsxtrshort{p3ht} that it can have vastly different crystallinities based on how it has been processed. 
-We validate on three morphologies with crystallinities that vary from amorphous
+We predict charge mobility in three morphologies with crystallinities that vary from amorphous
 to highly crystalline. These morphologies have been coerced into various levels
 of crystallinity through a simulated annealing process. 
 We refer to these morphologies as amorphous, semi-crystalline, and crystalline.
