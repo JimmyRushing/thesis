@@ -1,7 +1,7 @@
 \chapter{Methods}
 \label{methods}
 
-Predicting morphology and charge transport properties in \glsxtrshort{opv}s is accomplished through the combination 
+Predicting morphology and charge transport properties in \glsxtrshort{opv}s is accomplished through a combination 
 of techniques, each modeling specific physical phenomena.
 In this section we outline the models and theory employed throughout the pipeline to describe 
 the atomic structure of organic molecules, how they arrange, and how charges move through them. 
@@ -57,11 +57,11 @@ particles, the volume, and the temperature allows for the exploration of the pot
 of the system and sample the microstates from equilibrated region the simulation for statistical analysis.  
 Simulation ensembles are regulated via the Nos\'{e}-Hoover thermostat \cite{Hoover1985} to maintain 
 temperature using the MTK equations \cite{Martyna1994d}\cite{Cao1996}.
-The system can be considered equilibrated when the potential energy no longer decreases with time. 
-From the sum of all interatomic potentials as the systems potential energy. Determining the equilibrated region of the
-simulation can be fleshed out from the progression of the systems potential energy. By binning the microstates
-into distinct regions, working backwards in time, a bin is added to the equilibrated region if its standard
-deviation is less than twice that of the previous bin \cite{Henry2017a}.
+The system can be considered equilibrated when the sum of all interatomic potentials no longer decreases with time. 
+Determining the equilibrated region of the
+simulation can be fleshed out statistically from the progression of the systems potential energy. By binning the microstates
+into distinct regions, working backwards in time, a bin can be added to the equilibrated region if its standard
+deviation in system potential energy is less than twice that of the previous bin \cite{Henry2017a}.
 
 MD simulations can predict the self-assembly of \glsxtrshort{opv} materials. To connect the chemistry to the
 conductivity of the material we use Marcus theory coupled with \glsxtrshort{kmc}.

@@ -15,8 +15,7 @@ For more on bioelectronic materials, see Organic Electronic: Emerging Concepts a
 In this thesis, we focus on a subclass of organic semiconductors, \gls{opv} materials, and their use in the
 active layer of \gls{osc} devices.
 A simple model for \glsxtrshort{osc}s is that they they are OLEDs working in reverse, absorbing photons and generating current rather than converting current into light.
-
-The \gls{osc} schematic in \autoref{bhj} summarizes the main processes involved in the generation of electrical current.
+The \gls{osc} schematic in \autoref{bhj} summarizes the main processes involved in the generation of electrical current from photonic energy. 
 %EJ: is the drawing or the OSC rudimentary? I'm editing.
 Any organic semiconductor can exhibit a photovoltaic effect when photons with appropriate energy (equivalently, wavelength) are absorbed.
 Therefore tuning an \glsxtrshort{opv}s absorption spectra represents one opportunity to optimize its
@@ -102,7 +101,7 @@ As illustrated in \ref{bhj}, a \glsxtrshort{bhj} active layer harvests photons t
 steps: (1) photoabsorbtions, 
 (2) exciton diffusion, (3) charge transfer, and (4) free charge diffusion \cite{Fusella2019}. 
 When a photon is incident on
-an \glsxtrshort{osc} active layer, if it intersects with a molecular segment in the donor whose 
+an \glsxtrshort{osc} active layer, if it intersects with a molecular segment in the donor, whose 
 \gls{homo} has comparable energy levels to the photon, 
 the energy can be absorbed via the promotion of
 an electron to the next available energy level; the \gls{lumo}.
@@ -142,7 +141,7 @@ Here we focus on $(4)$, charge transport in \gls{bhj} active layers.
 We simulate the self-assembly and charge mobility of pure acceptor (or
 pure donor) domains post deposition. 
 How the materials will self-assemble in the environment in which they are deposited determines
-the morphology which intern governs charge mobility~\cite{Vanlaeke2006}\cite{McMahon2011}. 
+the morphology which intern governs charge mobility~\cite{Vanlaeke2006}\cite{McMahon2011}. We believe that building and refining a high-throughput simulation pipeline can aid researchers in screening these materials across a vast parameter space. 
 
 With that, we outline the data pipeline in \autoref{pipeline} through which we take atomistic representations like
 those shown in \autoref{molecules} and, through a series of computations and simulations,
@@ -154,7 +153,7 @@ particles in the system,  equilibrium \gls{md} simulations can predict the morph
 The structural data obtained from these simulations can then be fed as an input into \gls{kmc}
 simulations that characterize charge mobility (conductivity) in these chemistries based on the
 energetics of electronically active molecular segments (`chromophores') within the morphology.
-We present \texttt{Planckton}, our package for navigation MD simulations of \glsxtrshort{opv}S in \autoref{planckton}. 
+We present \texttt{Planckton}, our package for navigation MD simulations of \glsxtrshort{opv}s in \autoref{planckton}. 
 The focus of this thesis, however, is the development of \texttt{MorphCT} for running \glsxtrshort{kmc} simulations, which we
 introduce more thoroughly in \autoref{morphct}.
 
@@ -195,7 +194,7 @@ An understanding of why this is the case can be found from the inspection of \au
 If the electrons in stage $4$ reach the anode much faster than the holes reach the cathode, a traffic jam can
 occur at the anode which can result in recombination with surrounding holes and ultimately a loss of the
 charge via annihilation. 
-The imbalanced charge carrier mobility can also lead to space-charge build up in the 
+An imbalanced charge carrier mobility can also lead to space-charge build up in the 
 low mobility material that can screen the built in field~\cite{Bartelt2015}.
 This phenomena has been shown by space charge limited current experiments~\cite{Small2013}.
 
@@ -265,7 +264,7 @@ the publication of interactive Jupyter notebook tutorials.
 We perform case studies using the charge transport prediction pipeline of \glsxtrshort{p3ht}, a
 donor molecule, and \glsxtrshort{itic}, an acceptor molecule. With respect to organic electronic devices, `acceptors' are the
 organic analogue of n-type inorganic semiconductors and `donors' the analogue
-of the p-type. We make this note because in the methods we describe a model of
+of the p-type. We make this note because in \autoref{methods} we describe a model of
 a charge hopping from one molecule to another. And as we describe, our
 investigation involves hops within a pure donor domain or within a pure
 acceptor domain (not to and from donor and acceptor as would be the case at the interface). 
@@ -283,7 +282,6 @@ is such that these molecules can pi-stack into lamellar structures that facilita
 the backbones. \glsxtrshort{p3ht} was first synthesized by Rick Mcullough in 1992. The first devices to utilize \glsxtrshort{p3ht} showed
 a low mobility do to is regio-randomness inhibiting the lamellar packing exhibited by the now widely used
 regio-regular (head-to-tail) \glsxtrshort{p3ht} shown in \autoref{molecules}~\cite{Zaumseil2014}. 
-
 \glsxtrshort{itic} is not polymeric. Rather, it a material consisting of small molecules with no long range bonding.
 \glsxtrshort{itic} is a \glsxtrshort{frea} that was first synthesized in 2015~\cite{Bai201U}. The structure of \glsxtrshort{itic} is shown in
 \autoref{molecules} wherein we have highlighted the moieties.  
