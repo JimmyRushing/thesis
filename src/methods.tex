@@ -295,14 +295,14 @@ In light of this, we introduce a parameter by which we further pare down the nei
 a naive cutoff distance, referred to as `$d_{cut}$' in this thesis. We visualize various $d_{cut}$ values as black
 circles in \autoref{fig:dcut}.
 It is clear from this image that the choice of $d_{cut}$ could drastically effect the
-neighbor list and the resulting charge mobilty calculation.  
+neighbor list and the resulting charge mobility calculation.  
 Note that the z-direction has been collapsed, and the distances do not necessarily correlate to the distance
 between chromophores in the system.
 
 A proper choice of $d_{cut}$ will depend on the material under investigation, 
 as the size of the individual chromophores will vary. In 
 \autoref{dcutresults}, we test the sensitivity of our results to the value of $d_{cut}$ for the crystalline \glsxtrshort{p3ht}
-data. From this testing, we consider if the juice is worth radial squeeze from a computational standpoint. 
+data. From this testing, we consider if the computational juice is worth radial squeeze.
 
 \section{Kinetic Monte Carlo}
 \label{KMC}
@@ -451,7 +451,7 @@ continuous integrating techniques provide passive protection against bugs in the
 from active development.
 
 Modular, python based code allows for the curation and publication of Jupyter notebooks workflows and
-tutorials for performing reproducable analysis. Jupyter notebooks are a document format for publishing code
+tutorials for performing reproducible analysis. Jupyter notebooks are a document format for publishing code
 that is executable and interactive \cite{Kluyver2016}. 
 
  
@@ -489,7 +489,7 @@ VMD & a molecular visualization program for displaying, analyzing, and animating
 Having had no prior experience with these materials and/or materials simulation prior to joining the CMElab,
 I was able to take an investigation of \glsxtrshort{itic} from molecular
 structure to a charge mobility; a macroscopic property. We hope that the combination of these two packages
-can make in silico screening of \glsxtrshort{opv} materials realistically attainable by any aspiring researcher.
+can make \textit{in silico} screening of \glsxtrshort{opv} materials realistically attainable by any aspiring researcher.
 
 All the tools used to implement, analyze, and
 visualize this work are freely available. 
@@ -541,7 +541,7 @@ data sets with \texttt{signac}.
 
 \texttt{MorphCT} is a python package for running \glsxtrshort{kmc} simulations of 
 charge transport in organics systems.
-\texttt{MorphCT} operates on \texttt{gsd} files containing the atom types and cartesian
+\texttt{MorphCT} operates on \texttt{gsd} files containing the atom types and Cartesian
 coordinates of a system
 system. In this work we use \texttt{MorphCT} on equilibrium microstates obtained from MD simulations. However,
 \texttt{MorphCT} is indifferent to how the morphological data was obtained and does not measure physical
@@ -571,9 +571,9 @@ In the development of \texttt{MorphCT-flow}, for analogous reasons to those outl
 found that ORCA, the software used to perform \glsxtrshort{qcc} in \texttt{MorphCT} inhibited containerization because it
 required a licensing agreement. For this reason, ORCA was replaced with the fully open source \texttt{pySCF} (Python-based Simulations of Chemistry Framework) \cite{Sun2018a}. This framework
 was chosen in the interest of reproducability and extensibility.
-\texttt{pySCF} is implemented almost entirly in the Python 
+\texttt{pySCF} is implemented almost entirely in the Python 
 language, which is becoming increasingly ubiquitous in the scientific computing community. The modularity of
-\texttt{pySCF} allowed for the entire \glsxtrshort{qcc} code to be implememted in five lines of code. These lines of code in 
+\texttt{pySCF} allowed for the entire \glsxtrshort{qcc} code to be implemented in five lines of code. These lines of code in 
 asked asks \texttt{pySCF} to approximate the frontier energy levels given the chromophore's molecular arrangement.  
 
 With each step in the \texttt{MorphCT} corresponding to a method called on the
