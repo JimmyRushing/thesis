@@ -21,7 +21,7 @@ reorganization energy, \glsxtrshort{kmc} temperature, and choice of charge carri
 benchmark \glsxtrshort{p3ht} morphology, holding all other parameters constant and sweeping across relevant scales
 provides context for how to treat these parameters in future investigations. 
 
-In \autoref{itic}, we extend our simulation pipeline to \gls{itic}. 
+In \autoref{itic}, we extend our simulation pipeline to \glsxtrshort{itic}. 
 
 \section{Implementation Verification}
 
@@ -452,7 +452,7 @@ across multiple studies.
 \label{itic}
 
 Our pipeline is meant to facilitate the computational screening of \gls{opv}s.
-Here we use the pipeline to predict charge mobility in \gls{itic}.
+Here we use the pipeline to predict charge mobility in \glsxtrshort{itic}.
 This is a first foray into the extensibility of the complete pipeline to a
 material not named \gls{p3ht}. 
 
@@ -498,7 +498,7 @@ Including the whole molecule necessarily requires more heavy lifting from \textt
 Similar to the results of the $d_{cut}$ investigation, 
 this implementation of \texttt{pySCF}, combined with clever pickling of system objects at various stages
 of the workflow, suggest that the laborious delineation of chromophores can be
-largely circumvented in macromolecular systems like \gls{itic}.
+largely circumvented in macromolecular systems like \glsxtrshort{itic}.
 We found that, while the 70 atom chromophores took $1.2s$ 
 per dimer while, the whole molecule dimer calculations with 186 atoms per
 chromophore took on average $3.3s$. This is a substantial increase across a
@@ -525,7 +525,7 @@ external contribution.
 The reported experimental electron mobility of \glsxtrshort{itic} varies depending on how it was processed and how it was measured. 
 Time-of-flight electron mobilities on the order of $10^{-4}$ \cite{Mica2018} and field effect mobilities on the order of
 $10^{-2}$ \cite{Park2018} have been reported. Another computational study, that also used Marcus hopping and
-\gls{kmc}, found an electron mobility of $7\cdot10^{-4}$~\cite{Han2017b} in a pure \gls{itic} crystal.
+\gls{kmc}, found an electron mobility of $7\cdot10^{-4}$~\cite{Han2017b} in a pure \glsxtrshort{itic} crystal.
 
 %%% Local Variables: 
 %%% mode: latex
